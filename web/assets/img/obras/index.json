@@ -86,7 +86,7 @@
     },
     {
       "slug": "nave-flota-stock-malaga-01",
-      "alt": "La base de Clima Baires: flota de vehículos rotulados y stock de equipos listos para instalar, Málaga (casa matriz)",
+      "alt": "La base de Clima Baires: flota de camionetas rotuladas y stock de equipos listos para instalar, Málaga (casa matriz)",
       "zona": "malaga",
       "tipo": "equipo",
       "destacada": true,
@@ -97,7 +97,7 @@
     },
     {
       "slug": "nave-vehiculo-rotulado-malaga-01",
-      "alt": "Furgoneta rotulada de Clima Baires en la nave, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)",
+      "alt": "Camioneta rotulada de Clima Baires en el depósito, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)",
       "zona": "malaga",
       "tipo": "equipo",
       "destacada": false,

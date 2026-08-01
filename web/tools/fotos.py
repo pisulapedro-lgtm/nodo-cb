@@ -94,12 +94,12 @@ MAPEO = {
     },
     '40a8ec06-IMG_1684.jpeg': {
         'slug': 'nave-flota-stock-malaga-01',
-        'alt': 'La base de Clima Baires: flota de vehículos rotulados y stock de equipos listos para instalar, Málaga (casa matriz)',
+        'alt': 'La base de Clima Baires: flota de camionetas rotuladas y stock de equipos listos para instalar, Málaga (casa matriz)',
         'zona': 'malaga', 'tipo': 'equipo', 'destacada': True,
     },
     '57977141-IMG_1666.jpeg': {
         'slug': 'nave-vehiculo-rotulado-malaga-01',
-        'alt': 'Furgoneta rotulada de Clima Baires en la nave, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)',
+        'alt': 'Camioneta rotulada de Clima Baires en el depósito, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)',
         'zona': 'malaga', 'tipo': 'equipo', 'destacada': False,
     },
     '39aa3365-WhatsApp_Image_20250915_at_1.46.04_PM.jpeg': {
@@ -150,11 +150,11 @@ MEJORAS = {
     '6e0aee55-WhatsApp_Image_20250915_at_1.46.04_PM_1.jpeg': {
         'crop': (0.30, 0.25, 1.0, 0.95),
     },
-    # nave con flota y stock: menos cielorraso y menos piso vacío
+    # depósito con flota y stock: menos cielorraso y menos piso vacío
     '40a8ec06-IMG_1684.jpeg': {
         'crop': (0.0, 0.08, 1.0, 0.90), 'brillo': 1.05, 'color': 1.08,
     },
-    # frente de la furgoneta en la nave: centrar cartel + vehículo
+    # frente de la camioneta en el depósito: centrar cartel + vehículo
     '57977141-IMG_1666.jpeg': {
         'crop': (0.0, 0.04, 0.96, 1.0), 'brillo': 1.05, 'color': 1.08,
     },
@@ -167,7 +167,7 @@ MEJORAS = {
 # Foto que alimenta el hero de la portada y los og:image (la mejor toma).
 HERO_ORIGEN = '40a8ec06-IMG_1684.jpeg'
 # Ventanas de recorte (izq, arriba, der, abajo) sobre la foto YA MEJORADA:
-# tarjeta vertical 4:5 del hero (furgoneta rotulada + cartel) y banda og 1200×630.
+# tarjeta vertical 4:5 del hero (camioneta rotulada + cartel) y banda og 1200×630.
 HERO_VENTANA_TARJETA = (0.16, 0.0, 1.0, 1.0)
 HERO_VENTANA_OG = (0.0, 0.28, 1.0, 0.78)
 

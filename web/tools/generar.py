@@ -756,7 +756,7 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
   </div>
 </section>
 
-<section class="seccion" style="padding:0 0 60px">{cinta_cta(f'Estamos trabajando en {nombre} esta semana. ¿Coordinamos tu visita?', f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')}
+<section class="seccion" style="padding:0 0 60px">{cinta_cta(f'¿Coordinamos una visita técnica en {nombre}? Sin cargo y sin compromiso.', f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')}
 </section>
 
 <section class="seccion alterna">
