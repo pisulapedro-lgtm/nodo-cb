@@ -1,6 +1,6 @@
 {
   "marca": "Cucina di Marce",
-  "nota": "params vacio = valores por defecto de photo_pipeline.Params. Los overrides por foto se ajustaron mirando cada imagen.",
+  "nota": "params vacio = valores por defecto de photo_pipeline.Params. Solo se ajusta lo que la foto pide.",
   "fotos": [
     {
       "slug": "torta-merengue-dorada",
@@ -21,7 +21,7 @@
       "src": "fotos/originales/torta-chocolate-frutillas.jpg",
       "titulo": "Torta de chocolate con frutillas",
       "alt": "Torta cubierta de rulos de chocolate con frutillas frescas y cereza en el centro, topper rojo Feliz Cumple",
-      "params": {}
+      "params": {"contrast": 0.09, "shadow_lift": 0.20}
     },
     {
       "slug": "torta-chocolate-lazo-dorado",
@@ -42,7 +42,7 @@
       "src": "fotos/originales/torta-frutillas-lazo-rojo.jpg",
       "titulo": "Torta de frutillas con lazo rojo",
       "alt": "Torta con frutillas frescas glaseadas en la superficie, borde de bombones de chocolate y lazo rojo",
-      "params": {}
+      "params": {"contrast": 0.08, "shadow_lift": 0.20, "saturation": 0.98}
     },
     {
       "slug": "torta-brownie-frutos-rojos",

@@ -1,0 +1,2776 @@
+{
+  "generado_por": "scripts/enhance_photos.py",
+  "fotos": [
+    {
+      "slug": "torta-merengue-dorada",
+      "titulo": "Torta de merengue con dulce de leche",
+      "alt": "Torta de merengue con dulce de leche y detalles dorados, con topper Feliz Cumple sobre plato de ceramica blanca",
+      "origen": {
+        "archivo": "torta-merengue-dorada.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 161
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          216.4,
+          216.9,
+          212.6
+        ],
+        "ganancias_wb": [
+          0.994,
+          0.986,
+          1.02
+        ],
+        "blanco_medido": 218.5,
+        "factor_exposicion": 1.203
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-merengue-dorada.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 354
+        },
+        "comparativa": "comparativas/torta-merengue-dorada.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-400.avif",
+                "kb": 19.4
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-400.webp",
+                "kb": 30.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-400.jpg",
+                "kb": 43.8
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-600.avif",
+                "kb": 39.2
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-600.webp",
+                "kb": 65.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-600.jpg",
+                "kb": 93.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-800.avif",
+                "kb": 63.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-800.webp",
+                "kb": 108.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-800.jpg",
+                "kb": 156.0
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-1000.avif",
+                "kb": 92.9
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-1000.webp",
+                "kb": 160.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-1000.jpg",
+                "kb": 232.1
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-1200.avif",
+                "kb": 114.9
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-1200.webp",
+                "kb": 200.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-1200.jpg",
+                "kb": 302.1
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-400.avif",
+                "kb": 17.1
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-400.webp",
+                "kb": 26.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-400.jpg",
+                "kb": 37.5
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-600.avif",
+                "kb": 34.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-600.webp",
+                "kb": 54.3
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-600.jpg",
+                "kb": 77.8
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-800.avif",
+                "kb": 55.2
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-800.webp",
+                "kb": 89.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-800.jpg",
+                "kb": 127.2
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-1000.avif",
+                "kb": 79.9
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-1000.webp",
+                "kb": 131.8
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-1000.jpg",
+                "kb": 187.7
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-1200.avif",
+                "kb": 99.2
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-1200.webp",
+                "kb": 164.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-1200.jpg",
+                "kb": 242.8
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-merengue-dorada-800.avif",
+                "kb": 40.7
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-merengue-dorada-800.webp",
+                "kb": 64.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-merengue-dorada-800.jpg",
+                "kb": 87.3
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-merengue-dorada-1200.avif",
+                "kb": 72.4
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-merengue-dorada-1200.webp",
+                "kb": 119.1
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-merengue-dorada-1200.jpg",
+                "kb": 165.1
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-merengue-dorada.jpg",
+              "kb": 331.0
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-merengue-dorada.webp",
+              "kb": 227.7
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-merengue-dorada.jpg",
+              "kb": 267.5
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-merengue-dorada.webp",
+              "kb": 187.4
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-merengue-dorada.jpg",
+              "kb": 415.5
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-merengue-dorada.webp",
+              "kb": 275.4
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-merengue-dorada-2",
+      "titulo": "Torta de merengue, vista completa",
+      "alt": "Torta de merengue con merenguitos en la base y velas doradas sobre plato de ceramica con borde ondulado",
+      "origen": {
+        "archivo": "torta-merengue-dorada-2.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 120
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          221.9,
+          224.8,
+          221.4
+        ],
+        "ganancias_wb": [
+          1.01,
+          0.982,
+          1.007
+        ],
+        "blanco_medido": 225.9,
+        "factor_exposicion": 1.116
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-merengue-dorada-2.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 258
+        },
+        "comparativa": "comparativas/torta-merengue-dorada-2.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-400.avif",
+                "kb": 15.7
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-400.webp",
+                "kb": 24.7
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-400.jpg",
+                "kb": 38.6
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-600.avif",
+                "kb": 30.9
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-600.webp",
+                "kb": 49.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-600.jpg",
+                "kb": 77.8
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-800.avif",
+                "kb": 48.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-800.webp",
+                "kb": 77.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-800.jpg",
+                "kb": 124.3
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-1000.avif",
+                "kb": 69.7
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-1000.webp",
+                "kb": 109.7
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-1000.jpg",
+                "kb": 180.2
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-1200.avif",
+                "kb": 85.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-1200.webp",
+                "kb": 135.6
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-merengue-dorada-2-1200.jpg",
+                "kb": 231.3
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-400.avif",
+                "kb": 14.0
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-400.webp",
+                "kb": 22.1
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-400.jpg",
+                "kb": 33.2
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-600.avif",
+                "kb": 27.4
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-600.webp",
+                "kb": 43.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-600.jpg",
+                "kb": 66.0
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-800.avif",
+                "kb": 42.7
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-800.webp",
+                "kb": 66.6
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-800.jpg",
+                "kb": 104.6
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-1000.avif",
+                "kb": 60.9
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-1000.webp",
+                "kb": 95.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-1000.jpg",
+                "kb": 150.8
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-1200.avif",
+                "kb": 75.1
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-1200.webp",
+                "kb": 116.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-merengue-dorada-2-1200.jpg",
+                "kb": 192.8
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-merengue-dorada-2-800.avif",
+                "kb": 32.1
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-merengue-dorada-2-800.webp",
+                "kb": 50.1
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-merengue-dorada-2-800.jpg",
+                "kb": 72.8
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-merengue-dorada-2-1200.avif",
+                "kb": 55.8
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-merengue-dorada-2-1200.webp",
+                "kb": 86.7
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-merengue-dorada-2-1200.jpg",
+                "kb": 132.9
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-merengue-dorada-2.jpg",
+              "kb": 259.5
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-merengue-dorada-2.webp",
+              "kb": 159.6
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-merengue-dorada-2.jpg",
+              "kb": 216.5
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-merengue-dorada-2.webp",
+              "kb": 136.5
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-merengue-dorada-2.jpg",
+              "kb": 324.9
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-merengue-dorada-2.webp",
+              "kb": 192.5
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-chocolate-frutillas",
+      "titulo": "Torta de chocolate con frutillas",
+      "alt": "Torta cubierta de rulos de chocolate con frutillas frescas y cereza en el centro, topper rojo Feliz Cumple",
+      "origen": {
+        "archivo": "torta-chocolate-frutillas.jpg",
+        "px": [
+          720,
+          1280
+        ],
+        "kb": 201
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          198.6,
+          203.3,
+          206.1
+        ],
+        "ganancias_wb": [
+          1.043,
+          0.994,
+          0.965
+        ],
+        "blanco_medido": 206.1,
+        "factor_exposicion": 1.372
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.2,
+        "highlight_recovery": 0.35,
+        "contrast": 0.09,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-chocolate-frutillas.jpg",
+          "px": [
+            720,
+            1280
+          ],
+          "kb": 444
+        },
+        "comparativa": "comparativas/torta-chocolate-frutillas.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-400.avif",
+                "kb": 40.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-400.webp",
+                "kb": 65.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-400.jpg",
+                "kb": 77.9
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-600.avif",
+                "kb": 78.4
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-600.webp",
+                "kb": 128.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-600.jpg",
+                "kb": 154.7
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-800.avif",
+                "kb": 118.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-800.webp",
+                "kb": 201.7
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-frutillas-800.jpg",
+                "kb": 245.5
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-400.avif",
+                "kb": 35.1
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-400.webp",
+                "kb": 56.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-400.jpg",
+                "kb": 65.7
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-600.avif",
+                "kb": 67.7
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-600.webp",
+                "kb": 111.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-600.jpg",
+                "kb": 131.9
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-800.avif",
+                "kb": 102.9
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-800.webp",
+                "kb": 175.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-frutillas-800.jpg",
+                "kb": 209.5
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-chocolate-frutillas-800.avif",
+                "kb": 67.7
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-chocolate-frutillas-800.webp",
+                "kb": 112.8
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-chocolate-frutillas-800.jpg",
+                "kb": 132.9
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-chocolate-frutillas.jpg",
+              "kb": 455.1
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-chocolate-frutillas.webp",
+              "kb": 363.5
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-chocolate-frutillas.jpg",
+              "kb": 388.2
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-chocolate-frutillas.webp",
+              "kb": 313.6
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-chocolate-frutillas.jpg",
+              "kb": 566.9
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-chocolate-frutillas.webp",
+              "kb": 427.3
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-chocolate-lazo-dorado",
+      "titulo": "Torta de chocolate con lazo dorado",
+      "alt": "Torta con rulos de chocolate amargo, borde de barquillos y lazo dorado, con topper de mariposas",
+      "origen": {
+        "archivo": "torta-chocolate-lazo-dorado.jpg",
+        "px": [
+          720,
+          1280
+        ],
+        "kb": 182
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          210.3,
+          211.7,
+          214.7
+        ],
+        "ganancias_wb": [
+          1.021,
+          1.005,
+          0.974
+        ],
+        "blanco_medido": 215.7,
+        "factor_exposicion": 1.239
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-chocolate-lazo-dorado.jpg",
+          "px": [
+            720,
+            1280
+          ],
+          "kb": 381
+        },
+        "comparativa": "comparativas/torta-chocolate-lazo-dorado.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-400.avif",
+                "kb": 29.4
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-400.webp",
+                "kb": 45.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-400.jpg",
+                "kb": 58.8
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-600.avif",
+                "kb": 63.7
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-600.webp",
+                "kb": 101.2
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-600.jpg",
+                "kb": 127.4
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-800.avif",
+                "kb": 103.9
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-800.webp",
+                "kb": 173.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-lazo-dorado-800.jpg",
+                "kb": 213.2
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-400.avif",
+                "kb": 25.0
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-400.webp",
+                "kb": 38.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-400.jpg",
+                "kb": 49.8
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-600.avif",
+                "kb": 54.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-600.webp",
+                "kb": 86.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-600.jpg",
+                "kb": 107.7
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-800.avif",
+                "kb": 89.2
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-800.webp",
+                "kb": 147.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-lazo-dorado-800.jpg",
+                "kb": 179.9
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-chocolate-lazo-dorado-800.avif",
+                "kb": 65.8
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-chocolate-lazo-dorado-800.webp",
+                "kb": 109.8
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-chocolate-lazo-dorado-800.jpg",
+                "kb": 128.5
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-chocolate-lazo-dorado.jpg",
+              "kb": 403.5
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-chocolate-lazo-dorado.webp",
+              "kb": 321.7
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-chocolate-lazo-dorado.jpg",
+              "kb": 340.8
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-chocolate-lazo-dorado.webp",
+              "kb": 275.2
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-chocolate-lazo-dorado.jpg",
+              "kb": 541.9
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-chocolate-lazo-dorado.webp",
+              "kb": 422.0
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-crema-chocolate-dorada",
+      "titulo": "Torta de crema y chocolate con detalles dorados",
+      "alt": "Torta con laterales de crema batida y cobertura de rulos de chocolate con brillo dorado y perlas",
+      "origen": {
+        "archivo": "torta-crema-chocolate-dorada.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 194
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          210.3,
+          211.3,
+          211.6
+        ],
+        "ganancias_wb": [
+          1.011,
+          0.998,
+          0.991
+        ],
+        "blanco_medido": 214.4,
+        "factor_exposicion": 1.256
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-crema-chocolate-dorada.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 411
+        },
+        "comparativa": "comparativas/torta-crema-chocolate-dorada.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-400.avif",
+                "kb": 25.2
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-400.webp",
+                "kb": 38.9
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-400.jpg",
+                "kb": 53.5
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-600.avif",
+                "kb": 51.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-600.webp",
+                "kb": 79.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-600.jpg",
+                "kb": 111.2
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-800.avif",
+                "kb": 83.0
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-800.webp",
+                "kb": 131.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-800.jpg",
+                "kb": 181.8
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-1000.avif",
+                "kb": 120.2
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-1000.webp",
+                "kb": 192.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-1000.jpg",
+                "kb": 267.1
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-1200.avif",
+                "kb": 147.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-1200.webp",
+                "kb": 238.8
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-crema-chocolate-dorada-1200.jpg",
+                "kb": 344.8
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-400.avif",
+                "kb": 22.8
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-400.webp",
+                "kb": 34.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-400.jpg",
+                "kb": 46.1
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-600.avif",
+                "kb": 45.1
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-600.webp",
+                "kb": 69.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-600.jpg",
+                "kb": 94.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-800.avif",
+                "kb": 72.1
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-800.webp",
+                "kb": 109.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-800.jpg",
+                "kb": 152.5
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-1000.avif",
+                "kb": 103.3
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-1000.webp",
+                "kb": 160.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-1000.jpg",
+                "kb": 222.6
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-1200.avif",
+                "kb": 125.9
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-1200.webp",
+                "kb": 201.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-crema-chocolate-dorada-1200.jpg",
+                "kb": 285.5
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-crema-chocolate-dorada-800.avif",
+                "kb": 44.1
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-crema-chocolate-dorada-800.webp",
+                "kb": 65.6
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-crema-chocolate-dorada-800.jpg",
+                "kb": 90.4
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-crema-chocolate-dorada-1200.avif",
+                "kb": 76.4
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-crema-chocolate-dorada-1200.webp",
+                "kb": 117.5
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-crema-chocolate-dorada-1200.jpg",
+                "kb": 167.1
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-crema-chocolate-dorada.jpg",
+              "kb": 376.7
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-crema-chocolate-dorada.webp",
+              "kb": 267.1
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-crema-chocolate-dorada.jpg",
+              "kb": 312.7
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-crema-chocolate-dorada.webp",
+              "kb": 222.2
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-crema-chocolate-dorada.jpg",
+              "kb": 498.1
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-crema-chocolate-dorada.webp",
+              "kb": 356.3
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-frutillas-lazo-rojo",
+      "titulo": "Torta de frutillas con lazo rojo",
+      "alt": "Torta con frutillas frescas glaseadas en la superficie, borde de bombones de chocolate y lazo rojo",
+      "origen": {
+        "archivo": "torta-frutillas-lazo-rojo.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 200
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          224.1,
+          225.4,
+          225.2
+        ],
+        "ganancias_wb": [
+          1.01,
+          0.996,
+          0.993
+        ],
+        "blanco_medido": 226.4,
+        "factor_exposicion": 1.111
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.2,
+        "highlight_recovery": 0.35,
+        "contrast": 0.08,
+        "vibrance": 0.24,
+        "saturation": 0.98,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-frutillas-lazo-rojo.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 402
+        },
+        "comparativa": "comparativas/torta-frutillas-lazo-rojo.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-400.avif",
+                "kb": 20.5
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-400.webp",
+                "kb": 32.2
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-400.jpg",
+                "kb": 46.0
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-600.avif",
+                "kb": 45.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-600.webp",
+                "kb": 72.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-600.jpg",
+                "kb": 101.9
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-800.avif",
+                "kb": 75.9
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-800.webp",
+                "kb": 129.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-800.jpg",
+                "kb": 177.4
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-1000.avif",
+                "kb": 113.3
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-1000.webp",
+                "kb": 195.6
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-1000.jpg",
+                "kb": 268.2
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-1200.avif",
+                "kb": 144.3
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-1200.webp",
+                "kb": 244.7
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-frutillas-lazo-rojo-1200.jpg",
+                "kb": 352.1
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-400.avif",
+                "kb": 17.8
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-400.webp",
+                "kb": 27.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-400.jpg",
+                "kb": 38.1
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-600.avif",
+                "kb": 38.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-600.webp",
+                "kb": 59.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-600.jpg",
+                "kb": 83.0
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-800.avif",
+                "kb": 64.4
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-800.webp",
+                "kb": 103.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-800.jpg",
+                "kb": 143.3
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-1000.avif",
+                "kb": 95.9
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-1000.webp",
+                "kb": 157.3
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-1000.jpg",
+                "kb": 216.4
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-1200.avif",
+                "kb": 121.4
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-1200.webp",
+                "kb": 198.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-frutillas-lazo-rojo-1200.jpg",
+                "kb": 283.5
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-frutillas-lazo-rojo-800.avif",
+                "kb": 43.6
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-frutillas-lazo-rojo-800.webp",
+                "kb": 66.0
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-frutillas-lazo-rojo-800.jpg",
+                "kb": 89.3
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-frutillas-lazo-rojo-1200.avif",
+                "kb": 79.0
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-frutillas-lazo-rojo-1200.webp",
+                "kb": 124.2
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-frutillas-lazo-rojo-1200.jpg",
+                "kb": 171.2
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-frutillas-lazo-rojo.jpg",
+              "kb": 382.1
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-frutillas-lazo-rojo.webp",
+              "kb": 277.5
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-frutillas-lazo-rojo.jpg",
+              "kb": 308.0
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-frutillas-lazo-rojo.webp",
+              "kb": 224.0
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-frutillas-lazo-rojo.jpg",
+              "kb": 486.6
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-frutillas-lazo-rojo.webp",
+              "kb": 350.3
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-brownie-frutos-rojos",
+      "titulo": "Brownie con crema y frutos rojos",
+      "alt": "Torta brownie con dulce de leche, crema y frutos rojos frescos con rulos de chocolate",
+      "origen": {
+        "archivo": "torta-brownie-frutos-rojos.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 212
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          216.8,
+          213.8,
+          201.7
+        ],
+        "ganancias_wb": [
+          0.952,
+          0.974,
+          1.085
+        ],
+        "blanco_medido": 214.1,
+        "factor_exposicion": 1.26
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-brownie-frutos-rojos.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 432
+        },
+        "comparativa": "comparativas/torta-brownie-frutos-rojos.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-400.avif",
+                "kb": 29.7
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-400.webp",
+                "kb": 46.9
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-400.jpg",
+                "kb": 60.9
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-600.avif",
+                "kb": 60.9
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-600.webp",
+                "kb": 95.8
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-600.jpg",
+                "kb": 125.9
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-800.avif",
+                "kb": 96.2
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-800.webp",
+                "kb": 153.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-800.jpg",
+                "kb": 203.0
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-1000.avif",
+                "kb": 137.8
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-1000.webp",
+                "kb": 219.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-1000.jpg",
+                "kb": 296.8
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-1200.avif",
+                "kb": 168.8
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-1200.webp",
+                "kb": 270.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-brownie-frutos-rojos-1200.jpg",
+                "kb": 378.4
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-400.avif",
+                "kb": 25.4
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-400.webp",
+                "kb": 39.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-400.jpg",
+                "kb": 51.9
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-600.avif",
+                "kb": 51.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-600.webp",
+                "kb": 81.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-600.jpg",
+                "kb": 106.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-800.avif",
+                "kb": 81.1
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-800.webp",
+                "kb": 127.8
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-800.jpg",
+                "kb": 170.5
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-1000.avif",
+                "kb": 115.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-1000.webp",
+                "kb": 182.8
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-1000.jpg",
+                "kb": 247.6
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-1200.avif",
+                "kb": 141.4
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-1200.webp",
+                "kb": 229.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-brownie-frutos-rojos-1200.jpg",
+                "kb": 315.8
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-brownie-frutos-rojos-800.avif",
+                "kb": 51.4
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-brownie-frutos-rojos-800.webp",
+                "kb": 81.1
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-brownie-frutos-rojos-800.jpg",
+                "kb": 107.1
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-brownie-frutos-rojos-1200.avif",
+                "kb": 89.9
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-brownie-frutos-rojos-1200.webp",
+                "kb": 141.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-brownie-frutos-rojos-1200.jpg",
+                "kb": 195.3
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-brownie-frutos-rojos.jpg",
+              "kb": 415.1
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-brownie-frutos-rojos.webp",
+              "kb": 302.2
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-brownie-frutos-rojos.jpg",
+              "kb": 346.1
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-brownie-frutos-rojos.webp",
+              "kb": 254.5
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-brownie-frutos-rojos.jpg",
+              "kb": 475.0
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-brownie-frutos-rojos.webp",
+              "kb": 338.0
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-chocolate-blanco-lunares",
+      "titulo": "Torta de chocolate blanco con lazo de lunares",
+      "alt": "Torta cubierta de rulos de chocolate blanco con borde de barquillos y lazo blanco con lunares dorados",
+      "origen": {
+        "archivo": "torta-chocolate-blanco-lunares.jpg",
+        "px": [
+          720,
+          1280
+        ],
+        "kb": 183
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          221.2,
+          223.8,
+          228.2
+        ],
+        "ganancias_wb": [
+          1.032,
+          1.005,
+          0.964
+        ],
+        "blanco_medido": 226.6,
+        "factor_exposicion": 1.109
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-chocolate-blanco-lunares.jpg",
+          "px": [
+            720,
+            1280
+          ],
+          "kb": 352
+        },
+        "comparativa": "comparativas/torta-chocolate-blanco-lunares.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-400.avif",
+                "kb": 32.6
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-400.webp",
+                "kb": 52.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-400.jpg",
+                "kb": 64.8
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-600.avif",
+                "kb": 67.5
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-600.webp",
+                "kb": 110.3
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-600.jpg",
+                "kb": 134.5
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-800.avif",
+                "kb": 105.0
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-800.webp",
+                "kb": 181.8
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-chocolate-blanco-lunares-800.jpg",
+                "kb": 220.6
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-400.avif",
+                "kb": 27.4
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-400.webp",
+                "kb": 44.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-400.jpg",
+                "kb": 53.8
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-600.avif",
+                "kb": 57.0
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-600.webp",
+                "kb": 93.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-600.jpg",
+                "kb": 111.5
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-800.avif",
+                "kb": 87.9
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-800.webp",
+                "kb": 150.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-chocolate-blanco-lunares-800.jpg",
+                "kb": 181.4
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-chocolate-blanco-lunares-800.avif",
+                "kb": 55.1
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-chocolate-blanco-lunares-800.webp",
+                "kb": 91.5
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-chocolate-blanco-lunares-800.jpg",
+                "kb": 111.7
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-chocolate-blanco-lunares.jpg",
+              "kb": 410.0
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-chocolate-blanco-lunares.webp",
+              "kb": 326.6
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-chocolate-blanco-lunares.jpg",
+              "kb": 339.0
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-chocolate-blanco-lunares.webp",
+              "kb": 272.2
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-chocolate-blanco-lunares.jpg",
+              "kb": 534.1
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-chocolate-blanco-lunares.webp",
+              "kb": 405.3
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-golosinas-lazo-dorado",
+      "titulo": "Torta de golosinas",
+      "alt": "Torta de golosinas con confites de colores, chocolates, chupetines y lazo dorado",
+      "origen": {
+        "archivo": "torta-golosinas-lazo-dorado.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 217
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          203.4,
+          206.8,
+          209.3
+        ],
+        "ganancias_wb": [
+          1.033,
+          0.997,
+          0.971
+        ],
+        "blanco_medido": 212.0,
+        "factor_exposicion": 1.288
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-golosinas-lazo-dorado.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 493
+        },
+        "comparativa": "comparativas/torta-golosinas-lazo-dorado.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-400.avif",
+                "kb": 25.0
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-400.webp",
+                "kb": 40.2
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-400.jpg",
+                "kb": 54.6
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-600.avif",
+                "kb": 55.5
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-600.webp",
+                "kb": 93.9
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-600.jpg",
+                "kb": 120.9
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-800.avif",
+                "kb": 94.2
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-800.webp",
+                "kb": 167.8
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-800.jpg",
+                "kb": 206.8
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-1000.avif",
+                "kb": 141.7
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-1000.webp",
+                "kb": 250.7
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-1000.jpg",
+                "kb": 310.1
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-1200.avif",
+                "kb": 176.1
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-1200.webp",
+                "kb": 324.6
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-golosinas-lazo-dorado-1200.jpg",
+                "kb": 405.6
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-400.avif",
+                "kb": 23.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-400.webp",
+                "kb": 37.3
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-400.jpg",
+                "kb": 49.1
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-600.avif",
+                "kb": 50.3
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-600.webp",
+                "kb": 82.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-600.jpg",
+                "kb": 105.7
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-800.avif",
+                "kb": 84.2
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-800.webp",
+                "kb": 141.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-800.jpg",
+                "kb": 178.0
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-1000.avif",
+                "kb": 125.2
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-1000.webp",
+                "kb": 216.8
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-1000.jpg",
+                "kb": 265.1
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-1200.avif",
+                "kb": 155.8
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-1200.webp",
+                "kb": 277.3
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-golosinas-lazo-dorado-1200.jpg",
+                "kb": 345.8
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-golosinas-lazo-dorado-800.avif",
+                "kb": 54.6
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-golosinas-lazo-dorado-800.webp",
+                "kb": 90.5
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-golosinas-lazo-dorado-800.jpg",
+                "kb": 112.9
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-golosinas-lazo-dorado-1200.avif",
+                "kb": 97.8
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-golosinas-lazo-dorado-1200.webp",
+                "kb": 171.2
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-golosinas-lazo-dorado-1200.jpg",
+                "kb": 214.6
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-golosinas-lazo-dorado.jpg",
+              "kb": 438.4
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-golosinas-lazo-dorado.webp",
+              "kb": 350.3
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-golosinas-lazo-dorado.jpg",
+              "kb": 374.0
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-golosinas-lazo-dorado.webp",
+              "kb": 298.0
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-golosinas-lazo-dorado.jpg",
+              "kb": 579.3
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-golosinas-lazo-dorado.webp",
+              "kb": 473.9
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "torta-cuatro-chocolates",
+      "titulo": "Torta cuatro chocolates",
+      "alt": "Torta dividida en cuatro sectores con chips de chocolate blanco, chocolate amargo, confites de colores y rulos, con lazo plateado",
+      "origen": {
+        "archivo": "torta-cuatro-chocolates.jpg",
+        "px": [
+          960,
+          1280
+        ],
+        "kb": 230
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          209.0,
+          221.2,
+          236.3
+        ],
+        "ganancias_wb": [
+          1.132,
+          1.012,
+          0.888
+        ],
+        "blanco_medido": 222.3,
+        "factor_exposicion": 1.157
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/torta-cuatro-chocolates.jpg",
+          "px": [
+            960,
+            1280
+          ],
+          "kb": 465
+        },
+        "comparativa": "comparativas/torta-cuatro-chocolates.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-400.avif",
+                "kb": 24.3
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-400.webp",
+                "kb": 37.8
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-400.jpg",
+                "kb": 52.9
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-600.avif",
+                "kb": 54.7
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-600.webp",
+                "kb": 93.6
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-600.jpg",
+                "kb": 120.7
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-800.avif",
+                "kb": 92.4
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-800.webp",
+                "kb": 168.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-800.jpg",
+                "kb": 213.3
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1250,
+              "avif": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-1000.avif",
+                "kb": 136.1
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-1000.webp",
+                "kb": 256.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-1000.jpg",
+                "kb": 322.7
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1500,
+              "avif": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-1200.avif",
+                "kb": 171.8
+              },
+              "webp": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-1200.webp",
+                "kb": 319.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/torta-cuatro-chocolates-1200.jpg",
+                "kb": 415.7
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-400.avif",
+                "kb": 21.8
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-400.webp",
+                "kb": 35.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-400.jpg",
+                "kb": 46.8
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-600.avif",
+                "kb": 47.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-600.webp",
+                "kb": 78.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-600.jpg",
+                "kb": 102.5
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-800.avif",
+                "kb": 79.6
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-800.webp",
+                "kb": 138.8
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-800.jpg",
+                "kb": 178.2
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-1000.avif",
+                "kb": 118.2
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-1000.webp",
+                "kb": 213.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-1000.jpg",
+                "kb": 267.7
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 1200,
+              "avif": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-1200.avif",
+                "kb": 146.8
+              },
+              "webp": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-1200.webp",
+                "kb": 265.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/torta-cuatro-chocolates-1200.jpg",
+                "kb": 344.8
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/torta-cuatro-chocolates-800.avif",
+                "kb": 51.0
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-cuatro-chocolates-800.webp",
+                "kb": 84.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-cuatro-chocolates-800.jpg",
+                "kb": 109.3
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/torta-cuatro-chocolates-1200.avif",
+                "kb": 91.8
+              },
+              "webp": {
+                "ruta": "web/16x9/torta-cuatro-chocolates-1200.webp",
+                "kb": 153.7
+              },
+              "jpg": {
+                "ruta": "web/16x9/torta-cuatro-chocolates-1200.jpg",
+                "kb": 205.5
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/torta-cuatro-chocolates.jpg",
+              "kb": 458.1
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/torta-cuatro-chocolates.webp",
+              "kb": 358.7
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/torta-cuatro-chocolates.jpg",
+              "kb": 377.1
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/torta-cuatro-chocolates.webp",
+              "kb": 296.1
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/torta-cuatro-chocolates.jpg",
+              "kb": 568.2
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/torta-cuatro-chocolates.webp",
+              "kb": 428.7
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "peso_total_avif_kb": 7610.2
+}

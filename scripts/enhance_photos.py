@@ -28,7 +28,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from photo_pipeline import (  # noqa: E402
-    Params, enhance, to_pil, smart_crop, resize_to, post_resize_sharpen, subject_bbox,
+    Params, enhance, to_pil, smart_crop, resize_to, post_resize_sharpen, subject_box,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -98,7 +98,7 @@ def process(entry: dict, outdir: Path, preview: bool, overrides: dict) -> dict:
     params = Params().merged(entry.get("params", {})).merged(overrides)
 
     orig = Image.open(src)
-    rgb, subj, info = enhance(orig, params)
+    rgb, info = enhance(orig, params)
     master = to_pil(rgb)
 
     result = {
@@ -129,19 +129,12 @@ def process(entry: dict, outdir: Path, preview: bool, overrides: dict) -> dict:
     result["archivos"]["comparativa"] = str(cpath.relative_to(outdir))
 
     if preview:
-        # Mascara de sujeto en verde sobre la foto: sirve para ver si el pipeline
-        # esta separando bien la pieza del fondo.
-        dbg = np.asarray(master).astype(np.float32) / 255.0
-        dbg[..., 1] = np.clip(dbg[..., 1] * (1 - subj * 0.55) + subj * 0.55, 0, 1)
-        dpath = outdir / "debug" / f"{slug}-mascara.jpg"
-        dpath.parent.mkdir(parents=True, exist_ok=True)
-        to_pil(dbg).save(dpath, "JPEG", quality=80, optimize=True)
-        result["archivos"]["mascara"] = str(dpath.relative_to(outdir))
         return result
 
+    box = subject_box(rgb)
     crops: dict[str, np.ndarray] = {}
     for name, ratio in ASPECTS.items():
-        crops[name] = smart_crop(rgb, subj, ratio, params)
+        crops[name] = smart_crop(rgb, box, ratio, params)
 
     # --- web ----------------------------------------------------------------
     web = {}
@@ -205,6 +198,51 @@ def picture_snippet(r: dict) -> str:
     )
 
 
+def build_gallery(results: list[dict], out: Path) -> None:
+    """Pagina para revisar antes y despues de toda la serie de un vistazo."""
+    filas = "\n".join(
+        f'''    <figure>
+      <img src="comparativas/{r["slug"]}.jpg" alt="Antes y despues de {r["alt"]}" loading="lazy">
+      <figcaption><strong>{r["titulo"]}</strong>
+        <span>exposicion x{r["diagnostico"].get("factor_exposicion", "-")} ·
+        blanco medido {r["diagnostico"].get("blanco_medido", "-")} → {round(255 * r["params"]["white_target"])}</span>
+      </figcaption>
+    </figure>''' for r in results)
+    out.write_text(f"""<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotos de tortas · antes y despues</title>
+<style>
+  :root {{ color-scheme: light dark; }}
+  body {{ margin: 0; padding: 2rem 1rem 4rem; font: 16px/1.5 system-ui, sans-serif;
+         background: #faf8f5; color: #2b2622; }}
+  @media (prefers-color-scheme: dark) {{ body {{ background: #17140f; color: #ece6dd; }} }}
+  header {{ max-width: 68rem; margin: 0 auto 2rem; }}
+  h1 {{ font-size: 1.5rem; margin: 0 0 .3rem; }}
+  p {{ margin: 0; opacity: .75; }}
+  main {{ max-width: 68rem; margin: 0 auto; display: grid; gap: 2rem; }}
+  figure {{ margin: 0; }}
+  img {{ width: 100%; height: auto; border-radius: 10px; display: block; }}
+  figcaption {{ display: flex; flex-wrap: wrap; gap: .1rem 1rem; margin-top: .5rem; }}
+  figcaption span {{ opacity: .6; font-size: .85rem; }}
+</style>
+</head>
+<body>
+<header>
+  <h1>Fotos de tortas · antes y despues</h1>
+  <p>Izquierda original, derecha con la luz y el color corregidos. La escena
+     no se toca: pared, mantel y sombras quedan como estaban.</p>
+</header>
+<main>
+{filas}
+</main>
+</body>
+</html>
+""", encoding="utf-8")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--catalog", default=str(CATALOG))
@@ -255,6 +293,7 @@ def main() -> int:
         (outdir / "snippet.html").write_text(
             "\n\n".join(f"<!-- {r['titulo']} -->\n{picture_snippet(r)}" for r in results),
             encoding="utf-8")
+        build_gallery(results, outdir / "galeria.html")
     print(f"listo: {len(results)} fotos -> {outdir}")
     return 0
 
