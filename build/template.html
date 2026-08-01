@@ -122,6 +122,19 @@
     background: var(--gris-suave) !important; text-align: left; font-weight: 600;
     color: var(--navy); padding-left: 3pt; font-size: 7pt;
   }
+  /* Curva de caja: barra proporcional al saldo, sin JS ni librerías. */
+  table.caja td .barra {
+    height: 7pt; background: linear-gradient(90deg, var(--azul), var(--celeste));
+    border-radius: 1.5pt; min-width: 1pt;
+  }
+  table.caja td:last-child { width: 22%; vertical-align: middle; }
+  /* P&L de 12 meses en A4 vertical: sin achicar no entra. */
+  table.compacta { font-size: 6.4pt; }
+  table.compacta th, table.compacta td { padding: 2pt 2.5pt; }
+  p.grupo {
+    font-weight: 600; color: var(--navy); margin: 10pt 0 3pt;
+    border-left: 3pt solid var(--celeste); padding-left: 5pt;
+  }
   .gantt-leyenda { font-size: 7.6pt; margin: 2pt 0 8pt; }
   .gantt-leyenda span.chip {
     display: inline-block; width: 8pt; height: 5pt; border-radius: 1pt;

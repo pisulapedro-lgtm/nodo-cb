@@ -1,10 +1,10 @@
-# 10. Riesgos top 10 y mitigación
+# 11. Riesgos top 10 y mitigación
 
 | # | Riesgo | Prob. | Impacto | Mitigación concreta |
 |---|--------|-------|---------|---------------------|
 | 1 | **Marca**: el «Clima Baires» informal de GBA sur se opone al registro INPI o reclama uso anterior | Media | Alto | Presentar solicitud la semana 1 (sistema atributivo [F10]); estrategia de coexistencia por zona/rubro preparada; plan B de variante denominativa. [VALIDAR CON ABOGADO] |
 | 2 | **Plazos de terceros**: IGJ o CUIT de no residentes se demoran más de lo previsto | Media | Medio | Vía rápida (SAS unipersonal) + puente monotributo: la venta no depende de la burocracia. Colchón de reserva intacto. |
-| 3 | **Recalificación laboral** de un instalador subcontratado | Baja-media | Alto | Checklist antifraude trimestral (sección 9); contratos de obra revisados por abogado; conversión a plantilla al superar el umbral. |
+| 3 | **Recalificación laboral** de un instalador subcontratado | Baja-media | Alto | Checklist antifraude trimestral (sección 10); contratos de obra revisados por abogado; conversión a plantilla al superar el umbral. |
 | 4 | **Caja congelada por retenciones** (Factura A «sujeta a retención», goteo IIBB) | Alta | Medio | MiPyME inmediato; cobro por transferencia con descuento; monitoreo mensual de padrones y reclamos; € 4.200 de capital de trabajo. |
 | 5 | **Accidente en obra** (trabajo en altura) | Baja | Muy alto | AP colectiva con no repetición + RC empresa vigentes SIEMPRE antes de agendar; certificación de instaladores; checklist de seguridad en cada obra. |
 | 6 | **Primavera fría**: la demanda se corre y septiembre-octubre venden poco | Media | Medio | Gasto de pauta en el mínimo del rango hasta que el clima acompañe; caja reservada para escalar en nov-dic; producto de mantenimiento pre-verano para facturar en frío. |

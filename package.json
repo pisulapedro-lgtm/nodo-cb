@@ -1,9 +1,11 @@
 {
   "name": "clima-baires-argentina",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Plan de Acción 30 Días — Clima Baires Argentina: fuente regenerable del PDF, web climabaires.com y kit digital",
   "scripts": {
     "build": "node build/build.mjs",
+    "modelo": "python3 build/modelo-excel.py",
+    "todo": "npm run build && npm run modelo",
     "web:shots": "node web/tools/shots.mjs"
   },
   "repository": {

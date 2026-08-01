@@ -1,4 +1,4 @@
-# 11. Checklist del Día 1 de operación plena
+# 12. Checklist del Día 1 de operación plena
 
 Para tildar el 31-08/01-09. Si algo no está, tiene dueño y fecha — no se «verá más adelante».
 

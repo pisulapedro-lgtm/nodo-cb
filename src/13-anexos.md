@@ -1,6 +1,6 @@
-# 12. Anexos
+# 13. Anexos
 
-## 12.1 Glosario argentino para los socios españoles
+## 13.1 Glosario argentino para los socios españoles
 
 | Término | Traducción al «español de España» |
 |---|---|
@@ -25,14 +25,14 @@
 | **SAS / SRL** | SAS ≈ S.L. exprés y flexible; SRL ≈ S.L. clásica |
 | **IGJ / DPPJ** | Registros mercantiles de CABA y de la Provincia de Buenos Aires |
 | **ARBA / AGIP** | Haciendas de la Provincia de Buenos Aires y de la Ciudad |
-| **MiPyME (certificado)** | Sello oficial de pyme: desbloquea beneficios fiscales y financiación (sección 6.7) |
+| **MiPyME (certificado)** | Sello oficial de pyme: desbloquea beneficios fiscales y financiación (sección 7.7) |
 | **Cuotas MiPyME** | Programa privado de cuotas sin interés para el cliente con tasa subsidiada al comercio (sucesor del estatal «Cuota Simple») |
 | **MULC / MEP / blue** | Mercado oficial de cambios / dólar bolsa (legal, vía bonos) / mercado informal (descartado) |
 | **Nordelta / country / barrio cerrado** | Urbanizaciones privadas con control de acceso — el segmento objetivo premium |
 | **AVN** | Asociación Vecinal Nordelta: administra la ciudad-pueblo y el registro de proveedores |
 | **Frigoría** | Unidad de frío usada en Argentina (1 frigoría = 1 kcal/h; 3.000 frigorías ≈ 12.000 BTU ≈ 3,5 kW) |
 
-## 12.2 Documentos a preparar en España (checklist de Pedro y Sebastián)
+## 13.2 Documentos a preparar en España (checklist de Pedro y Sebastián)
 
 1. Pasaporte vigente (escaneo color, todas las hojas con datos).
 2. Certificado de residencia fiscal española (AEAT) — para el CUIT de no residente y para aplicar el CDI a los dividendos.
@@ -41,7 +41,7 @@
 5. Justificante del origen de los € 5.000 (extracto) — lo pedirá el compliance bancario argentino.
 6. Datos completos: domicilio, estado civil, profesión, email para notificaciones.
 
-## 12.3 Enlaces y contactos oficiales
+## 13.3 Enlaces y contactos oficiales
 
 | Organismo / recurso | URL |
 |---|---|
@@ -57,12 +57,16 @@
 | BCRA (régimen cambiario) | https://www.bcra.gob.ar |
 | Boletín Oficial | https://www.boletinoficial.gob.ar |
 
-## 12.4 Fuentes citadas (con fecha de consulta)
+## 13.4 Fuentes citadas (con fecha de consulta)
 
 Las 14 cifras más sensibles del documento (TC, IVA, dividendos, escala de Ganancias, costos SAS, alícuotas IIBB, topes de monotributo, comisiones de cobro, impuestos sobre SaaS, costo laboral, dominios y escala UOM) fueron además contrastadas contra fuentes primarias en una pasada de verificación independiente el 01-08-2026: 11 confirmadas, 3 con matices incorporados al texto y 1 corregida (tasas de Cuotas MiPyME). Convención: [Fn] en el texto → fila de esta tabla. Tipos: oficial (organismo), profesional (estudios/portales especializados), comercial (proveedor), prensa, mercado.
 
 {{tabla_fuentes}}
 
-## 12.5 Cómo se regenera este documento
+## 13.5 Cómo se regenera este documento
 
 Este PDF se genera desde el repositorio `nodo-cb`: un archivo Markdown por sección (`src/`), los números centralizados en `src/datos.json` (tipo de cambio, presupuesto, cronograma, stack — los totales y conversiones los calcula el build, no la mano) y las fuentes en `src/fuentes.json`. Para actualizar cifras: editar los JSON y ejecutar `npm run build`. El repositorio incluye además la web completa (`web/`) y el kit digital (`kit-digital/`).
+
+El modelo financiero de la sección 6 tiene una pieza extra: `build/financiero.mjs`, el motor de cálculo que produce **tanto las tablas del PDF como la planilla** `Modelo-Financiero-Clima-Baires-Argentina_v{{meta.version}}.xlsx` (`npm run modelo`). Documento y planilla leen los mismos supuestos de `src/datos.json` y el mismo código, de modo que no pueden contar historias distintas; la hoja «Verificación» de la planilla lo comprueba celda a celda. `npm run todo` regenera los dos de una vez.
+
+El build aborta —no genera un PDF a medias— si queda un marcador `{{ … }}` sin resolver, si se cita una fuente `[Fn]` que no está en `fuentes.json`, si el presupuesto supera los {{eur:capital.total_eur}} o si falta el tipo de cambio. Es deliberado: un documento que se usa para decidir no debería poder publicarse con un hueco.

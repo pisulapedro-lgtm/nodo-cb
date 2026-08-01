@@ -1,6 +1,6 @@
-# 9. Personas y gobernanza
+# 10. Personas y gobernanza
 
-## 9.1 Quién hace qué en el mes 1
+## 10.1 Quién hace qué en el mes 1
 
 | Rol | Quién | Alcance |
 |---|---|---|
@@ -11,7 +11,7 @@
 | Contador matriculado (externo) | A contratar día 1-3 | Inscripciones, liquidaciones, padrones — la firma fiscal no puede ser de Ignacio aunque lleve los números |
 | Escribano + abogado societario (externos) | A contratar semana 1 | Constitución, poderes, pacto, contratos de locación de obra |
 
-## 9.2 Dependencia vs. monotributista — la decisión y sus riesgos
+## 10.2 Dependencia vs. monotributista — la decisión y sus riesgos
 
 **Fase 1 (agosto-noviembre): subcontratación pura.** El marco 2026 es el más favorable en décadas — la Ley 27.742 derogó las multas por empleo no registrado y el nuevo art. 23 LCT (Ley 27.802, vigente 03-2026) excluye la presunción de laboralidad en contrataciones de obra con factura y pago bancarizado [F39]. **Pero la primacía de la realidad subsiste**: si un juez ve horario fijo, órdenes permanentes, exclusividad y herramientas nuestras, condena igual (indemnización + diferencias del convenio UOM retroactivas + cargas con intereses).
 
@@ -26,7 +26,7 @@
 
 **Umbral de conversión**: un instalador con >15 obras/mes solo para nosotros durante 3+ meses es dependencia económica de hecho → pasarlo a plantilla. [VALIDAR CON ABOGADO]
 
-## 9.3 Costo laboral total por puesto (para decidir con números)
+## 10.3 Costo laboral total por puesto (para decidir con números)
 
 | Puesto | Esquema | Costo mensual total | Cuándo |
 |---|---|---|---|
@@ -35,7 +35,7 @@
 | Administrativo/comercial (CCT 130/75) | Bruto $ 1.350.000-1.500.000 | ≈ $ 1.950.000-2.100.000/mes [F44] | Fase 2 (2027), cuando Ignacio no dé abasto |
 | Ignacio (gerente) | Autónomos obligatorios + honorarios | Autónomos ≈ $ 141.000/mes [F14]; **sin sueldo del capital en 2026** | — |
 
-## 9.4 KPIs semanales de Ignacio a los socios (tablero compartido, 20 minutos de carga)
+## 10.4 KPIs semanales de Ignacio a los socios (tablero compartido, 20 minutos de carga)
 
 | KPI | Meta sep | Meta nov |
 |---|---|---|
@@ -49,13 +49,13 @@
 | Caja disponible / meses de fijos cubiertos | ≥ 5 | ≥ 4 |
 | Reseñas Google acumuladas | 5 | 15-20 |
 
-## 9.5 Cadencia España–Argentina
+## 10.5 Cadencia España–Argentina
 
 - **Lunes 18:00 AR / 22:00 ES** (30 min): videollamada semanal de socios — KPIs, caja, bloqueos, decisiones de la semana. Sin agenda escrita previa no hay reunión.
 - **Diario asincrónico**: grupo de socios en WhatsApp + tablero compartido siempre actualizado (Sheet de KPIs + Drive de obras). Regla: los números se miran en el tablero, no se preguntan por chat.
 - **Mensual** (1 h): revisión presupuesto vs. real + decisión de escalado (pauta, contratación, stock de temporada).
 - **Decisiones reservadas al pacto** (mayoría 75%): las listadas en la sección 2 — el día a día es 100% de Ignacio.
 
-## 9.6 Gobernanza del pacto (lo esencial)
+## 10.6 Gobernanza del pacto (lo esencial)
 
 Mayoría de Ignacio (40%) **condicionada a su permanencia como gerente**; vetos de minoría para decisiones estructurales; información mensual obligatoria (el tablero); no competencia y dedicación pactadas; resolución de conflictos por mediación y, si falla, arbitraje; cláusulas de buen/mal saliente sobre las participaciones. El term sheet se firma en Semana 0 y se eleva con el aumento de capital de octubre. [VALIDAR CON ABOGADO]

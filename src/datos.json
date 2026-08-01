@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "0.9",
+    "version": "1.0",
     "fecha_documento": "2026-08-01",
     "fecha_inicio": "2026-08-03",
     "dias_plan": 30,
@@ -108,7 +108,7 @@
         "eur": 380,
         "fuente": "F20",
         "caracter": "estimacion",
-        "nota": "≈ $164.000/mes en versión mínima (detalle en sección 7)."
+        "nota": "≈ $164.000/mes en versión mínima (detalle en sección 8)."
       },
       {
         "bloque": "C — Fijos septiembre–diciembre (4 meses)",
@@ -480,7 +480,7 @@
       "dia_fin": 30,
       "responsable": "Los 3 socios",
       "dependencias": "Todo lo anterior",
-      "detalle": "Repaso del checklist de la sección 11, presupuesto vs. real y decisión de escalar pauta en octubre."
+      "detalle": "Repaso del checklist de la sección 12, presupuesto vs. real y decisión de escalar pauta en octubre."
     }
   ],
   "stack": [
@@ -523,5 +523,199 @@
       "fuente": "F22",
       "nota": ".com.ar $8.500/año vía NIC.ar (requiere CUIT)."
     }
-  ]
+  ],
+  "financiero": {
+    "convencion": "ARS constantes de agosto-2026. En Argentina los precios de venta y de compra se indexan juntos, de modo que el margen porcentual se sostiene; trabajar en nominales solo añadiría ruido inflacionario. Conversión a EUR al TC de portada.",
+    "mes_inicio": "2026-09",
+    "meses": 24,
+    "mix": [
+      {
+        "tipo": "Split premium 3.000-4.500 frig",
+        "peso": 0.45,
+        "ticket_ars": 1800000,
+        "costo_equipo_pct": 0.58,
+        "fuente": "F37",
+        "instalacion_ars": 150000,
+        "materiales_ars": 110000
+      },
+      {
+        "tipo": "Split 5.500-6.500 frig / multisplit 2x1",
+        "peso": 0.35,
+        "ticket_ars": 2800000,
+        "costo_equipo_pct": 0.57,
+        "fuente": "F37",
+        "instalacion_ars": 190000,
+        "materiales_ars": 145000
+      },
+      {
+        "tipo": "Piso-techo, cassette o conductos",
+        "peso": 0.15,
+        "ticket_ars": 5000000,
+        "costo_equipo_pct": 0.6,
+        "fuente": "F37",
+        "instalacion_ars": 450000,
+        "materiales_ars": 300000
+      },
+      {
+        "tipo": "Mantenimiento y service",
+        "peso": 0.05,
+        "ticket_ars": 250000,
+        "costo_equipo_pct": 0.1,
+        "fuente": "F36",
+        "instalacion_ars": 60000,
+        "materiales_ars": 15000
+      }
+    ],
+    "costos_obra": {
+      "instalacion_subcontratada_ars": 150000,
+      "materiales_ars": 110000,
+      "comision_cobro_pct": 0.03,
+      "iibb_pct": 0.024,
+      "cac_ars": 40000,
+      "nota_instalacion": "Cada categoría lleva su propio costo de instalación y materiales (ver columna correspondiente); los valores de `instalacion_subcontratada_ars` y `materiales_ars` quedan como referencia de la obra tipo split de pared."
+    },
+    "fijos_mensuales_ars": [
+      {
+        "concepto": "Contador",
+        "ars": 176000
+      },
+      {
+        "concepto": "Stack digital (ERP + Workspace)",
+        "ars": 167000,
+        "fuente": "F20"
+      },
+      {
+        "concepto": "Seguros RC + AP instaladores",
+        "ars": 273000,
+        "fuente": "F24"
+      },
+      {
+        "concepto": "Autónomos del gerente",
+        "ars": 141000,
+        "fuente": "F14"
+      },
+      {
+        "concepto": "Movilidad y combustible",
+        "ars": 211000
+      },
+      {
+        "concepto": "IIBB mínimos, bancarios y varios",
+        "ars": 62000,
+        "fuente": "F15"
+      }
+    ],
+    "marketing_ars": [
+      250000,
+      400000,
+      600000,
+      700000,
+      700000,
+      600000,
+      350000,
+      250000,
+      200000,
+      200000,
+      200000,
+      250000,
+      400000,
+      550000,
+      750000,
+      850000,
+      850000,
+      700000,
+      450000,
+      300000,
+      250000,
+      250000,
+      250000,
+      300000
+    ],
+    "obras_mes": [
+      5,
+      10,
+      18,
+      30,
+      32,
+      25,
+      14,
+      8,
+      5,
+      4,
+      4,
+      6,
+      10,
+      18,
+      28,
+      42,
+      45,
+      35,
+      20,
+      12,
+      8,
+      6,
+      6,
+      10
+    ],
+    "empleado": {
+      "costo_empleador_ars": 2183000,
+      "mes_alta_indice": 15,
+      "nota": "Técnico en relación de dependencia desde diciembre-2027 (índice 15 = mes 16). Coeficiente 1,46 × bruto $1,5M.",
+      "fuente": "F13"
+    },
+    "cobros": {
+      "sena_pct": 0.5,
+      "dias_saldo": 15,
+      "pago_mayorista_dias": 0,
+      "nota": "Seña del 50% al firmar; saldo al terminar la obra (~15 días). El mayorista cobra contado hasta tener historial: ese descalce es el consumo de capital de trabajo.",
+      "sena_sensibilidad": [
+        0.5,
+        0.4,
+        0.3
+      ]
+    },
+    "impuestos": {
+      "ganancias_pct": 0.25,
+      "ganancias_tramo1_ars": 133514186,
+      "imp_cheque_pct": 0.012,
+      "imp_cheque_computable": 1.0,
+      "fuente": "F7",
+      "ganancias_tramo2_ars": 1335141860,
+      "ganancias_escala_pct": [
+        0.25,
+        0.3,
+        0.35
+      ],
+      "imp_cheque_computable_pct": 1.0,
+      "nota": "Escala del art. 73 LIG (tramos actualizados por IPC); como MiPyME inscripta, el impuesto al cheque se computa 100 % como pago a cuenta de Ganancias (Ley 27.264)."
+    },
+    "escenarios": [
+      {
+        "nombre": "Conservador",
+        "obras_mult": 0.65,
+        "ticket_mult": 0.9
+      },
+      {
+        "nombre": "Base",
+        "obras_mult": 1.0,
+        "ticket_mult": 1.0
+      },
+      {
+        "nombre": "Optimista",
+        "obras_mult": 1.3,
+        "ticket_mult": 1.05
+      }
+    ],
+    "sensibilidad_tc": [
+      1500,
+      1760,
+      2100
+    ],
+    "puesta_en_marcha": {
+      "bloques": [
+        "A",
+        "B"
+      ],
+      "nota": "Desembolsos de una sola vez del presupuesto (constitución, legal, marca, identidad y equipamiento); se pagan en el mes 1."
+    }
+  }
 }
