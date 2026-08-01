@@ -56,6 +56,32 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       ]);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
     });
+    // estructura y accesibilidad básica del documento
+    const estructura = await page.evaluate(() => {
+      const out = [];
+      const h1 = document.querySelectorAll('h1').length;
+      if (h1 !== 1) out.push(`${h1} etiquetas h1`);
+      const niveles = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map((h) => +h.tagName[1]);
+      for (let i = 1; i < niveles.length; i++) {
+        if (niveles[i] - niveles[i - 1] > 1) { out.push(`salto de encabezado h${niveles[i - 1]}→h${niveles[i]}`); break; }
+      }
+      const sinAlt = [...document.images].filter((i) => !i.hasAttribute('alt')).length;
+      if (sinAlt) out.push(`${sinAlt} imágenes sin alt`);
+      // width/height explícitos evitan CLS (las que llena el JS arrancan sin src)
+      const sinDim = [...document.images].filter((i) => i.getAttribute('src') &&
+        !i.getAttribute('width') && !getComputedStyle(i).aspectRatio.includes('/')).length;
+      if (sinDim) out.push(`${sinDim} imágenes sin width/height`);
+      const ids = [...document.querySelectorAll('[id]')].map((e) => e.id);
+      const dup = [...new Set(ids.filter((v, i) => ids.indexOf(v) !== i))];
+      if (dup.length) out.push(`ids duplicados: ${dup.join(',')}`);
+      const mudos = [...document.querySelectorAll('a,button')].filter((e) =>
+        !e.textContent.trim() && !e.getAttribute('aria-label') && !e.querySelector('img[alt]:not([alt=""])')).length;
+      if (mudos) out.push(`${mudos} enlaces/botones sin nombre accesible`);
+      if (!document.documentElement.lang) out.push('sin atributo lang');
+      return out;
+    });
+    if (estructura.length) errores.push(`${p} (${nombre}): ${estructura.join(' · ')}`);
+
     // contraste WCAG AA de los textos sobre fondos de color plano
     const bajos = await page.evaluate(() => {
       const canal = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };

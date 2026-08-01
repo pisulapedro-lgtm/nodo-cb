@@ -168,7 +168,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   border-radius: var(--radio); padding: 30px 24px; box-shadow: var(--sombra);
 }
 .obra-cta svg { width: 40px; height: 40px; fill: #fff; opacity: .9; }
-.obra-cta h3 { color: #fff; margin: 10px 0 6px; }
+.obra-cta-titulo { color: #fff; font-weight: 600; font-size: 1.12rem; line-height: 1.22; margin: 10px 0 6px; }
 .obra-cta p { color: #cfe8ff; font-size: .92rem; margin-bottom: 18px; }
 
 .lista-check { list-style: none; margin-top: 14px; }
@@ -240,7 +240,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .pie a:hover { color: #fff; }
 .pie-grilla { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 34px; margin-bottom: 40px; }
 .pie img.logo-pie { height: 46px; margin-bottom: 16px; }
-.pie h4 { color: #fff; font-size: .95rem; margin-bottom: 14px; }
+.pie h2 { color: #fff; font-size: .95rem; font-weight: 600; margin-bottom: 14px; }
 .pie ul { list-style: none; }
 .pie li { margin-bottom: 8px; font-size: .92rem; }
 .pie .legal {
