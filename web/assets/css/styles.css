@@ -75,40 +75,155 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .hamburguesa span { display: block; width: 24px; height: 3px; background: var(--navy); margin: 5px 0; border-radius: 2px; }
 
-/* ---------- Hero (hielo: claro, aireado, que inspire frío) ---------- */
-.hero {
-  background: linear-gradient(180deg, #ffffff 0%, #eef6fe 55%, #ddedfb 100%);
-  padding: 72px 0 88px; position: relative; overflow: hidden;
+/* ============================================================
+   INICIO DEL BLOQUE QUE VA A styles.css
+   HERO — "Fade editorial asimétrico" (reemplaza el hero anterior)
+   ============================================================ */
+.hero{
+  position:relative; isolation:isolate; overflow:hidden;
+  display:flex; align-items:center;
+  min-height:min(calc(100dvh - 74px), 668px);
+  padding:0; border-bottom:1px solid var(--linea);
+  /* base de hielo con aurora fría: sin costura dura contra el header sticky */
+  background:
+    radial-gradient(58% 46% at 78% 4%,  rgba(0,168,252,.13) 0%, rgba(0,168,252,0) 100%),
+    radial-gradient(70% 62% at 96% 100%, rgba(0,88,179,.10) 0%, rgba(0,88,179,0) 100%),
+    linear-gradient(168deg, #ffffff 0%, #f6fafe 32%, #e9f2fc 72%, #dfecfa 100%);
 }
-.hero::after {
-  content: ''; position: absolute; right: -160px; top: -140px; width: 560px; height: 560px;
-  background: url('../img/icon-512.png') no-repeat center/contain; opacity: .06;
-}
-.hero-grid {
-  display: grid; grid-template-columns: 1.05fr .9fr; gap: 48px; align-items: center;
-  position: relative; z-index: 1;
-}
-.hero h1 {
-  color: var(--navy); max-width: 640px; letter-spacing: -.015em;
-  font-size: clamp(2.3rem, 4.8vw, 3.6rem);
-}
-.hero p.sub { color: var(--gris); font-size: 1.12rem; max-width: 480px; margin: 18px 0 30px; }
-.hero .acciones { display: flex; gap: 14px; flex-wrap: wrap; }
-.hero .mini { margin-top: 24px; font-size: .88rem; color: var(--azul); font-weight: 500; }
-.hero .kicker { color: var(--azul); }
 
-.hero-tarjeta {
-  position: relative; border-radius: 24px; overflow: hidden; justify-self: end;
-  max-width: 480px; width: 100%; transform: rotate(1.2deg);
-  box-shadow: 0 28px 70px rgba(0, 40, 90, .25);
+/* ---- la escena: entra a sangre por la derecha y se disuelve antes del texto ---- */
+.hero-esc{
+  position:absolute; top:0; right:0; bottom:0; width:64%;
+  z-index:0; overflow:hidden; pointer-events:none;
 }
-.hero-tarjeta img { width: 100%; height: auto; display: block; }
-.chip-frio {
-  position: absolute; left: 16px; top: 16px;
-  background: rgba(255, 255, 255, .94); color: var(--navy);
-  font-weight: 600; font-size: .85rem; padding: 8px 15px; border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(0, 40, 90, .18); backdrop-filter: blur(4px);
+/* corte diagonal (geometría de cristal) en vez de degradado recto */
+.hero-esc-m{
+  position:absolute; inset:0; overflow:hidden; isolation:isolate;
+  -webkit-mask-image:linear-gradient(101deg,
+     rgba(0,0,0,0) 8%, rgba(0,0,0,.10) 26%, rgba(0,0,0,.34) 45%,
+     rgba(0,0,0,.72) 66%, rgba(0,0,0,.95) 86%, #000 100%);
+          mask-image:linear-gradient(101deg,
+     rgba(0,0,0,0) 8%, rgba(0,0,0,.10) 26%, rgba(0,0,0,.34) 45%,
+     rgba(0,0,0,.72) 66%, rgba(0,0,0,.95) 86%, #000 100%);
 }
+/* segunda máscara (se INTERSECA porque va en un hijo): funde arriba y abajo */
+.hero-esc-int{
+  position:absolute; inset:0; overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 13%, #000 72%, rgba(0,0,0,.16) 97%, rgba(0,0,0,0) 100%);
+          mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 13%, #000 72%, rgba(0,0,0,.16) 97%, rgba(0,0,0,0) 100%);
+}
+/* la foto vertical se sobredimensiona y se corre para que entre el GESTO HUMANO
+   (el técnico sobre la escalera) y no sólo la turbina del equipo */
+.hero-foto{
+  position:absolute; top:0; bottom:0; left:16%; width:128%; height:100%;
+  object-fit:cover; object-position:50% 14%;
+  /* brillo alto sin bajar el blanco: el cielorraso se va a papel y la remera
+     negra deja de ser una mancha sólida */
+  filter:grayscale(1) brightness(1.42);
+  mix-blend-mode:multiply; opacity:.34;
+}
+/* duotono azul de marca: 'color' conserva la luminancia, los blancos siguen blancos */
+.hero-esc-int::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(158deg, var(--celeste) 0%, var(--azul) 55%, var(--navy) 100%);
+  mix-blend-mode:color; opacity:.72;
+}
+
+/* ---- halo de escarcha detrás del texto: garantiza AA pase lo que pase ---- */
+.hero-halo{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(48% 58% at 24% 48%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.62) 46%, rgba(255,255,255,0) 78%),
+    linear-gradient(93deg, #ffffff 0%, rgba(255,255,255,.9) 26%, rgba(255,255,255,.45) 44%, rgba(255,255,255,0) 62%);
+}
+
+/* ---- columna de texto ---- */
+.hero-caja{position:relative;z-index:2;width:100%;padding-top:30px;padding-bottom:74px}
+.hero-txt{max-width:590px}
+
+.hero-kicker{
+  display:flex;align-items:center;gap:11px;margin-bottom:24px;
+  font-size:.73rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;color:var(--azul);
+}
+.hero-kicker b{font-weight:600}
+.hero-copo{color:var(--celeste);font-size:.95rem;line-height:1;flex:none}
+.hero-kicker i{display:block;flex:1 1 auto;max-width:72px;height:1px;background:linear-gradient(90deg,rgba(0,168,252,.85),rgba(0,168,252,0))}
+
+.hero-tit{
+  font-weight:800;color:var(--navy);letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(2.4rem,5vw,4rem);max-width:13ch;
+}
+.hero-tit em{font-style:normal;color:var(--azul)}
+.hero-sub{color:var(--gris);font-size:1.1rem;line-height:1.58;margin-top:22px;max-width:36ch}
+.hero-sub b{color:var(--navy);font-weight:600}
+
+.hero-acciones{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:34px}
+.hero-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  background:#25D366;color:var(--navy)!important;
+  padding:17px 30px;min-height:56px;border-radius:999px;
+  font-weight:600;font-size:1.02rem;letter-spacing:-.01em;
+  box-shadow:0 14px 30px -10px rgba(20,150,72,.55), inset 0 1px 0 rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 20px 38px -10px rgba(20,150,72,.6)}
+.hero-cta svg{width:21px;height:21px;fill:var(--navy);flex:none}
+.hero-cta2{
+  display:inline-flex;align-items:center;gap:9px;color:var(--navy);
+  font-weight:600;font-size:1rem;padding-bottom:5px;border-bottom:1.5px solid #b9d1e8;
+  transition:border-color .15s ease,color .15s ease;
+}
+.hero-cta2:hover{border-bottom-color:var(--celeste);color:var(--azul)}
+.hero-cta2 span{color:var(--celeste);font-size:1.05rem;line-height:1}
+
+.hero-nota{
+  display:flex;align-items:center;gap:10px;margin-top:20px;
+  font-size:.94rem;font-weight:500;color:#48525f;
+}
+.hero-pulso{
+  width:8px;height:8px;border-radius:50%;background:#25D366;flex:none;
+  box-shadow:0 0 0 4px rgba(37,211,102,.2);
+}
+
+/* ---- dial de frío: decorativo, sin vidrio, ancla el tercio inferior derecho ---- */
+.hero-dial{
+  position:absolute;z-index:2;right:8.5%;bottom:104px;
+  width:150px;height:150px;display:grid;place-items:center;
+}
+.hero-dial::before,.hero-dial::after{content:'';position:absolute;inset:0;border-radius:50%;
+  -webkit-mask:radial-gradient(closest-side,transparent 0 79%,#000 80% 100%);
+          mask:radial-gradient(closest-side,transparent 0 79%,#000 80% 100%);
+}
+.hero-dial::before{background:rgba(0,40,90,.11)}
+.hero-dial::after{
+  background:conic-gradient(from 138deg,
+    var(--celeste) 0deg, #0f8fe0 90deg, var(--azul) 172deg,
+    rgba(0,88,179,.12) 186deg, rgba(0,88,179,0) 200deg 360deg);
+}
+.hero-dial u{
+  position:relative;text-decoration:none;font-weight:800;font-size:1.72rem;
+  color:var(--navy);letter-spacing:-.03em;line-height:1;
+}
+.hero-dial s{
+  position:absolute;left:0;right:0;bottom:20px;text-align:center;text-decoration:none;
+  font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);
+}
+
+/* ---- regla fina al pie: precisión de plano técnico ---- */
+.hero-regla{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  font-size:.66rem;letter-spacing:.19em;text-transform:uppercase;font-weight:600;
+}
+.hero-regla-in{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  border-top:1px solid rgba(0,40,90,.14);padding-top:15px;padding-bottom:21px;
+}
+.hero-regla .izq{color:var(--gris)}
+.hero-regla .der{color:var(--navy);display:flex;align-items:center;gap:9px}
+.hero-regla .der b{color:var(--celeste);font-weight:600}
+
+/* ---- chip de temperatura (sólo móvil, apoyado sobre la banda de foto) ---- */
+.hero-chip{display:none}
 
 /* franja de claims cortos */
 .claims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
@@ -447,14 +562,59 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   }
   .nav.abierta { transform: translateY(0); }
   .hamburguesa { display: block; }
-  .hero { padding: 54px 0 64px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-  .hero-tarjeta { justify-self: center; transform: none; max-width: 440px; }
+  /* el hero pasa a columna: texto → banda de foto → regla */
+  .hero{display:flex;flex-direction:column;min-height:0;padding:0;overflow:hidden}
+  .hero-caja{order:1;padding-top:26px;padding-bottom:4px}
+  .hero-txt{max-width:none}
+  .hero-esc{order:2;position:relative;width:100%;height:min(29vh,230px);flex:none;margin-top:22px}
+  .hero-regla{order:3;position:relative;bottom:auto}
+  .hero-halo,.hero-dial{display:none}
+
+  /* en la banda inferior la foto sí tiene presencia: se ve al técnico trabajando */
+  .hero-esc-m{
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 62%,rgba(0,0,0,.55) 88%,rgba(0,0,0,.18) 100%);
+            mask-image:linear-gradient(180deg,#000 0%,#000 62%,rgba(0,0,0,.55) 88%,rgba(0,0,0,.18) 100%);
+  }
+  .hero-esc-int{
+    -webkit-mask-image:linear-gradient(96deg,rgba(0,0,0,.5) 0%,#000 26%,#000 100%);
+            mask-image:linear-gradient(96deg,rgba(0,0,0,.5) 0%,#000 26%,#000 100%);
+  }
+  .hero-foto{left:0;width:100%;object-position:44% 16%;opacity:.5}
+  .hero-esc-int::after{opacity:.66}
+
+  .hero-kicker{margin-bottom:16px;font-size:.65rem;letter-spacing:.15em;gap:9px}
+  .hero-kicker i{max-width:40px}
+  .hero-tit{font-size:clamp(2.05rem,9.2vw,2.55rem);line-height:1.05;max-width:none}
+  .hero-sub{font-size:1rem;margin-top:14px;max-width:32ch}
+  .hero-acciones{margin-top:24px;gap:18px;align-items:stretch;flex-direction:column}
+  .hero-cta{width:100%;font-size:1.05rem;padding:16px 24px}
+  .hero-cta2{align-self:flex-start}
+  .hero-nota{margin-top:18px;font-size:.9rem;align-items:flex-start;max-width:32ch;line-height:1.45}
+  .hero-pulso{margin-top:6px}
+
+  /* el chip reemplaza al pie de figura varado: dato frío sobre la foto */
+  .hero-chip{
+    display:inline-flex;align-items:center;gap:8px;position:absolute;z-index:2;
+    left:22px;bottom:16px;background:rgba(255,255,255,.9);
+    border:1px solid rgba(0,88,179,.16);border-radius:999px;padding:8px 16px;
+    box-shadow:0 8px 22px rgba(0,40,90,.1);
+    font-size:.78rem;font-weight:600;color:var(--navy);white-space:nowrap;letter-spacing:0;
+  }
+  .hero-chip b{color:var(--celeste);font-weight:700}
+  .hero-chip i{font-style:normal;color:var(--gris);font-weight:500}
+
+  .hero-regla{font-size:.58rem;letter-spacing:.13em}
+  .hero-regla-in{padding-top:13px;padding-bottom:16px;gap:10px}
+  .hero-regla .izq{white-space:nowrap}
+  /* la temperatura ya la muestra el chip sobre la foto, y acá quedaba debajo
+     del botón flotante */
+  .hero-regla .der{display:none}
   .claims { grid-template-columns: 1fr 1fr; }
   .banda-cta { padding: 34px 26px; }
 }
 
 @media (max-width: 768px) {
+  .hero-regla .oculto-xs { display: none; }
   .barra-movil { display: grid; }
   body { padding-bottom: 76px; }             /* la barra fija no tapa contenido */
   .wsp-flotante { bottom: 88px; right: 14px; }
