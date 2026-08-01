@@ -146,6 +146,27 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .tarjeta ul { margin: 10px 0 0 18px; color: var(--gris); font-size: .93rem; }
 .tarjeta .enlace { display: inline-block; margin-top: 14px; font-weight: 600; font-size: .92rem; }
 
+/* cinta de conversión: ninguna franja larga de scroll sin CTA de WhatsApp */
+.cinta-cta {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  background: var(--hielo); border: 1px solid var(--linea); border-left: 4px solid #25D366;
+  border-radius: var(--radio); padding: 18px 22px;
+}
+.cinta-cta svg { width: 26px; height: 26px; fill: #25D366; flex: 0 0 auto; }
+.cinta-cta p { margin: 0; flex: 1 1 260px; color: var(--navy); font-weight: 500; font-size: .98rem; }
+.boton.verde { background: #25D366; }
+.boton.verde:hover { box-shadow: 0 8px 20px rgba(37, 211, 102, .38); }
+
+/* tarjeta de CTA dentro del mosaico de obras */
+.obra-cta {
+  break-inside: avoid; margin: 0 0 22px; text-align: center;
+  background: linear-gradient(160deg, var(--azul), var(--navy)); color: #fff;
+  border-radius: var(--radio); padding: 30px 24px; box-shadow: var(--sombra);
+}
+.obra-cta svg { width: 40px; height: 40px; fill: #fff; opacity: .9; }
+.obra-cta h3 { color: #fff; margin: 10px 0 6px; }
+.obra-cta p { color: #cfe8ff; font-size: .92rem; margin-bottom: 18px; }
+
 .lista-check { list-style: none; margin-top: 14px; }
 .lista-check li { padding-left: 30px; position: relative; margin-bottom: 10px; color: var(--gris); }
 .lista-check li::before {

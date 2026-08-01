@@ -264,6 +264,9 @@ def pagina_index():
   </div>
 </section>
 
+<section class="seccion" style="padding:0 0 40px">{cinta_cta('¿Cuál de los tres necesitás? Preguntanos sin compromiso.', 'Hola Clima Baires, quiero hacer una consulta sobre sus servicios.', 'Preguntar por WhatsApp')}
+</section>
+
 <section class="seccion alterna" id="zonas">
   <div class="contenedor">
     <div class="centrado"><span class="kicker">Dónde trabajamos</span><h2>De Núñez a Pilar</h2></div>
@@ -278,6 +281,9 @@ def pagina_index():
     <div class="claim"><strong>Garantía</strong><span>por escrito</span></div>
     <div class="claim"><strong>Countries</strong><span>seguros al día</span></div>
   </div>
+</section>
+
+<section class="seccion" style="padding:0 0 40px">{cinta_cta('Contanos qué ambiente querés climatizar y te pasamos precio hoy.', 'Hola Clima Baires, quiero un presupuesto de equipo + instalación.')}
 </section>
 {seccion_ultimas_obras()}
 <section class="seccion">
@@ -297,6 +303,23 @@ def pagina_index():
 
 
 MARCAS = ['daikin', 'mitsubishi', 'lg', 'samsung', 'bgh', 'surrey', 'midea']
+
+WSP_SVG = ('<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6'
+           'c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5'
+           '-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5'
+           'c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>')
+
+
+def cinta_cta(titulo, mensaje, boton='Escribinos por WhatsApp'):
+    """Cinta compacta de conversión: ninguna franja larga de scroll sin CTA."""
+    return f'''
+<div class="contenedor">
+  <div class="cinta-cta">
+    {WSP_SVG}
+    <p>{titulo}</p>
+    <a class="boton verde" data-wsp="{mensaje}" data-origen="cinta" href="#">{boton}</a>
+  </div>
+</div>'''
 
 
 def franja_marcas(p=''):
@@ -350,6 +373,9 @@ def pagina_servicios():
     {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'La instalación define la vida útil del equipo. Checklist de calidad en cada obra.', ['Vacío de cañería y prueba de estanqueidad, siempre', 'Trabajo en altura con seguros y elementos certificados', 'Coordinación con consorcios y countries'])}
     {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'Un aire limpio enfría más y gasta menos. Te avisamos nosotros cuando toca.', ['Limpieza profunda + control de gas y consumo', 'Reparaciones multimarca con repuestos originales', 'Prioridad de agenda para clientes con plan'])}
   </div>
+</section>
+
+<section class="seccion" style="padding:0 0 50px">{cinta_cta('Contanos qué necesitás y te armamos el presupuesto hoy.', 'Hola Clima Baires, quiero un presupuesto.')}
 </section>
 
 <section class="seccion alterna">
@@ -440,6 +466,9 @@ def pagina_calculadora():
     </form>
   </div>
 </section>
+
+<section class="seccion" style="padding:0 0 70px">{cinta_cta('¿Preferís que lo veamos nosotros? Mandanos las medidas por WhatsApp.', 'Hola Clima Baires, quiero saber qué equipo necesito para mi ambiente.', 'Consultar por WhatsApp')}
+</section>
 '''
     return layout(0, 'Calculadora de frigorías — ¿qué aire acondicionado necesito? | Clima Baires',
         'Calculá cuántas frigorías necesita tu ambiente y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en zona norte de Buenos Aires.',
@@ -466,14 +495,48 @@ def pagina_obras():
         f'<button class="filtro" data-grupo="tipo" data-valor="{t}" aria-pressed="false">{TIPOS_FOTO[t]}</button>'
         for t in tipos_presentes)
 
-    items = ''.join(f'''
+    # tarjetas de CTA intercaladas cada 4 fotos: en móvil el mosaico es de una
+    # columna y sin esto quedan pantallas enteras de scroll sin invitación a chatear
+    ganchos = [
+        ('¿Querés algo así en tu casa?', 'Mandanos una foto del ambiente y te pasamos precio hoy.',
+         'Hola Clima Baires, vi sus obras y quiero un presupuesto.'),
+        ('Instalamos esta semana', 'Contanos qué necesitás y coordinamos la visita técnica.',
+         'Hola Clima Baires, quiero coordinar una visita técnica.'),
+        ('¿Tenés un equipo para cambiar?', 'Te cotizamos el recambio con retiro del viejo incluido.',
+         'Hola Clima Baires, quiero cotizar un recambio de equipo.'),
+        ('Presupuesto el mismo día', 'Sin cargo y sin compromiso, en todo el corredor norte.',
+         'Hola Clima Baires, quiero un presupuesto sin cargo.'),
+    ]
+    trozos, gancho = [], 0
+    for i, f in enumerate(FOTOS):
+        trozos.append(f'''
       <figure class="obra" data-zona="{f['zona']}" data-tipo="{f['tipo']}">
         <button class="obra-abrir" type="button" data-full="assets/img/obras/{f['slug']}-1600.webp"
                 data-alt="{f['alt']}" data-slug="{f['slug']}" aria-label="Ampliar: {f['alt']}">
           {img_obra(f)}
         </button>
         <figcaption>{f['alt']}</figcaption>
-      </figure>''' for f in FOTOS)
+      </figure>''')
+        if (i + 1) % 3 == 0 and gancho < len(ganchos):
+            t, s, m = ganchos[gancho]
+            gancho += 1
+            trozos.append(f'''
+      <div class="obra-cta">
+        {WSP_SVG}
+        <h3>{t}</h3>
+        <p>{s}</p>
+        <a class="boton verde" data-wsp="{m}" data-origen="cinta" href="#">Escribinos por WhatsApp</a>
+      </div>''')
+    if gancho < 1:                      # galerías cortas: al menos una tarjeta
+        t, s, m = ganchos[0]
+        trozos.append(f'''
+      <div class="obra-cta">
+        {WSP_SVG}
+        <h3>{t}</h3>
+        <p>{s}</p>
+        <a class="boton verde" data-wsp="{m}" data-origen="cinta" href="#">Escribinos por WhatsApp</a>
+      </div>''')
+    items = ''.join(trozos)
 
     pares = ''
     if PARES_AD:
@@ -507,6 +570,7 @@ def pagina_obras():
       <button class="filtro" data-grupo="tipo" data-valor="todos" aria-pressed="true">Todos</button>
       {filtros_tipo}
     </div>
+    <div style="margin:22px 0 4px">{cinta_cta('Mirá cómo trabajamos. ¿Querés lo mismo en tu casa?', 'Hola Clima Baires, vi sus obras y quiero un presupuesto.', 'Pedir presupuesto')}</div>
     <div class="obras-grilla" id="obras-grilla">{items}
     </div>
     <p id="obras-vacio" hidden>No hay obras con ese filtro todavía. Probá con otra zona u otro tipo de trabajo.</p>
@@ -595,6 +659,9 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
   </div>
 </section>
 
+<section class="seccion" style="padding:0 0 60px">{cinta_cta(f'Estamos trabajando en {nombre} esta semana. ¿Coordinamos tu visita?', f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')}
+</section>
+
 <section class="seccion alterna">
   <div class="contenedor centrado">
     <h2>También trabajamos en</h2>
@@ -650,6 +717,8 @@ def pagina_nosotros():
   </div>
 </section>
 
+<section class="seccion" style="padding:0 0 60px">{cinta_cta('¿Te contamos cómo lo haríamos en tu casa?', 'Hola Clima Baires, quiero que me asesoren para climatizar mi casa.')}
+</section>
 {seccion_asi_trabajamos()}
 <section class="seccion">
   <div class="contenedor">

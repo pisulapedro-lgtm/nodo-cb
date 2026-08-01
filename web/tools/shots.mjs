@@ -56,6 +56,29 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       ]);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
     });
+    // cobertura de conversión: ninguna franja larga de scroll sin CTA de WhatsApp
+    // en el flujo del documento (el flotante y la barra móvil son fijos y no cuentan)
+    const cob = await page.evaluate(() => {
+      const enFlujo = (el) => {
+        let n = el;
+        while (n && n !== document.body) {
+          if (getComputedStyle(n).position === 'fixed') return false;
+          n = n.parentElement;
+        }
+        return el.offsetParent !== null;
+      };
+      const ys = Array.from(document.querySelectorAll('[data-wsp], [data-agenda]'))
+        .filter(enFlujo).map((el) => el.getBoundingClientRect().top + scrollY).sort((a, b) => a - b);
+      const alto = document.body.scrollHeight;
+      let hueco = 0, prev = 0;
+      for (const y of ys) { hueco = Math.max(hueco, y - prev); prev = y; }
+      return { hueco: Math.max(hueco, alto - prev), ctas: ys.length };
+    });
+    const tope = viewport.height * 2.5;
+    if (cob.hueco > tope) {
+      errores.push(`${p} (${nombre}): ${Math.round(cob.hueco / viewport.height * 10) / 10} pantallas sin CTA de WhatsApp`);
+    }
+
     const flat = p.replaceAll('/', '_').replace('.html', '');
     await page.screenshot({ path: join(OUT, `${flat}-${nombre}.png`), fullPage: true });
   }
