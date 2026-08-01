@@ -112,6 +112,19 @@ agregar contenido salta ese error, intercalá una `cinta_cta(...)` del generador
 | climabaires.com | Cloudflare Registrar (a costo, ~USD 10/año) o cualquier registrador | ~USD 10-15/año | Principal del sitio |
 | climabaires.com.ar | [nic.ar](https://nic.ar) | ARS 8.500 alta + 8.500/año | Requiere CUIT + clave fiscal nivel 2. Registrarlo **ya** para proteger la marca; redirigir 301 al .com |
 
+## Logos
+
+El sitio muestra `assets/img/logo.webp` y `logo-blanco.webp` (9 y 8 KB): son el
+mismo logo rasterizado a 3× del tamaño de uso, indistinguible en pantalla. Los
+**SVG originales siguen en el repo** (`logo.svg`, `logo-blanco.svg`) como fuente
+de marca para imprenta, cartelería y kit digital — pesan 99 KB cada uno porque
+vienen del manual con el texto convertido a curvas, y a 100 KB por página eran
+el recurso más pesado del sitio.
+
+Para regenerarlos tras un cambio de marca: abrir el sitio con
+`npx http-server web -p 8099`, y con Playwright capturar `.logo img` y
+`.logo-pie` con `deviceScaleFactor: 3`, guardando en WebP calidad 90.
+
 ## Qué se sube al hosting
 
 **No subas `web/` tal cual**: pesa ~40 MB porque incluye los originales de las

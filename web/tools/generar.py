@@ -155,7 +155,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 <header class="top">
   <div class="contenedor top-inner">
     <a class="logo" href="{p}index.html" aria-label="Clima Baires — inicio">
-      <img src="{p}assets/img/logo.svg" alt="Clima Baires" width="145" height="44">
+      <img src="{p}assets/img/logo.webp" alt="Clima Baires" width="145" height="44">
     </a>
     <nav class="nav">
       <a href="{p}index.html"{act('inicio')}>Inicio</a>
@@ -177,7 +177,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
   <div class="contenedor">
     <div class="pie-grilla">
       <div>
-        <img class="logo-pie" src="{p}assets/img/logo-blanco.svg" alt="Clima Baires" width="151" height="46">
+        <img class="logo-pie" src="{p}assets/img/logo-blanco.webp" alt="Clima Baires" width="151" height="46" loading="lazy">
         <p>Venta, instalación y posventa de aire acondicionado en el corredor norte de Buenos Aires. Tu confort, nuestra prioridad.</p>
       </div>
       <div>
@@ -230,7 +230,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 
 <div class="chat" id="chat" hidden role="dialog" aria-label="Asistente de Clima Baires">
   <div class="chat-cabecera">
-    <img src="{p}assets/img/icon-192.png" alt="" width="34" height="34">
+    <img src="{p}assets/img/avatar-chat.png" alt="" width="34" height="34" loading="lazy">
     <div><strong>Clima Baires</strong><span>Respondemos en minutos</span></div>
     <button class="chat-cerrar" type="button" aria-label="Cerrar chat">×</button>
   </div>
@@ -286,7 +286,10 @@ def pagina_index():
   <div class="hero-esc" aria-hidden="true">
     <div class="hero-esc-m">
       <div class="hero-esc-int">
-        <img class="hero-foto" src="assets/img/obras/instalacion-cassette-oficina-malaga-01-1600.webp"
+        <img class="hero-foto" src="assets/img/obras/instalacion-cassette-oficina-malaga-01-800.webp"
+             srcset="assets/img/obras/instalacion-cassette-oficina-malaga-01-800.webp 648w,
+                     assets/img/obras/instalacion-cassette-oficina-malaga-01-1600.webp 1295w"
+             sizes="(max-width: 900px) 100vw, 64vw"
              width="1295" height="1600" alt="" fetchpriority="high" decoding="async">
       </div>
     </div>
