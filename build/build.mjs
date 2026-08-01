@@ -140,7 +140,7 @@ function renderSemana(cron, semana) {
 }
 
 function renderPresupuesto(p) {
-  let html = '<table><thead><tr><th>#</th><th>Partida</th><th>Detalle</th><th class="num">EUR</th><th class="num">ARS</th><th>Carácter</th></tr></thead><tbody>';
+  let html = '<table class="larga"><thead><tr><th>#</th><th>Partida</th><th>Detalle</th><th class="num">EUR</th><th class="num">ARS</th><th>Carácter</th></tr></thead><tbody>';
   let i = 0, suma = 0;
   let bloque = null;
   for (const it of p.partidas) {
@@ -163,7 +163,7 @@ function renderPresupuesto(p) {
 }
 
 function renderFuentes(fs) {
-  let html = '<table><thead><tr><th>ID</th><th>Fuente</th><th>URL</th><th>Consulta</th><th>Tipo</th></tr></thead><tbody>';
+  let html = '<table class="larga"><thead><tr><th>ID</th><th>Fuente</th><th>URL</th><th>Consulta</th><th>Tipo</th></tr></thead><tbody>';
   for (const f of fs) {
     html += `<tr><td><strong>${f.id}</strong></td><td>${f.titulo}</td><td><a href="${f.url}">${f.url}</a></td><td>${f.fecha_consulta}</td><td>${f.tipo}</td></tr>`;
   }
