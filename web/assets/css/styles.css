@@ -36,18 +36,27 @@ img { max-width: 100%; display: block; }
 a { color: var(--azul); text-decoration: none; }
 .contenedor { max-width: var(--ancho); margin: 0 auto; padding: 0 22px; }
 
-h1, h2, h3 { line-height: 1.22; color: var(--navy); font-weight: 800; }
-h1 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
-h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: .5em; }
-h3 { font-size: 1.12rem; font-weight: 600; }
+/* misma voz tipográfica que el hero: pesada, ajustada y con poco interlineado */
+h1, h2, h3 { line-height: 1.14; color: var(--navy); font-weight: 800; letter-spacing: -.03em; }
+h1 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); margin-bottom: .5em; }
+h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.22; }
 /* El celeste #00A8FC no llega a AA como texto (2,4:1 sobre hielo): en textos
    usamos el azul de marca y dejamos el celeste para elementos decorativos. */
 .kicker {
-  display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--azul); margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .73rem; font-weight: 600; letter-spacing: .19em;
+  text-transform: uppercase; color: var(--azul); margin-bottom: 16px;
 }
+/* el copo y la línea del hero, como firma de sección en todo el sitio */
+.kicker::before { content: '❄'; color: var(--celeste); font-size: .95rem; line-height: 1; }
+.kicker::after {
+  content: ''; width: 46px; height: 1px;
+  background: linear-gradient(90deg, rgba(0,168,252,.85), rgba(0,168,252,0));
+}
+.centrado .kicker::after { display: none; }
 .centrado { text-align: center; }
-.intro { color: var(--gris); max-width: 720px; margin: 0 auto 40px; }
+.intro { color: var(--gris); max-width: 660px; margin: 0 auto 40px; font-size: 1.05rem; }
 
 /* ---------- Header ---------- */
 .top {
@@ -235,9 +244,12 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .hero-chip{display:none}
 
 /* franja de claims cortos */
-.claims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
-.claim { background: var(--hielo); border: 1px solid var(--linea); border-radius: var(--radio); padding: 20px 12px; }
-.claim strong { display: block; color: var(--navy); font-weight: 800; font-size: 1.04rem; }
+.claims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
+.claim {
+  background: #fff; border: 1px solid var(--linea); border-radius: 18px; padding: 24px 14px;
+  box-shadow: 0 10px 30px rgba(0, 40, 90, .05);
+}
+.claim strong { display: block; color: var(--navy); font-weight: 800; font-size: 1.06rem; letter-spacing: -.02em; }
 .claim span { color: var(--gris); font-size: .87rem; }
 
 /* marquee de logos de marcas (originales, en loop continuo) */
@@ -253,20 +265,29 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 }
 
 /* ---------- Secciones ---------- */
-.seccion { padding: 76px 0; }
-.seccion.alterna { background: var(--hielo); }
+.seccion { padding: 84px 0; }
+/* las secciones alternas repiten el campo de hielo, no un plano liso */
+.seccion.alterna {
+  background:
+    radial-gradient(46% 60% at 84% 0%, rgba(0,168,252,.09) 0%, rgba(0,168,252,0) 100%),
+    linear-gradient(180deg, #f7fbff 0%, var(--hielo) 100%);
+  border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea);
+}
 
 .grilla { display: grid; gap: 26px; }
 .grilla.tres { grid-template-columns: repeat(3, 1fr); }
 .grilla.dos { grid-template-columns: repeat(2, 1fr); }
 
 .tarjeta {
-  background: #fff; border: 1px solid var(--linea); border-radius: var(--radio);
-  padding: 28px; box-shadow: var(--sombra);
+  background: #fff; border: 1px solid var(--linea); border-radius: 18px;
+  padding: 30px 28px; box-shadow: 0 14px 40px rgba(0, 40, 90, .07);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
+.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 22px 54px rgba(0, 40, 90, .11); border-color: #cfe0f2; }
 .tarjeta .icono {
-  width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
-  background: linear-gradient(135deg, var(--celeste), var(--azul)); margin-bottom: 16px;
+  width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center;
+  background: linear-gradient(140deg, var(--celeste), var(--azul)); margin-bottom: 18px;
+  box-shadow: 0 8px 18px -6px rgba(0, 88, 179, .5);
 }
 .tarjeta .icono svg { width: 28px; height: 28px; fill: #fff; }
 .tarjeta h3 { margin-bottom: 8px; }
@@ -277,8 +298,10 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 /* cinta de conversión: ninguna franja larga de scroll sin CTA de WhatsApp */
 .cinta-cta {
   display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
-  background: var(--hielo); border: 1px solid var(--linea); border-left: 4px solid #25D366;
-  border-radius: var(--radio); padding: 18px 22px;
+  background: linear-gradient(120deg, #ffffff 0%, var(--hielo) 100%);
+  border: 1px solid var(--linea); border-left: 4px solid #25D366;
+  border-radius: 18px; padding: 20px 24px;
+  box-shadow: 0 12px 34px rgba(0, 40, 90, .06);
 }
 .cinta-cta svg { width: 26px; height: 26px; fill: #25D366; flex: 0 0 auto; }
 .cinta-cta p { margin: 0; flex: 1 1 260px; color: var(--navy); font-weight: 500; font-size: .98rem; }
@@ -306,26 +329,44 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 /* ---------- Zonas ---------- */
 .zona-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .zona-chips a {
-  border: 1.5px solid var(--linea); border-radius: 999px; padding: 9px 18px;
-  font-weight: 500; font-size: .93rem; color: var(--navy); background: #fff;
-  transition: border-color .15s ease, color .15s ease;
+  border: 1.5px solid var(--linea); border-radius: 999px; padding: 11px 22px;
+  font-weight: 500; font-size: .95rem; color: var(--navy); background: #fff;
+  transition: border-color .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
 }
-.zona-chips a:hover { border-color: var(--celeste); color: var(--azul); }
+.zona-chips a:hover {
+  border-color: var(--celeste); color: var(--azul);
+  transform: translateY(-2px); box-shadow: 0 10px 22px -10px rgba(0, 88, 179, .55);
+}
 
-.migas { font-size: .85rem; color: var(--gris); padding: 18px 0 0; }
+.migas {
+  font-size: .68rem; color: var(--gris); padding: 14px 0 20px;
+  letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+}
 .migas a { color: var(--gris); }
 .migas a:hover { color: var(--azul); }
 
-.cabecera-pagina { padding: 30px 0 50px; }
-.cabecera-pagina p.bajada { color: var(--gris); max-width: 700px; margin-top: 14px; font-size: 1.05rem; }
+/* cabecera de página: mismo campo de hielo con aurora fría que el hero */
+.cabecera-pagina {
+  position: relative; padding: 34px 0 54px; border-bottom: 1px solid var(--linea);
+  background:
+    radial-gradient(52% 60% at 88% 6%, rgba(0,168,252,.11) 0%, rgba(0,168,252,0) 100%),
+    radial-gradient(60% 70% at 98% 100%, rgba(0,88,179,.08) 0%, rgba(0,88,179,0) 100%),
+    linear-gradient(168deg, #ffffff 0%, #f7fbff 46%, #eaf3fd 100%);
+}
+.cabecera-pagina h1 { max-width: 16ch; }
+.cabecera-pagina p.bajada { color: var(--gris); max-width: 46ch; margin-top: 16px; font-size: 1.08rem; line-height: 1.55; }
 /* CTA pegado al título: en móvil tiene que entrar en el fold (landings de Ads) */
-.acciones-cabecera { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.acciones-cabecera { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 28px; }
 
 /* ---------- CTA / banda ---------- */
 .banda-cta {
-  background: linear-gradient(135deg, var(--azul), var(--navy));
-  border-radius: var(--radio); color: #fff; padding: 46px 40px;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(70% 120% at 88% 8%, rgba(0,168,252,.34) 0%, rgba(0,168,252,0) 100%),
+    linear-gradient(135deg, var(--azul), var(--navy));
+  border-radius: 22px; color: #fff; padding: 48px 44px;
   display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap;
+  box-shadow: 0 22px 54px -18px rgba(0, 40, 90, .55);
 }
 /* sin esto los hijos no bajan de su ancho mínimo y desbordan en pantallas de 320 px */
 .banda-cta > * { min-width: 0; }
@@ -558,6 +599,16 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  /* móvil primero: menos aire vertical, títulos que entran en una pantalla */
+  .seccion { padding: 56px 0; }
+  .cabecera-pagina { padding: 22px 0 38px; }
+  .cabecera-pagina h1 { max-width: none; }
+  .cabecera-pagina p.bajada { font-size: 1rem; margin-top: 12px; }
+  .acciones-cabecera { margin-top: 22px; gap: 10px; }
+  .acciones-cabecera .boton { flex: 1 1 100%; text-align: center; }
+  .intro { font-size: 1rem; margin-bottom: 30px; }
+  .tarjeta { padding: 24px 22px; border-radius: 16px; }
+  .banda-cta { border-radius: 18px; }
   .franja-equipo { grid-template-columns: 1fr 1fr; }
   .obra-slide img { height: 280px; }
   .car-flecha { display: none; }
@@ -626,7 +677,11 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   .hero-regla .oculto-xs { display: none; }
   .barra-movil { display: grid; }
   body { padding-bottom: 76px; }             /* la barra fija no tapa contenido */
-  .wsp-flotante { bottom: 88px; right: 14px; }
+  /* con la barra inferior ya visible, el flotante queda como ícono: abre el
+     asistente y estorba menos la lectura */
+  .wsp-flotante { bottom: 88px; right: 14px; width: 52px; height: 52px; padding: 0; justify-content: center; }
+  .wsp-flotante .wsp-texto { display: none; }
+  .wsp-flotante svg { width: 27px; height: 27px; }
   .nudge { bottom: 156px; right: 14px; }
   .chat { right: 14px; bottom: 156px; }
   .chat-mensajes { max-height: 42vh; }
