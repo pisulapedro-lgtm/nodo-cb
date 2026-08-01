@@ -80,12 +80,17 @@ MAPEO = {
     '98d87089-WhatsApp_Image_20250811_at_12.37.45_PM.jpeg': {
         'slug': 'instalacion-cassette-oficina-malaga-02',
         'alt': 'Montaje de unidad interior tipo cassette con elevador de carga en una oficina, Málaga',
-        'zona': 'malaga', 'tipo': 'conductos', 'destacada': True,
+        'zona': 'malaga', 'tipo': 'conductos', 'destacada': False,
     },
     '0c6e5653-WhatsApp_Image_20250915_at_1.46.04_PM_6.jpeg': {
         'slug': 'mantenimiento-split-oficina-malaga-01',
         'alt': 'Service y mantenimiento de un split mural en una oficina por técnico de Clima Baires, Málaga',
         'zona': 'malaga', 'tipo': 'mantenimiento', 'destacada': True,
+    },
+    '40a8ec06-IMG_1684.jpeg': {
+        'slug': 'nave-flota-stock-malaga-01',
+        'alt': 'La base de Clima Baires: flota de vehículos rotulados y stock de equipos listos para instalar, Málaga (casa matriz)',
+        'zona': 'malaga', 'tipo': 'equipo', 'destacada': True,
     },
     '39aa3365-WhatsApp_Image_20250915_at_1.46.04_PM.jpeg': {
         'slug': 'equipo-obra-local-comercial-malaga-01',
@@ -134,6 +139,10 @@ MEJORAS = {
     # equipo llegando a obra: foco en la remera Clima Baires
     '6e0aee55-WhatsApp_Image_20250915_at_1.46.04_PM_1.jpeg': {
         'crop': (0.30, 0.25, 1.0, 0.95),
+    },
+    # nave con flota y stock: menos cielorraso y menos piso vacío
+    '40a8ec06-IMG_1684.jpeg': {
+        'crop': (0.0, 0.08, 1.0, 0.90), 'brillo': 1.05, 'color': 1.08,
     },
 }
 

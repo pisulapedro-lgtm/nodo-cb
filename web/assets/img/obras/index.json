@@ -56,7 +56,7 @@
       "alt": "Montaje de unidad interior tipo cassette con elevador de carga en una oficina, Málaga",
       "zona": "malaga",
       "tipo": "conductos",
-      "destacada": true,
+      "destacada": false,
       "w1600": 1038,
       "h1600": 1600,
       "w800": 519,
@@ -71,6 +71,17 @@
       "w1600": 1372,
       "h1600": 1600,
       "w800": 686,
+      "h800": 800
+    },
+    {
+      "slug": "nave-flota-stock-malaga-01",
+      "alt": "La base de Clima Baires: flota de vehículos rotulados y stock de equipos listos para instalar, Málaga (casa matriz)",
+      "zona": "malaga",
+      "tipo": "equipo",
+      "destacada": true,
+      "w1600": 1463,
+      "h1600": 1600,
+      "w800": 732,
       "h800": 800
     },
     {
