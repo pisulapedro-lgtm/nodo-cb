@@ -113,6 +113,21 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       errores.push(`${p} (${nombre}): ${Math.round(cob.hueco / viewport.height * 10) / 10} pantallas sin CTA de WhatsApp`);
     }
 
+    // las páginas son landings de Google Ads: el primer CTA entra en el fold
+    if (nombre === 'movil' && p !== '404.html') {
+      const primero = await page.evaluate(() => {
+        const enFlujo = (el) => {
+          let n = el;
+          while (n && n !== document.body) { if (getComputedStyle(n).position === 'fixed') return false; n = n.parentElement; }
+          return el.offsetParent !== null;
+        };
+        const ys = Array.from(document.querySelectorAll('[data-wsp], [data-agenda]')).filter(enFlujo)
+          .map((el) => el.getBoundingClientRect().top).sort((a, b) => a - b);
+        return ys[0] ?? Infinity;
+      });
+      if (primero >= viewport.height) errores.push(`${p} (movil): primer CTA a ${Math.round(primero)}px, fuera del fold`);
+    }
+
     const flat = p.replaceAll('/', '_').replace('.html', '');
     await page.screenshot({ path: join(OUT, `${flat}-${nombre}.png`), fullPage: true });
   }

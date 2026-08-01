@@ -362,6 +362,16 @@ WSP_SVG = ('<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8
            'c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>')
 
 
+def acciones_cabecera(mensaje, primario='Pedir presupuesto', p='', secundario=None):
+    """CTA inmediatamente bajo el título: en móvil tiene que entrar en el fold
+    (las páginas de zona son las landings de Google Ads)."""
+    segundo = secundario or f'<a class="boton fantasma" href="{p}calculadora-frigorias.html">Calcular frigorías</a>'
+    return f'''<div class="acciones-cabecera">
+      <a class="boton verde" data-wsp="{mensaje}" data-origen="hero" href="#">{primario}</a>
+      {segundo}
+    </div>'''
+
+
 def cinta_cta(titulo, mensaje, boton='Escribinos por WhatsApp'):
     """Cinta compacta de conversión: ninguna franja larga de scroll sin CTA."""
     return f'''
@@ -416,6 +426,7 @@ def pagina_servicios():
     <nav class="migas"><a href="index.html">Inicio</a> › Servicios</nav>
     <h1>Servicios de climatización</h1>
     <p class="bajada">Un solo proveedor, de la compra al mantenimiento.</p>
+    {acciones_cabecera('Hola Clima Baires, quiero un presupuesto.')}
   </div>
 </section>
 
@@ -467,6 +478,7 @@ def pagina_calculadora():
     <nav class="migas"><a href="index.html">Inicio</a> › Calculadora de frigorías</nav>
     <h1>Calculadora de frigorías</h1>
     <p class="bajada">Completá los datos y en 30 segundos sabés qué equipo necesitás.</p>
+    {acciones_cabecera('Hola Clima Baires, quiero saber qué equipo necesito para mi ambiente.', 'Que lo calculen ustedes', secundario='<a class="boton fantasma" data-agenda data-origen="hero" href="#">Agendar visita</a>')}
   </div>
 </section>
 
@@ -680,6 +692,7 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
     <nav class="migas"><a href="../index.html">Inicio</a> › <a href="../index.html#zonas">Zonas</a> › {nombre}</nav>
     <h1>Aire acondicionado en {nombre}</h1>
     <p class="bajada">{intro}</p>
+    {acciones_cabecera(f'Hola, estoy en {nombre} y quiero presupuesto de instalación.', f'Presupuesto en {nombre}', '../')}
   </div>
 </section>
 
@@ -695,8 +708,8 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
         <li>Garantía escrita y service anual</li>
       </ul>
       <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap">
-        <a class="boton" data-wsp="Hola Clima Baires, estoy en {nombre} y quiero un presupuesto." data-origen="hero" href="#">Pedir presupuesto en {nombre}</a>
-        <a class="boton fantasma" href="../calculadora-frigorias.html">Calcular frigorías</a>
+        <a class="boton" data-wsp="Hola Clima Baires, estoy en {nombre} y quiero un presupuesto." data-origen="seccion" href="#">Pedir presupuesto en {nombre}</a>
+        <a class="boton fantasma" data-agenda data-origen="seccion" href="#">Agendar visita</a>
       </div>
     </div>
     <div>
@@ -735,6 +748,7 @@ def pagina_nosotros():
     <nav class="migas"><a href="index.html">Inicio</a> › Sobre nosotros</nav>
     <h1>De la Costa del Sol al corredor norte</h1>
     <p class="bajada">Nacimos en Málaga instalando climatización. Hoy traemos ese estándar a Buenos Aires.</p>
+    {acciones_cabecera('Hola Clima Baires, quiero coordinar una visita técnica.', 'Hablar con nosotros', secundario='<a class="boton fantasma" href="obras.html">Ver obras</a>')}
   </div>
 </section>
 
