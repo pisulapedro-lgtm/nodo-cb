@@ -129,7 +129,10 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
     def act(k):
         return ' class="activo"' if activo == k else ''
     ld = ('<script type="application/ld+json">%s</script>' % json.dumps(jsonld, ensure_ascii=False)) if jsonld else ''
-    og = og_image or f'{DOMINIO}/assets/img/icon-512.png'
+    # WhatsApp es el canal nº1: al compartir un link tiene que verse una obra, no
+    # el isotipo. Si la página no trae uno propio, cae en la foto de portada.
+    por_defecto = f'{DOMINIO}/assets/img/obras/og-home.jpg' if HAY_FOTOS else f'{DOMINIO}/assets/img/icon-512.png'
+    og = og_image or por_defecto
     barra_msj = wsp_barra or 'Hola Clima Baires, quiero pedir un presupuesto.'
     return f'''<!DOCTYPE html>
 <html lang="es-AR">
@@ -145,6 +148,10 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{og}">
 <meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Clima Baires Argentina">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0058B3">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" sizes="48x48" href="{p}assets/img/favicon-48.png">
 <link rel="apple-touch-icon" href="{p}assets/img/icon-192.png">
 <link rel="stylesheet" href="{p}assets/css/styles.css">
@@ -260,13 +267,16 @@ def tarjeta_servicio(anchor, icono, titulo, texto, items, p=''):
     </div>'''
 
 def jsonld_local(nombre, url, zona=None):
+    """Ficha del negocio. Siempre el MISMO @id: sin él, Google leía una empresa
+    distinta por página (13 en total) en vez de una con 13 páginas."""
     areas = [z[1] for z in ZONAS] if zona is None else [zona]
     return {
         '@context': 'https://schema.org',
         '@type': 'HVACBusiness',
+        '@id': DOMINIO + '/#negocio',
         'name': 'Clima Baires Argentina',
-        'url': url,
-        'image': DOMINIO + '/assets/img/icon-512.png',
+        'url': DOMINIO + '/',
+        'image': DOMINIO + '/assets/img/obras/og-home.jpg' if HAY_FOTOS else DOMINIO + '/assets/img/icon-512.png',
         'description': nombre,
         'email': 'info@climabaires.com',
         'priceRange': '$$',
@@ -275,6 +285,51 @@ def jsonld_local(nombre, url, zona=None):
         'openingHours': 'Mo-Sa 08:00-19:00',
         'sameAs': ['https://www.climabaires.es'],
     }
+
+
+def jsonld_migas(items):
+    """BreadcrumbList: Google la usa para mostrar la ruta en vez de la URL cruda."""
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+            {'@type': 'ListItem', 'position': i + 1, 'name': n,
+             **({'item': DOMINIO + u} if u else {})}
+            for i, (n, u) in enumerate(items)
+        ],
+    }
+
+
+def jsonld_faq(pares):
+    """FAQPage: habilita el desplegable de preguntas en los resultados."""
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': [
+            {'@type': 'Question', 'name': p,
+             'acceptedAnswer': {'@type': 'Answer', 'text': r}}
+            for p, r in pares
+        ],
+    }
+
+
+def jsonld_servicio(nombre, descripcion, zona=None):
+    """Service: describe qué se presta y dónde, atado al mismo negocio."""
+    areas = [z[1] for z in ZONAS] if zona is None else [zona]
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        'serviceType': nombre,
+        'description': descripcion,
+        'provider': {'@id': DOMINIO + '/#negocio'},
+        'areaServed': [{'@type': 'Place', 'name': a} for a in areas],
+        'availableChannel': {
+            '@type': 'ServiceChannel',
+            'serviceUrl': DOMINIO + '/contacto.html',
+            'servicePhone': {'@type': 'ContactPoint', 'contactType': 'sales', 'url': 'https://wa.me/' + WSP_NUM},
+        },
+    }
+
 
 # ---------------- CONTENIDOS ----------------
 
@@ -369,8 +424,8 @@ def pagina_index():
 </section>
 '''
     og = f'{DOMINIO}/assets/img/obras/og-home.jpg' if HAY_FOTOS else None
-    return layout(0, 'Clima Baires — Aire acondicionado en zona norte: venta, instalación y posventa',
-        'Venta, instalación certificada y mantenimiento de aire acondicionado en Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. Presupuesto el mismo día.',
+    return layout(0, 'Aire acondicionado en zona norte | Clima Baires',
+        'Venta, instalación certificada y posventa de aire acondicionado en el corredor norte del AMBA. Presupuesto por WhatsApp el mismo día.',
         c, f'{DOMINIO}/', jsonld_local('Venta, instalación y posventa de aire acondicionado en el corredor norte del AMBA.', DOMINIO + '/'), 'inicio',
         og_image=og, pagina_id='index')
 
@@ -505,9 +560,16 @@ def pagina_servicios():
   </div>
 </section>
 '''
-    return layout(0, 'Servicios — venta, instalación y mantenimiento de aire acondicionado | Clima Baires',
-        'Venta de equipos split, multisplit y conductos, instalación certificada con checklist de calidad y mantenimiento anual en zona norte de Buenos Aires.',
-        c, f'{DOMINIO}/servicios.html', jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'), 'servicios',
+    return layout(0, 'Servicios de climatización | Clima Baires',
+        'Venta de split, multisplit y conductos, instalación certificada con checklist de calidad y mantenimiento anual en zona norte de Buenos Aires.',
+        c, f'{DOMINIO}/servicios.html', [
+            jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'),
+            jsonld_migas([('Inicio', '/'), ('Servicios', '/servicios.html')]),
+            jsonld_servicio('Venta e instalación de aire acondicionado',
+                            'Venta de equipos split, multisplit, piso-techo y conductos con instalación certificada.'),
+            jsonld_servicio('Mantenimiento y service de aire acondicionado',
+                            'Limpieza profunda, control de gas y reparación multimarca con repuestos originales.'),
+        ], 'servicios',
         pagina_id='servicios')
 
 def pagina_calculadora():
@@ -573,9 +635,9 @@ def pagina_calculadora():
 <section class="seccion" style="padding:0 0 70px">{cinta_cta('¿Preferís que lo veamos nosotros? Mandanos las medidas por WhatsApp.', 'Hola Clima Baires, quiero saber qué equipo necesito para mi ambiente.', 'Consultar por WhatsApp')}
 </section>
 '''
-    return layout(0, 'Calculadora de frigorías — ¿qué aire acondicionado necesito? | Clima Baires',
-        'Calculá cuántas frigorías necesita tu ambiente y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en zona norte de Buenos Aires.',
-        c, f'{DOMINIO}/calculadora-frigorias.html', None, 'calc',
+    return layout(0, 'Calculadora de frigorías | Clima Baires',
+        'Calculá cuántas frigorías necesita tu ambiente y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en zona norte.',
+        c, f'{DOMINIO}/calculadora-frigorias.html', jsonld_migas([('Inicio', '/'), ('Calculadora de frigorías', '/calculadora-frigorias.html')]), 'calc',
         pagina_id='calculadora-frigorias',
         wsp_barra='Hola Clima Baires, quiero saber qué equipo necesito para mi ambiente.')
 
@@ -700,6 +762,7 @@ def pagina_obras():
 '''
     ld = [
         jsonld_local('Galería de obras: instalación, recambio y mantenimiento de aire acondicionado.', f'{DOMINIO}/obras.html'),
+        jsonld_migas([('Inicio', '/'), ('Obras recientes', '/obras.html')]),
         {
             '@context': 'https://schema.org',
             '@type': 'ItemList',
@@ -715,14 +778,21 @@ def pagina_obras():
             } for i, f in enumerate(FOTOS)],
         },
     ]
-    return layout(0, 'Obras recientes — instalaciones reales de aire acondicionado | Clima Baires',
-        'Galería de obras de Clima Baires: instalación de split, cassette y condensadoras, recambios y mantenimiento. Fotos reales de nuestro equipo trabajando.',
+    return layout(0, 'Obras recientes | Clima Baires',
+        'Galería de obras de Clima Baires: instalación de split, cassette y condensadoras, recambios y mantenimiento. Fotos reales de nuestro equipo.',
         c, f'{DOMINIO}/obras.html', ld, 'obras',
         og_image=f'{DOMINIO}/assets/img/obras/og-obras.jpg' if HAY_FOTOS else None,
         pagina_id='obras', wsp_barra='Hola Clima Baires, vi sus obras recientes y quiero un presupuesto.')
 
 
 def pagina_zona(slug, nombre, partido, intro, barrios, especial):
+    faq = [
+        (f'¿Cuánto tardan en venir a {nombre}?', 'Coordinamos la visita técnica dentro de las 72 horas.'),
+        ('¿El presupuesto tiene costo?', 'No: la visita técnica y el presupuesto son sin cargo.'),
+        ('¿Puedo pagar en cuotas?', 'Sí: transferencia con descuento, tarjetas y cuotas.'),
+        ('¿Atienden equipos que no instalaron ustedes?', 'Sí, somos multimarca: limpieza, carga de gas y reparación.'),
+    ]
+    faq_html = ''.join(f'<p><strong>{p}</strong><br>{r}</p>' for p, r in faq)
     otras = ' · '.join(f'<a href="{s}.html">{n}</a>' for s, n, *_ in ZONAS if s != slug)
     lista_barrios = ', '.join(barrios)
     c = f'''
@@ -754,10 +824,7 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
     <div>
       <div class="tarjeta">
         <h3>Preguntas frecuentes en {nombre}</h3>
-        <p><strong>¿Cuánto tardan en venir?</strong><br>Visita técnica dentro de las 72 h.</p>
-        <p><strong>¿El presupuesto tiene costo?</strong><br>No: visita y presupuesto sin cargo.</p>
-        <p><strong>¿Puedo pagar en cuotas?</strong><br>Sí: transferencia con descuento, tarjetas y cuotas.</p>
-        <p><strong>¿Atienden equipos que no instalaron?</strong><br>Sí, somos multimarca.</p>
+        {faq_html}
       </div>
     </div>
   </div>
@@ -773,9 +840,16 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
   </div>
 </section>
 '''
-    ld = jsonld_local(f'Venta, instalación y mantenimiento de aire acondicionado en {nombre} ({partido}).', f'{DOMINIO}/zonas/{slug}.html', nombre)
-    return layout(1, f'Aire acondicionado en {nombre}: instalación, venta y service | Clima Baires',
-        f'Instalación de aire acondicionado en {nombre} ({partido}): split, multisplit y conductos con presupuesto el mismo día, seguros al día y posventa real. {lista_barrios}.',
+    ld = [
+        jsonld_local(f'Venta, instalación y mantenimiento de aire acondicionado en {nombre} ({partido}).',
+                     f'{DOMINIO}/zonas/{slug}.html', nombre),
+        jsonld_migas([('Inicio', '/'), ('Zonas', '/#zonas'), (nombre, f'/zonas/{slug}.html')]),
+        jsonld_faq(faq),
+        jsonld_servicio(f'Instalación de aire acondicionado en {nombre}',
+                        f'Venta, instalación certificada y posventa de aire acondicionado en {nombre}.', nombre),
+    ]
+    return layout(1, f'Aire acondicionado en {nombre} | Clima Baires',
+        f'Instalación de aire acondicionado en {nombre}: split, multisplit y conductos. Presupuesto el mismo día y posventa real.',
         c, f'{DOMINIO}/zonas/{slug}.html', ld, 'zonas',
         pagina_id=f'zonas/{slug}', zona_nombre=nombre,
         wsp_barra=f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')
@@ -834,9 +908,9 @@ def pagina_nosotros():
   </div>
 </section>
 '''
-    return layout(0, 'Sobre nosotros — Clima Baires Argentina',
-        'Clima Baires nació en Málaga instalando climatización en la Costa del Sol. Traemos ese estándar al corredor norte de Buenos Aires: transparencia, rapidez y posventa real.',
-        c, f'{DOMINIO}/sobre-nosotros.html', None, 'nosotros', pagina_id='sobre-nosotros')
+    return layout(0, 'Sobre nosotros | Clima Baires Argentina',
+        'Clima Baires nació en Málaga instalando climatización. Traemos ese estándar al corredor norte: transparencia, rapidez y posventa real.',
+        c, f'{DOMINIO}/sobre-nosotros.html', jsonld_migas([('Inicio', '/'), ('Sobre nosotros', '/sobre-nosotros.html')]), 'nosotros', pagina_id='sobre-nosotros')
 
 
 def seccion_asi_trabajamos():
@@ -908,9 +982,9 @@ def pagina_contacto():
   </div>
 </section>
 '''
-    return layout(0, 'Contacto — presupuesto de aire acondicionado en zona norte | Clima Baires',
-        'Pedí tu presupuesto de venta e instalación de aire acondicionado en el corredor norte de Buenos Aires. Respondemos en minutos por WhatsApp.',
-        c, f'{DOMINIO}/contacto.html', None, 'contacto', pagina_id='contacto',
+    return layout(0, 'Contacto y presupuestos | Clima Baires',
+        'Pedí tu presupuesto de instalación de aire acondicionado en el corredor norte de Buenos Aires. Te respondemos por WhatsApp en horario comercial.',
+        c, f'{DOMINIO}/contacto.html', jsonld_migas([('Inicio', '/'), ('Contacto', '/contacto.html')]), 'contacto', pagina_id='contacto',
         wsp_barra='Hola Clima Baires, quiero hacer una consulta.')
 
 def pagina_404():
