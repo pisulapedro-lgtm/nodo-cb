@@ -228,6 +228,16 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       else if (!(visto.w >= 2 && visto.s !== 'none')) errores.push(`.${clase} sin anillo de foco visible (${visto.w}px ${visto.s})`);
     }
 
+    // captura del asistente para el PDF de revisión (una conversación completa)
+    await page.goto('file://' + join(WEB, 'index.html'), { waitUntil: 'load' });
+    await page.click('.wsp-flotante');
+    await page.fill('#chat-pie input', 'Sofía');
+    await page.click('#chat-pie button[type=submit]');
+    await page.click('.chat-chip[data-valor="Nordelta"]');
+    await page.click('.chat-chip[data-valor="Recambio de equipo"]');
+    await page.click('.chat-chip[data-valor="Multisplit"]');
+    await page.screenshot({ path: join(OUT, 'chatbot-desktop.png') });
+
     // galería: filtros + lightbox accesible (abre, navega, cierra con Escape)
     await page.goto('file://' + join(WEB, 'obras.html'), { waitUntil: 'load' });
     const total = await page.locator('.obra').count();

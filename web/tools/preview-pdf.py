@@ -63,6 +63,11 @@ for clave in ORDEN:
     if os.path.exists(f):
         paginas.append(con_banda(f, NOMBRES.get(clave, clave) + ' · desktop'))
 
+# el asistente de WhatsApp, con una conversación completa
+f = os.path.join(SHOTS, 'chatbot-desktop.png')
+if os.path.exists(f):
+    paginas.append(con_banda(f, 'Asistente de WhatsApp · 4 preguntas y el chat queda armado'))
+
 for clave in ['index', 'zonas_nordelta', 'contacto']:
     f = os.path.join(SHOTS, f'{clave}-movil.png')
     if os.path.exists(f):
