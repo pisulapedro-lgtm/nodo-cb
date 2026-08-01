@@ -13,10 +13,29 @@ Este script copia sólo lo que el navegador necesita, y de paso escribe:
   _redirects → www → dominio raíz (mismo criterio)
 """
 import os
+import re
 import shutil
+import sys
 
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 DESTINO = os.path.normpath(os.path.join(RAIZ, '..', 'dist', 'sitio'))
+
+# Puerta de publicación: el QA de desarrollo pasa en verde aunque los datos de
+# contacto sigan siendo de mentira. Acá se corta, porque publicar con el WhatsApp
+# placeholder deja todos los botones del sitio apuntando a un número inexistente.
+PENDIENTES = [
+    ('whatsapp', r"whatsapp:\s*'5491100000000'",
+     'el número de WhatsApp sigue siendo el placeholder: TODOS los botones del sitio no llevan a ningún lado'),
+    ('gtmId', r"gtmId:\s*'GTM-X{7}'",
+     'sin contenedor de GTM no se mide ni una conversión (Google Ads queda ciego)'),
+    ('agendaUrl', r"agendaUrl:\s*''",
+     'sin agenda de Calendar, «Agendar visita» deriva a WhatsApp en vez de reservar'),
+]
+
+
+def revisar_placeholders():
+    js = open(os.path.join(RAIZ, 'assets', 'js', 'main.js'), encoding='utf-8').read()
+    return [(c, m) for c, patron, m in PENDIENTES if re.search(patron, js)]
 
 # lo que sí se publica
 INCLUIR_ARCHIVOS = ('.html', '.xml', '.txt', '.webmanifest')
@@ -52,6 +71,21 @@ def excluido(rel):
 
 
 def main():
+    faltan = revisar_placeholders()
+    if faltan and '--force' not in sys.argv:
+        print('NO se armó el paquete: hay datos de configuración sin completar.\n')
+        for clave, motivo in faltan:
+            print(f'  ✗ CB.{clave}: {motivo}')
+        print('\nSe editan en web/assets/js/main.js (bloque CB) y después hay que correr')
+        print('   python3 web/tools/generar.py   para rehornear los enlaces en el HTML.')
+        print('\nSi querés armar el paquete igual (por ejemplo para una demo), agregá --force.')
+        raise SystemExit(1)
+    if faltan:
+        print('AVISO: se arma con placeholders sin resolver (--force):')
+        for clave, motivo in faltan:
+            print(f'  ! CB.{clave}: {motivo}')
+        print()
+
     if os.path.isdir(DESTINO):
         shutil.rmtree(DESTINO)
     os.makedirs(DESTINO)

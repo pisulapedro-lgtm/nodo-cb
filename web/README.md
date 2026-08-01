@@ -1,6 +1,7 @@
 # Web climabaires.com — guía de despliegue
 
-Sitio **estático** (HTML/CSS/JS puro, sin build ni dependencias): se puede publicar en cualquier hosting subiendo el contenido de esta carpeta `web/` tal cual.
+Sitio **estático** (HTML/CSS/JS puro, sin build ni dependencias). Para publicarlo se arma primero la
+carpeta liviana con `npm run web:publicar` y se sube **`dist/sitio`**, nunca `web/` (ver «Qué se sube al hosting»).
 
 ## Antes de publicar (checklist obligatorio)
 
@@ -132,8 +133,13 @@ fotos (sin optimizar y con metadatos), las capturas de QA y los scripts. Si se
 publican, esas fotos quedan accesibles por URL.
 
 ```
-npm run web:publicar     # deja el sitio listo en dist/sitio/ (~5 MB, 58 archivos)
+npm run web:publicar     # deja el sitio listo en dist/sitio/ (~5 MB)
 ```
+
+El comando **se niega a armar el paquete** si los datos del checklist de arriba
+siguen con placeholders — publicar con el WhatsApp de mentira dejaría todos los
+botones del sitio apuntando a un número inexistente. Para una demo se puede
+forzar con `python3 web/tools/publicar.py --force`.
 
 El script copia sólo lo que el navegador necesita y agrega `_headers` (caché
 larga para fuentes e imágenes, corta para HTML) y `_redirects` (www → dominio
@@ -142,12 +148,12 @@ raíz), que Cloudflare Pages y Netlify leen solos.
 ## Publicación recomendada (gratis, con SSL)
 
 **Opción A — Cloudflare Pages** (recomendada: CDN + SSL + dominio en el mismo panel):
-1. Crear cuenta en Cloudflare → Workers & Pages → *Create* → *Pages* → *Upload assets* (o conectar este repo de GitHub, *build command* vacío, *output dir* `web`).
+1. Correr `npm run web:publicar`. Después, en Cloudflare → Workers & Pages → *Create* → *Pages* → *Upload assets*, subir **`dist/sitio`** (nunca `web/`). Si preferís conectar el repo de GitHub: *build command* `npm run web:publicar`, *output dir* `dist/sitio`.
 2. Custom domain → `climabaires.com` (si el dominio está en Cloudflare, los DNS se configuran solos).
 
-**Opción B — Netlify**: arrastrar la carpeta `web/` a [app.netlify.com/drop](https://app.netlify.com/drop) → *Domain settings* → agregar `climabaires.com` y seguir las instrucciones de DNS.
+**Opción B — Netlify**: correr `npm run web:publicar` y arrastrar **`dist/sitio`** a [app.netlify.com/drop](https://app.netlify.com/drop) → *Domain settings* → agregar `climabaires.com` y seguir las instrucciones de DNS.
 
-**Opción C — GitHub Pages**: *Settings → Pages* del repo, servir desde una rama que contenga solo `web/` (o usar Action de deploy). Custom domain + *Enforce HTTPS*.
+**Opción C — GitHub Pages**: *Settings → Pages* del repo, servir desde una rama que contenga el resultado de `npm run web:publicar`. Custom domain + *Enforce HTTPS*.
 
 En los tres casos: apuntar también `www` (CNAME) y verificar que `https://climabaires.com/sitemap.xml` responda.
 
