@@ -1,0 +1,76 @@
+{
+  "marca": "Cucina di Marce",
+  "nota": "params vacio = valores por defecto de photo_pipeline.Params. Los overrides por foto se ajustaron mirando cada imagen.",
+  "fotos": [
+    {
+      "slug": "torta-merengue-dorada",
+      "src": "fotos/originales/torta-merengue-dorada.jpg",
+      "titulo": "Torta de merengue con dulce de leche",
+      "alt": "Torta de merengue con dulce de leche y detalles dorados, con topper Feliz Cumple sobre plato de ceramica blanca",
+      "params": {}
+    },
+    {
+      "slug": "torta-merengue-dorada-2",
+      "src": "fotos/originales/torta-merengue-dorada-2.jpg",
+      "titulo": "Torta de merengue, vista completa",
+      "alt": "Torta de merengue con merenguitos en la base y velas doradas sobre plato de ceramica con borde ondulado",
+      "params": {}
+    },
+    {
+      "slug": "torta-chocolate-frutillas",
+      "src": "fotos/originales/torta-chocolate-frutillas.jpg",
+      "titulo": "Torta de chocolate con frutillas",
+      "alt": "Torta cubierta de rulos de chocolate con frutillas frescas y cereza en el centro, topper rojo Feliz Cumple",
+      "params": {}
+    },
+    {
+      "slug": "torta-chocolate-lazo-dorado",
+      "src": "fotos/originales/torta-chocolate-lazo-dorado.jpg",
+      "titulo": "Torta de chocolate con lazo dorado",
+      "alt": "Torta con rulos de chocolate amargo, borde de barquillos y lazo dorado, con topper de mariposas",
+      "params": {}
+    },
+    {
+      "slug": "torta-crema-chocolate-dorada",
+      "src": "fotos/originales/torta-crema-chocolate-dorada.jpg",
+      "titulo": "Torta de crema y chocolate con detalles dorados",
+      "alt": "Torta con laterales de crema batida y cobertura de rulos de chocolate con brillo dorado y perlas",
+      "params": {}
+    },
+    {
+      "slug": "torta-frutillas-lazo-rojo",
+      "src": "fotos/originales/torta-frutillas-lazo-rojo.jpg",
+      "titulo": "Torta de frutillas con lazo rojo",
+      "alt": "Torta con frutillas frescas glaseadas en la superficie, borde de bombones de chocolate y lazo rojo",
+      "params": {}
+    },
+    {
+      "slug": "torta-brownie-frutos-rojos",
+      "src": "fotos/originales/torta-brownie-frutos-rojos.jpg",
+      "titulo": "Brownie con crema y frutos rojos",
+      "alt": "Torta brownie con dulce de leche, crema y frutos rojos frescos con rulos de chocolate",
+      "params": {}
+    },
+    {
+      "slug": "torta-chocolate-blanco-lunares",
+      "src": "fotos/originales/torta-chocolate-blanco-lunares.jpg",
+      "titulo": "Torta de chocolate blanco con lazo de lunares",
+      "alt": "Torta cubierta de rulos de chocolate blanco con borde de barquillos y lazo blanco con lunares dorados",
+      "params": {}
+    },
+    {
+      "slug": "torta-golosinas-lazo-dorado",
+      "src": "fotos/originales/torta-golosinas-lazo-dorado.jpg",
+      "titulo": "Torta de golosinas",
+      "alt": "Torta de golosinas con confites de colores, chocolates, chupetines y lazo dorado",
+      "params": {}
+    },
+    {
+      "slug": "torta-cuatro-chocolates",
+      "src": "fotos/originales/torta-cuatro-chocolates.jpg",
+      "titulo": "Torta cuatro chocolates",
+      "alt": "Torta dividida en cuatro sectores con chips de chocolate blanco, chocolate amargo, confites de colores y rulos, con lazo plateado",
+      "params": {}
+    }
+  ]
+}
