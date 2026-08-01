@@ -573,6 +573,16 @@ def pagina_servicios():
         pagina_id='servicios')
 
 def pagina_calculadora():
+    # mismos coeficientes que main.js: la tabla nunca contradice al widget
+    comerciales = [2250, 3000, 4500, 5500, 6500, 9000, 12000, 15000, 18000]
+    filas = ''
+    for m2, uso in [(10, 'dormitorio chico'), (15, 'dormitorio'), (20, 'dormitorio grande o escritorio'),
+                    (25, 'living comedor'), (30, 'living amplio'), (40, 'living comedor integrado'),
+                    (50, 'planta baja abierta')]:
+        f = m2 * 100
+        rec = next((c for c in comerciales if c >= f), comerciales[-1])
+        filas += (f'<tr><td>{m2} m²</td><td>{uso}</td><td>{f:,}</td>'
+                  f'<td><strong>{rec:,}</strong> frigorías</td></tr>').replace(',', '.')
     c = f'''
 <section class="cabecera-pagina">
   <div class="contenedor">
@@ -629,6 +639,20 @@ def pagina_calculadora():
 
       <p class="nota">El cálculo usa 100 frigorías/m² de referencia, ajustado por altura, orientación, ganancia solar y ocupación. Cocinas, quinchos y ambientes con muchos electrodomésticos pueden requerir más potencia: lo verificamos en la visita técnica.</p>
     </form>
+  </div>
+</section>
+
+<section class="seccion" style="padding:0 0 46px">{cinta_cta('¿Te da un número raro? Mandanos las medidas y lo revisamos.', 'Hola Clima Baires, usé la calculadora y quiero verificar el resultado.', 'Consultar')}
+</section>
+
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Tabla de referencia</span><h2>¿Cuántas frigorías por metro cuadrado?</h2>
+    <p class="intro">Valores orientativos para techo estándar de 2,6 m y orientación sur o este. Si el ambiente tiene ventanales grandes, recibe sol de tarde o se usa entre varias personas, sumá potencia: eso lo ajusta la calculadora de arriba.</p></div>
+    <table class="simple">
+      <thead><tr><th>Superficie</th><th>Ambiente típico</th><th>Frigorías necesarias</th><th>Equipo comercial</th></tr></thead>
+      <tbody>{filas}</tbody>
+    </table>
   </div>
 </section>
 
