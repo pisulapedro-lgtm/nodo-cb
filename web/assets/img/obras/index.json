@@ -41,6 +41,17 @@
       "h800": 800
     },
     {
+      "slug": "puesta-en-marcha-condensadora-comercial-malaga-01",
+      "alt": "Puesta en marcha de una condensadora comercial en azotea: control de presiones con manómetros, Málaga",
+      "zona": "malaga",
+      "tipo": "instalacion",
+      "destacada": true,
+      "w1600": 882,
+      "h1600": 1408,
+      "w800": 501,
+      "h800": 800
+    },
+    {
       "slug": "instalacion-cassette-oficina-malaga-01",
       "alt": "Instalación de aire acondicionado tipo cassette en el cielorraso de una oficina, Málaga",
       "zona": "malaga",
@@ -100,7 +111,7 @@
       "alt": "Técnico de Clima Baires preparando el acceso para climatizar un local comercial, Málaga",
       "zona": "malaga",
       "tipo": "equipo",
-      "destacada": true,
+      "destacada": false,
       "w1600": 1317,
       "h1600": 1600,
       "w800": 659,

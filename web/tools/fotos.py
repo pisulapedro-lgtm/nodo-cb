@@ -72,6 +72,11 @@ MAPEO = {
         'alt': 'Instalación de condensadora en fachada con plataforma elevadora: trabajo en altura con equipos certificados, Málaga',
         'zona': 'malaga', 'tipo': 'instalacion', 'destacada': True,
     },
+    '3be9b340-e023e88fa3c54f3c8826498dc8860a7d.jpeg': {
+        'slug': 'puesta-en-marcha-condensadora-comercial-malaga-01',
+        'alt': 'Puesta en marcha de una condensadora comercial en azotea: control de presiones con manómetros, Málaga',
+        'zona': 'malaga', 'tipo': 'instalacion', 'destacada': True,
+    },
     '114275a4-WhatsApp_Image_20250915_at_1.46.04_PM_7.jpeg': {
         'slug': 'instalacion-cassette-oficina-malaga-01',
         'alt': 'Instalación de aire acondicionado tipo cassette en el cielorraso de una oficina, Málaga',
@@ -100,7 +105,7 @@ MAPEO = {
     '39aa3365-WhatsApp_Image_20250915_at_1.46.04_PM.jpeg': {
         'slug': 'equipo-obra-local-comercial-malaga-01',
         'alt': 'Técnico de Clima Baires preparando el acceso para climatizar un local comercial, Málaga',
-        'zona': 'malaga', 'tipo': 'equipo', 'destacada': True,
+        'zona': 'malaga', 'tipo': 'equipo', 'destacada': False,
     },
     '6e0aee55-WhatsApp_Image_20250915_at_1.46.04_PM_1.jpeg': {
         'slug': 'equipo-llegada-obra-malaga-01',
@@ -152,6 +157,10 @@ MEJORAS = {
     # frente de la furgoneta en la nave: centrar cartel + vehículo
     '57977141-IMG_1666.jpeg': {
         'crop': (0.0, 0.04, 0.96, 1.0), 'brillo': 1.05, 'color': 1.08,
+    },
+    # puesta en marcha comercial: menos cielo lavado, foco en técnico + manómetros
+    '3be9b340-e023e88fa3c54f3c8826498dc8860a7d.jpeg': {
+        'crop': (0.02, 0.08, 1.0, 0.96), 'contraste': 1.08,
     },
 }
 
