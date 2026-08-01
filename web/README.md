@@ -53,7 +53,7 @@ Todos los CTA ya empujan eventos al `dataLayer` (verificado por el QA de Playwri
 
 | evento | parámetros | dispara |
 |---|---|---|
-| `whatsapp_click` | `origen` (hero/seccion/menu/barra/lightbox/calculadora/chatbot), `pagina`, `zona` | todo CTA de WhatsApp |
+| `whatsapp_click` | `origen` (hero/seccion/menu/barra/cinta/lightbox/calculadora/chatbot), `pagina`, `zona` | todo CTA de WhatsApp |
 | `agenda_click` | `origen`, `pagina`, `zona` | CTA «Agendar visita» |
 | `calculadora_uso` | `m2`, `frigorias_resultado`, `equipo_recomendado` | submit de la calculadora |
 | `form_envio` | `zona` | formulario de contacto |
@@ -64,6 +64,11 @@ Todos los CTA ya empujan eventos al `dataLayer` (verificado por el QA de Playwri
 **Chatbot**: el botón flotante abre un asistente de 4 preguntas (nombre, zona,
 servicio, tipo de aire) que arma el mensaje y deriva a WhatsApp con
 `origen=chatbot`. Sin backend ni librerías: vive en `assets/js/main.js`.
+
+**Cobertura de conversión**: `npm run web:shots` falla si alguna página deja más
+de 2,5 pantallas de scroll sin un CTA de WhatsApp en el flujo del documento (el
+botón flotante y la barra móvil son fijos y no cuentan para la medición). Si al
+agregar contenido salta ese error, intercalá una `cinta_cta(...)` del generador.
 
 ### Conectar GA4 y Google Ads (cuenta bajo la MCC de Málaga)
 
