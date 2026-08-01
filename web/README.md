@@ -4,6 +4,11 @@ Sitio **estático** (HTML/CSS/JS puro, sin build ni dependencias): se puede publ
 
 ## Antes de publicar (checklist obligatorio)
 
+> Los datos de contacto siguen teniendo **un solo punto de configuración** (`CB` en
+> `assets/js/main.js`), pero `generar.py` los lee y los hornea en el HTML: los
+> botones de WhatsApp, el mailto y las redes funcionan aunque el JS no cargue.
+> Por eso, después de tocar `CB` hay que **regenerar las páginas**.
+
 1. **Número de WhatsApp argentino** — editar `assets/js/main.js`, bloque `CB` al inicio:
    - `whatsapp`: formato internacional sin `+` (ej. `5491160000000`).
    - `whatsappVisible`: cómo se muestra (ej. `+54 9 11 6000-0000`).

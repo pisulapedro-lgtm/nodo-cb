@@ -4,10 +4,62 @@ Uso: python3 web/tools/generar.py   (desde la raíz del repo)
 Regenera todos los .html a partir del layout y el contenido de PAGINAS.
 Los .html generados son el artefacto desplegable: no requieren build en el hosting.
 """
-import os, json
+import os, json, re
+from urllib.parse import quote
 
 RAIZ = os.path.join(os.path.dirname(__file__), '..')
 DOMINIO = 'https://climabaires.com'
+
+# ---------------- ENLACES DE WHATSAPP SIN JS ----------------
+# El número sigue teniendo UN solo punto de configuración (objeto CB en
+# assets/js/main.js). Acá lo leemos para hornear un href real en cada CTA: si el
+# JS no carga, los botones siguen abriendo WhatsApp con su mensaje prellenado.
+# main.js después reescribe esos mismos href (y agrega la medición) sin cambiar
+# el destino, así que no hay dato de contacto duplicado a mano.
+AGENDA_FALLBACK = 'Hola Clima Baires, quiero agendar una visita técnica.'
+
+
+def _config_de_main_js():
+    ruta = os.path.join(RAIZ, 'assets', 'js', 'main.js')
+    with open(ruta, encoding='utf-8') as f:
+        js = f.read()
+    cfg = {}
+    for clave in ('whatsapp', 'whatsappVisible', 'email', 'horario', 'instagram', 'linkedin'):
+        m = re.search(r"%s:\s*'([^']*)'" % clave, js)
+        if not m:
+            raise SystemExit('No pude leer CB.%s de assets/js/main.js' % clave)
+        cfg[clave] = m.group(1)
+    return cfg
+
+
+CB = _config_de_main_js()
+WSP_NUM = CB['whatsapp']
+
+
+def hornear_enlaces(html):
+    """Reemplaza los href='#' de los CTA por enlaces reales de wa.me."""
+    def enlace(mensaje):
+        return 'https://wa.me/%s?text=%s' % (WSP_NUM, quote(mensaje))
+
+    html = re.sub(
+        r'data-wsp="([^"]*)"([^>]*?)href="#"',
+        lambda m: 'data-wsp="%s"%shref="%s"' % (m.group(1), m.group(2), enlace(m.group(1))),
+        html)
+    html = re.sub(
+        r'(data-agenda\b[^>]*?)href="#"',
+        lambda m: '%shref="%s"' % (m.group(1), enlace(AGENDA_FALLBACK)),
+        html)
+    # email y redes: mismo criterio (main.js los reescribe con asunto por contexto)
+    html = re.sub(r'(<a data-email[^>]*?)href="#"([^>]*)>(\s*)</a>',
+                  lambda m: '%shref="mailto:%s"%s>%s</a>' % (m.group(1), CB['email'], m.group(2), CB['email']),
+                  html)
+    html = html.replace('<a data-ig href="#"', '<a data-ig href="%s"' % CB['instagram'])
+    html = html.replace('<a data-li href="#"', '<a data-li href="%s"' % CB['linkedin'])
+    # textos de contacto que hoy sólo escribe el JS
+    html = html.replace('<span data-wsp-num></span>', '<span data-wsp-num>%s</span>' % CB['whatsappVisible'])
+    html = html.replace('<strong data-wsp-num></strong>', '<strong data-wsp-num>%s</strong>' % CB['whatsappVisible'])
+    html = html.replace('<span data-horario></span>', '<span data-horario>%s</span>' % CB['horario'])
+    return html
 
 # ---------------- FOTOS DE OBRAS ----------------
 # Índice generado por tools/fotos.py (ver web/README.md → "Cómo añadir fotos").
@@ -822,6 +874,8 @@ def pagina_404():
 def escribir(ruta, contenido):
     destino = os.path.join(RAIZ, ruta)
     os.makedirs(os.path.dirname(destino), exist_ok=True)
+    if ruta.endswith('.html'):
+        contenido = hornear_enlaces(contenido)
     with open(destino, 'w', encoding='utf-8') as f:
         f.write(contenido)
     print('  ✓', ruta)
