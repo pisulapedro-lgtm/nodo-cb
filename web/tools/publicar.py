@@ -35,7 +35,17 @@ PENDIENTES = [
 
 def revisar_placeholders():
     js = open(os.path.join(RAIZ, 'assets', 'js', 'main.js'), encoding='utf-8').read()
-    return [(c, m) for c, patron, m in PENDIENTES if re.search(patron, js)]
+    faltan = [(c, m) for c, patron, m in PENDIENTES if re.search(patron, js)]
+    # identidad legal: sin razón social y CUIT no se puede operar ni entrar a un country
+    gen = open(os.path.join(RAIZ, 'tools', 'generar.py'), encoding='utf-8').read()
+    bloque = gen[gen.index('EMPRESA = {'):gen.index('}', gen.index('EMPRESA = {'))]
+    if 'PENDIENTE' in bloque:
+        faltan.append(('EMPRESA', 'faltan razón social, CUIT o domicilio: aparecen como PENDIENTE en el pie '
+                                  'y en las páginas de privacidad y términos'))
+    html = open(os.path.join(RAIZ, 'terminos.html'), encoding='utf-8').read() if os.path.exists(os.path.join(RAIZ, 'terminos.html')) else ''
+    if 'PENDIENTE' in html:
+        faltan.append(('garantía', 'el plazo de garantía de la instalación sigue como PENDIENTE en terminos.html'))
+    return faltan
 
 # lo que sí se publica
 INCLUIR_ARCHIVOS = ('.html', '.xml', '.txt', '.webmanifest')
@@ -75,15 +85,17 @@ def main():
     if faltan and '--force' not in sys.argv:
         print('NO se armó el paquete: hay datos de configuración sin completar.\n')
         for clave, motivo in faltan:
-            print(f'  ✗ CB.{clave}: {motivo}')
-        print('\nSe editan en web/assets/js/main.js (bloque CB) y después hay que correr')
-        print('   python3 web/tools/generar.py   para rehornear los enlaces en el HTML.')
+            donde = 'main.js → CB' if clave in ('whatsapp', 'gtmId', 'agendaUrl') else 'generar.py → EMPRESA'
+            print(f'  ✗ {clave}  ({donde})')
+            print(f'      {motivo}')
+        print('\nDespués de completarlos hay que correr  python3 web/tools/generar.py')
+        print('para rehornear los datos en el HTML.')
         print('\nSi querés armar el paquete igual (por ejemplo para una demo), agregá --force.')
         raise SystemExit(1)
     if faltan:
         print('AVISO: se arma con placeholders sin resolver (--force):')
         for clave, motivo in faltan:
-            print(f'  ! CB.{clave}: {motivo}')
+            print(f'  ! {clave}: {motivo}')
         print()
 
     if os.path.isdir(DESTINO):

@@ -16,7 +16,7 @@ mkdirSync(OUT, { recursive: true });
 
 const paginas = [
   'index.html', 'servicios.html', 'obras.html', 'calculadora-frigorias.html',
-  'sobre-nosotros.html', 'contacto.html', '404.html',
+  'sobre-nosotros.html', 'contacto.html', 'privacidad.html', 'terminos.html', '404.html',
   ...readdirSync(join(WEB, 'zonas')).map((f) => 'zonas/' + f),
 ];
 
@@ -134,13 +134,14 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       for (const y of ys) { hueco = Math.max(hueco, y - prev); prev = y; }
       return { hueco: Math.max(hueco, alto - prev), ctas: ys.length };
     });
+    const comercial = !['404.html', 'privacidad.html', 'terminos.html'].includes(p);
     const tope = viewport.height * 2.5;
-    if (cob.hueco > tope) {
+    if (comercial && cob.hueco > tope) {
       errores.push(`${p} (${nombre}): ${Math.round(cob.hueco / viewport.height * 10) / 10} pantallas sin CTA de WhatsApp`);
     }
 
     // las páginas son landings de Google Ads: el primer CTA entra en el fold
-    if (nombre === 'movil' && p !== '404.html') {
+    if (nombre === 'movil' && comercial) {
       const primero = await page.evaluate(() => {
         const enFlujo = (el) => {
           let n = el;

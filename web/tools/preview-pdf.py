@@ -44,11 +44,11 @@ NOMBRES = {
     'zonas_nunez': 'Zona · Núñez', 'zonas_vicente-lopez': 'Zona · Vicente López',
     'zonas_san-isidro': 'Zona · San Isidro', 'zonas_tigre': 'Zona · Tigre',
     'zonas_nordelta': 'Zona · Nordelta', 'zonas_pilar': 'Zona · Pilar',
-    'chatbot': 'Asistente de WhatsApp',
+    'chatbot': 'Asistente de WhatsApp', 'privacidad': 'Política de privacidad', 'terminos': 'Términos y condiciones',
 }
 ORDEN = ['index', 'servicios', 'obras', 'calculadora-frigorias', 'contacto',
          'zonas_nordelta', 'zonas_nunez', 'zonas_vicente-lopez', 'zonas_san-isidro',
-         'zonas_tigre', 'zonas_pilar', 'sobre-nosotros', '404']
+         'zonas_tigre', 'zonas_pilar', 'sobre-nosotros', 'privacidad', 'terminos', '404']
 
 
 def banda(lienzo, titulo, sub=''):

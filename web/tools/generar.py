@@ -18,6 +18,18 @@ DOMINIO = 'https://climabaires.com'
 # el destino, así que no hay dato de contacto duplicado a mano.
 AGENDA_FALLBACK = 'Hola Clima Baires, quiero agendar una visita técnica.'
 
+# Identidad legal del proveedor. Obligatoria en Argentina para operar (Ley 24.240
+# y RG de ARCA) y además la piden las administraciones de countries para habilitar
+# el ingreso de un contratista. Mientras diga PENDIENTE, publicar.py no arma el
+# paquete: son datos que sólo puede completar el dueño.
+EMPRESA = {
+    'razon_social': 'PENDIENTE — razón social inscripta',
+    'cuit': 'PENDIENTE — CUIT',
+    'domicilio': 'PENDIENTE — domicilio fiscal',
+    'inicio_actividades': 'PENDIENTE — fecha de inicio de actividades',
+    'responsable_datos': 'Ignacio (responsable de la base de datos)',
+}
+
 
 def _config_de_main_js():
     ruta = os.path.join(RAIZ, 'assets', 'js', 'main.js')
@@ -219,7 +231,10 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
       </div>
     </div>
     <div class="legal">
-      <span>© <span data-anio></span> Clima Baires Argentina. Todos los derechos reservados.</span>
+      <span>© <span data-anio></span> Clima Baires Argentina · {EMPRESA['razon_social']} · CUIT {EMPRESA['cuit']}</span>
+      <span><a href="{p}privacidad.html">Privacidad</a> · <a href="{p}terminos.html">Términos y condiciones</a> · <a href="{p}terminos.html#revocacion">Botón de arrepentimiento</a></span>
+    </div>
+    <div class="legal" style="border:0;padding-top:8px">
       <span>Corredor norte AMBA: Núñez · Vicente López · San Isidro · Tigre · Nordelta · Pilar</span>
     </div>
   </div>
@@ -1011,6 +1026,97 @@ def pagina_contacto():
         c, f'{DOMINIO}/contacto.html', jsonld_migas([('Inicio', '/'), ('Contacto', '/contacto.html')]), 'contacto', pagina_id='contacto',
         wsp_barra='Hola Clima Baires, quiero hacer una consulta.')
 
+def pagina_privacidad():
+    e = EMPRESA
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Privacidad</nav>
+    <h1>Política de privacidad</h1>
+    <p class="bajada">Qué datos te pedimos, para qué los usamos y cómo pedir que los borremos.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:34px">
+  <div class="contenedor" style="max-width:760px">
+    <h2>Quién trata tus datos</h2>
+    <p>{e['razon_social']} (CUIT {e['cuit']}), con domicilio en {e['domicilio']}. Consultas sobre tus datos: <a data-email href="#"></a>. Responsable: {e['responsable_datos']}.</p>
+
+    <h2 style="margin-top:34px">Qué datos recogemos y para qué</h2>
+    <ul class="lista-check">
+      <li><strong>Los que nos escribís vos</strong>: nombre, zona, tipo de servicio y de equipo, a través del asistente del sitio o del formulario de contacto. Sirven para armar tu presupuesto y coordinar la visita. Nada de esto se guarda en este sitio: se arma un mensaje que abrís vos en WhatsApp.</li>
+      <li><strong>Datos de navegación</strong>: páginas vistas y clics en los botones de contacto, mediante Google Tag Manager y Google Analytics. Sirven para saber qué contenidos funcionan y medir la publicidad. No usamos esos datos para identificarte por nombre.</li>
+      <li><strong>La conversación de WhatsApp</strong> queda en tu cuenta y en la nuestra, con las condiciones de WhatsApp (Meta).</li>
+    </ul>
+
+    <h2 style="margin-top:34px">Con quién los compartimos</h2>
+    <p>Con nadie, salvo los servicios que usamos para funcionar: WhatsApp (Meta) para la conversación, Google (Analytics, Tag Manager y Calendar) para la medición y la agenda de visitas. No vendemos ni cedemos bases de datos.</p>
+
+    <h2 style="margin-top:34px">Cuánto los conservamos</h2>
+    <p>Los mensajes y presupuestos, mientras dure la relación comercial y el plazo de garantía. Los datos de navegación, según la retención configurada en Google Analytics (14 meses).</p>
+
+    <h2 style="margin-top:34px">Tus derechos</h2>
+    <p>Podés pedirnos acceso, rectificación, actualización o supresión de tus datos escribiéndonos a <a data-email href="#"></a>. Respondemos dentro de los plazos de la Ley 25.326 de Protección de los Datos Personales: 10 días corridos para el acceso y 5 días hábiles para la rectificación o supresión.</p>
+    <p style="margin-top:14px; color:var(--gris); font-size:.92rem">La Agencia de Acceso a la Información Pública, órgano de control de la Ley 25.326, tiene atribuida la atención de las denuncias y reclamos por incumplimiento de las normas sobre protección de datos personales.</p>
+
+    <h2 style="margin-top:34px">Cookies</h2>
+    <p>Usamos cookies propias para que el sitio funcione y de Google para medir el tráfico y la publicidad. Podés bloquearlas desde la configuración de tu navegador; el sitio sigue funcionando, pero no vamos a poder medir qué contenidos te sirvieron.</p>
+  </div>
+</section>
+'''
+    return layout(0, 'Política de privacidad | Clima Baires',
+        'Qué datos personales recoge climabaires.com, para qué se usan y cómo ejercer tus derechos según la Ley 25.326.',
+        c, f'{DOMINIO}/privacidad.html', jsonld_migas([('Inicio', '/'), ('Privacidad', '/privacidad.html')]), '',
+        pagina_id='privacidad')
+
+
+def pagina_terminos():
+    e = EMPRESA
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Términos</nav>
+    <h1>Términos y condiciones</h1>
+    <p class="bajada">Cómo contratamos, qué cubre la garantía y cómo arrepentirte de una compra.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:34px">
+  <div class="contenedor" style="max-width:760px">
+    <h2>Quién presta el servicio</h2>
+    <p>{e['razon_social']}, CUIT {e['cuit']}, domicilio {e['domicilio']}. Inicio de actividades: {e['inicio_actividades']}.</p>
+
+    <h2 style="margin-top:34px">Presupuestos</h2>
+    <p>El presupuesto que enviamos por WhatsApp o email es orientativo hasta la visita técnica. Después de la visita pasa a ser cerrado: incluye equipo, materiales, mano de obra y retiro de residuos de obra, y no cambia salvo que vos pidas algo distinto. Si durante la instalación aparece un imprevisto que suma costo, te lo mostramos y lo autorizás antes de hacerlo.</p>
+    <p style="margin-top:12px">La calculadora de frigorías del sitio es una herramienta orientativa y no reemplaza la visita técnica.</p>
+
+    <h2 id="revocacion" style="margin-top:34px">Derecho de revocación (botón de arrepentimiento)</h2>
+    <p>Como la contratación se hace fuera de nuestro establecimiento (a domicilio, por WhatsApp o por este sitio), tenés <strong>10 días corridos</strong> desde la firma del presupuesto o desde la entrega del equipo —lo que ocurra después— para arrepentirte sin costo ni justificación, según los artículos 34 de la Ley 24.240 y 1110 del Código Civil y Comercial. Para ejercerlo alcanza con escribirnos a <a data-email href="#"></a> o por WhatsApp. Si el equipo ya fue instalado, coordinamos el retiro; los gastos de devolución corren por nuestra cuenta.</p>
+
+    <h2 style="margin-top:34px">Garantías</h2>
+    <ul class="lista-check">
+      <li><strong>Del equipo</strong>: la que da el fabricante, según la marca y el modelo. Te entregamos la documentación y la factura, que es lo que la habilita.</li>
+      <li><strong>De la instalación</strong>: PENDIENTE — plazo de garantía de la mano de obra. Cubre defectos de montaje: pérdidas en las uniones, fallas de desagüe, fijaciones y puesta en marcha. Se reclama por WhatsApp o email y la atendemos sin cargo.</li>
+      <li>Quedan fuera de la garantía los daños por uso indebido, cortes de tensión, falta de mantenimiento o intervención de terceros.</li>
+    </ul>
+
+    <h2 style="margin-top:34px">Formas de pago</h2>
+    <p>Transferencia bancaria, tarjetas y cuotas. Las condiciones vigentes se detallan junto con el presupuesto.</p>
+
+    <h2 style="margin-top:34px">Marcas</h2>
+    <p>Las marcas de los fabricantes que aparecen en el sitio pertenecen a sus titulares y se muestran para indicar con qué equipos trabajamos. Clima Baires es un instalador independiente: salvo que se indique lo contrario, no somos distribuidor oficial ni servicio técnico autorizado de esas marcas.</p>
+
+    <h2 style="margin-top:34px">Reclamos</h2>
+    <p>Ante cualquier problema escribinos primero: resolvemos casi todo en el día. Si no llegamos a un acuerdo, podés iniciar un reclamo ante la autoridad de aplicación de Defensa del Consumidor de tu jurisdicción o a través del portal <a href="https://autogestion.produccion.gob.ar/consumidores" rel="noopener" target="_blank">Ventanilla Única Federal</a>.</p>
+  </div>
+</section>
+'''
+    return layout(0, 'Términos y condiciones | Clima Baires',
+        'Condiciones de contratación, presupuestos cerrados, garantía de instalación y derecho de revocación de 10 días.',
+        c, f'{DOMINIO}/terminos.html', jsonld_migas([('Inicio', '/'), ('Términos', '/terminos.html')]), '',
+        pagina_id='terminos')
+
+
 def pagina_404():
     c = '''
 <section class="seccion centrado" style="padding:120px 0">
@@ -1041,6 +1147,8 @@ paginas = {
     'calculadora-frigorias.html': pagina_calculadora(),
     'sobre-nosotros.html': pagina_nosotros(),
     'contacto.html': pagina_contacto(),
+    'privacidad.html': pagina_privacidad(),
+    'terminos.html': pagina_terminos(),
     '404.html': pagina_404(),
 }
 for z in ZONAS:
