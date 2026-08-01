@@ -21,73 +21,507 @@
   "presupuesto": {
     "total_eur": 15000,
     "partidas": [
-      { "bloque": "A — Constitución y legal (pago único)", "concepto": "Constitución SAS en IGJ (CABA)", "eur": 400, "fuente": "F8", "caracter": "estimacion", "nota": "Servicio integral con escribano y estatuto modelo ($696.875, presupuesto privado vigente hasta 31-08-2026); incluye tasas IGJ." },
-      { "bloque": "A — Constitución y legal (pago único)", "concepto": "Poderes + apostillas en España (×2)", "eur": 250, "caracter": "estimacion", "nota": "Notaría €60–150 c/u + apostilla; borrador visado antes por el escribano argentino." },
-      { "bloque": "A — Constitución y legal (pago único)", "concepto": "CUIT de no residentes (Pedro y Sebastián)", "eur": 200, "fuente": "F9", "caracter": "estimacion", "nota": "Sin arancel de ARCA; el costo es la gestoría/apoderado local (RG 5803/2025)." },
-      { "bloque": "A — Constitución y legal (pago único)", "concepto": "Marca «Clima Baires» en INPI (clases 11, 35 y 37)", "eur": 250, "fuente": "F10", "caracter": "estimacion", "nota": "Aranceles ≈ $117.000 (100 UMAPI/clase) + honorarios de agente de marcas." },
-      { "bloque": "A — Constitución y legal (pago único)", "concepto": "Pacto de socios (abogado societario)", "eur": 400, "caracter": "estimacion", "nota": "Incluye cláusulas de permanencia de Ignacio, vetos y salida. Imprescindible con equity asimétrico." },
-      { "bloque": "A — Constitución y legal (pago único)", "concepto": "Contador: alta fiscal y puesta en marcha", "eur": 150, "caracter": "estimacion", "nota": "Honorario inicial por inscripciones ARCA + Convenio Multilateral + MiPyME." },
-      { "bloque": "B — Puesta en marcha operativa (pago único)", "concepto": "Dominios climabaires.com + .com.ar (año 1)", "eur": 25, "fuente": "F22", "caracter": "verificado", "nota": ".com ≈ US$12; .com.ar $8.500 (NIC.ar, requiere CUIT)." },
-      { "bloque": "B — Puesta en marcha operativa (pago único)", "concepto": "Identidad aplicada: tarjetas, QR de reseñas, cartelería", "eur": 120, "caracter": "estimacion", "nota": "Imprenta local; el diseño ya está resuelto con el manual de marca." },
-      { "bloque": "B — Puesta en marcha operativa (pago único)", "concepto": "Teléfono comercial (equipo + chip + plan 4 meses)", "eur": 180, "caracter": "estimacion", "nota": "Línea exclusiva para WhatsApp Business; nunca el número personal." },
-      { "bloque": "B — Puesta en marcha operativa (pago único)", "concepto": "Instrumental de control de calidad (QA de obras)", "eur": 120, "caracter": "estimacion", "nota": "Manómetro, termómetro IR y anemómetro para que Ignacio audite las instalaciones subcontratadas." },
-      { "bloque": "C — Fijos septiembre–diciembre (4 meses)", "concepto": "Contador (honorarios mensuales ×4)", "eur": 400, "caracter": "estimacion", "nota": "≈ $176.000/mes para pyme chica de Convenio Multilateral." },
-      { "bloque": "C — Fijos septiembre–diciembre (4 meses)", "concepto": "Stack digital (Xubio + Workspace + varios ×4)", "eur": 380, "fuente": "F20", "caracter": "estimacion", "nota": "≈ $164.000/mes en versión mínima (detalle en sección 7)." },
-      { "bloque": "C — Fijos septiembre–diciembre (4 meses)", "concepto": "Seguros: RC empresa + AP de 2 instaladores (×4)", "eur": 620, "fuente": "F24", "caracter": "estimacion", "nota": "≈ $270.000/mes; requisito de acceso a countries. Cotizar en 3 brokers." },
-      { "bloque": "C — Fijos septiembre–diciembre (4 meses)", "concepto": "Autónomos de Ignacio como gerente (×4)", "eur": 320, "fuente": "F14", "caracter": "verificado", "nota": "Tabla I cat. III: $141.247/mes (valor 05-2026, ajusta mensualmente por IPC)." },
-      { "bloque": "C — Fijos septiembre–diciembre (4 meses)", "concepto": "Movilidad y combustible (×4)", "eur": 480, "caracter": "estimacion", "nota": "Vehículo propio de Ignacio; sin compra de utilitario en fase 1." },
-      { "bloque": "C — Fijos septiembre–diciembre (4 meses)", "concepto": "IIBB mínimos, comisiones bancarias y varios (×4)", "eur": 140, "fuente": "F16", "caracter": "estimacion", "nota": "Anticipo mínimo ARBA $10.967/mes + goteos administrativos." },
-      { "bloque": "D — Go-to-market septiembre–diciembre", "concepto": "Google Ads geolocalizado (facturación local +24%)", "eur": 900, "fuente": "F26", "caracter": "estimacion", "nota": "Escala $150k→$350k→$450k/mes sep→dic; CPL objetivo ≤ $9.000-12.000." },
-      { "bloque": "D — Go-to-market septiembre–diciembre", "concepto": "Meta Ads: Lead Ads + Reels de obra", "eur": 450, "fuente": "F26", "caracter": "estimacion", "nota": "$100k→$250k/mes; público 35-65 geolocalizado en los 5 municipios." },
-      { "bloque": "D — Go-to-market septiembre–diciembre", "concepto": "Canal countries: pauta Revista Nordelta + guías", "eur": 200, "caracter": "estimacion", "nota": "Tarifas no publicadas: pedir mediakit; alternativa costo cero: nota de caso de obra." },
-      { "bloque": "D — Go-to-market septiembre–diciembre", "concepto": "Instalaciones fundacionales (descuento lanzamiento)", "eur": 150, "caracter": "estimacion", "nota": "2-3 obras en septiembre a precio de lanzamiento: generan cartera AVN, reseñas y contenido." },
-      { "bloque": "E — Capital de trabajo y contingencias", "concepto": "Capital de trabajo (equipos contra pedido + goteo de retenciones)", "eur": 4200, "caracter": "estimacion", "nota": "Financia 3-4 obras simultáneas entre seña y cobro final + saldos IIBB a favor de los primeros meses." },
-      { "bloque": "E — Capital de trabajo y contingencias", "concepto": "Primera contratación: técnico en relación de dependencia (diciembre)", "eur": 1250, "fuente": "F13", "caracter": "estimacion", "nota": "1 mes de costo empleador total ≈ $2.183.000 (coef. 1,46 × bruto $1,5M). Se activa solo si el pico lo justifica." }
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Constitución SAS en IGJ (CABA)",
+        "eur": 400,
+        "fuente": "F8",
+        "caracter": "estimacion",
+        "nota": "Servicio integral con escribano y estatuto modelo ($696.875, presupuesto privado vigente hasta 31-08-2026); incluye tasas IGJ."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Poderes + apostillas en España (×2)",
+        "eur": 250,
+        "caracter": "estimacion",
+        "nota": "Notaría €60–150 c/u + apostilla; borrador visado antes por el escribano argentino."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "CUIT de no residentes (Pedro y Sebastián)",
+        "eur": 200,
+        "fuente": "F9",
+        "caracter": "estimacion",
+        "nota": "Sin arancel de ARCA; el costo es la gestoría/apoderado local (RG 5803/2025)."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Marca «Clima Baires» en INPI (clases 11, 35 y 37)",
+        "eur": 250,
+        "fuente": "F10",
+        "caracter": "estimacion",
+        "nota": "Aranceles ≈ $117.000 (100 UMAPI/clase) + honorarios de agente de marcas."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Pacto de socios (abogado societario)",
+        "eur": 400,
+        "caracter": "estimacion",
+        "nota": "Incluye cláusulas de permanencia de Ignacio, vetos y salida. Imprescindible con equity asimétrico."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Contador: alta fiscal y puesta en marcha",
+        "eur": 150,
+        "caracter": "estimacion",
+        "nota": "Honorario inicial por inscripciones ARCA + Convenio Multilateral + MiPyME."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Dominios climabaires.com + .com.ar (año 1)",
+        "eur": 25,
+        "fuente": "F22",
+        "caracter": "verificado",
+        "nota": ".com ≈ US$12; .com.ar $8.500 (NIC.ar, requiere CUIT)."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Identidad aplicada: tarjetas, QR de reseñas, cartelería",
+        "eur": 120,
+        "caracter": "estimacion",
+        "nota": "Imprenta local; el diseño ya está resuelto con el manual de marca."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Teléfono comercial (equipo + chip + plan 4 meses)",
+        "eur": 180,
+        "caracter": "estimacion",
+        "nota": "Línea exclusiva para WhatsApp Business; nunca el número personal."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Instrumental de control de calidad (QA de obras)",
+        "eur": 120,
+        "caracter": "estimacion",
+        "nota": "Manómetro, termómetro IR y anemómetro para que Ignacio audite las instalaciones subcontratadas."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Contador (honorarios mensuales ×4)",
+        "eur": 400,
+        "caracter": "estimacion",
+        "nota": "≈ $176.000/mes para pyme chica de Convenio Multilateral."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Stack digital (Xubio + Workspace + varios ×4)",
+        "eur": 380,
+        "fuente": "F20",
+        "caracter": "estimacion",
+        "nota": "≈ $164.000/mes en versión mínima (detalle en sección 7)."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Seguros: RC empresa + AP de 2 instaladores (×4)",
+        "eur": 620,
+        "fuente": "F24",
+        "caracter": "estimacion",
+        "nota": "≈ $270.000/mes; requisito de acceso a countries. Cotizar en 3 brokers."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Autónomos de Ignacio como gerente (×4)",
+        "eur": 320,
+        "fuente": "F14",
+        "caracter": "verificado",
+        "nota": "Tabla I cat. III: $141.247/mes (valor 05-2026, ajusta mensualmente por IPC)."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Movilidad y combustible (×4)",
+        "eur": 480,
+        "caracter": "estimacion",
+        "nota": "Vehículo propio de Ignacio; sin compra de utilitario en fase 1."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "IIBB mínimos, comisiones bancarias y varios (×4)",
+        "eur": 140,
+        "fuente": "F16",
+        "caracter": "estimacion",
+        "nota": "Anticipo mínimo ARBA $10.967/mes + goteos administrativos."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Google Ads geolocalizado (facturación local +24%)",
+        "eur": 900,
+        "fuente": "F26",
+        "caracter": "estimacion",
+        "nota": "Escala $150k→$350k→$450k/mes sep→dic; CPL objetivo ≤ $9.000-12.000."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Meta Ads: Lead Ads + Reels de obra",
+        "eur": 450,
+        "fuente": "F26",
+        "caracter": "estimacion",
+        "nota": "$100k→$250k/mes; público 35-65 geolocalizado en los 5 municipios."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Canal countries: pauta Revista Nordelta + guías",
+        "eur": 200,
+        "caracter": "estimacion",
+        "nota": "Tarifas no publicadas: pedir mediakit; alternativa costo cero: nota de caso de obra."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Instalaciones fundacionales (descuento lanzamiento)",
+        "eur": 150,
+        "caracter": "estimacion",
+        "nota": "2-3 obras en septiembre a precio de lanzamiento: generan cartera AVN, reseñas y contenido."
+      },
+      {
+        "bloque": "E — Capital de trabajo y contingencias",
+        "concepto": "Capital de trabajo (equipos contra pedido + goteo de retenciones)",
+        "eur": 4200,
+        "caracter": "estimacion",
+        "nota": "Financia 3-4 obras simultáneas entre seña y cobro final + saldos IIBB a favor de los primeros meses."
+      },
+      {
+        "bloque": "E — Capital de trabajo y contingencias",
+        "concepto": "Primera contratación: técnico en relación de dependencia (diciembre)",
+        "eur": 1250,
+        "fuente": "F13",
+        "caracter": "estimacion",
+        "nota": "1 mes de costo empleador total ≈ $2.183.000 (coef. 1,46 × bruto $1,5M). Se activa solo si el pico lo justifica."
+      }
     ]
   },
   "cronograma": [
-    { "tarea": "Aprobar plan y term sheet del pacto", "workstream": "legal", "semana0": true, "fechas": "28/07–02/08", "dia_inicio": 0, "dia_fin": 0, "responsable": "Los 3 socios", "dependencias": "—", "detalle": "Videollamada de socios: aprobar este plan, el reparto 40/30/30 con aportes iguales y la vía rápida de constitución." },
-    { "tarea": "Poder + apostilla de Pedro y Sebastián", "workstream": "legal", "semana0": true, "fechas": "28/07–08/08", "dia_inicio": 0, "dia_fin": 0, "responsable": "Pedro y Sebastián", "dependencias": "Borrador visado por escribano AR", "costo_eur": 250, "detalle": "Notaría en España + apostilla de La Haya. En español: no requiere traducción pública." },
-    { "tarea": "Documentación personal lista", "workstream": "legal", "semana0": true, "fechas": "28/07–02/08", "dia_inicio": 0, "dia_fin": 0, "responsable": "Pedro y Sebastián", "dependencias": "—", "detalle": "Pasaportes vigentes escaneados, constancia de no residencia, datos personales para el estatuto y CUIT." },
-    { "tarea": "Revisión monotributo de Ignacio", "workstream": "fiscal", "semana0": true, "fechas": "28/07–02/08", "dia_inicio": 0, "dia_fin": 0, "responsable": "Ignacio", "dependencias": "—", "detalle": "Chequear categoría y actividades declaradas antes de la recategorización que vence el 05-08." },
-
-    { "tarea": "Elegir contador", "workstream": "fiscal", "dia_inicio": 1, "dia_fin": 3, "responsable": "Ignacio", "dependencias": "—", "costo_eur": 150, "detalle": "Shortlist de 3 estudios pyme de zona norte con experiencia en SAS + Convenio Multilateral; alta inmediata." },
-    { "tarea": "Búsqueda de marca en INPI", "workstream": "legal", "dia_inicio": 1, "dia_fin": 2, "responsable": "Pedro (remoto)", "dependencias": "—", "detalle": "Búsqueda fonética manual en portaltramites.inpi.gob.ar (clases 11/35/37, variantes) — existe un «Clima Baires zona sur» informal en GBA." },
-    { "tarea": "Recategorización monotributo (vence 05/08)", "workstream": "fiscal", "dia_inicio": 2, "dia_fin": 3, "responsable": "Ignacio + Contador", "dependencias": "Contador elegido", "detalle": "Recategorizar y ajustar actividades para el puente. Regla crítica: no vender equipos >$716.841 por unidad a nombre propio." },
-    { "tarea": "Escribano + estatuto SAS + reserva de nombre", "workstream": "legal", "dia_inicio": 2, "dia_fin": 4, "responsable": "Ignacio", "dependencias": "Term sheet aprobado", "detalle": "SAS unipersonal de Ignacio (vía rápida); objeto: comercialización, instalación y mantenimiento de climatización." },
-    { "tarea": "Presentar marca INPI (3 clases)", "workstream": "legal", "dia_inicio": 4, "dia_fin": 5, "responsable": "Ignacio + agente", "dependencias": "Búsqueda INPI", "costo_eur": 250, "detalle": "A nombre de Ignacio con compromiso de cesión a la SAS. Sistema atributivo: gana el primero que registra." },
-    { "tarea": "Dominios + Workspace + línea WhatsApp", "workstream": "stack", "dia_inicio": 3, "dia_fin": 5, "responsable": "Pedro (remoto)", "dependencias": "—", "costo_eur": 205, "detalle": "climabaires.com y .com.ar; Google Workspace con ignacio@; chip nuevo exclusivo para WhatsApp Business." },
-    { "tarea": "Contacto inicial con mayoristas", "workstream": "ops", "dia_inicio": 4, "dia_fin": 7, "responsable": "Ignacio", "dependencias": "—", "detalle": "Clima Design (Martínez), Ansal y Refrigeración Polar: solicitar alta de cuenta gremio y listas de precios." },
-    { "tarea": "Cotizar seguros (3 brokers)", "workstream": "ops", "dia_inicio": 5, "dia_fin": 7, "responsable": "Sebastián (remoto)", "dependencias": "—", "detalle": "RC comprensiva $50-100M con no repetición + AP colectiva de instaladores. Pedir pliegos de requisitos de AVN/countries." },
-
-    { "tarea": "Presentar constitución SAS en IGJ", "workstream": "legal", "dia_inicio": 8, "dia_fin": 10, "responsable": "Escribano", "dependencias": "Estatuto + reserva", "costo_eur": 400, "detalle": "Trámite 100% digital (RG IGJ 5/2026) con estatuto modelo: inscripción esperada en 3-8 días hábiles." },
-    { "tarea": "Publicar web + GBP + redes", "workstream": "comercial", "dia_inicio": 8, "dia_fin": 10, "responsable": "Pedro (remoto)", "dependencias": "Dominio + WhatsApp", "detalle": "climabaires.com ya desarrollada; Google Business Profile de área de servicio; IG/LinkedIn con el kit digital." },
-    { "tarea": "Puente monotributo: vender y facturar", "workstream": "comercial", "dia_inicio": 9, "dia_fin": 21, "responsable": "Ignacio", "dependencias": "Recategorización", "detalle": "Presupuestos y primeras operaciones facturando Ignacio solo la instalación (el cliente compra el equipo al proveedor)." },
-    { "tarea": "Contratos con 2 instaladores subcontratados", "workstream": "personas", "dia_inicio": 10, "dia_fin": 12, "responsable": "Ignacio", "dependencias": "Modelo de contrato del abogado", "detalle": "Locación de obra por instalación + verificación de monotributo activo, AP con no repetición y certificación de instalador." },
-    { "tarea": "Visita y negociación con mayoristas", "workstream": "ops", "dia_inicio": 11, "dia_fin": 14, "responsable": "Ignacio", "dependencias": "Contacto inicial", "detalle": "Cerrar descuento gremio (15-30%), stock para retiro en 24-48h y condiciones de pago; prioridad Clima Design por cercanía." },
-
-    { "tarea": "SAS inscripta → CUIT de la sociedad", "workstream": "legal", "dia_inicio": 15, "dia_fin": 17, "responsable": "Escribano + Contador", "dependencias": "IGJ", "detalle": "Hito: CUIT casi automático en 24-48h tras la inscripción. Si IGJ demora, el puente monotributo sostiene la operación." },
-    { "tarea": "Altas ARCA: IVA + Ganancias + Convenio Multilateral", "workstream": "fiscal", "dia_inicio": 17, "dia_fin": 19, "responsable": "Contador", "dependencias": "CUIT SAS", "detalle": "Responsable inscripto + alta CM (CABA+PBA) vía Registro Único Tributario — único canal desde el 01-08-2026." },
-    { "tarea": "Certificado MiPyME", "workstream": "fiscal", "dia_inicio": 18, "dia_fin": 20, "responsable": "Contador", "dependencias": "CUIT SAS", "detalle": "F.1272 en trámite manual (sociedad sin ejercicio cerrado). Habilita IVA a 90 días, 100% imp. cheque y Cuotas MiPyME." },
-    { "tarea": "Cuenta bancaria (Brubank/Provincia) + carpeta banco grande", "workstream": "banca", "dia_inicio": 18, "dia_fin": 21, "responsable": "Ignacio", "dependencias": "CUIT + estatuto inscripto", "detalle": "Cuenta digital ágil primero; en paralelo carpeta en Santander (bonificado 12 meses) para crédito futuro." },
-    { "tarea": "Alta Mercado Pago empresa", "workstream": "banca", "dia_inicio": 19, "dia_fin": 20, "responsable": "Ignacio", "dependencias": "CUIT SAS", "detalle": "QR transferencia 0,8% + link de pago; liberación a 35 días para crédito (1,56%) salvo urgencia de caja." },
-    { "tarea": "Emitir pólizas RC + AP colectiva", "workstream": "ops", "dia_inicio": 19, "dia_fin": 21, "responsable": "Sebastián (remoto)", "dependencias": "Cotizaciones", "detalle": "Sin estas pólizas no se entra a ningún barrio cerrado. Póliza AP colectiva administrada por la empresa." },
-    { "tarea": "Alta Xubio + facturación electrónica", "workstream": "stack", "dia_inicio": 20, "dia_fin": 21, "responsable": "Contador + Pedro", "dependencias": "CUIT + punto de venta", "detalle": "ERP con CAE en tiempo real (RG 5782/5785); catálogo de servicios y plantilla de presupuesto cargados." },
-    { "tarea": "Instalaciones fundacionales (2-3 obras)", "workstream": "comercial", "dia_inicio": 15, "dia_fin": 21, "responsable": "Ignacio + subcontratados", "dependencias": "Contratos instaladores", "costo_eur": 150, "detalle": "Precio de lanzamiento a conocidos de la zona: generan la cartera de 2 clientes que exige AVN, las primeras reseñas y contenido." },
-
-    { "tarea": "Alta de proveedor en AVN Nordelta", "workstream": "comercial", "dia_inicio": 22, "dia_fin": 24, "responsable": "Ignacio", "dependencias": "Cartera 2 clientes + seguros", "detalle": "Formulario online AVN con AFIP, IIBB/CM, seguros con no repetición y cartera mínima. Llave del segmento premium." },
-    { "tarea": "Campañas Ads en modo testeo", "workstream": "comercial", "dia_inicio": 23, "dia_fin": 26, "responsable": "Pedro (remoto)", "dependencias": "Web + GBP publicados", "detalle": "Google Search $150k/mes concordancia de frase + Meta Lead Ads $100k/mes; facturación LOCAL en ARS (+24%), nunca tarjeta al exterior (+54%)." },
-    { "tarea": "Cuenta bancaria operativa + circuito de cobros", "workstream": "banca", "dia_inicio": 24, "dia_fin": 27, "responsable": "Ignacio", "dependencias": "Solicitud semana 3", "detalle": "Barrido semanal MP→banco; política de cobro: transferencia con descuento, 3 cuotas vía Cuotas MiPyME (6,91%)." },
-    { "tarea": "Primera factura de la SAS", "workstream": "fiscal", "dia_inicio": 25, "dia_fin": 27, "responsable": "Ignacio + Contador", "dependencias": "Altas ARCA + Xubio", "detalle": "Emisión A/B con CAE desde Xubio. Prever arranque con «A sujeta a retención» (RG 5762) hasta acreditar solvencia." },
-    { "tarea": "Tablero de KPIs + rutina de socios", "workstream": "personas", "dia_inicio": 26, "dia_fin": 28, "responsable": "Sebastián (remoto)", "dependencias": "—", "detalle": "Sheet compartido: leads, presupuestos, cierres, caja, obras. Videollamada semanal fija España-Argentina." },
-    { "tarea": "Cierre mes 1: checklist de operación plena", "workstream": "personas", "dia_inicio": 29, "dia_fin": 30, "responsable": "Los 3 socios", "dependencias": "Todo lo anterior", "detalle": "Repaso del checklist de la sección 11, presupuesto vs. real y decisión de escalar pauta en octubre." }
+    {
+      "tarea": "Aprobar plan y term sheet del pacto",
+      "workstream": "legal",
+      "semana0": true,
+      "fechas": "28/07–02/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Los 3 socios",
+      "dependencias": "—",
+      "detalle": "Videollamada de socios: aprobar este plan, el reparto 40/30/30 con aportes iguales y la vía rápida de constitución."
+    },
+    {
+      "tarea": "Poder + apostilla de Pedro y Sebastián",
+      "workstream": "legal",
+      "semana0": true,
+      "fechas": "28/07–08/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Pedro y Sebastián",
+      "dependencias": "Borrador visado por escribano AR",
+      "costo_eur": 250,
+      "detalle": "Notaría en España + apostilla de La Haya. En español: no requiere traducción pública."
+    },
+    {
+      "tarea": "Documentación personal lista",
+      "workstream": "legal",
+      "semana0": true,
+      "fechas": "28/07–02/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Pedro y Sebastián",
+      "dependencias": "—",
+      "detalle": "Pasaportes vigentes escaneados, constancia de no residencia, datos personales para el estatuto y CUIT."
+    },
+    {
+      "tarea": "Revisión monotributo de Ignacio",
+      "workstream": "fiscal",
+      "semana0": true,
+      "fechas": "28/07–02/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Ignacio",
+      "dependencias": "—",
+      "detalle": "Chequear categoría y actividades declaradas antes de la recategorización que vence el 05-08."
+    },
+    {
+      "tarea": "Elegir contador",
+      "workstream": "fiscal",
+      "dia_inicio": 1,
+      "dia_fin": 3,
+      "responsable": "Ignacio",
+      "dependencias": "—",
+      "costo_eur": 150,
+      "detalle": "Shortlist de 3 estudios pyme de zona norte con experiencia en SAS + Convenio Multilateral; alta inmediata."
+    },
+    {
+      "tarea": "Búsqueda de marca en INPI",
+      "workstream": "legal",
+      "dia_inicio": 1,
+      "dia_fin": 2,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "—",
+      "detalle": "Búsqueda fonética manual en portaltramites.inpi.gob.ar (clases 11/35/37, variantes) — existe un «Clima Baires zona sur» informal en GBA."
+    },
+    {
+      "tarea": "Recategorización monotributo (vence 05/08)",
+      "workstream": "fiscal",
+      "dia_inicio": 2,
+      "dia_fin": 3,
+      "responsable": "Ignacio + Contador",
+      "dependencias": "Contador elegido",
+      "detalle": "Recategorizar y ajustar actividades para el puente. Regla crítica: no vender equipos >$716.841 por unidad a nombre propio."
+    },
+    {
+      "tarea": "Escribano + estatuto SAS + reserva de nombre",
+      "workstream": "legal",
+      "dia_inicio": 2,
+      "dia_fin": 4,
+      "responsable": "Ignacio",
+      "dependencias": "Term sheet aprobado",
+      "detalle": "SAS unipersonal de Ignacio (vía rápida); objeto: comercialización, instalación y mantenimiento de climatización."
+    },
+    {
+      "tarea": "Presentar marca INPI (3 clases)",
+      "workstream": "legal",
+      "dia_inicio": 4,
+      "dia_fin": 5,
+      "responsable": "Ignacio + agente",
+      "dependencias": "Búsqueda INPI",
+      "costo_eur": 250,
+      "detalle": "A nombre de Ignacio con compromiso de cesión a la SAS. Sistema atributivo: gana el primero que registra."
+    },
+    {
+      "tarea": "Dominios + Workspace + línea WhatsApp",
+      "workstream": "stack",
+      "dia_inicio": 3,
+      "dia_fin": 5,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "—",
+      "costo_eur": 205,
+      "detalle": "climabaires.com y .com.ar; Google Workspace con ignacio@; chip nuevo exclusivo para WhatsApp Business."
+    },
+    {
+      "tarea": "Contacto inicial con mayoristas",
+      "workstream": "ops",
+      "dia_inicio": 4,
+      "dia_fin": 7,
+      "responsable": "Ignacio",
+      "dependencias": "—",
+      "detalle": "Clima Design (Martínez), Ansal y Refrigeración Polar: solicitar alta de cuenta gremio y listas de precios."
+    },
+    {
+      "tarea": "Cotizar seguros (3 brokers)",
+      "workstream": "ops",
+      "dia_inicio": 5,
+      "dia_fin": 7,
+      "responsable": "Sebastián (remoto)",
+      "dependencias": "—",
+      "detalle": "RC comprensiva $50-100M con no repetición + AP colectiva de instaladores. Pedir pliegos de requisitos de AVN/countries."
+    },
+    {
+      "tarea": "Presentar constitución SAS en IGJ",
+      "workstream": "legal",
+      "dia_inicio": 8,
+      "dia_fin": 10,
+      "responsable": "Escribano",
+      "dependencias": "Estatuto + reserva",
+      "costo_eur": 400,
+      "detalle": "Trámite 100% digital (RG IGJ 5/2026) con estatuto modelo: inscripción esperada en 3-8 días hábiles."
+    },
+    {
+      "tarea": "Publicar web + GBP + redes",
+      "workstream": "comercial",
+      "dia_inicio": 8,
+      "dia_fin": 10,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "Dominio + WhatsApp",
+      "detalle": "climabaires.com ya desarrollada; Google Business Profile verificado con el domicilio de Maure (Belgrano) pero oculto al público, con las 6 zonas de servicio; IG/LinkedIn con el kit digital."
+    },
+    {
+      "tarea": "Puente monotributo: vender y facturar",
+      "workstream": "comercial",
+      "dia_inicio": 9,
+      "dia_fin": 21,
+      "responsable": "Ignacio",
+      "dependencias": "Recategorización",
+      "detalle": "Presupuestos y primeras operaciones facturando Ignacio solo la instalación (el cliente compra el equipo al proveedor)."
+    },
+    {
+      "tarea": "Contratos con 2 instaladores subcontratados",
+      "workstream": "personas",
+      "dia_inicio": 10,
+      "dia_fin": 12,
+      "responsable": "Ignacio",
+      "dependencias": "Modelo de contrato del abogado",
+      "detalle": "Locación de obra por instalación + verificación de monotributo activo, AP con no repetición y certificación de instalador."
+    },
+    {
+      "tarea": "Visita y negociación con mayoristas",
+      "workstream": "ops",
+      "dia_inicio": 11,
+      "dia_fin": 14,
+      "responsable": "Ignacio",
+      "dependencias": "Contacto inicial",
+      "detalle": "Cerrar descuento gremio (15-30%), stock para retiro en 24-48h y condiciones de pago; prioridad Clima Design por cercanía."
+    },
+    {
+      "tarea": "SAS inscripta → CUIT de la sociedad",
+      "workstream": "legal",
+      "dia_inicio": 15,
+      "dia_fin": 17,
+      "responsable": "Escribano + Contador",
+      "dependencias": "IGJ",
+      "detalle": "Hito: CUIT casi automático en 24-48h tras la inscripción. Si IGJ demora, el puente monotributo sostiene la operación."
+    },
+    {
+      "tarea": "Altas ARCA: IVA + Ganancias + Convenio Multilateral",
+      "workstream": "fiscal",
+      "dia_inicio": 17,
+      "dia_fin": 19,
+      "responsable": "Contador",
+      "dependencias": "CUIT SAS",
+      "detalle": "Responsable inscripto + alta CM (CABA+PBA) vía Registro Único Tributario — único canal desde el 01-08-2026."
+    },
+    {
+      "tarea": "Certificado MiPyME",
+      "workstream": "fiscal",
+      "dia_inicio": 18,
+      "dia_fin": 20,
+      "responsable": "Contador",
+      "dependencias": "CUIT SAS",
+      "detalle": "F.1272 en trámite manual (sociedad sin ejercicio cerrado). Habilita IVA a 90 días, 100% imp. cheque y Cuotas MiPyME."
+    },
+    {
+      "tarea": "Cuenta bancaria (Brubank/Provincia) + carpeta banco grande",
+      "workstream": "banca",
+      "dia_inicio": 18,
+      "dia_fin": 21,
+      "responsable": "Ignacio",
+      "dependencias": "CUIT + estatuto inscripto",
+      "detalle": "Cuenta digital ágil primero; en paralelo carpeta en Santander (bonificado 12 meses) para crédito futuro."
+    },
+    {
+      "tarea": "Alta Mercado Pago empresa",
+      "workstream": "banca",
+      "dia_inicio": 19,
+      "dia_fin": 20,
+      "responsable": "Ignacio",
+      "dependencias": "CUIT SAS",
+      "detalle": "QR transferencia 0,8% + link de pago; liberación a 35 días para crédito (1,56%) salvo urgencia de caja."
+    },
+    {
+      "tarea": "Emitir pólizas RC + AP colectiva",
+      "workstream": "ops",
+      "dia_inicio": 19,
+      "dia_fin": 21,
+      "responsable": "Sebastián (remoto)",
+      "dependencias": "Cotizaciones",
+      "detalle": "Sin estas pólizas no se entra a ningún barrio cerrado. Póliza AP colectiva administrada por la empresa."
+    },
+    {
+      "tarea": "Alta Xubio + facturación electrónica",
+      "workstream": "stack",
+      "dia_inicio": 20,
+      "dia_fin": 21,
+      "responsable": "Contador + Pedro",
+      "dependencias": "CUIT + punto de venta",
+      "detalle": "ERP con CAE en tiempo real (RG 5782/5785); catálogo de servicios y plantilla de presupuesto cargados."
+    },
+    {
+      "tarea": "Instalaciones fundacionales (2-3 obras)",
+      "workstream": "comercial",
+      "dia_inicio": 15,
+      "dia_fin": 21,
+      "responsable": "Ignacio + subcontratados",
+      "dependencias": "Contratos instaladores",
+      "costo_eur": 150,
+      "detalle": "Precio de lanzamiento a conocidos de la zona: generan la cartera de 2 clientes que exige AVN, las primeras reseñas y contenido."
+    },
+    {
+      "tarea": "Alta de proveedor en AVN Nordelta",
+      "workstream": "comercial",
+      "dia_inicio": 22,
+      "dia_fin": 24,
+      "responsable": "Ignacio",
+      "dependencias": "Cartera 2 clientes + seguros",
+      "detalle": "Formulario online AVN con AFIP, IIBB/CM, seguros con no repetición y cartera mínima. Llave del segmento premium."
+    },
+    {
+      "tarea": "Campañas Ads en modo testeo",
+      "workstream": "comercial",
+      "dia_inicio": 23,
+      "dia_fin": 26,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "Web + GBP publicados",
+      "detalle": "Cuenta AR bajo la MCC de Málaga: portar estructura, negativas y copies ganadores del histórico (>€16.000 invertidos). Search $150k/mes + Meta $100k/mes; facturación LOCAL en ARS (+24%), nunca tarjeta al exterior (+54%)."
+    },
+    {
+      "tarea": "Cuenta bancaria operativa + circuito de cobros",
+      "workstream": "banca",
+      "dia_inicio": 24,
+      "dia_fin": 27,
+      "responsable": "Ignacio",
+      "dependencias": "Solicitud semana 3",
+      "detalle": "Barrido semanal MP→banco; política de cobro: transferencia con descuento, 3 cuotas vía Cuotas MiPyME (7,78% + IVA, vig. 30-01-2026)."
+    },
+    {
+      "tarea": "Primera factura de la SAS",
+      "workstream": "fiscal",
+      "dia_inicio": 25,
+      "dia_fin": 27,
+      "responsable": "Ignacio + Contador",
+      "dependencias": "Altas ARCA + Xubio",
+      "detalle": "Emisión A/B con CAE desde Xubio. Prever arranque con «A sujeta a retención» (RG 5762) hasta acreditar solvencia."
+    },
+    {
+      "tarea": "Tablero de KPIs + rutina de socios",
+      "workstream": "personas",
+      "dia_inicio": 26,
+      "dia_fin": 28,
+      "responsable": "Sebastián (remoto)",
+      "dependencias": "—",
+      "detalle": "Sheet compartido: leads, presupuestos, cierres, caja, obras. Videollamada semanal fija España-Argentina."
+    },
+    {
+      "tarea": "Cierre mes 1: checklist de operación plena",
+      "workstream": "personas",
+      "dia_inicio": 29,
+      "dia_fin": 30,
+      "responsable": "Los 3 socios",
+      "dependencias": "Todo lo anterior",
+      "detalle": "Repaso del checklist de la sección 11, presupuesto vs. real y decisión de escalar pauta en octubre."
+    }
   ],
   "stack": [
-    { "item": "Xubio — plan Empresa Básico", "rol": "ERP + facturación CAE (el «Holded argentino»)", "ars_mes": 114800, "fuente": "F20", "nota": "Con débito bancario; hoy en promoción a ~$57.400. IVA recuperable como crédito fiscal." },
-    { "item": "Google Workspace Business Starter ×3", "rol": "Email @climabaires.com, Calendar, Drive, Forms", "ars_mes": 48500, "fuente": "F21", "nota": "US$7/usuario + ~53% de impuestos sobre SaaS del exterior." },
-    { "item": "Agenda + checklist de obra (Calendar + Forms)", "rol": "Field service lean del arranque", "ars_mes": 0, "nota": "Incluido en Workspace; upgrade natural: Kizeo Forms (€15/usuario) con 2+ técnicos en calle." },
-    { "item": "WhatsApp Business (app)", "rol": "Canal de venta y posventa", "ars_mes": 0, "nota": "Gratis; API (~US$30-49/mes) recién con >30-50 conversaciones/día." },
-    { "item": "Web climabaires.com (estática) + hosting", "rol": "Captación + SEO local (ya desarrollada)", "ars_mes": 0, "nota": "Cloudflare Pages/Netlify gratis con SSL." },
-    { "item": "Dominios .com + .com.ar (prorrateo mensual)", "rol": "Marca digital", "ars_mes": 710, "fuente": "F22", "nota": ".com.ar $8.500/año vía NIC.ar (requiere CUIT)." }
+    {
+      "item": "Xubio — plan Empresa Básico",
+      "rol": "ERP + facturación CAE (el «Holded argentino»)",
+      "ars_mes": 114800,
+      "fuente": "F20",
+      "nota": "Con débito bancario; hoy en promoción a ~$57.400. IVA recuperable como crédito fiscal."
+    },
+    {
+      "item": "Google Workspace Business Starter ×3",
+      "rol": "Email @climabaires.com, Calendar, Drive, Forms",
+      "ars_mes": 48500,
+      "fuente": "F21",
+      "nota": "US$7/usuario + ~53% de impuestos sobre SaaS del exterior."
+    },
+    {
+      "item": "Agenda + checklist de obra (Calendar + Forms)",
+      "rol": "Field service lean del arranque",
+      "ars_mes": 0,
+      "nota": "Incluido en Workspace; upgrade natural: Kizeo Forms (€15/usuario) con 2+ técnicos en calle."
+    },
+    {
+      "item": "WhatsApp Business (app)",
+      "rol": "Canal de venta y posventa",
+      "ars_mes": 0,
+      "nota": "Gratis; API (~US$30-49/mes) recién con >30-50 conversaciones/día."
+    },
+    {
+      "item": "Web climabaires.com (estática) + hosting",
+      "rol": "Captación + SEO local (ya desarrollada)",
+      "ars_mes": 0,
+      "nota": "Cloudflare Pages/Netlify gratis con SSL."
+    },
+    {
+      "item": "Dominios .com + .com.ar (prorrateo mensual)",
+      "rol": "Marca digital",
+      "ars_mes": 710,
+      "fuente": "F22",
+      "nota": ".com.ar $8.500/año vía NIC.ar (requiere CUIT)."
+    }
   ]
 }

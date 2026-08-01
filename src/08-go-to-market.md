@@ -4,7 +4,7 @@ Lanzamiento septiembre → rodaje octubre-noviembre → pico diciembre-febrero (
 
 ## 8.1 SEO local por localidad (costo: $ 0 + constancia)
 
-- **Google Business Profile como «empresa de área de servicio»** (sin dirección visible — permitido y recomendado sin local): categorías de climatización, las 6 zonas cargadas, servicios con precio «desde», fotos geolocalizadas de cada obra, mensajería con respuesta < 5 min.
+- **Google Business Profile como «empresa de área de servicio»**: se registra y verifica con el domicilio real de Ignacio (Calle Maure, Belgrano) — lo que facilita la verificación y ancla el perfil en el eje Belgrano-Núñez — pero con la **dirección oculta** al público y las 6 zonas de servicio cargadas (formato correcto para negocios a domicilio). Categorías de climatización, servicios con precio «desde», fotos geolocalizadas de cada obra, mensajería con respuesta < 5 min.
 - **La web ya está construida** (carpeta `/web` del repo, lista para publicar): landing por localidad — Núñez, Vicente López, San Isidro, Tigre, Nordelta, Pilar — con schema.org, calculadora de frigorías como imán de leads y botón WhatsApp en todo el sitio. Publicarla es tarea del día 8-10 del cronograma.
 - Táctica copiada del competidor que mejor lo hace (Genz Clima): **publicar precios orientativos** — captura la búsqueda informacional y filtra curiosos.
 - Objetivo 90 días: top 3 del «map pack» en ≥ 2 municipios antes del pico.
@@ -19,6 +19,16 @@ Lanzamiento septiembre → rodaje octubre-noviembre → pico diciembre-febrero (
 6. Requisito operativo no negociable: instaladores con AP vigente + no repetición cargados en los sistemas de acceso de cada barrio **antes** de agendar — un certificado vencido frena la obra en la barrera.
 
 ## 8.3 Publicidad paga (presupuesto del bloque D de la sección 5)
+
+**El activo heredado: la cuenta de Google Ads de Málaga.** Clima Baires España lleva **más de € 16.000 invertidos** en el rubro exacto — eso es un histórico de datos que ningún competidor local del corredor tiene. Cómo se aprovecha sin empezar de cero:
+
+1. **Misma cuenta administrador (MCC)**: crear la cuenta argentina debajo de la MCC existente — gobernanza y facturación separadas (la argentina factura local en ARS), aprendizaje compartido.
+2. **Portar la estructura**, no las campañas: grupos de anuncios por intención (instalación / recambio / service / urgencia) tal como ya demostró funcionar en Málaga, con keywords traducidas al léxico argentino («aire acondicionado» ≡ «split», «frigorías» en lugar de «kW/frigorías ES», «zona norte», nombres de municipios y barrios).
+3. **Exportar los informes de términos de búsqueda de 2-3 años**: la lista de **negativas** ya depurada (curiosos, repuestos, alquiler, empleo…) y las consultas que convierten — es el atajo que más presupuesto ahorra en los primeros 90 días.
+4. **Copies ganadores**: los anuncios con mejor CTR/CVR de Málaga se adaptan (transparencia de precio, presupuesto en el día, posventa) — el mensaje ya está validado en el mismo negocio.
+5. **Benchmarks propios**: CPA y tasas de conversión reales de Málaga como vara inicial para juzgar el rendimiento argentino desde la semana 1 (ajustando por estacionalidad invertida y CPC local).
+6. Lo que **no** viaja: audiencias, historial de calidad y conversiones (son por cuenta/país). El píxel y las conversiones argentinas se configuran desde el día 1 para construir el histórico local.
+
 
 | Canal | Sep | Oct | Nov | Nota técnica |
 |---|---|---|---|---|

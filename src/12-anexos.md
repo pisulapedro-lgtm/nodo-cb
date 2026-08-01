@@ -59,7 +59,7 @@
 
 ## 12.4 Fuentes citadas (con fecha de consulta)
 
-Convención: [Fn] en el texto → fila de esta tabla. Tipos: oficial (organismo), profesional (estudios/portales especializados), comercial (proveedor), prensa, mercado.
+Las 14 cifras más sensibles del documento (TC, IVA, dividendos, escala de Ganancias, costos SAS, alícuotas IIBB, topes de monotributo, comisiones de cobro, impuestos sobre SaaS, costo laboral, dominios y escala UOM) fueron además contrastadas contra fuentes primarias en una pasada de verificación independiente el 01-08-2026: 11 confirmadas, 3 con matices incorporados al texto y 1 corregida (tasas de Cuotas MiPyME). Convención: [Fn] en el texto → fila de esta tabla. Tipos: oficial (organismo), profesional (estudios/portales especializados), comercial (proveedor), prensa, mercado.
 
 {{tabla_fuentes}}
 

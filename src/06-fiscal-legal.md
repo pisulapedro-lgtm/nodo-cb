@@ -57,14 +57,14 @@ Si el crecimiento exige un depósito en 2027: **San Isidro**, nunca Pilar ni Tig
 
 ## 6.6 Costo laboral y convenio colectivo
 
-- Convenio de los técnicos instaladores: **UOM CCT 260/75, Rama 17** (refrigeración y A/A) [F13]. Escala congelada desde abril 2026 por la intervención judicial del gremio — prever recomposición. Oficial: $ 5.958,84/h ≈ $ 1.048.756/mes; ingreso mínimo de referencia $ 1.036.390.
+- Convenio de los técnicos instaladores: **UOM CCT 260/75, Rama 17** (metalmecánica; incluye climatización — el encuadre exacto es interpretativo) [F13]. Escala congelada desde abril 2026 por la intervención judicial del gremio, con paritaria reactivándose en julio: prever recomposición. [VALIDAR CON ABOGADO] Oficial: $ 5.958,84/h ≈ $ 1.048.756/mes; ingreso mínimo de referencia $ 1.036.390.
 - Administrativos/vendedores: CCT 130/75 Comercio [F44] (básico jul-2026 ≈ $ 1.240.000 + presentismo).
-- **Costo empleador total de un técnico** (bruto de mercado $ 1.500.000): con SAC prorrateado, plus vacacional, contribuciones PyME ~24%, ART ~7% † y ropa/EPP → **≈ $ 2.183.000/mes (€ 1.240) — regla rápida: bruto × 1,45-1,55** [F13]. Detalle completo y esquema de subcontratación segura: sección 9.
+- **Costo empleador total de un técnico** (bruto de mercado $ 1.500.000): con SAC prorrateado, plus vacacional, contribuciones PyME ~24%, ART ~7% † y ropa/EPP → **≈ $ 2.183.000/mes (€ 1.240) — regla rápida: bruto × 1,45-1,55 †** [F13] (coeficiente práctico; el resultado real depende de la alícuota ART cotizada). Detalle completo y esquema de subcontratación segura: sección 9.
 - La reforma laboral (Leyes 27.742 y 27.802) derogó las multas por empleo no registrado y blindó la contratación de monotributistas con factura y pago bancarizado [F39] — pero la primacía de la realidad sigue vigente: el checklist antifraude de la sección 9 no es opcional.
 
 ## 6.7 Beneficios MiPyME (tramitar en semana 3)
 
-Categoría esperable: **Micro** (topes 2026: comercio $ 1.738M / servicios $ 374M de ventas anuales [F33]). Beneficios que importan a esta caja [F34]: **IVA a 90 días** (capital de trabajo gratis ≈ 2 meses de IVA), **100% del impuesto al cheque a cuenta de Ganancias**, contribuciones reducidas, y acceso a **Cuotas MiPyME** (3 cuotas al 6,91% [F28]) y crédito subsidiado (BCRA tope informado 49% TNA vs ~78% de mercado). El certificado además mejora el trato en los padrones de retención. Sociedad sin ejercicio cerrado: trámite manual, sale igual. [VALIDAR CON CONTADOR]
+Categoría esperable: **Micro** (topes 2026: comercio $ 1.738M / servicios $ 374M de ventas anuales [F33]). Beneficios que importan a esta caja [F34]: **IVA a 90 días** (capital de trabajo gratis ≈ 2 meses de IVA), **100% del impuesto al cheque a cuenta de Ganancias**, contribuciones reducidas, y acceso a **Cuotas MiPyME** (3 cuotas al 7,78% + IVA, vigencia 30-01-2026 [F28]) y crédito subsidiado (BCRA tope informado 49% TNA vs ~78% de mercado). El certificado además mejora el trato en los padrones de retención. Sociedad sin ejercicio cerrado: trámite manual, sale igual. [VALIDAR CON CONTADOR]
 
 ## 6.8 Calendario fiscal mensual (la rutina desde octubre)
 

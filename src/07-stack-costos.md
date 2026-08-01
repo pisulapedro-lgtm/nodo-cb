@@ -1,6 +1,6 @@
 # 7. Stack tecnológico y costos mensuales
 
-Criterio: replicar la experiencia Holded + Google Workspace de Málaga con herramientas argentinas, al mínimo costo que no hipoteque la operación. Todo SaaS argentino se publica + IVA 21% (recuperable siendo Responsable Inscripto); todo SaaS del exterior pagado con tarjeta argentina suma ~53-56% de impuestos [F21].
+Criterio: replicar la experiencia Holded + Google Workspace de Málaga con herramientas argentinas, al mínimo costo que no hipoteque la operación. Todo SaaS argentino se publica + IVA 21% (recuperable siendo Responsable Inscripto); todo SaaS del exterior pagado con tarjeta argentina suma ~53-56% de impuestos [F21] — de los cuales la percepción del 30% es pago a cuenta recuperable para una sociedad inscripta: costo financiero, no económico.
 
 ## 7.1 El stack del día 1
 
@@ -25,8 +25,8 @@ Fase 1 (lean, $ 0): **Google Calendar** (agenda de obras compartida) + **Google 
 ## 7.4 Comunicación y cobros digitales
 
 - **WhatsApp Business App (gratis)** como canal central — con catálogo, etiquetas-embudo y respuestas rápidas ya diseñadas en el kit digital del repo. API (~US$ 30-49/mes) recién con >30-50 conversaciones/día.
-- **Mercado Pago empresa**: QR transferencia 0,8% acreditación inmediata; link de pago crédito **1,56% a 35 días** (la opción barata) o 6,60% al instante (solo urgencias) [F27]. Retenciones de IVA/Ganancias sobre cobros electrónicos: **derogadas desde 09-2024** [F29] — solo queda el goteo de IIBB.
-- **Cuotas al cliente**: con certificado MiPyME, **Cuotas MiPyME por Payway: 3 cuotas al 6,91% directo / 6 al 13,52%** [F28] (el programa estatal Cuota Simple terminó en 2025). Política comercial: transferencia con 5-10% de descuento; 3 cuotas absorbidas; 6+ cuotas con interés a cargo del cliente.
+- **Mercado Pago empresa**: QR transferencia 0,8% acreditación inmediata; link de pago crédito **1,56% a 35 días** (la opción barata) o 6,60% al instante (solo urgencias) — valores CABA/GBA, varían por provincia y MP los ajusta con frecuencia [F27]. Retenciones de IVA/Ganancias sobre cobros electrónicos: **derogadas desde 09-2024** [F29] — solo queda el goteo de IIBB.
+- **Cuotas al cliente**: con certificado MiPyME, **Cuotas MiPyME por Payway: 3 cuotas al 7,78% / 6 al 14,56% de tasa directa + IVA** (vigencia 30-01-2026; Payway las actualiza sin preaviso) [F28] — el programa estatal Cuota Simple terminó en 2025. Política comercial: transferencia con 5-10% de descuento; 3 cuotas absorbidas; 6+ cuotas con interés a cargo del cliente.
 - **MercadoLibre**: solo como vidriera de equipos con «instalación premium incluida» (comisión ≈ 13-16% + IVA [F40]); no es canal de leads de instalación. Mercado Shops está discontinuado: la tienda propia es climabaires.com.
 
 ## 7.5 Costo mensual total del stack

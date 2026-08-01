@@ -31,7 +31,7 @@
 | Puesto | Esquema | Costo mensual total | Cuándo |
 |---|---|---|---|
 | Instalador subcontratado | Locación de obra + AP | ≈ $ 120.000-180.000 **por obra** † (según complejidad; tarifario CAR [F36]) + AP $ 15-20.000/mes si la paga la empresa [F24] | Desde el día 1 |
-| Técnico en dependencia (UOM Rama 17) | Bruto $ 1.500.000 × coef. 1,46 | **≈ $ 2.183.000/mes (€ 1.240)** [F13] | Diciembre, si el pipeline > 15 obras/mes |
+| Técnico en dependencia (UOM Rama 17) | Bruto $ 1.500.000 × coef. ≈ 1,46 † | **≈ $ 2.183.000/mes (€ 1.240)** [F13] | Diciembre, si el pipeline > 15 obras/mes |
 | Administrativo/comercial (CCT 130/75) | Bruto $ 1.350.000-1.500.000 | ≈ $ 1.950.000-2.100.000/mes [F44] | Fase 2 (2027), cuando Ignacio no dé abasto |
 | Ignacio (gerente) | Autónomos obligatorios + honorarios | Autónomos ≈ $ 141.000/mes [F14]; **sin sueldo del capital en 2026** | — |
 
