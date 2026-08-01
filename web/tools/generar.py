@@ -9,6 +9,32 @@ import os, json
 RAIZ = os.path.join(os.path.dirname(__file__), '..')
 DOMINIO = 'https://climabaires.com'
 
+# ---------------- FOTOS DE OBRAS ----------------
+# Índice generado por tools/fotos.py (ver web/README.md → "Cómo añadir fotos").
+# Si no existe, el sitio se genera igual con el hero de degradado y sin galería.
+RUTA_INDICE_OBRAS = os.path.join(RAIZ, 'assets', 'img', 'obras', 'index.json')
+try:
+    with open(RUTA_INDICE_OBRAS, encoding='utf-8') as _f:
+        _idx = json.load(_f)
+    FOTOS, ZONAS_FOTO, TIPOS_FOTO = _idx['fotos'], _idx['zonas'], _idx['tipos']
+except FileNotFoundError:
+    FOTOS, ZONAS_FOTO, TIPOS_FOTO = [], {}, {}
+HAY_FOTOS = bool(FOTOS)
+DESTACADAS = [f for f in FOTOS if f.get('destacada')][:6]
+PARES_AD = {}
+for _f in FOTOS:
+    if _f.get('par'):
+        PARES_AD.setdefault(_f['par'], []).append(_f)
+PARES_AD = {k: v for k, v in PARES_AD.items() if len(v) == 2}
+
+
+def img_obra(foto, p='', sizes='(max-width: 560px) 100vw, (max-width: 900px) 50vw, 350px', lazy=True):
+    """<img> responsive de una obra: srcset 800/1600, width/height (sin CLS), lazy."""
+    base = f'{p}assets/img/obras/{foto["slug"]}'
+    lz = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"'
+    return (f'<img src="{base}-800.webp" srcset="{base}-800.webp 800w, {base}-1600.webp 1600w" '
+            f'sizes="{sizes}" width="{foto["w800"]}" height="{foto["h800"]}" alt="{foto["alt"]}"{lz}>')
+
 ZONAS = [
     ('nunez', 'Núñez', 'CABA',
      'Núñez y el bajo Belgrano: casas, PH y departamentos con instalaciones que exigen prolijidad, silencio y respeto por el edificio.',
@@ -42,11 +68,14 @@ SVC_ICONS = {
     'mantenimiento': '<svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm-1.1 15.4-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z"/></svg>',
 }
 
-def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo=''):
+def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo='',
+           og_image=None, pagina_id='', zona_nombre='', wsp_barra=None):
     p = '../' * depth
     def act(k):
         return ' class="activo"' if activo == k else ''
     ld = ('<script type="application/ld+json">%s</script>' % json.dumps(jsonld, ensure_ascii=False)) if jsonld else ''
+    og = og_image or f'{DOMINIO}/assets/img/icon-512.png'
+    barra_msj = wsp_barra or 'Hola Clima Baires, quiero pedir un presupuesto.'
     return f'''<!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -59,14 +88,15 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 <meta property="og:title" content="{titulo}">
 <meta property="og:description" content="{descripcion}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{DOMINIO}/assets/img/icon-512.png">
+<meta property="og:image" content="{og}">
 <meta property="og:locale" content="es_AR">
 <link rel="icon" type="image/png" sizes="48x48" href="{p}assets/img/favicon-48.png">
 <link rel="apple-touch-icon" href="{p}assets/img/icon-192.png">
 <link rel="stylesheet" href="{p}assets/css/styles.css">
+<script>window.dataLayer = window.dataLayer || [];</script>
 {ld}
 </head>
-<body>
+<body data-pagina="{pagina_id}" data-zona="{zona_nombre}">
 <header class="top">
   <div class="contenedor top-inner">
     <a class="logo" href="{p}index.html" aria-label="Clima Baires — inicio">
@@ -75,11 +105,12 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
     <nav class="nav">
       <a href="{p}index.html"{act('inicio')}>Inicio</a>
       <a href="{p}servicios.html"{act('servicios')}>Servicios</a>
+      <a href="{p}obras.html"{act('obras')}>Obras</a>
       <a href="{p}index.html#zonas"{act('zonas')}>Zonas</a>
       <a href="{p}calculadora-frigorias.html"{act('calc')}>Calculadora</a>
       <a href="{p}sobre-nosotros.html"{act('nosotros')}>Nosotros</a>
       <a href="{p}contacto.html"{act('contacto')}>Contacto</a>
-      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero pedir un presupuesto." href="#">Pedir presupuesto</a>
+      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero pedir un presupuesto." data-origen="menu" href="#">Pedir presupuesto</a>
     </nav>
     <button class="hamburguesa" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
@@ -100,6 +131,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
           <li><a href="{p}servicios.html#venta">Venta de equipos</a></li>
           <li><a href="{p}servicios.html#instalacion">Instalación</a></li>
           <li><a href="{p}servicios.html#mantenimiento">Mantenimiento y posventa</a></li>
+          <li><a href="{p}obras.html">Obras recientes</a></li>
           <li><a href="{p}calculadora-frigorias.html">Calculadora de frigorías</a></li>
         </ul>
       </div>
@@ -131,7 +163,16 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
   </div>
 </footer>
 
-<a class="wsp-flotante" data-wsp="Hola Clima Baires, quiero hacer una consulta." href="#" aria-label="Escribinos por WhatsApp">
+<div class="barra-movil">
+  <a class="bm-wsp" data-wsp="{barra_msj}" data-origen="barra" href="#">WhatsApp</a>
+  <a class="bm-agenda" data-agenda data-origen="barra" href="#">Agendar visita</a>
+</div>
+
+<div class="nudge" id="nudge" hidden>
+  <button class="nudge-texto" type="button">¿Te pasamos presupuesto hoy?</button>
+  <button class="nudge-cerrar" type="button" aria-label="Cerrar aviso">×</button>
+</div>
+<a class="wsp-flotante" data-wsp="Hola Clima Baires, quiero hacer una consulta." data-origen="flotante" href="#" aria-label="Escribinos por WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>
 </a>
 
@@ -170,14 +211,23 @@ def jsonld_local(nombre, url, zona=None):
 
 def pagina_index():
     chips = ''.join(f'<a href="zonas/{slug}.html">{nombre}</a>' for slug, nombre, *_ in ZONAS)
+    hero_img = ''
+    hero_clase = ''
+    if HAY_FOTOS:
+        hero_clase = ' hero-foto'
+        hero_img = '''
+  <img class="hero-img" src="assets/img/obras/hero-home-800.webp"
+       srcset="assets/img/obras/hero-home-800.webp 800w, assets/img/obras/hero-home-1600.webp 1600w"
+       sizes="100vw" width="1600" height="900" alt="" fetchpriority="high">
+  <div class="hero-velo"></div>'''
     c = f'''
-<section class="hero">
+<section class="hero{hero_clase}">{hero_img}
   <div class="contenedor">
     <span class="kicker">Aire acondicionado · corredor norte de Buenos Aires</span>
     <h1>Instalamos el confort de tu casa, sin vueltas y sin sorpresas</h1>
     <p class="sub">Venta, instalación certificada y posventa real de aire acondicionado en Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. Presupuesto el mismo día: lo que ves es lo que pagás.</p>
     <div class="acciones">
-      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de equipo + instalación." href="#">Pedir presupuesto por WhatsApp</a>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de equipo + instalación." data-origen="hero" href="#">Pedir presupuesto por WhatsApp</a>
       <a class="boton fantasma" style="border-color:#fff;color:#fff !important" href="calculadora-frigorias.html">Calcular frigorías</a>
     </div>
     <p class="mini">Respondemos en menos de 5 minutos en horario comercial · Seguros al día para ingresar a countries y barrios cerrados</p>
@@ -230,18 +280,41 @@ def pagina_index():
   </div>
 </section>
 
+{seccion_ultimas_obras()}
 <section class="seccion">
   <div class="contenedor">
     <div class="banda-cta">
       <div><h2>¿Instalamos antes del calor?</h2><p>Agendá tu instalación con tiempo: en temporada alta los buenos horarios vuelan.</p></div>
-      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero agendar una instalación antes del verano." href="#">Hablar por WhatsApp</a>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero agendar una instalación antes del verano." data-origen="seccion" href="#">Hablar por WhatsApp</a>
     </div>
   </div>
 </section>
 '''
+    og = f'{DOMINIO}/assets/img/obras/og-home.jpg' if HAY_FOTOS else None
     return layout(0, 'Clima Baires — Aire acondicionado en zona norte: venta, instalación y posventa',
         'Venta, instalación certificada y mantenimiento de aire acondicionado en Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. Presupuesto el mismo día.',
-        c, f'{DOMINIO}/', jsonld_local('Venta, instalación y posventa de aire acondicionado en el corredor norte del AMBA.', DOMINIO + '/'), 'inicio')
+        c, f'{DOMINIO}/', jsonld_local('Venta, instalación y posventa de aire acondicionado en el corredor norte del AMBA.', DOMINIO + '/'), 'inicio',
+        og_image=og, pagina_id='index')
+
+
+def seccion_ultimas_obras():
+    if not HAY_FOTOS:
+        return ''
+    tarjetas = ''.join(
+        f'''<a href="obras.html" aria-label="Ver obras recientes">{img_obra(f, sizes='(max-width: 560px) 100vw, (max-width: 900px) 50vw, 360px')}</a>'''
+        for f in DESTACADAS)
+    return f'''
+<section class="seccion alterna" id="obras">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Trabajo real, clientes reales</span><h2>Últimas obras</h2>
+    <p class="intro">Instalaciones, recambios y mantenimiento hechos por nuestro equipo. Así se ve una obra prolija: protección, vacío de cañería y limpieza final.</p></div>
+    <div class="obras-home">{tarjetas}</div>
+    <div class="centrado" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="boton" href="obras.html">Ver todas las obras</a>
+      <a class="boton fantasma" data-wsp="Hola Clima Baires, vi sus obras y quiero un presupuesto." data-origen="seccion" href="#">Quiero algo así en casa</a>
+    </div>
+  </div>
+</section>'''
 
 def pagina_servicios():
     c = f'''
@@ -270,6 +343,10 @@ def pagina_servicios():
       <div class="tarjeta"><h3>3 · Instalación con checklist</h3><p>Traemos el equipo, protegemos el espacio de trabajo, instalamos con vacío y prueba de estanqueidad, y te mostramos todo funcionando.</p></div>
       <div class="tarjeta"><h3>4 · Posventa que responde</h3><p>Garantía escrita, mantenimiento anual programado y un WhatsApp que contesta cuando lo necesitás. Así de simple.</p></div>
     </div>
+    <div class="centrado" style="margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
+      <a class="boton" data-agenda data-origen="seccion" href="#">Agendar visita técnica</a>
+      <a class="boton fantasma" data-wsp="Hola Clima Baires, quiero coordinar una visita técnica." data-origen="seccion" href="#">Consultar por WhatsApp</a>
+    </div>
   </div>
 </section>
 
@@ -277,14 +354,15 @@ def pagina_servicios():
   <div class="contenedor">
     <div class="banda-cta">
       <div><h2>Pedí tu presupuesto hoy</h2><p>Respondemos en menos de 5 minutos en horario comercial.</p></div>
-      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de instalación." href="#">Pedir presupuesto</a>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de instalación." data-origen="seccion" href="#">Pedir presupuesto</a>
     </div>
   </div>
 </section>
 '''
     return layout(0, 'Servicios — venta, instalación y mantenimiento de aire acondicionado | Clima Baires',
         'Venta de equipos split, multisplit y conductos, instalación certificada con checklist de calidad y mantenimiento anual en zona norte de Buenos Aires.',
-        c, f'{DOMINIO}/servicios.html', jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'), 'servicios')
+        c, f'{DOMINIO}/servicios.html', jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'), 'servicios',
+        pagina_id='servicios')
 
 def pagina_calculadora():
     c = f'''
@@ -334,7 +412,10 @@ def pagina_calculadora():
       <div class="resultado" id="calc-resultado">
         <div class="cifra"></div>
         <p class="equipo" style="margin:8px 0 16px"></p>
-        <a class="boton celeste" data-wsp-calc href="#">Pedir presupuesto con este cálculo</a>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+          <a class="boton celeste" data-wsp-calc href="#">Pedir presupuesto con este cálculo</a>
+          <a class="boton fantasma" data-agenda data-origen="calculadora" href="#">Agendar visita técnica</a>
+        </div>
       </div>
 
       <p class="nota">El cálculo usa 100 frigorías/m² de referencia, ajustado por altura, orientación, ganancia solar y ocupación. Cocinas, quinchos y ambientes con muchos electrodomésticos pueden requerir más potencia: lo verificamos en la visita técnica.</p>
@@ -344,7 +425,117 @@ def pagina_calculadora():
 '''
     return layout(0, 'Calculadora de frigorías — ¿qué aire acondicionado necesito? | Clima Baires',
         'Calculá cuántas frigorías necesita tu ambiente y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en zona norte de Buenos Aires.',
-        c, f'{DOMINIO}/calculadora-frigorias.html', None, 'calc')
+        c, f'{DOMINIO}/calculadora-frigorias.html', None, 'calc',
+        pagina_id='calculadora-frigorias',
+        wsp_barra='Hola Clima Baires, quiero saber qué equipo necesito para mi ambiente.')
+
+def bloque_antes_despues(par):
+    antes = next(f for f in par if f['slug'].startswith('antes-'))
+    despues = next(f for f in par if f['slug'].startswith('despues-'))
+    return f'''<div class="antes-despues">
+      <figure>{img_obra(antes, sizes='(max-width: 560px) 100vw, 45vw')}<figcaption>Antes</figcaption></figure>
+      <figure>{img_obra(despues, sizes='(max-width: 560px) 100vw, 45vw')}<figcaption>Después</figcaption></figure>
+    </div>'''
+
+
+def pagina_obras():
+    zonas_presentes = sorted({f['zona'] for f in FOTOS})
+    tipos_presentes = sorted({f['tipo'] for f in FOTOS})
+    filtros_zona = ''.join(
+        f'<button class="filtro" data-grupo="zona" data-valor="{z}" aria-pressed="false">{ZONAS_FOTO[z]}</button>'
+        for z in zonas_presentes)
+    filtros_tipo = ''.join(
+        f'<button class="filtro" data-grupo="tipo" data-valor="{t}" aria-pressed="false">{TIPOS_FOTO[t]}</button>'
+        for t in tipos_presentes)
+
+    items = ''.join(f'''
+      <figure class="obra" data-zona="{f['zona']}" data-tipo="{f['tipo']}">
+        <button class="obra-abrir" type="button" data-full="assets/img/obras/{f['slug']}-1600.webp"
+                data-alt="{f['alt']}" data-slug="{f['slug']}" aria-label="Ampliar: {f['alt']}">
+          {img_obra(f)}
+        </button>
+        <figcaption>{f['alt']}</figcaption>
+      </figure>''' for f in FOTOS)
+
+    pares = ''
+    if PARES_AD:
+        bloques = ''.join(bloque_antes_despues(par) for par in PARES_AD.values())
+        pares = f'''
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">El cambio se nota</span><h2>Antes y después</h2></div>
+    {bloques}
+  </div>
+</section>'''
+
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Obras recientes</nav>
+    <h1>Obras recientes</h1>
+    <p class="bajada">Fotos reales de nuestro equipo trabajando: instalaciones, recambios y mantenimiento. Las primeras son de la casa matriz en Málaga (España); a medida que instalamos en el corredor norte se suman obras de tu zona.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:10px">
+  <div class="contenedor">
+    <div class="filtros" role="group" aria-label="Filtrar por zona">
+      <span class="etiqueta">Zona:</span>
+      <button class="filtro" data-grupo="zona" data-valor="todas" aria-pressed="true">Todas</button>
+      {filtros_zona}
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar por tipo de trabajo">
+      <span class="etiqueta">Trabajo:</span>
+      <button class="filtro" data-grupo="tipo" data-valor="todos" aria-pressed="true">Todos</button>
+      {filtros_tipo}
+    </div>
+    <div class="obras-grilla" id="obras-grilla">{items}
+    </div>
+    <p id="obras-vacio" hidden>No hay obras con ese filtro todavía. Probá con otra zona u otro tipo de trabajo.</p>
+  </div>
+</section>
+{pares}
+<section class="seccion">
+  <div class="contenedor">
+    <div class="banda-cta">
+      <div><h2>¿Querés algo así en tu casa?</h2><p>Contanos qué ambiente querés climatizar y te pasamos presupuesto hoy.</p></div>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, vi sus obras recientes y quiero un presupuesto." data-origen="seccion" href="#">Pedir presupuesto</a>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="lb-cerrar" type="button" aria-label="Cerrar (Escape)">×</button>
+  <button class="lb-prev" type="button" aria-label="Foto anterior">‹</button>
+  <img class="lb-img" src="" alt="">
+  <button class="lb-next" type="button" aria-label="Foto siguiente">›</button>
+  <p class="lb-cap"></p>
+  <a class="boton celeste lb-wsp" data-wsp="Vi sus obras en la web, quiero algo así en casa." data-origen="lightbox" href="#">Quiero algo así en casa</a>
+</div>
+'''
+    ld = [
+        jsonld_local('Galería de obras: instalación, recambio y mantenimiento de aire acondicionado.', f'{DOMINIO}/obras.html'),
+        {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            'name': 'Obras recientes de Clima Baires',
+            'itemListElement': [{
+                '@type': 'ListItem', 'position': i + 1,
+                'item': {
+                    '@type': 'ImageObject',
+                    'contentUrl': f'{DOMINIO}/assets/img/obras/{f["slug"]}-1600.webp',
+                    'name': f['alt'],
+                    'representativeOfPage': i == 0,
+                },
+            } for i, f in enumerate(FOTOS)],
+        },
+    ]
+    return layout(0, 'Obras recientes — instalaciones reales de aire acondicionado | Clima Baires',
+        'Galería de obras de Clima Baires: instalación de split, cassette y condensadoras, recambios y mantenimiento. Fotos reales de nuestro equipo trabajando.',
+        c, f'{DOMINIO}/obras.html', ld, 'obras',
+        og_image=f'{DOMINIO}/assets/img/obras/og-obras.jpg' if HAY_FOTOS else None,
+        pagina_id='obras', wsp_barra='Hola Clima Baires, vi sus obras recientes y quiero un presupuesto.')
+
 
 def pagina_zona(slug, nombre, partido, intro, barrios, especial):
     otras = ' · '.join(f'<a href="{s}.html">{n}</a>' for s, n, *_ in ZONAS if s != slug)
@@ -371,7 +562,7 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
         <li>Marcas líderes: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea</li>
       </ul>
       <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap">
-        <a class="boton" data-wsp="Hola Clima Baires, estoy en {nombre} y quiero un presupuesto." href="#">Pedir presupuesto en {nombre}</a>
+        <a class="boton" data-wsp="Hola Clima Baires, estoy en {nombre} y quiero un presupuesto." data-origen="hero" href="#">Pedir presupuesto en {nombre}</a>
         <a class="boton fantasma" href="../calculadora-frigorias.html">Calcular frigorías</a>
       </div>
     </div>
@@ -397,7 +588,9 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
     ld = jsonld_local(f'Venta, instalación y mantenimiento de aire acondicionado en {nombre} ({partido}).', f'{DOMINIO}/zonas/{slug}.html', nombre)
     return layout(1, f'Aire acondicionado en {nombre}: instalación, venta y service | Clima Baires',
         f'Instalación de aire acondicionado en {nombre} ({partido}): split, multisplit y conductos con presupuesto el mismo día, seguros al día y posventa real. {lista_barrios}.',
-        c, f'{DOMINIO}/zonas/{slug}.html', ld, 'zonas')
+        c, f'{DOMINIO}/zonas/{slug}.html', ld, 'zonas',
+        pagina_id=f'zonas/{slug}', zona_nombre=nombre,
+        wsp_barra=f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')
 
 def pagina_nosotros():
     c = f'''
@@ -440,18 +633,38 @@ def pagina_nosotros():
   </div>
 </section>
 
+{seccion_asi_trabajamos()}
 <section class="seccion">
   <div class="contenedor">
     <div class="banda-cta">
       <div><h2>Conocenos trabajando</h2><p>La mejor carta de presentación es una instalación bien hecha.</p></div>
-      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero coordinar una visita técnica." href="#">Coordinar visita</a>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero coordinar una visita técnica." data-origen="seccion" href="#">Coordinar visita</a>
     </div>
   </div>
 </section>
 '''
     return layout(0, 'Sobre nosotros — Clima Baires Argentina',
         'Clima Baires nació en Málaga instalando climatización en la Costa del Sol. Traemos ese estándar al corredor norte de Buenos Aires: transparencia, rapidez y posventa real.',
-        c, f'{DOMINIO}/sobre-nosotros.html', None, 'nosotros')
+        c, f'{DOMINIO}/sobre-nosotros.html', None, 'nosotros', pagina_id='sobre-nosotros')
+
+
+def seccion_asi_trabajamos():
+    if not HAY_FOTOS:
+        return ''
+    equipo = [f for f in FOTOS if f['tipo'] == 'equipo']
+    resto = [f for f in FOTOS if f['tipo'] != 'equipo']
+    fotos = (equipo + resto)[:3]
+    if not fotos:
+        return ''
+    imgs = ''.join(img_obra(f) for f in fotos)
+    return f'''
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Así trabajamos</span><h2>El equipo, en obra</h2>
+    <p class="intro">Uniforme, herramientas certificadas y obras que quedan limpias. Estas fotos son de nuestro equipo trabajando de verdad — más en la <a href="obras.html">galería de obras</a>.</p></div>
+    <div class="franja-equipo">{imgs}</div>
+  </div>
+</section>'''
 
 def pagina_contacto():
     c = f'''
@@ -470,13 +683,13 @@ def pagina_contacto():
       <p>WhatsApp: <strong data-wsp-num></strong><br>
       Email: <a data-email href="#"></a><br>
       Horario: <span data-horario></span></p>
-      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero hacer una consulta." href="#" style="margin-top:8px">Abrir WhatsApp</a>
+      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero hacer una consulta." data-origen="seccion" href="#" style="margin-top:8px">Abrir WhatsApp</a>
       <p style="margin-top:18px"><strong>Zona de trabajo:</strong> Núñez (CABA), Vicente López, San Isidro, Tigre, Nordelta y Pilar. Atendemos a domicilio: no tenemos local de venta al público, y eso también lo pagás menos.</p>
     </div>
     <div class="tarjeta">
       <h3>O dejanos tus datos</h3>
       <p>Completá el formulario y el mensaje se abre listo para enviar por WhatsApp.</p>
-      <form class="form-contacto" id="form-contacto" onsubmit="event.preventDefault(); const f=this; const txt='Hola Clima Baires, soy '+f.nombre.value+' ('+f.zona.value+'). '+f.mensaje.value; window.open('https://wa.me/'+ (window.CB_NUM||'5491100000000') +'?text='+encodeURIComponent(txt),'_blank');">
+      <form class="form-contacto" id="form-contacto">
         <input name="nombre" placeholder="Tu nombre" required>
         <select name="zona" required>
           <option value="" disabled selected>¿En qué zona estás?</option>
@@ -489,10 +702,22 @@ def pagina_contacto():
     </div>
   </div>
 </section>
+
+<section class="seccion" style="padding-top:0" id="agenda">
+  <div class="contenedor">
+    <div class="tarjeta">
+      <h3>Agendá tu visita técnica</h3>
+      <p>Elegí día y hora en nuestra agenda y listo: te llega la confirmación por email y a nosotros la cita al calendario. La visita y el presupuesto son sin cargo en todo el corredor norte.</p>
+      <a class="boton" data-agenda data-origen="seccion" href="#" style="margin-top:10px">Reservar visita técnica</a>
+      <div data-agenda-embed></div>
+    </div>
+  </div>
+</section>
 '''
     return layout(0, 'Contacto — presupuesto de aire acondicionado en zona norte | Clima Baires',
         'Pedí tu presupuesto de venta e instalación de aire acondicionado en el corredor norte de Buenos Aires. Respondemos en minutos por WhatsApp.',
-        c, f'{DOMINIO}/contacto.html', None, 'contacto')
+        c, f'{DOMINIO}/contacto.html', None, 'contacto', pagina_id='contacto',
+        wsp_barra='Hola Clima Baires, quiero hacer una consulta.')
 
 def pagina_404():
     c = '''
@@ -504,7 +729,7 @@ def pagina_404():
   </div>
 </section>
 '''
-    return layout(0, 'Página no encontrada | Clima Baires', 'Página no encontrada.', c, f'{DOMINIO}/404.html', None, '')
+    return layout(0, 'Página no encontrada | Clima Baires', 'Página no encontrada.', c, f'{DOMINIO}/404.html', None, '', pagina_id='404')
 
 # ---------------- ESCRITURA ----------------
 
@@ -518,6 +743,7 @@ def escribir(ruta, contenido):
 paginas = {
     'index.html': pagina_index(),
     'servicios.html': pagina_servicios(),
+    'obras.html': pagina_obras(),
     'calculadora-frigorias.html': pagina_calculadora(),
     'sobre-nosotros.html': pagina_nosotros(),
     'contacto.html': pagina_contacto(),

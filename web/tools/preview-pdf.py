@@ -22,13 +22,14 @@ def fuente(tam, peso='600'):
         return ImageFont.load_default()
 
 NOMBRES = {
-    'index': 'Inicio', 'servicios': 'Servicios', 'calculadora-frigorias': 'Calculadora de frigorías',
+    'index': 'Inicio', 'servicios': 'Servicios', 'obras': 'Obras recientes',
+    'calculadora-frigorias': 'Calculadora de frigorías',
     'sobre-nosotros': 'Sobre nosotros', 'contacto': 'Contacto', '404': 'Página 404',
     'zonas_nunez': 'Zona: Núñez', 'zonas_vicente-lopez': 'Zona: Vicente López',
     'zonas_san-isidro': 'Zona: San Isidro', 'zonas_tigre': 'Zona: Tigre',
     'zonas_nordelta': 'Zona: Nordelta', 'zonas_pilar': 'Zona: Pilar',
 }
-ORDEN = ['index', 'servicios', 'calculadora-frigorias', 'zonas_nunez', 'zonas_vicente-lopez',
+ORDEN = ['index', 'servicios', 'obras', 'calculadora-frigorias', 'zonas_nunez', 'zonas_vicente-lopez',
          'zonas_san-isidro', 'zonas_tigre', 'zonas_nordelta', 'zonas_pilar',
          'sobre-nosotros', 'contacto', '404']
 

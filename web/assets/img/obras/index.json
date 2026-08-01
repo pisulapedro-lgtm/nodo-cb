@@ -1,0 +1,99 @@
+{
+  "zonas": {
+    "nunez": "Núñez",
+    "vicente-lopez": "Vicente López",
+    "san-isidro": "San Isidro",
+    "tigre": "Tigre",
+    "nordelta": "Nordelta",
+    "pilar": "Pilar",
+    "malaga": "Málaga (casa matriz)"
+  },
+  "tipos": {
+    "instalacion": "Instalación",
+    "recambio": "Recambio",
+    "mantenimiento": "Mantenimiento",
+    "piso-techo": "Piso-techo",
+    "conductos": "Cassette y conductos",
+    "antes-despues": "Antes / después",
+    "equipo": "Equipo en obra"
+  },
+  "fotos": [
+    {
+      "slug": "instalacion-condensadora-azotea-malaga-01",
+      "alt": "Técnico de Clima Baires fijando una condensadora inverter A++ en una azotea, con la ciudad de Málaga de fondo",
+      "zona": "malaga",
+      "tipo": "instalacion",
+      "destacada": true,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
+      "slug": "instalacion-condensadora-fachada-malaga-01",
+      "alt": "Instalación de condensadora en fachada con plataforma elevadora: trabajo en altura con equipos certificados, Málaga",
+      "zona": "malaga",
+      "tipo": "instalacion",
+      "destacada": true,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
+      "slug": "instalacion-cassette-oficina-malaga-01",
+      "alt": "Instalación de aire acondicionado tipo cassette en el cielorraso de una oficina, Málaga",
+      "zona": "malaga",
+      "tipo": "conductos",
+      "destacada": true,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
+      "slug": "instalacion-cassette-oficina-malaga-02",
+      "alt": "Montaje de unidad interior tipo cassette con elevador de carga en una oficina, Málaga",
+      "zona": "malaga",
+      "tipo": "conductos",
+      "destacada": true,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
+      "slug": "mantenimiento-split-oficina-malaga-01",
+      "alt": "Service y mantenimiento de un split mural en una oficina por técnico de Clima Baires, Málaga",
+      "zona": "malaga",
+      "tipo": "mantenimiento",
+      "destacada": true,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
+      "slug": "equipo-obra-local-comercial-malaga-01",
+      "alt": "Técnico de Clima Baires preparando el acceso para climatizar un local comercial, Málaga",
+      "zona": "malaga",
+      "tipo": "equipo",
+      "destacada": true,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
+      "slug": "equipo-llegada-obra-malaga-01",
+      "alt": "El equipo de Clima Baires llegando a una obra con escaleras y herramientas, Málaga",
+      "zona": "malaga",
+      "tipo": "equipo",
+      "destacada": false,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    }
+  ]
+}

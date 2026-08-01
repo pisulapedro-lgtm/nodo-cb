@@ -10,7 +10,84 @@ Sitio **estático** (HTML/CSS/JS puro, sin build ni dependencias): se puede publ
    - Hoy contiene un **placeholder** (`5491100000000`): la web no debe publicarse sin cambiarlo.
 2. **Email** — mismo bloque (`info@climabaires.com` ya apunta al dominio; crear la casilla en Google Workspace antes).
 3. **Redes** — actualizar `instagram` y `linkedin` en el mismo bloque cuando existan los perfiles definitivos (ver `/kit-digital`).
-4. Si cambia el dominio (p. ej. se usa `climabaires.com.ar` como principal), regenerar las páginas: editar `DOMINIO` en `tools/generar.py` y correr `python3 web/tools/generar.py` (actualiza canónicas, Open Graph y sitemap).
+4. **Google Tag Manager** — `CB.gtmId` en el mismo bloque (hoy `GTM-XXXXXXX`, placeholder: no carga nada). Ver «Medición» más abajo.
+5. **Agenda de visitas** — `CB.agendaUrl` en el mismo bloque (hoy vacío: los botones «Agendar visita» derivan a WhatsApp). Ver «Agenda» más abajo.
+6. Si cambia el dominio (p. ej. se usa `climabaires.com.ar` como principal), regenerar las páginas: editar `DOMINIO` en `tools/generar.py` y correr `python3 web/tools/generar.py` (actualiza canónicas, Open Graph y sitemap).
+
+## Cómo añadir fotos de obras
+
+Las fotos reales viven en dos carpetas: `assets/img/originales/` (material en bruto,
+con nombre de cámara/WhatsApp) y `assets/img/obras/` (derivados WebP optimizados que
+se publican). El flujo:
+
+1. Copiar los originales (JPG/PNG/WebP) a `assets/img/originales/`.
+2. Abrir `tools/fotos.py` y agregar una entrada en `MAPEO` por cada foto:
+   `slug` descriptivo en kebab-case (`{tipo}-{detalle}-{zona}-{nn}`), `alt` con la
+   zona real (nunca inventar ubicación ni marca de equipo), `zona`, `tipo`
+   (`instalacion / recambio / mantenimiento / piso-techo / conductos / antes-despues / equipo`)
+   y `destacada` (las 6 destacadas salen en la home).
+   - Pares antes/después: dos fotos con el mismo valor en `par`, slugs `antes-…` y `despues-…`.
+   - Fotos inutilizables: entrada en `DESCARTES` con el motivo → van a `originales/descartadas/`.
+3. `python3 web/tools/fotos.py` — corrige orientación EXIF, **elimina metadatos**
+   (privacidad: hay domicilios), exporta WebP q80 en 1600/800 px, regenera el hero
+   16:9 y los `og-*.jpg` 1200×630, y escribe `assets/img/obras/index.json`.
+   Es idempotente; `--force` rehace todo. Ninguna imagen publicada supera 350 KB.
+4. `python3 web/tools/generar.py` — reconstruye las páginas leyendo `index.json`
+   (galería con filtros, «Últimas obras», hero de portada, franja «así trabajamos»).
+5. `npm run web:shots` — el QA debe quedar en verde antes de publicar.
+
+La foto del hero de la home se elige con `HERO_ORIGEN` (+ ventana de recorte
+`HERO_VENTANA`) en `tools/fotos.py`.
+
+## Medición: GTM + eventos dataLayer
+
+**Google Tag Manager es la única puerta de medición**: GA4, Google Ads y el píxel de
+Meta se configuran como etiquetas DENTRO del contenedor — nunca pegar snippets
+sueltos en el HTML. El contenedor se crea gratis en
+[tagmanager.google.com](https://tagmanager.google.com) con la cuenta de Workspace;
+el ID (`GTM-XXXXXXX`) se pega en **un solo lugar**: `CB.gtmId` en `assets/js/main.js`.
+`main.js` inyecta GTM en las 13 páginas con carga diferida (no penaliza el LCP); con
+el placeholder no se carga nada y la web funciona igual.
+
+Todos los CTA ya empujan eventos al `dataLayer` (verificado por el QA de Playwright):
+
+| evento | parámetros | dispara |
+|---|---|---|
+| `whatsapp_click` | `origen` (hero/seccion/menu/flotante/barra/lightbox/calculadora), `pagina`, `zona` | todo CTA de WhatsApp |
+| `agenda_click` | `origen`, `pagina`, `zona` | CTA «Agendar visita» |
+| `calculadora_uso` | `m2`, `frigorias_resultado`, `equipo_recomendado` | submit de la calculadora |
+| `form_envio` | `zona` | formulario de contacto |
+| `tel_click` / `email_click` | `pagina` | enlaces de teléfono / email |
+
+### Conectar GA4 y Google Ads (cuenta bajo la MCC de Málaga)
+
+1. En GTM: crear etiqueta **GA4 Configuration** con el Measurement ID de la
+   propiedad GA4 nueva (crearla como `climabaires.com — AR`). Disparador: All Pages.
+2. Por cada evento de la tabla: etiqueta **GA4 Event** (mismo nombre de evento,
+   parámetros mapeados desde variables de capa de datos) + disparador
+   *Custom Event* con el nombre exacto (`whatsapp_click`, etc.). Publicar el contenedor.
+3. En GA4 → Administración → Eventos: marcar `whatsapp_click` y `agenda_click`
+   como **conversiones** (principales) y `calculadora_uso` (secundaria).
+4. En Google Ads (la cuenta argentina de la MCC): **Herramientas → Conversiones →
+   Importar → Google Analytics 4** y traer esas tres conversiones. Asignar
+   `whatsapp_click` y `agenda_click` como acciones de conversión *primarias* de las
+   campañas y `calculadora_uso` como *secundaria* (observación).
+5. Vincular GA4 ↔ Ads: GA4 → Administración → Vinculaciones con Google Ads →
+   elegir la cuenta AR de la MCC. Con esto cada peso invertido queda atribuido a
+   chats y citas reales.
+
+## Agenda de visitas (Google Calendar / Workspace)
+
+1. Con `ignacio@climabaires.com`: Calendar → Crear → **Agenda de citas** (duración
+   45–60 min, horario laboral, buffer de viaje). Copiar el enlace público de la
+   página de reservas.
+2. Pegarlo en `CB.agendaUrl` (`assets/js/main.js`). Desde ese momento:
+   - los botones «Agendar visita» (barra móvil, servicios, calculadora, contacto)
+     abren la página de reservas y miden `agenda_click`;
+   - `contacto.html` embebe además el iframe de reservas (única carga externa junto
+     a GTM, inyectada en diferido; si no carga, queda el botón).
+3. Las reservas llegan solas a Calendar + Gmail: el flujo de confirmación no toca código.
+4. Con `CB.agendaUrl` vacío los botones derivan a WhatsApp con mensaje de visita técnica.
 
 ## Dominios (los registra el usuario)
 
@@ -35,27 +112,31 @@ En los tres casos: apuntar también `www` (CNAME) y verificar que `https://clima
 
 1. **Google Search Console**: dar de alta la propiedad `climabaires.com`, enviar `sitemap.xml`.
 2. **Google Business Profile**: crear el perfil como *empresa de área de servicio* (sin dirección visible) con las 6 zonas — guía completa en `/kit-digital/google-business/` si existe, o seguir el plan GTM del PDF.
-3. **Pixel/Analytics**: cuando arranquen las campañas, añadir GA4 y el píxel de Meta antes de `</head>` en `tools/generar.py` (bloque `layout()`) y regenerar.
+3. **Analytics/Ads/Meta**: todo se configura dentro del contenedor GTM (sección «Medición» de arriba) — no pegar snippets en el HTML.
 
 ## Estructura
 
 ```
 web/
-├── index.html                  # inicio
+├── index.html                  # inicio (hero con foto real + últimas obras)
 ├── servicios.html              # venta / instalación / posventa
+├── obras.html                  # galería de obras: filtros + lightbox
 ├── calculadora-frigorias.html  # herramienta de captación
-├── sobre-nosotros.html         # historia España → Argentina
-├── contacto.html               # WhatsApp + formulario
+├── sobre-nosotros.html         # historia España → Argentina + «así trabajamos»
+├── contacto.html               # WhatsApp + formulario + agenda de visitas
 ├── 404.html
-├── zonas/{nunez,vicente-lopez,san-isidro,tigre,nordelta,pilar}.html  # SEO local
+├── zonas/{nunez,vicente-lopez,san-isidro,tigre,nordelta,pilar}.html  # SEO local / landings de Ads
 ├── sitemap.xml · robots.txt
 ├── assets/css/styles.css       # identidad de marca (paleta del manual)
-├── assets/js/main.js           # config de contacto + menú + calculadora
+├── assets/js/main.js           # config CB (contacto + gtmId + agendaUrl), medición, galería
 ├── assets/fonts/               # Poppins woff2 (aprox. libre de Goldplay)
 ├── assets/img/                 # logo.svg, logo-blanco.svg, iconos del isotipo
+│   ├── originales/             # fotos en bruto (no se publican tal cual)
+│   └── obras/                  # WebP optimizados + index.json (genera fotos.py)
 └── tools/
+    ├── fotos.py                # pipeline de fotos (python3 web/tools/fotos.py)
     ├── generar.py              # regenera todas las páginas (python3 web/tools/generar.py)
-    └── shots.mjs               # QA: capturas desktop/móvil + enlaces (npm run web:shots)
+    └── shots.mjs               # QA: capturas + enlaces + eventos dataLayer (npm run web:shots)
 ```
 
 Las capturas de QA se generan en `web/tools/shots/` y no se commitean.
