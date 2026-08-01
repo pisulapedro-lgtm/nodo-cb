@@ -239,11 +239,7 @@ def pagina_index():
   </div>
 </section>
 
-<div class="franja-marcas">
-  <div class="contenedor">
-    <span>Enfriamos con:</span><span>Daikin</span><span>Mitsubishi</span><span>LG</span><span>Samsung</span><span>BGH</span><span>Surrey</span><span>Midea</span>
-  </div>
-</div>
+{franja_marcas()}
 
 <section class="seccion" id="servicios">
   <div class="contenedor">
@@ -288,22 +284,41 @@ def pagina_index():
         og_image=og, pagina_id='index')
 
 
+MARCAS = ['daikin', 'mitsubishi', 'lg', 'samsung', 'bgh', 'surrey', 'midea']
+
+
+def franja_marcas(p=''):
+    logos = ''.join(
+        f'<img src="{p}assets/img/marcas/{m}.png" alt="{m.capitalize()}" height="30" loading="lazy">'
+        for m in MARCAS)
+    return f'''<div class="franja-marcas" aria-label="Marcas que instalamos">
+  <div class="marcas-carrusel">
+    <div class="marcas-pista">
+      {logos}{logos.replace('alt="', 'aria-hidden="true" alt="')}
+    </div>
+  </div>
+</div>'''
+
+
 def seccion_ultimas_obras():
     if not HAY_FOTOS:
         return ''
-    tarjetas = ''.join(
-        f'''<a href="obras.html" aria-label="Ver obras recientes">{img_obra(f, sizes='(max-width: 560px) 100vw, (max-width: 900px) 50vw, 360px')}</a>'''
+    slides = ''.join(
+        f'''<a class="obra-slide" href="obras.html" aria-label="Ver obras recientes">{img_obra(f, sizes='320px')}</a>'''
         for f in DESTACADAS)
     return f'''
 <section class="seccion alterna" id="obras">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Trabajo real</span><h2>Últimas obras</h2>
-    <p class="intro">Sin fotos de banco de imágenes: nuestro equipo, en obra.</p></div>
-    <div class="obras-home">{tarjetas}</div>
-    <div class="centrado" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a class="boton" href="obras.html">Ver todas las obras</a>
-      <a class="boton fantasma" data-wsp="Hola Clima Baires, vi sus obras y quiero un presupuesto." data-origen="seccion" href="#">Quiero algo así en casa</a>
-    </div>
+    <div class="centrado"><span class="kicker">Trabajo real</span><h2>Últimas obras</h2></div>
+  </div>
+  <div class="obras-carrusel-marco">
+    <button class="car-flecha car-prev" type="button" aria-label="Anteriores">‹</button>
+    <div class="obras-carrusel" id="obras-carrusel">{slides}</div>
+    <button class="car-flecha car-next" type="button" aria-label="Siguientes">›</button>
+  </div>
+  <div class="contenedor centrado" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px">
+    <a class="boton" href="obras.html">Ver todas las obras</a>
+    <a class="boton fantasma" data-wsp="Hola Clima Baires, vi sus obras y quiero un presupuesto." data-origen="seccion" href="#">Quiero algo así en casa</a>
   </div>
 </section>'''
 

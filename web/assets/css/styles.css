@@ -112,9 +112,17 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .claim strong { display: block; color: var(--navy); font-weight: 800; font-size: 1.04rem; }
 .claim span { color: var(--gris); font-size: .87rem; }
 
-.franja-marcas { background: var(--hielo); border-bottom: 1px solid var(--linea); padding: 16px 0; }
-.franja-marcas .contenedor { display: flex; gap: 10px 34px; flex-wrap: wrap; justify-content: center; align-items: center; }
-.franja-marcas span { color: var(--gris); font-weight: 600; font-size: .92rem; letter-spacing: .04em; }
+/* marquee de logos de marcas (originales, en loop continuo) */
+.franja-marcas { background: #fff; border-bottom: 1px solid var(--linea); padding: 20px 0; overflow: hidden; }
+.marcas-carrusel { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marcas-pista { display: flex; align-items: center; gap: 64px; width: max-content; padding-right: 64px; animation: marcas-loop 30s linear infinite; }
+.marcas-carrusel:hover .marcas-pista { animation-play-state: paused; }
+.marcas-pista img { height: 30px; width: auto; }
+@keyframes marcas-loop { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marcas-pista { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .marcas-pista img[aria-hidden] { display: none; }
+}
 
 /* ---------- Secciones ---------- */
 .seccion { padding: 76px 0; }
@@ -240,28 +248,44 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 .filtro[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
 .filtro:focus-visible, .obra-abrir:focus-visible { outline: 3px solid var(--celeste); outline-offset: 2px; }
 
-.obras-grilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; }
-.obra { margin: 0; }
+/* galería en mosaico: cada foto conserva su proporción natural */
+.obras-grilla { columns: 3 300px; column-gap: 22px; margin-top: 26px; }
+.obra { margin: 0 0 22px; break-inside: avoid; }
 .obra.oculta { display: none; }
 .obra-abrir {
   display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
   border-radius: var(--radio); overflow: hidden; background: var(--hielo);
   box-shadow: var(--sombra);
 }
-.obra-abrir img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .25s ease; }
+.obra-abrir img { width: 100%; height: auto; transition: transform .25s ease; }
 .obra-abrir:hover img { transform: scale(1.03); }
-.obra figcaption { font-size: .85rem; color: var(--gris); margin-top: 10px; line-height: 1.45; }
+.obra figcaption { font-size: .82rem; color: var(--gris); margin-top: 8px; line-height: 1.45; }
 #obras-vacio { color: var(--gris); margin-top: 26px; }
 
-/* tarjetas de obras en la home */
-.obras-home { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 26px 0 30px; }
-.obras-home a { display: block; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
-.obras-home img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .25s ease; }
-.obras-home a:hover img { transform: scale(1.04); }
+/* carrusel de obras en la home (scroll con snap + flechas) */
+.obras-carrusel-marco { position: relative; margin-top: 30px; }
+.obras-carrusel {
+  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 6px max(22px, calc((100vw - var(--ancho)) / 2 + 22px)) 18px;
+  scrollbar-width: thin; scrollbar-color: var(--celeste) transparent;
+}
+.obra-slide { flex: 0 0 auto; scroll-snap-align: start; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); background: var(--hielo); }
+.obra-slide img { height: 340px; width: auto; display: block; transition: transform .25s ease; }
+.obra-slide:hover img { transform: scale(1.03); }
+.car-flecha {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linea);
+  background: rgba(255,255,255,.95); color: var(--azul); font-size: 1.5rem;
+  cursor: pointer; box-shadow: var(--sombra); display: grid; place-items: center;
+}
+.car-flecha:hover { background: #fff; color: var(--navy); }
+.car-flecha:focus-visible { outline: 3px solid var(--celeste); }
+.car-prev { left: 14px; }
+.car-next { right: 14px; }
 
 /* franja "así trabajamos" */
-.franja-equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; }
-.franja-equipo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radio); box-shadow: var(--sombra); }
+.franja-equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; align-items: start; }
+.franja-equipo img { width: 100%; height: auto; border-radius: var(--radio); box-shadow: var(--sombra); }
 
 /* antes / después */
 .antes-despues { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
@@ -335,7 +359,9 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .obras-grilla, .obras-home, .franja-equipo { grid-template-columns: 1fr 1fr; }
+  .franja-equipo { grid-template-columns: 1fr 1fr; }
+  .obra-slide img { height: 280px; }
+  .car-flecha { display: none; }
   .grilla.tres { grid-template-columns: 1fr; }
   .grilla.dos { grid-template-columns: 1fr; }
   .pie-grilla { grid-template-columns: 1fr 1fr; }
@@ -361,6 +387,6 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 }
 
 @media (max-width: 560px) {
-  .obras-grilla, .obras-home, .franja-equipo { grid-template-columns: 1fr; }
+  .franja-equipo { grid-template-columns: 1fr; }
   .antes-despues { grid-template-columns: 1fr; }
 }

@@ -205,6 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Carrusel de obras en la home: flechas de desplazamiento
+  const carrusel = document.getElementById('obras-carrusel');
+  if (carrusel) {
+    const paso = () => Math.min(carrusel.clientWidth * 0.8, 700);
+    const prev = document.querySelector('.car-prev');
+    const next = document.querySelector('.car-next');
+    if (prev) prev.addEventListener('click', () => carrusel.scrollBy({ left: -paso(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => carrusel.scrollBy({ left: paso(), behavior: 'smooth' }));
+  }
+
   // Galería de obras: filtros por zona/tipo + lightbox accesible
   const galeria = document.getElementById('obras-grilla');
   if (galeria) {
