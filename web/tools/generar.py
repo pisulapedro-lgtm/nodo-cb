@@ -354,7 +354,10 @@ def pagina_index():
         og_image=og, pagina_id='index')
 
 
-MARCAS = ['daikin', 'mitsubishi', 'lg', 'samsung', 'bgh', 'surrey', 'midea']
+MARCAS = [
+    ('daikin', 'Daikin'), ('mitsubishi', 'Mitsubishi Electric'), ('lg', 'LG'),
+    ('samsung', 'Samsung'), ('bgh', 'BGH'), ('surrey', 'Surrey'), ('midea', 'Midea'),
+]
 
 WSP_SVG = ('<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6'
            'c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5'
@@ -386,12 +389,15 @@ def cinta_cta(titulo, mensaje, boton='Escribinos por WhatsApp'):
 
 def franja_marcas(p=''):
     logos = ''.join(
-        f'<img src="{p}assets/img/marcas/{m}.png" alt="{m.capitalize()}" height="30" loading="lazy">'
-        for m in MARCAS)
+        f'<img src="{p}assets/img/marcas/{slug}.png" alt="{nombre}" height="30" loading="lazy">'
+        for slug, nombre in MARCAS)
+    # la pista se duplica para que el loop no tenga costura; la copia no se
+    # anuncia dos veces a los lectores de pantalla
+    copia = re.sub(r'alt="[^"]*"', 'alt="" aria-hidden="true"', logos)
     return f'''<div class="franja-marcas" aria-label="Marcas que instalamos">
   <div class="marcas-carrusel">
     <div class="marcas-pista">
-      {logos}{logos.replace('alt="', 'aria-hidden="true" alt="')}
+      {logos}{copia}
     </div>
   </div>
 </div>'''
