@@ -91,6 +91,27 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
     if (!evAg || evAg.pagina !== 'servicios') errores.push('dataLayer sin agenda_click: ' + JSON.stringify(evAg));
     else console.log('dataLayer agenda_click →', JSON.stringify(evAg));
 
+    // chatbot: 4 preguntas → enlace de WhatsApp armado + eventos
+    await page.goto('file://' + join(WEB, 'index.html'), { waitUntil: 'load' });
+    await page.click('.wsp-flotante');
+    await page.fill('#chat-pie input', 'Test QA');
+    await page.click('#chat-pie button[type=submit]');
+    await page.click('.chat-chip[data-valor="Nordelta"]');
+    await page.click('.chat-chip[data-valor="Instalación nueva"]');
+    await page.click('.chat-chip[data-valor="Split"]');
+    const hrefChat = await page.getAttribute('.chat-final', 'href');
+    const evChat = await page.evaluate(() => ({
+      inicio: (window.dataLayer || []).some((e) => e.event === 'chatbot_inicio'),
+      pasos: (window.dataLayer || []).filter((e) => e.event === 'chatbot_paso').length,
+    }));
+    if (!hrefChat || !hrefChat.includes('Test%20QA') || !hrefChat.includes('Nordelta')) {
+      errores.push('chatbot: enlace final sin datos (' + hrefChat + ')');
+    }
+    if (!evChat.inicio || evChat.pasos !== 4) errores.push('chatbot: eventos dataLayer incompletos ' + JSON.stringify(evChat));
+    await page.keyboard.press('Escape');
+    if (await page.isVisible('#chat')) errores.push('chatbot no cierra con Escape');
+    console.log('Chatbot OK →', decodeURIComponent(hrefChat.split('text=')[1] || ''));
+
     // galería: filtros + lightbox accesible (abre, navega, cierra con Escape)
     await page.goto('file://' + join(WEB, 'obras.html'), { waitUntil: 'load' });
     const total = await page.locator('.obra').count();

@@ -122,6 +122,112 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('focusout', () => setTimeout(() => barra.classList.remove('oculta'), 150));
   }
 
+  // Chatbot: 4 preguntas (nombre, zona, servicio, tipo de aire) → WhatsApp
+  const chat = document.getElementById('chat');
+  const flotante = document.querySelector('.wsp-flotante');
+  if (chat && flotante) {
+    const mensajes = document.getElementById('chat-mensajes');
+    const pie = document.getElementById('chat-pie');
+    const r = { nombre: '', zona: '', servicio: '', tipo: '' };
+    let iniciado = false;
+
+    const burbuja = (texto, mia) => {
+      const b = document.createElement('div');
+      b.className = 'burbuja' + (mia ? ' mia' : '');
+      b.textContent = texto;
+      mensajes.appendChild(b);
+      mensajes.scrollTop = mensajes.scrollHeight;
+    };
+
+    const chips = (opciones, alElegir) => {
+      pie.innerHTML = '';
+      opciones.forEach((op) => {
+        const c = document.createElement('button');
+        c.type = 'button';
+        c.className = 'chat-chip';
+        c.dataset.valor = op;
+        c.textContent = op;
+        c.addEventListener('click', () => { burbuja(op, true); alElegir(op); });
+        pie.appendChild(c);
+      });
+    };
+
+    const entradaNombre = (alEnviar) => {
+      pie.innerHTML = '';
+      const form = document.createElement('form');
+      form.className = 'chat-form';
+      form.innerHTML = '<input name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>' +
+                       '<button class="boton" type="submit">Enviar</button>';
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const v = form.nombre.value.trim();
+        if (!v) return;
+        burbuja(v, true);
+        alEnviar(v);
+      });
+      pie.appendChild(form);
+      form.nombre.focus();
+    };
+
+    const paso2 = () => {
+      burbuja('¿Dónde vivís?');
+      cbTrack('chatbot_paso', { paso: 1, pagina: cbContexto(chat).pagina });
+      const zonas = ['Núñez', 'Vicente López', 'San Isidro', 'Tigre', 'Nordelta', 'Pilar', 'Otra zona'];
+      const propia = document.body.dataset.zona;
+      if (propia && zonas.includes(propia)) zonas.splice(zonas.indexOf(propia), 1) && zonas.unshift(propia);
+      chips(zonas, (z) => { r.zona = z; paso3(); });
+    };
+    const paso3 = () => {
+      burbuja('¿Qué servicio buscás?');
+      cbTrack('chatbot_paso', { paso: 2, respuesta: r.zona, pagina: cbContexto(chat).pagina });
+      chips(['Instalación nueva', 'Recambio de equipo', 'Mantenimiento / limpieza', 'Reparación'], (s) => { r.servicio = s; paso4(); });
+    };
+    const paso4 = () => {
+      burbuja('¿Qué tipo de aire acondicionado?');
+      cbTrack('chatbot_paso', { paso: 3, respuesta: r.servicio, pagina: cbContexto(chat).pagina });
+      chips(['Split', 'Multisplit', 'Piso-techo', 'Cassette / conductos', 'No sé, me asesoran'], (t) => { r.tipo = t; cierre(); });
+    };
+    const cierre = () => {
+      cbTrack('chatbot_paso', { paso: 4, respuesta: r.tipo, pagina: cbContexto(chat).pagina });
+      burbuja('¡Listo, ' + r.nombre + '! Tocá el botón y seguimos por WhatsApp con tu consulta ya armada. Respondemos en minutos.');
+      const msj = 'Hola, soy ' + r.nombre + ' y vivo en ' + r.zona + '. Busco: ' + r.servicio +
+                  '. Tipo de aire: ' + r.tipo + '.';
+      pie.innerHTML = '';
+      const a = document.createElement('a');
+      a.className = 'boton chat-final';
+      a.href = cbMensaje(msj);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'Continuar en WhatsApp';
+      a.addEventListener('click', () => cbTrack('whatsapp_click', {
+        origen: 'chatbot', pagina: cbContexto(chat).pagina, zona: r.zona,
+      }));
+      pie.appendChild(a);
+      a.focus();
+    };
+
+    const abrir = () => {
+      chat.hidden = false;
+      flotante.classList.add('abierto');
+      if (!iniciado) {
+        iniciado = true;
+        cbTrack('chatbot_inicio', { pagina: cbContexto(chat).pagina });
+        burbuja('¡Hola! ❄ Soy el asistente de Clima Baires. Cuatro preguntas y seguimos por WhatsApp.');
+        burbuja('¿Cómo te llamás?');
+        entradaNombre((v) => { r.nombre = v; paso2(); });
+      } else if (pie.querySelector('input')) {
+        pie.querySelector('input').focus();
+      }
+    };
+    const cerrar = () => { chat.hidden = true; flotante.classList.remove('abierto'); };
+
+    flotante.addEventListener('click', () => (chat.hidden ? abrir() : cerrar()));
+    chat.querySelector('.chat-cerrar').addEventListener('click', cerrar);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !chat.hidden) cerrar();
+    });
+  }
+
   // Nudge del botón flotante: una sola vez por sesión, a los 20 s o al 50% de scroll
   const nudge = document.getElementById('nudge');
   if (nudge && !sessionStorage.getItem('cbNudge')) {

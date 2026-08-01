@@ -53,11 +53,17 @@ Todos los CTA ya empujan eventos al `dataLayer` (verificado por el QA de Playwri
 
 | evento | parámetros | dispara |
 |---|---|---|
-| `whatsapp_click` | `origen` (hero/seccion/menu/flotante/barra/lightbox/calculadora), `pagina`, `zona` | todo CTA de WhatsApp |
+| `whatsapp_click` | `origen` (hero/seccion/menu/barra/lightbox/calculadora/chatbot), `pagina`, `zona` | todo CTA de WhatsApp |
 | `agenda_click` | `origen`, `pagina`, `zona` | CTA «Agendar visita» |
 | `calculadora_uso` | `m2`, `frigorias_resultado`, `equipo_recomendado` | submit de la calculadora |
 | `form_envio` | `zona` | formulario de contacto |
 | `tel_click` / `email_click` | `pagina` | enlaces de teléfono / email |
+| `chatbot_inicio` | `pagina` | apertura del asistente flotante |
+| `chatbot_paso` | `paso` (1-4), `respuesta`, `pagina` | cada respuesta del asistente (el nombre NO se envía: sin datos personales en el dataLayer) |
+
+**Chatbot**: el botón flotante abre un asistente de 4 preguntas (nombre, zona,
+servicio, tipo de aire) que arma el mensaje y deriva a WhatsApp con
+`origen=chatbot`. Sin backend ni librerías: vive en `assets/js/main.js`.
 
 ### Conectar GA4 y Google Ads (cuenta bajo la MCC de Málaga)
 
