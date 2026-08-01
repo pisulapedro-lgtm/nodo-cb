@@ -1,0 +1,539 @@
+# -*- coding: utf-8 -*-
+"""Generador de páginas estáticas de climabaires.com.
+Uso: python3 web/tools/generar.py   (desde la raíz del repo)
+Regenera todos los .html a partir del layout y el contenido de PAGINAS.
+Los .html generados son el artefacto desplegable: no requieren build en el hosting.
+"""
+import os, json
+
+RAIZ = os.path.join(os.path.dirname(__file__), '..')
+DOMINIO = 'https://climabaires.com'
+
+ZONAS = [
+    ('nunez', 'Núñez', 'CABA',
+     'Núñez y el bajo Belgrano: casas, PH y departamentos con instalaciones que exigen prolijidad, silencio y respeto por el edificio.',
+     ['Núñez', 'Bajo Núñez', 'Barrio River', 'Saavedra lindero'],
+     'Trabajamos coordinando con administraciones y consorcios: pedimos autorizaciones, protegemos espacios comunes y retiramos todos los residuos de obra.'),
+    ('vicente-lopez', 'Vicente López', 'zona norte GBA',
+     'Olivos, La Lucila, Florida y Munro: el corazón residencial consolidado de la zona norte, donde renovar equipos viejos por inverter eficientes es la obra más pedida.',
+     ['Olivos', 'La Lucila', 'Florida', 'Munro', 'Villa Adelina'],
+     'Recambio de equipos antiguos con retiro del equipo viejo incluido, y propuestas de multisplit para casas reformadas.'),
+    ('san-isidro', 'San Isidro', 'zona norte GBA',
+     'Casas grandes, jardines y arboledas: San Isidro, Martínez, Acassuso, Beccar y las Lomas piden potencia bien distribuida y equipos silenciosos.',
+     ['San Isidro centro', 'Lomas de San Isidro', 'Martínez', 'Acassuso', 'Beccar', 'Boulogne'],
+     'Especialistas en casas de dos plantas: multisplit, piso-techo para livings amplios y ubicación de condensadoras que no arruine la fachada.'),
+    ('tigre', 'Tigre', 'zona norte GBA',
+     'De Rincón de Milberg a los barrios náuticos: Tigre combina obra nueva acelerada y casas frente al agua donde la salinidad y la humedad exigen instalar bien desde el día uno.',
+     ['Tigre centro', 'Rincón de Milberg', 'Troncos del Talar', 'General Pacheco', 'Barrios náuticos'],
+     'Instalación pensada para ambientes húmedos: protección anticorrosiva de ménsulas, desagües bien resueltos y mantenimiento preventivo anual.'),
+    ('nordelta', 'Nordelta', 'Tigre',
+     'La ciudad-pueblo más grande del país merece un servicio a su altura: ingreso con seguros al día, trabajo prolijo y posventa real, barrio por barrio.',
+     ['La Isla', 'El Golf', 'Los Castores', 'La Alameda', 'Los Lagos', 'El Palmar', 'Las Caletas', 'Portezuelo'],
+     'Cumplimos los requisitos de acceso de la AVN y de cada barrio: seguros con cláusula de no repetición, personal identificado y coordinación con la administración. También trabajamos con unidades a estrenar: si tu departamento o casa se entrega con preinstalación, cotizamos equipo + instalación llave en mano para el día de la mudanza.'),
+    ('pilar', 'Pilar', 'km 40-60 Panamericana',
+     'Más de 300 countries y barrios cerrados: Pilar es la capital argentina de la casa con parque, y cada casa nueva necesita climatización bien proyectada.',
+     ['Pilar centro', 'Manzanares', 'La Lonja', 'Ayres de Pilar', 'Manuel Alberti', 'Del Viso', 'Zelaya'],
+     'Acompañamos obras nuevas desde la preinstalación (caños embutidos antes del yeso) hasta la puesta en marcha, y damos servicio posventa sin que tengas que perseguir al instalador.'),
+]
+
+SVC_ICONS = {
+    'venta': '<svg viewBox="0 0 24 24"><path d="M12 2 2 7v2h20V7L12 2zm-8 9v8h4v-8H4zm6 0v8h4v-8h-4zm6 0v8h4v-8h-4zM2 21h20v2H2z"/></svg>',
+    'instalacion': '<svg viewBox="0 0 24 24"><path d="M22.7 19-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L8 6 6 8 1.6 3.6C.4 6 .9 9 2.9 11c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.3z"/></svg>',
+    'mantenimiento': '<svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm-1.1 15.4-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3z"/></svg>',
+}
+
+def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo=''):
+    p = '../' * depth
+    def act(k):
+        return ' class="activo"' if activo == k else ''
+    ld = ('<script type="application/ld+json">%s</script>' % json.dumps(jsonld, ensure_ascii=False)) if jsonld else ''
+    return f'''<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{titulo}</title>
+<meta name="description" content="{descripcion}">
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{titulo}">
+<meta property="og:description" content="{descripcion}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{DOMINIO}/assets/img/icon-512.png">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" type="image/png" sizes="48x48" href="{p}assets/img/favicon-48.png">
+<link rel="apple-touch-icon" href="{p}assets/img/icon-192.png">
+<link rel="stylesheet" href="{p}assets/css/styles.css">
+{ld}
+</head>
+<body>
+<header class="top">
+  <div class="contenedor top-inner">
+    <a class="logo" href="{p}index.html" aria-label="Clima Baires — inicio">
+      <img src="{p}assets/img/logo.svg" alt="Clima Baires">
+    </a>
+    <nav class="nav">
+      <a href="{p}index.html"{act('inicio')}>Inicio</a>
+      <a href="{p}servicios.html"{act('servicios')}>Servicios</a>
+      <a href="{p}index.html#zonas"{act('zonas')}>Zonas</a>
+      <a href="{p}calculadora-frigorias.html"{act('calc')}>Calculadora</a>
+      <a href="{p}sobre-nosotros.html"{act('nosotros')}>Nosotros</a>
+      <a href="{p}contacto.html"{act('contacto')}>Contacto</a>
+      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero pedir un presupuesto." href="#">Pedir presupuesto</a>
+    </nav>
+    <button class="hamburguesa" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+{contenido}
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-grilla">
+      <div>
+        <img class="logo-pie" src="{p}assets/img/logo-blanco.svg" alt="Clima Baires">
+        <p>Venta, instalación y posventa de aire acondicionado en el corredor norte de Buenos Aires. Tu confort, nuestra prioridad.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="{p}servicios.html#venta">Venta de equipos</a></li>
+          <li><a href="{p}servicios.html#instalacion">Instalación</a></li>
+          <li><a href="{p}servicios.html#mantenimiento">Mantenimiento y posventa</a></li>
+          <li><a href="{p}calculadora-frigorias.html">Calculadora de frigorías</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Zonas</h4>
+        <ul>
+          <li><a href="{p}zonas/nunez.html">Núñez</a></li>
+          <li><a href="{p}zonas/vicente-lopez.html">Vicente López</a></li>
+          <li><a href="{p}zonas/san-isidro.html">San Isidro</a></li>
+          <li><a href="{p}zonas/tigre.html">Tigre</a></li>
+          <li><a href="{p}zonas/nordelta.html">Nordelta</a></li>
+          <li><a href="{p}zonas/pilar.html">Pilar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>WhatsApp: <span data-wsp-num></span></li>
+          <li><a data-email href="#"></a></li>
+          <li><span data-horario></span></li>
+          <li><a data-ig href="#" rel="noopener">Instagram</a> · <a data-li href="#" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span data-anio></span> Clima Baires Argentina. Todos los derechos reservados.</span>
+      <span>Corredor norte AMBA: Núñez · Vicente López · San Isidro · Tigre · Nordelta · Pilar</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wsp-flotante" data-wsp="Hola Clima Baires, quiero hacer una consulta." href="#" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>
+</a>
+
+<script src="{p}assets/js/main.js"></script>
+</body>
+</html>
+'''
+
+def tarjeta_servicio(anchor, icono, titulo, texto, items, p=''):
+    lis = ''.join(f'<li>{i}</li>' for i in items)
+    return f'''<div class="tarjeta" id="{anchor}">
+      <div class="icono">{SVC_ICONS[icono]}</div>
+      <h3>{titulo}</h3>
+      <p>{texto}</p>
+      <ul class="lista-check">{lis}</ul>
+    </div>'''
+
+def jsonld_local(nombre, url, zona=None):
+    areas = [z[1] for z in ZONAS] if zona is None else [zona]
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'HVACBusiness',
+        'name': 'Clima Baires Argentina',
+        'url': url,
+        'image': DOMINIO + '/assets/img/icon-512.png',
+        'description': nombre,
+        'email': 'info@climabaires.com',
+        'priceRange': '$$',
+        'areaServed': [{'@type': 'Place', 'name': a} for a in areas],
+        'knowsAbout': ['aire acondicionado', 'instalación de split', 'mantenimiento HVAC', 'climatización residencial'],
+        'openingHours': 'Mo-Sa 08:00-19:00',
+        'sameAs': ['https://www.climabaires.es'],
+    }
+
+# ---------------- CONTENIDOS ----------------
+
+def pagina_index():
+    chips = ''.join(f'<a href="zonas/{slug}.html">{nombre}</a>' for slug, nombre, *_ in ZONAS)
+    c = f'''
+<section class="hero">
+  <div class="contenedor">
+    <span class="kicker">Aire acondicionado · corredor norte de Buenos Aires</span>
+    <h1>Instalamos el confort de tu casa, sin vueltas y sin sorpresas</h1>
+    <p class="sub">Venta, instalación certificada y posventa real de aire acondicionado en Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. Presupuesto el mismo día: lo que ves es lo que pagás.</p>
+    <div class="acciones">
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de equipo + instalación." href="#">Pedir presupuesto por WhatsApp</a>
+      <a class="boton fantasma" style="border-color:#fff;color:#fff !important" href="calculadora-frigorias.html">Calcular frigorías</a>
+    </div>
+    <p class="mini">Respondemos en menos de 5 minutos en horario comercial · Seguros al día para ingresar a countries y barrios cerrados</p>
+  </div>
+</section>
+
+<div class="franja-marcas">
+  <div class="contenedor">
+    <span>Trabajamos con:</span><span>Daikin</span><span>Mitsubishi</span><span>LG</span><span>Samsung</span><span>BGH</span><span>Surrey</span><span>Midea</span>
+  </div>
+</div>
+
+<section class="seccion" id="servicios">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Qué hacemos</span><h2>Un solo proveedor, de la compra al mantenimiento</h2>
+    <p class="intro">Nacimos en Málaga (España) instalando climatización en la Costa del Sol. Traemos ese estándar de servicio al corredor norte: transparencia de precios, obra prolija y una posventa que responde.</p></div>
+    <div class="grilla tres">
+      {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'Te asesoramos sobre la marca y la potencia justa para cada ambiente, con precio cerrado de equipo + instalación en una sola propuesta.', ['Split inverter, multisplit, piso-techo y conductos', 'Marcas líderes con garantía oficial', 'Sin stock viejo: pedimos tu equipo al distribuidor'])}
+      {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'Instaladores con certificación, seguros al día y checklist de calidad en cada obra. Dejamos todo funcionando y limpio.', ['Vacío de cañería y prueba de estanqueidad siempre', 'Protección de pisos y muebles, retiro de residuos', 'Apta countries: cumplimos los requisitos de acceso'])}
+      {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'El diferencial que aprendimos en España: seguir estando después de cobrar. Limpieza, service y reparación con visita programada.', ['Mantenimiento preventivo anual', 'Diagnóstico y reparación multimarca', 'Garantía escrita de la instalación'])}
+    </div>
+  </div>
+</section>
+
+<section class="seccion alterna" id="zonas">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Dónde trabajamos</span><h2>Corredor norte, de Núñez a Pilar</h2>
+    <p class="intro">Atendemos casas, departamentos y barrios cerrados a lo largo de la Panamericana y el Acceso Norte. Elegí tu zona para ver el servicio en tu barrio.</p></div>
+    <div class="zona-chips centrado" style="justify-content:center">{chips}</div>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor grilla dos">
+    <div>
+      <span class="kicker">Por qué Clima Baires</span>
+      <h2>Transparencia española, servicio argentino</h2>
+      <ul class="lista-check">
+        <li><strong>Presupuesto el mismo día</strong>, por escrito y sin letra chica: equipo, materiales e instalación en un solo precio.</li>
+        <li><strong>Lo que ves es lo que pagás</strong>: si aparece un adicional, te lo mostramos antes de hacerlo, nunca después.</li>
+        <li><strong>Posventa real</strong>: agenda de mantenimiento, respuesta rápida y garantía escrita.</li>
+        <li><strong>Seguros y papeles al día</strong> para entrar a Nordelta y a cualquier country sin demoras en la barrera.</li>
+      </ul>
+    </div>
+    <div class="tarjeta">
+      <h3>¿No sabés qué equipo necesitás?</h3>
+      <p>Usá nuestra calculadora de frigorías: en 30 segundos sabés qué potencia lleva tu ambiente y qué split te conviene. Después coordinamos una visita técnica sin cargo para confirmarlo.</p>
+      <a class="boton" href="calculadora-frigorias.html">Ir a la calculadora</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="banda-cta">
+      <div><h2>¿Instalamos antes del calor?</h2><p>Agendá tu instalación con tiempo: en temporada alta los buenos horarios vuelan.</p></div>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero agendar una instalación antes del verano." href="#">Hablar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+'''
+    return layout(0, 'Clima Baires — Aire acondicionado en zona norte: venta, instalación y posventa',
+        'Venta, instalación certificada y mantenimiento de aire acondicionado en Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. Presupuesto el mismo día.',
+        c, f'{DOMINIO}/', jsonld_local('Venta, instalación y posventa de aire acondicionado en el corredor norte del AMBA.', DOMINIO + '/'), 'inicio')
+
+def pagina_servicios():
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Servicios</nav>
+    <h1>Servicios de climatización</h1>
+    <p class="bajada">De la elección del equipo a la limpieza anual: un solo proveedor responsable de que tu casa esté siempre a la temperatura justa.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:20px">
+  <div class="contenedor grilla tres">
+    {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'Elegimos juntos la potencia y la marca correcta para cada ambiente. Precio cerrado: equipo + materiales + instalación en una sola cifra.', ['Split inverter de 2.250 a 6.500 frigorías', 'Multisplit para casas: una condensadora, varios ambientes', 'Piso-techo, cassette y conductos para livings grandes y obra nueva', 'Marcas: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea'])}
+    {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'La instalación define la vida útil del equipo. Por eso nuestros técnicos siguen un checklist de calidad en cada obra, con fotos y firma al terminar.', ['Vacío de cañería con bomba y prueba de estanqueidad', 'Cañería de cobre soldada, ménsulas reforzadas y desagüe bien resuelto', 'Trabajo en altura con seguros y elementos certificados', 'Coordinación con administraciones de edificios y countries'])}
+    {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'Un aire limpio enfría más, gasta menos y dura años. Nuestro plan anual te olvida del tema: te avisamos nosotros cuando toca.', ['Limpieza profunda de filtros, turbina y serpentina', 'Control de gas, consumo y aislaciones', 'Reparaciones multimarca con repuestos originales', 'Prioridad de agenda para clientes con plan'])}
+  </div>
+</section>
+
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Cómo trabajamos</span><h2>Cuatro pasos, cero sorpresas</h2></div>
+    <div class="grilla dos" style="margin-top:26px">
+      <div class="tarjeta"><h3>1 · Contanos qué necesitás</h3><p>Por WhatsApp o con la calculadora de frigorías. Con fotos y medidas del ambiente ya podemos armar un presupuesto orientativo el mismo día.</p></div>
+      <div class="tarjeta"><h3>2 · Visita técnica sin cargo</h3><p>Confirmamos potencia, recorrido de cañería y ubicación de la condensadora. El presupuesto pasa a ser cerrado: lo que ves es lo que pagás.</p></div>
+      <div class="tarjeta"><h3>3 · Instalación con checklist</h3><p>Traemos el equipo, protegemos el espacio de trabajo, instalamos con vacío y prueba de estanqueidad, y te mostramos todo funcionando.</p></div>
+      <div class="tarjeta"><h3>4 · Posventa que responde</h3><p>Garantía escrita, mantenimiento anual programado y un WhatsApp que contesta cuando lo necesitás. Así de simple.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="banda-cta">
+      <div><h2>Pedí tu presupuesto hoy</h2><p>Respondemos en menos de 5 minutos en horario comercial.</p></div>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de instalación." href="#">Pedir presupuesto</a>
+    </div>
+  </div>
+</section>
+'''
+    return layout(0, 'Servicios — venta, instalación y mantenimiento de aire acondicionado | Clima Baires',
+        'Venta de equipos split, multisplit y conductos, instalación certificada con checklist de calidad y mantenimiento anual en zona norte de Buenos Aires.',
+        c, f'{DOMINIO}/servicios.html', jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'), 'servicios')
+
+def pagina_calculadora():
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Calculadora de frigorías</nav>
+    <h1>Calculadora de frigorías</h1>
+    <p class="bajada">¿Qué potencia necesita tu ambiente? Completá los datos y te lo decimos al instante. Es orientativa: antes de instalar siempre confirmamos con una visita técnica sin cargo.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:10px">
+  <div class="contenedor">
+    <form class="calc" id="calc-frigorias">
+      <label for="m2">Superficie del ambiente (m²)</label>
+      <input type="number" id="m2" name="m2" min="4" max="200" step="0.5" placeholder="Ej.: 25" required>
+
+      <label for="altura">Altura de techo (m)</label>
+      <select id="altura" name="altura">
+        <option value="2.6" selected>Estándar (2,6 m)</option>
+        <option value="3">Alta (3 m)</option>
+        <option value="3.5">Muy alta / doble altura (3,5 m+)</option>
+      </select>
+
+      <label for="orientacion">Orientación predominante</label>
+      <select id="orientacion" name="orientacion">
+        <option value="sur" selected>Sur / Este (menos sol)</option>
+        <option value="norte">Norte (sol gran parte del día)</option>
+        <option value="oeste">Oeste (sol fuerte de tarde)</option>
+      </select>
+
+      <label for="ventanales">¿Ventanales grandes o techo expuesto al sol?</label>
+      <select id="ventanales" name="ventanales">
+        <option value="no" selected>No</option>
+        <option value="si">Sí</option>
+      </select>
+
+      <label for="personas">Personas que usan el ambiente habitualmente</label>
+      <select id="personas" name="personas">
+        <option value="2" selected>1 – 2</option>
+        <option value="4">3 – 4</option>
+        <option value="6">5 o más</option>
+      </select>
+
+      <button class="boton" type="submit" style="margin-top:22px;width:100%">Calcular frigorías</button>
+
+      <div class="resultado" id="calc-resultado">
+        <div class="cifra"></div>
+        <p class="equipo" style="margin:8px 0 16px"></p>
+        <a class="boton celeste" data-wsp-calc href="#">Pedir presupuesto con este cálculo</a>
+      </div>
+
+      <p class="nota">El cálculo usa 100 frigorías/m² de referencia, ajustado por altura, orientación, ganancia solar y ocupación. Cocinas, quinchos y ambientes con muchos electrodomésticos pueden requerir más potencia: lo verificamos en la visita técnica.</p>
+    </form>
+  </div>
+</section>
+'''
+    return layout(0, 'Calculadora de frigorías — ¿qué aire acondicionado necesito? | Clima Baires',
+        'Calculá cuántas frigorías necesita tu ambiente y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en zona norte de Buenos Aires.',
+        c, f'{DOMINIO}/calculadora-frigorias.html', None, 'calc')
+
+def pagina_zona(slug, nombre, partido, intro, barrios, especial):
+    otras = ' · '.join(f'<a href="{s}.html">{n}</a>' for s, n, *_ in ZONAS if s != slug)
+    lista_barrios = ', '.join(barrios)
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="../index.html">Inicio</a> › <a href="../index.html#zonas">Zonas</a> › {nombre}</nav>
+    <h1>Aire acondicionado en {nombre}</h1>
+    <p class="bajada">{intro}</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:10px">
+  <div class="contenedor grilla dos">
+    <div>
+      <h2>Instalación, venta y service en {nombre}</h2>
+      <p>Vendemos e instalamos equipos split, multisplit, piso-techo y conductos en {lista_barrios}. Presupuesto por WhatsApp el mismo día, visita técnica sin cargo y precio cerrado antes de empezar: lo que ves es lo que pagás.</p>
+      <p>{especial}</p>
+      <ul class="lista-check">
+        <li>Instaladores certificados con seguros al día</li>
+        <li>Vacío de cañería y prueba de estanqueidad en toda instalación</li>
+        <li>Garantía escrita y mantenimiento anual programado</li>
+        <li>Marcas líderes: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea</li>
+      </ul>
+      <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap">
+        <a class="boton" data-wsp="Hola Clima Baires, estoy en {nombre} y quiero un presupuesto." href="#">Pedir presupuesto en {nombre}</a>
+        <a class="boton fantasma" href="../calculadora-frigorias.html">Calcular frigorías</a>
+      </div>
+    </div>
+    <div>
+      <div class="tarjeta">
+        <h3>Preguntas frecuentes en {nombre}</h3>
+        <p><strong>¿Cuánto tardan en venir?</strong><br>Visita técnica dentro de las 72 h; en temporada alta priorizamos por orden de reserva.</p>
+        <p><strong>¿El presupuesto tiene costo?</strong><br>No: la visita técnica y el presupuesto son sin cargo en todo el corredor norte.</p>
+        <p><strong>¿Puedo pagar en cuotas?</strong><br>Sí: aceptamos transferencia (con descuento), tarjetas y cuotas. Te detallamos las opciones con el presupuesto.</p>
+        <p><strong>¿Hacen mantenimiento de equipos que no instalaron?</strong><br>Sí, somos multimarca: limpieza, carga de gas y reparaciones con repuestos originales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion alterna">
+  <div class="contenedor centrado">
+    <h2>También trabajamos en</h2>
+    <p style="margin-top:10px">{otras}</p>
+  </div>
+</section>
+'''
+    ld = jsonld_local(f'Venta, instalación y mantenimiento de aire acondicionado en {nombre} ({partido}).', f'{DOMINIO}/zonas/{slug}.html', nombre)
+    return layout(1, f'Aire acondicionado en {nombre}: instalación, venta y service | Clima Baires',
+        f'Instalación de aire acondicionado en {nombre} ({partido}): split, multisplit y conductos con presupuesto el mismo día, seguros al día y posventa real. {lista_barrios}.',
+        c, f'{DOMINIO}/zonas/{slug}.html', ld, 'zonas')
+
+def pagina_nosotros():
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Sobre nosotros</nav>
+    <h1>De la Costa del Sol al corredor norte</h1>
+    <p class="bajada">Clima Baires nació en Málaga, España, instalando climatización para hogares de la Costa del Sol. Hoy traemos ese mismo estándar de servicio a Buenos Aires, de la mano de un equipo local.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:10px">
+  <div class="contenedor grilla dos">
+    <div>
+      <h2>Nuestra historia</h2>
+      <p>En España aprendimos que en este rubro el negocio no es vender un aparato: es que el cliente vuelva a llamarte al año siguiente. Por eso construimos Clima Baires sobre tres pilares que hoy cruzan el Atlántico:</p>
+      <ul class="lista-check">
+        <li><strong>Transparencia</strong>: presupuesto por escrito, precio cerrado y cero letra chica. Lo que ves es lo que pagás.</li>
+        <li><strong>Rapidez</strong>: respuesta en minutos, presupuesto el mismo día y agenda que se cumple.</li>
+        <li><strong>Posventa real</strong>: seguimos estando después de cobrar — mantenimiento programado, garantía escrita y un WhatsApp que contesta.</li>
+      </ul>
+      <p style="margin-top:14px">La operación argentina está liderada desde Buenos Aires por un equipo local, con el respaldo y los procesos de la casa matriz española (<a href="https://www.climabaires.es" rel="noopener">climabaires.es</a>).</p>
+    </div>
+    <div>
+      <div class="tarjeta">
+        <h3>Nuestros valores</h3>
+        <p><strong>Misión:</strong> brindar soluciones de climatización eficientes, seguras y duraderas, adaptadas a cada hogar.</p>
+        <p><strong>Visión:</strong> ser la referencia del corredor norte por transparencia, agilidad y calidad humana.</p>
+        <p><strong>Eslogan:</strong> «Tu confort, nuestra prioridad».</p>
+      </div>
+      <div class="tarjeta" style="margin-top:20px">
+        <h3>Datos que importan</h3>
+        <ul class="lista-check">
+          <li>Instaladores con certificación y seguros con cláusula de no repetición</li>
+          <li>Aptos para ingresar a Nordelta y barrios cerrados</li>
+          <li>Checklist de calidad con fotos en cada obra</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="banda-cta">
+      <div><h2>Conocenos trabajando</h2><p>La mejor carta de presentación es una instalación bien hecha.</p></div>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero coordinar una visita técnica." href="#">Coordinar visita</a>
+    </div>
+  </div>
+</section>
+'''
+    return layout(0, 'Sobre nosotros — Clima Baires Argentina',
+        'Clima Baires nació en Málaga instalando climatización en la Costa del Sol. Traemos ese estándar al corredor norte de Buenos Aires: transparencia, rapidez y posventa real.',
+        c, f'{DOMINIO}/sobre-nosotros.html', None, 'nosotros')
+
+def pagina_contacto():
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Contacto</nav>
+    <h1>Hablemos de tu clima</h1>
+    <p class="bajada">El camino más corto es WhatsApp: contanos qué necesitás, mandanos fotos del ambiente y te pasamos un presupuesto orientativo el mismo día.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:10px">
+  <div class="contenedor grilla dos">
+    <div class="tarjeta">
+      <h3>Escribinos directo</h3>
+      <p>WhatsApp: <strong data-wsp-num></strong><br>
+      Email: <a data-email href="#"></a><br>
+      Horario: <span data-horario></span></p>
+      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero hacer una consulta." href="#" style="margin-top:8px">Abrir WhatsApp</a>
+      <p style="margin-top:18px"><strong>Zona de trabajo:</strong> Núñez (CABA), Vicente López, San Isidro, Tigre, Nordelta y Pilar. Atendemos a domicilio: no tenemos local de venta al público, y eso también lo pagás menos.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>O dejanos tus datos</h3>
+      <p>Completá el formulario y el mensaje se abre listo para enviar por WhatsApp.</p>
+      <form class="form-contacto" id="form-contacto" onsubmit="event.preventDefault(); const f=this; const txt='Hola Clima Baires, soy '+f.nombre.value+' ('+f.zona.value+'). '+f.mensaje.value; window.open('https://wa.me/'+ (window.CB_NUM||'5491100000000') +'?text='+encodeURIComponent(txt),'_blank');">
+        <input name="nombre" placeholder="Tu nombre" required>
+        <select name="zona" required>
+          <option value="" disabled selected>¿En qué zona estás?</option>
+          <option>Núñez</option><option>Vicente López</option><option>San Isidro</option>
+          <option>Tigre</option><option>Nordelta</option><option>Pilar</option><option>Otra</option>
+        </select>
+        <textarea name="mensaje" placeholder="Contanos qué necesitás: instalación nueva, recambio, mantenimiento…" required></textarea>
+        <button class="boton" type="submit">Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+'''
+    return layout(0, 'Contacto — presupuesto de aire acondicionado en zona norte | Clima Baires',
+        'Pedí tu presupuesto de venta e instalación de aire acondicionado en el corredor norte de Buenos Aires. Respondemos en minutos por WhatsApp.',
+        c, f'{DOMINIO}/contacto.html', None, 'contacto')
+
+def pagina_404():
+    c = '''
+<section class="seccion centrado" style="padding:120px 0">
+  <div class="contenedor">
+    <h1>Uy, esta página se quedó sin frío</h1>
+    <p class="intro" style="margin-top:14px">La dirección que buscás no existe o cambió de lugar.</p>
+    <a class="boton" href="index.html">Volver al inicio</a>
+  </div>
+</section>
+'''
+    return layout(0, 'Página no encontrada | Clima Baires', 'Página no encontrada.', c, f'{DOMINIO}/404.html', None, '')
+
+# ---------------- ESCRITURA ----------------
+
+def escribir(ruta, contenido):
+    destino = os.path.join(RAIZ, ruta)
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
+    with open(destino, 'w', encoding='utf-8') as f:
+        f.write(contenido)
+    print('  ✓', ruta)
+
+paginas = {
+    'index.html': pagina_index(),
+    'servicios.html': pagina_servicios(),
+    'calculadora-frigorias.html': pagina_calculadora(),
+    'sobre-nosotros.html': pagina_nosotros(),
+    'contacto.html': pagina_contacto(),
+    '404.html': pagina_404(),
+}
+for z in ZONAS:
+    paginas[f'zonas/{z[0]}.html'] = pagina_zona(*z)
+
+for ruta, html in paginas.items():
+    escribir(ruta, html)
+
+# sitemap + robots
+urls = [f'{DOMINIO}/'] + [f'{DOMINIO}/{r}' for r in paginas if r not in ('index.html', '404.html')]
+sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+sitemap += ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls)
+sitemap += '</urlset>\n'
+escribir('sitemap.xml', sitemap)
+escribir('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {DOMINIO}/sitemap.xml\n')
+print(f'Listo: {len(paginas)} páginas + sitemap + robots.')
