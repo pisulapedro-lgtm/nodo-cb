@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>{{TITULO}}</title>
+<style>
+  /* ===== Fuentes de marca (Poppins ≈ Goldplay) ===== */
+  @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; src: url('../build/assets/fonts/poppins-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; src: url('../build/assets/fonts/poppins-500.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; src: url('../build/assets/fonts/poppins-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 800; font-style: normal; src: url('../build/assets/fonts/poppins-800.woff2') format('woff2'); }
+
+  :root {
+    --azul: #0058B3;      /* color primario de marca */
+    --celeste: #00A8FC;   /* acento de marca */
+    --navy: #00285A;      /* wordmark BAIRES (extraído del vector del manual) */
+    --gris-texto: #2b3440;
+    --gris-suave: #eef3f8;
+    --gris-linea: #c9d4e0;
+    --ambar: #b45309;     /* estimaciones / alertas */
+  }
+
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', 'Liberation Sans', 'DejaVu Sans', sans-serif;
+    font-size: 9.6pt; line-height: 1.5; color: var(--gris-texto);
+  }
+
+  /* ===== Estructura de capítulos ===== */
+  section.capitulo { page-break-before: always; }
+  section.capitulo:first-of-type { page-break-before: avoid; }
+
+  h1 {
+    font-size: 17pt; font-weight: 800; color: var(--azul);
+    border-bottom: 2.5pt solid var(--celeste);
+    padding-bottom: 4pt; margin: 0 0 10pt 0;
+    page-break-after: avoid;
+  }
+  h2 { font-size: 12.5pt; font-weight: 600; color: var(--navy); margin: 14pt 0 5pt; page-break-after: avoid; }
+  h3 { font-size: 10.5pt; font-weight: 600; color: var(--azul); margin: 10pt 0 4pt; page-break-after: avoid; }
+  p { margin: 4pt 0 7pt; }
+  ul, ol { margin: 3pt 0 8pt; padding-left: 16pt; }
+  li { margin-bottom: 2.5pt; }
+  strong { color: var(--navy); }
+  a { color: var(--azul); text-decoration: none; word-break: break-all; }
+  hr { border: none; border-top: 1pt solid var(--gris-linea); margin: 10pt 0; }
+  blockquote {
+    margin: 8pt 0; padding: 6pt 10pt; background: var(--gris-suave);
+    border-left: 3pt solid var(--celeste); page-break-inside: avoid;
+  }
+  blockquote p { margin: 2pt 0; }
+  code {
+    font-family: 'DejaVu Sans Mono', monospace; font-size: 8.6pt;
+    background: var(--gris-suave); padding: 0.5pt 3pt; border-radius: 2pt;
+  }
+
+  /* ===== Tablas: nunca cortadas ===== */
+  table {
+    border-collapse: collapse; width: 100%; margin: 7pt 0 10pt;
+    font-size: 8.6pt; page-break-inside: avoid;
+  }
+  thead { display: table-header-group; }
+  tr { page-break-inside: avoid; }
+  th {
+    background: var(--azul); color: #fff; font-weight: 600;
+    padding: 4pt 6pt; text-align: left; border: 0.75pt solid var(--azul);
+  }
+  td { padding: 3.5pt 6pt; border: 0.75pt solid var(--gris-linea); vertical-align: top; }
+  tbody tr:nth-child(even) td { background: var(--gris-suave); }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  tr.total td {
+    background: var(--navy) !important; color: #fff; font-weight: 600;
+  }
+  tr.subtotal td { background: #d8e6f5 !important; font-weight: 600; }
+
+  /* Marcas editoriales */
+  .validar { color: var(--ambar); font-weight: 600; }
+  .estimacion { color: var(--ambar); }
+  .leyenda { font-size: 7.8pt; color: #5a6675; margin-top: -6pt; }
+
+  .caja-clave {
+    background: var(--gris-suave); border: 1pt solid var(--gris-linea);
+    border-left: 4pt solid var(--azul); border-radius: 3pt;
+    padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid;
+  }
+
+  /* ===== Portada ===== */
+  section.portada { page-break-before: avoid; }
+  .portada-lienzo {
+    height: 236mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    background: linear-gradient(160deg, var(--azul) 0%, #01417f 55%, var(--navy) 100%);
+    border-radius: 6pt; color: #fff; padding: 20mm;
+  }
+  .portada-lienzo img.logo { width: 300px; margin-bottom: 18mm; }
+  .portada-titulo { font-size: 27pt; font-weight: 800; line-height: 1.2; margin: 0 0 6mm; }
+  .portada-sub { font-size: 13pt; font-weight: 500; color: #bfe4ff; margin: 0 0 16mm; }
+  .portada-meta {
+    font-size: 9.5pt; line-height: 1.9; color: #dcecfb;
+    border-top: 1pt solid rgba(255,255,255,.35); padding-top: 6mm; min-width: 70%;
+  }
+  .portada-meta strong { color: #fff; }
+
+  /* ===== Gantt ===== */
+  table.gantt { font-size: 6.6pt; table-layout: fixed; }
+  table.gantt th, table.gantt td { padding: 1.6pt 1pt; text-align: center; border: 0.5pt solid #dfe7f0; }
+  table.gantt th.tarea, table.gantt td.tarea {
+    text-align: left; width: 34mm; padding-left: 4pt;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  table.gantt thead th { background: var(--navy); border-color: var(--navy); font-size: 6.4pt; }
+  table.gantt td.on-legal   { background: #0058B3; }
+  table.gantt td.on-fiscal  { background: #3E8BD8; }
+  table.gantt td.on-banca   { background: #00A8FC; }
+  table.gantt td.on-ops     { background: #00285A; }
+  table.gantt td.on-stack   { background: #7fc8f0; }
+  table.gantt td.on-comercial { background: #63c7a4; }
+  table.gantt td.on-personas  { background: #f0b45a; }
+  table.gantt tr.grupo td {
+    background: var(--gris-suave) !important; text-align: left; font-weight: 600;
+    color: var(--navy); padding-left: 3pt; font-size: 7pt;
+  }
+  .gantt-leyenda { font-size: 7.6pt; margin: 2pt 0 8pt; }
+  .gantt-leyenda span.chip {
+    display: inline-block; width: 8pt; height: 5pt; border-radius: 1pt;
+    margin: 0 2pt 0 8pt; vertical-align: middle;
+  }
+
+  /* Página del cronograma en horizontal para que el Gantt respire */
+  section.apaisada { size: A4 landscape; }
+</style>
+</head>
+<body>
+{{CONTENIDO}}
+</body>
+</html>

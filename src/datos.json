@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "version": "0.0-smoke",
+    "fecha_documento": "2026-08-01",
+    "fecha_inicio": "2026-08-03",
+    "dias_plan": 30,
+    "empresa": "Clima Baires"
+  },
+  "cambio": {
+    "eur_ars": 1500,
+    "fecha": "2026-08-01",
+    "tipo": "PENDIENTE — se fija con A7",
+    "fuente": "F1",
+    "caracter": "estimacion"
+  },
+  "presupuesto": {
+    "total_eur": 15000,
+    "partidas": []
+  },
+  "cronograma": [
+    { "tarea": "Tarea de prueba legal", "workstream": "legal", "dia_inicio": 1, "dia_fin": 5, "responsable": "Ignacio", "dependencias": "—", "costo_eur": 100 },
+    { "tarea": "Tarea de prueba fiscal", "workstream": "fiscal", "dia_inicio": 4, "dia_fin": 9, "responsable": "Contador", "dependencias": "CUIT" },
+    { "tarea": "Tarea de prueba comercial", "workstream": "comercial", "dia_inicio": 12, "dia_fin": 26, "responsable": "Ignacio" },
+    { "tarea": "Tarea semana 0 (España)", "workstream": "legal", "semana0": true, "fechas": "28/07–02/08", "dia_inicio": 0, "dia_fin": 0, "responsable": "Pedro y Sebastián" }
+  ],
+  "stack": [
+    { "item": "ERP de prueba", "rol": "Holded argentino", "ars_mes": 30000, "nota": "smoke test", "fuente": "F1" }
+  ]
+}
