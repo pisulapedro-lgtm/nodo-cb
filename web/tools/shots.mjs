@@ -184,6 +184,24 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
     if (await page.isVisible('#chat')) errores.push('chatbot no cierra con Escape');
     console.log('Chatbot OK →', decodeURIComponent(hrefChat.split('text=')[1] || ''));
 
+    // accesibilidad por teclado: anillo de foco visible en filtros y fotos
+    await page.goto('file://' + join(WEB, 'obras.html'), { waitUntil: 'load' });
+    for (const clase of ['filtro', 'obra-abrir']) {
+      let visto = null;
+      for (let i = 0; i < 45; i++) {
+        await page.keyboard.press('Tab');
+        visto = await page.evaluate((c) => {
+          const el = document.activeElement;
+          if (!el?.classList?.contains(c)) return null;
+          const cs = getComputedStyle(el);
+          return { w: parseFloat(cs.outlineWidth), s: cs.outlineStyle };
+        }, clase);
+        if (visto) break;
+      }
+      if (!visto) errores.push(`.${clase} no es alcanzable con Tab`);
+      else if (!(visto.w >= 2 && visto.s !== 'none')) errores.push(`.${clase} sin anillo de foco visible (${visto.w}px ${visto.s})`);
+    }
+
     // galería: filtros + lightbox accesible (abre, navega, cierra con Escape)
     await page.goto('file://' + join(WEB, 'obras.html'), { waitUntil: 'load' });
     const total = await page.locator('.obra').count();

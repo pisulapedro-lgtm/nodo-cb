@@ -184,7 +184,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .zona-chips a {
   border: 1.5px solid var(--linea); border-radius: 999px; padding: 9px 18px;
   font-weight: 500; font-size: .93rem; color: var(--navy); background: #fff;
-  transition: all .15s ease;
+  transition: border-color .15s ease, color .15s ease;
 }
 .zona-chips a:hover { border-color: var(--celeste); color: var(--azul); }
 
@@ -292,7 +292,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .chat-chip {
   border: 1.5px solid var(--linea); background: #fff; border-radius: 999px;
   padding: 8px 14px; font: 500 .86rem 'Poppins', sans-serif; color: var(--navy); cursor: pointer;
-  transition: all .15s ease;
+  transition: border-color .15s ease, color .15s ease;
 }
 .chat-chip:hover { border-color: var(--celeste); color: var(--azul); }
 .chat-chip:focus-visible { outline: 3px solid var(--celeste); }
@@ -313,7 +313,9 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 .filtro {
   border: 1.5px solid var(--linea); border-radius: 999px; padding: 8px 16px;
   font: inherit; font-size: .88rem; font-weight: 500; color: var(--navy);
-  background: #fff; cursor: pointer; transition: all .15s ease;
+  background: #fff; cursor: pointer;
+  /* nunca 'all': animar el outline retrasa el anillo de foco del teclado */
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
 }
 .filtro:hover { border-color: var(--celeste); color: var(--azul); }
 .filtro[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
