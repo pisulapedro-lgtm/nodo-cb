@@ -31,7 +31,7 @@ import json
 import os
 import sys
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 ORIGINALES = os.path.join(RAIZ, 'assets', 'img', 'originales')
@@ -99,11 +99,49 @@ MAPEO = {
     },
 }
 
+# ---------------------------------------------------------------------------
+# MEJORAS: edición fotográfica por archivo, aplicada antes de los derivados.
+# crop = ventana (izq, arriba, der, abajo) en fracciones de la foto orientada:
+# acerca el sujeto y saca cielo muerto, carteles ajenos y zonas vacías.
+# Los demás campos ajustan la revelada; si faltan, se usan los valores base.
+# ---------------------------------------------------------------------------
+MEJORAS_BASE = {'cutoff': 1, 'color': 1.10, 'contraste': 1.05, 'brillo': 1.0}
+MEJORAS = {
+    # azotea: sacar cielo sobrante arriba y borde de piso abajo
+    'e8bd4a26-WhatsApp_Image_20250915_at_1.46.04_PM_4.jpeg': {
+        'crop': (0.0, 0.10, 1.0, 0.95),
+    },
+    # fachada con plataforma: recortar el velo de sol del ángulo superior
+    '38429ddc-a593b1865ff44481b16de2d161cd2227.jpeg': {
+        'crop': (0.05, 0.15, 1.0, 1.0), 'cutoff': 2, 'contraste': 1.10,
+    },
+    # cassette abierto: fuera el desorden de oficina del borde inferior
+    '114275a4-WhatsApp_Image_20250915_at_1.46.04_PM_7.jpeg': {
+        'crop': (0.05, 0.0, 1.0, 0.88), 'brillo': 1.03, 'color': 1.08,
+    },
+    # elevador de carga: sacar la escalera del borde izquierdo
+    '98d87089-WhatsApp_Image_20250811_at_12.37.45_PM.jpeg': {
+        'crop': (0.12, 0.02, 0.95, 0.98), 'brillo': 1.03, 'color': 1.08,
+    },
+    # split mural: acercar técnico + equipo, menos cielorraso vacío
+    '0c6e5653-WhatsApp_Image_20250915_at_1.46.04_PM_6.jpeg': {
+        'crop': (0.0, 0.15, 0.88, 0.92), 'brillo': 1.03, 'color': 1.08,
+    },
+    # escalera en local: menos cartel del comercio, foco en el técnico
+    '39aa3365-WhatsApp_Image_20250915_at_1.46.04_PM.jpeg': {
+        'crop': (0.05, 0.18, 0.95, 1.0),
+    },
+    # equipo llegando a obra: foco en la remera Clima Baires
+    '6e0aee55-WhatsApp_Image_20250915_at_1.46.04_PM_1.jpeg': {
+        'crop': (0.30, 0.25, 1.0, 0.95),
+    },
+}
+
 # Foto que alimenta el hero de la portada y los og:image (la mejor toma).
 HERO_ORIGEN = 'e8bd4a26-WhatsApp_Image_20250915_at_1.46.04_PM_4.jpeg'
 # Ventana de recorte del hero, en fracciones (izq, arriba, der, abajo) sobre
-# la foto ya orientada: banda con condensadoras + técnico + skyline.
-HERO_VENTANA = (0.0, 0.20, 1.0, 0.66)
+# la foto YA MEJORADA (recortada): banda con condensadoras + técnico + skyline.
+HERO_VENTANA = (0.0, 0.12, 1.0, 0.66)
 
 # Originales inutilizables: archivo → motivo. Se mueven a descartadas/.
 DESCARTES = {}
@@ -119,22 +157,44 @@ def abrir_orientada(ruta):
     return im
 
 
+def mejorar(im, archivo):
+    """Revelado: recorte de encuadre + niveles + color + contraste por foto."""
+    cfg = dict(MEJORAS_BASE)
+    cfg.update(MEJORAS.get(archivo, {}))
+    if 'crop' in cfg:
+        w, h = im.size
+        l, t, r, b = cfg['crop']
+        im = im.crop((round(l * w), round(t * h), round(r * w), round(b * h)))
+    im = ImageOps.autocontrast(im, cutoff=cfg['cutoff'], preserve_tone=True)
+    im = ImageEnhance.Color(im).enhance(cfg['color'])
+    im = ImageEnhance.Contrast(im).enhance(cfg['contraste'])
+    if cfg['brillo'] != 1.0:
+        im = ImageEnhance.Brightness(im).enhance(cfg['brillo'])
+    return im
+
+
 def escalar(im, lado_max):
+    """Redimensiona al lado mayor pedido y devuelve nítido (unsharp post-resize)."""
     w, h = im.size
     lado = max(w, h)
-    if lado <= lado_max:
-        return im.copy()
-    factor = lado_max / lado
-    return im.resize((round(w * factor), round(h * factor)), Image.LANCZOS)
+    if lado > lado_max:
+        factor = lado_max / lado
+        im = im.resize((round(w * factor), round(h * factor)), Image.LANCZOS)
+    else:
+        im = im.copy()
+    # la nitidez se aplica al tamaño final: realza sin halos visibles
+    percent = 90 if lado_max <= 800 else 70
+    return im.filter(ImageFilter.UnsharpMask(radius=1.8, percent=percent, threshold=3))
 
 
 def guardar_webp(im, ruta):
-    # sin parámetro exif → los metadatos del original no viajan al derivado
-    im.save(ruta, 'WEBP', quality=CALIDAD_WEBP, method=6)
-    peso = os.path.getsize(ruta)
-    if peso > PESO_MAX:
-        im.save(ruta, 'WEBP', quality=65, method=6)
+    # sin parámetro exif → los metadatos del original no viajan al derivado;
+    # si pesa de más, baja la calidad en escalones hasta cumplir el tope
+    for calidad in (CALIDAD_WEBP, 70, 62, 55, 48):
+        im.save(ruta, 'WEBP', quality=calidad, method=6)
         peso = os.path.getsize(ruta)
+        if peso <= PESO_MAX:
+            break
     return peso
 
 
@@ -200,7 +260,7 @@ def main():
         destinos = [os.path.join(OBRAS, f'{slug}-{t}.webp') for t in TAMANOS]
         entrada = dict(meta)
         if necesita_rehacer(ruta, destinos, force):
-            im = abrir_orientada(ruta)
+            im = mejorar(abrir_orientada(ruta), archivo)
             for lado, destino in zip(TAMANOS, destinos):
                 der = escalar(im, lado)
                 peso = guardar_webp(der, destino)
@@ -221,7 +281,7 @@ def main():
         destinos_hero = [os.path.join(OBRAS, f'hero-home-{t}.webp') for t in TAMANOS]
         destinos_og = [os.path.join(OBRAS, 'og-home.jpg'), os.path.join(OBRAS, 'og-obras.jpg')]
         if necesita_rehacer(ruta_hero, destinos_hero + destinos_og, force):
-            im = abrir_orientada(ruta_hero)
+            im = mejorar(abrir_orientada(ruta_hero), HERO_ORIGEN)
             banda = recorte_proporcional(im, HERO_VENTANA, 16 / 9)
             for lado, destino in zip(TAMANOS, destinos_hero):
                 der = escalar(banda, lado)
