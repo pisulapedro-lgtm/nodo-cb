@@ -116,6 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav');
   if (btn && nav) btn.addEventListener('click', () => nav.classList.toggle('abierta'));
 
+  // La promesa de respuesta se ajusta al horario real (lun a sáb, 8 a 19 h):
+  // prometer «en minutos» un domingo a la madrugada es una promesa que no se cumple
+  const ahora = new Date();
+  const enHorario = ahora.getDay() !== 0 && ahora.getHours() >= 8 && ahora.getHours() < 19;
+  if (!enHorario) {
+    document.querySelectorAll('[data-respuesta]').forEach((el) => {
+      el.textContent = 'Te respondemos al abrir: lunes a sábado, 8 a 19 h';
+    });
+  }
+
   // Año en el pie
   document.querySelectorAll('[data-anio]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 

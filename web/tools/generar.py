@@ -231,7 +231,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 <div class="chat" id="chat" hidden role="dialog" aria-label="Asistente de Clima Baires">
   <div class="chat-cabecera">
     <img src="{p}assets/img/avatar-chat.png" alt="" width="34" height="34" loading="lazy">
-    <div><strong>Clima Baires</strong><span>Respondemos en minutos</span></div>
+    <div><strong>Clima Baires</strong><span data-respuesta>Respondemos en minutos</span></div>
     <button class="chat-cerrar" type="button" aria-label="Cerrar chat">×</button>
   </div>
   <div class="chat-mensajes" id="chat-mensajes" aria-live="polite"></div>
@@ -312,7 +312,7 @@ def pagina_index():
         </a>
         <a class="hero-cta2" href="calculadora-frigorias.html">Calcular frigorías <span>→</span></a>
       </div>
-      <p class="hero-nota"><span class="hero-pulso" aria-hidden="true"></span>Respondemos en minutos · Aptos countries y barrios cerrados</p>
+      <p class="hero-nota"><span class="hero-pulso" aria-hidden="true"></span><span data-respuesta>Respondemos en minutos</span> · Aptos countries y barrios cerrados</p>
     </div>
   </div>
 
@@ -441,7 +441,8 @@ def seccion_ultimas_obras():
     return f'''
 <section class="seccion alterna" id="obras">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Trabajo real</span><h2>Últimas obras</h2></div>
+    <div class="centrado"><span class="kicker">Trabajo real</span><h2>Últimas obras</h2>
+    <p class="intro">Obras de nuestro equipo en la casa matriz de Málaga. Las primeras del corredor norte se suman apenas las hagamos.</p></div>
   </div>
   <div class="obras-carrusel-marco">
     <button class="car-flecha car-prev" type="button" aria-label="Anteriores">‹</button>
