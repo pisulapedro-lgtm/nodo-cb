@@ -40,9 +40,11 @@ h1, h2, h3 { line-height: 1.22; color: var(--navy); font-weight: 800; }
 h1 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
 h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: .5em; }
 h3 { font-size: 1.12rem; font-weight: 600; }
+/* El celeste #00A8FC no llega a AA como texto (2,4:1 sobre hielo): en textos
+   usamos el azul de marca y dejamos el celeste para elementos decorativos. */
 .kicker {
   display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--celeste); margin-bottom: 10px;
+  text-transform: uppercase; color: var(--azul); margin-bottom: 10px;
 }
 .centrado { text-align: center; }
 .intro { color: var(--gris); max-width: 720px; margin: 0 auto 40px; }
@@ -65,7 +67,9 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   transition: transform .15s ease, box-shadow .15s ease; border: 0; cursor: pointer;
 }
 .boton:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,88,179,.35); }
-.boton.celeste { background: var(--celeste); }
+/* sobre celeste y sobre el verde de WhatsApp el texto va en navy: mantiene los
+   colores de marca y sube el contraste de 2,6:1 y 2,0:1 a 5,5:1 y 7,3:1 */
+.boton.celeste { background: var(--celeste); color: var(--navy) !important; }
 .boton.fantasma { background: transparent; color: var(--azul) !important; border: 2px solid var(--azul); }
 .boton.blanco { background: #fff; color: var(--azul) !important; }
 .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
@@ -154,7 +158,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 }
 .cinta-cta svg { width: 26px; height: 26px; fill: #25D366; flex: 0 0 auto; }
 .cinta-cta p { margin: 0; flex: 1 1 260px; color: var(--navy); font-weight: 500; font-size: .98rem; }
-.boton.verde { background: #25D366; }
+.boton.verde { background: #25D366; color: var(--navy) !important; }
 .boton.verde:hover { box-shadow: 0 8px 20px rgba(37, 211, 102, .38); }
 
 /* tarjeta de CTA dentro del mosaico de obras */
@@ -244,7 +248,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .wsp-flotante {
   position: fixed; right: 22px; bottom: 22px; z-index: 60;
   height: 58px; padding: 0 22px 0 16px; border: 0; border-radius: 999px;
-  background: #25D366; color: #fff; cursor: pointer;
+  background: #25D366; color: var(--navy); cursor: pointer;
   display: flex; align-items: center; gap: 9px;
   font: 600 .98rem 'Poppins', sans-serif;
   box-shadow: 0 10px 28px rgba(0, 0, 0, .30);
@@ -252,7 +256,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 }
 .wsp-flotante:hover { transform: scale(1.05); }
 .wsp-flotante:focus-visible { outline: 3px solid var(--celeste); outline-offset: 2px; }
-.wsp-flotante svg { width: 30px; height: 30px; fill: #fff; }
+.wsp-flotante svg { width: 30px; height: 30px; fill: var(--navy); }
 .wsp-flotante.abierto .wsp-texto { display: none; }
 
 /* ---------- Chatbot (4 preguntas → WhatsApp) ---------- */
@@ -395,7 +399,7 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   text-align: center; font-weight: 600; font-size: .95rem;
   padding: 12px 10px; border-radius: 999px;
 }
-.barra-movil .bm-wsp { background: #25D366; color: #fff; }
+.barra-movil .bm-wsp { background: #25D366; color: var(--navy); }
 .barra-movil .bm-agenda { border: 2px solid var(--azul); color: var(--azul); }
 
 /* ---------- Nudge del botón flotante ---------- */

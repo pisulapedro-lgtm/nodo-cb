@@ -56,6 +56,40 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       ]);
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
     });
+    // contraste WCAG AA de los textos sobre fondos de color plano
+    const bajos = await page.evaluate(() => {
+      const canal = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+      const lum = (c) => 0.2126 * canal(c[0]) + 0.7152 * canal(c[1]) + 0.0722 * canal(c[2]);
+      const parse = (s) => (s.match(/\d+(\.\d+)?/g) || []).slice(0, 3).map(Number);
+      const fondo = (el) => {
+        let n = el;
+        while (n && n !== document.documentElement) {
+          const cs = getComputedStyle(n);
+          if (cs.backgroundImage && cs.backgroundImage !== 'none') return null;  // degradado/foto: no medible así
+          const bg = cs.backgroundColor;
+          if (bg && !/rgba\(0, 0, 0, 0\)|transparent/.test(bg)) return parse(bg);
+          n = n.parentElement;
+        }
+        return [255, 255, 255];
+      };
+      const out = [];
+      document.querySelectorAll('h1,h2,h3,h4,p,li,a,span,button,figcaption,label').forEach((el) => {
+        if (!el.offsetParent && getComputedStyle(el).position !== 'fixed') return;
+        const t = el.textContent.trim();
+        if (!t || el.children.length) return;
+        const cs = getComputedStyle(el);
+        const fg = parse(cs.color), bg = fondo(el);
+        if (fg.length < 3 || !bg) return;
+        const l1 = lum(fg), l2 = lum(bg);
+        const r = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+        const px = parseFloat(cs.fontSize);
+        const grande = px >= 24 || (px >= 18.66 && parseInt(cs.fontWeight, 10) >= 700);
+        if (r < (grande ? 3 : 4.5)) out.push(`${Math.round(r * 100) / 100}:1 "${t.slice(0, 30)}"`);
+      });
+      return [...new Set(out)];
+    });
+    if (bajos.length) errores.push(`${p} (${nombre}): contraste bajo AA → ${bajos.slice(0, 3).join(' · ')}`);
+
     // cobertura de conversión: ninguna franja larga de scroll sin CTA de WhatsApp
     // en el flujo del documento (el flotante y la barra móvil son fijos y no cuentan)
     const cob = await page.evaluate(() => {
