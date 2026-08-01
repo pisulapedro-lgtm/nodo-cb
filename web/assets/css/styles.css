@@ -203,6 +203,8 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   border-radius: var(--radio); color: #fff; padding: 46px 40px;
   display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap;
 }
+/* sin esto los hijos no bajan de su ancho mínimo y desbordan en pantallas de 320 px */
+.banda-cta > * { min-width: 0; }
 .banda-cta h2 { color: #fff; margin: 0; }
 .banda-cta p { color: #cfe8ff; margin-top: 6px; }
 
@@ -464,4 +466,11 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 @media (max-width: 560px) {
   .franja-equipo { grid-template-columns: 1fr; }
   .antes-despues { grid-template-columns: 1fr; }
+}
+
+/* pantallas muy angostas (iPhone SE y similares): el pie en dos columnas
+   desbordaba a lo ancho */
+@media (max-width: 400px) {
+  .pie-grilla { grid-template-columns: 1fr; gap: 26px; }
+  .claims { grid-template-columns: 1fr; }
 }
