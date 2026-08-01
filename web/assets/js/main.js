@@ -156,11 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
       pie.innerHTML = '';
       const form = document.createElement('form');
       form.className = 'chat-form';
-      form.innerHTML = '<input name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>' +
+      form.innerHTML = '<input name="nombre" placeholder="Tu nombre" autocomplete="given-name" maxlength="40" required>' +
                        '<button class="boton" type="submit">Enviar</button>';
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const v = form.nombre.value.trim();
+        const v = form.nombre.value.trim().slice(0, 40);
         if (!v) return;
         burbuja(v, true);
         alEnviar(v);
