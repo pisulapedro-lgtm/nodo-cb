@@ -82,6 +82,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .hero{
   position:relative; isolation:isolate; overflow:hidden;
   display:flex; align-items:center;
+  min-height:min(calc(100vh - 74px), 668px);
   min-height:min(calc(100dvh - 74px), 668px);
   padding:0; border-bottom:1px solid var(--linea);
   /* base de hielo con aurora fría: sin costura dura contra el header sticky */
@@ -106,27 +107,29 @@ h3 { font-size: 1.12rem; font-weight: 600; }
      rgba(0,0,0,0) 8%, rgba(0,0,0,.10) 26%, rgba(0,0,0,.34) 45%,
      rgba(0,0,0,.72) 66%, rgba(0,0,0,.95) 86%, #000 100%);
 }
-/* segunda máscara (se INTERSECA porque va en un hijo): funde arriba y abajo */
+/* segunda máscara (se INTERSECA porque va en un hijo): funde arriba y abajo.
+   La opacidad del fantasma vive ACÁ, no en la <img>: así el duotono de abajo
+   blend'ea contra una foto opaca y no contra transparencia (que la teñía de azul). */
 .hero-esc-int{
-  position:absolute; inset:0; overflow:hidden;
+  position:absolute; inset:0; overflow:hidden; isolation:isolate; opacity:.17;
   -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 13%, #000 72%, rgba(0,0,0,.16) 97%, rgba(0,0,0,0) 100%);
           mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 13%, #000 72%, rgba(0,0,0,.16) 97%, rgba(0,0,0,0) 100%);
 }
 /* la foto vertical se sobredimensiona y se corre para que entre el GESTO HUMANO
    (el técnico sobre la escalera) y no sólo la turbina del equipo */
 .hero-foto{
-  position:absolute; top:0; bottom:0; left:16%; width:128%; height:100%;
-  object-fit:cover; object-position:50% 14%;
-  /* brillo alto sin bajar el blanco: el cielorraso se va a papel y la remera
-     negra deja de ser una mancha sólida */
-  filter:grayscale(1) brightness(1.42);
-  mix-blend-mode:multiply; opacity:.34;
+  position:absolute; top:0; bottom:0; left:9%; width:124%; height:100%;
+  object-fit:cover; object-position:50% 13%;
+  /* el brillo sube hasta que el cielorraso llega a papel: sobre el hielo del
+     hero el blanco desaparece y sólo sobrevive el dibujo de las sombras.
+     El contraste bajo evita que la remera negra vuelva a ser una mancha sólida. */
+  filter:grayscale(1) brightness(1.46) contrast(.88);
 }
 /* duotono azul de marca: 'color' conserva la luminancia, los blancos siguen blancos */
 .hero-esc-int::after{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(158deg, var(--celeste) 0%, var(--azul) 55%, var(--navy) 100%);
-  mix-blend-mode:color; opacity:.72;
+  background:linear-gradient(158deg, var(--celeste) 0%, #0d8fe4 42%, var(--azul) 100%);
+  mix-blend-mode:color;
 }
 
 /* ---- halo de escarcha detrás del texto: garantiza AA pase lo que pase ---- */
@@ -154,7 +157,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   font-size:clamp(2.4rem,5vw,4rem);max-width:13ch;
 }
 .hero-tit em{font-style:normal;color:var(--azul)}
-.hero-sub{color:var(--gris);font-size:1.1rem;line-height:1.58;margin-top:22px;max-width:36ch}
+.hero-sub{color:var(--gris);font-size:1.1rem;line-height:1.58;margin-top:22px;max-width:420px}
 .hero-sub b{color:var(--navy);font-weight:600}
 
 .hero-acciones{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:34px}
@@ -163,7 +166,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   background:#25D366;color:var(--navy)!important;
   padding:17px 30px;min-height:56px;border-radius:999px;
   font-weight:600;font-size:1.02rem;letter-spacing:-.01em;
-  box-shadow:0 14px 30px -10px rgba(20,150,72,.55), inset 0 1px 0 rgba(255,255,255,.45);
+  box-shadow:0 12px 26px -11px rgba(18,140,68,.5), inset 0 1px 0 rgba(255,255,255,.42);
   transition:transform .15s ease, box-shadow .15s ease;
 }
 .hero-cta:hover{transform:translateY(-2px);box-shadow:0 20px 38px -10px rgba(20,150,72,.6)}
@@ -185,28 +188,35 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   box-shadow:0 0 0 4px rgba(37,211,102,.2);
 }
 
-/* ---- dial de frío: decorativo, sin vidrio, ancla el tercio inferior derecho ---- */
+/* ---- dial de frío: decorativo, sin vidrio, sin backdrop-filter.
+   Ancla el tercio inferior derecho y funde el dato 38°→24° en un solo objeto. ---- */
 .hero-dial{
-  position:absolute;z-index:2;right:8.5%;bottom:104px;
-  width:150px;height:150px;display:grid;place-items:center;
+  position:absolute;z-index:2;right:8.5%;bottom:132px;
+  width:158px;height:158px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
 }
 .hero-dial::before,.hero-dial::after{content:'';position:absolute;inset:0;border-radius:50%;
-  -webkit-mask:radial-gradient(closest-side,transparent 0 79%,#000 80% 100%);
-          mask:radial-gradient(closest-side,transparent 0 79%,#000 80% 100%);
+  -webkit-mask:radial-gradient(closest-side,transparent 0 94%,#000 95% 100%);
+          mask:radial-gradient(closest-side,transparent 0 94%,#000 95% 100%);
 }
-.hero-dial::before{background:rgba(0,40,90,.11)}
+.hero-dial::before{background:rgba(0,40,90,.13)}
 .hero-dial::after{
-  background:conic-gradient(from 138deg,
-    var(--celeste) 0deg, #0f8fe0 90deg, var(--azul) 172deg,
-    rgba(0,88,179,.12) 186deg, rgba(0,88,179,0) 200deg 360deg);
+  background:conic-gradient(from 225deg,
+    var(--celeste) 0deg, #1391e6 130deg, var(--azul) 262deg,
+    rgba(0,88,179,.18) 268deg, rgba(0,88,179,0) 276deg 360deg);
 }
 .hero-dial u{
-  position:relative;text-decoration:none;font-weight:800;font-size:1.72rem;
-  color:var(--navy);letter-spacing:-.03em;line-height:1;
+  position:relative;text-decoration:none;font-weight:800;font-size:1.95rem;
+  color:var(--navy);letter-spacing:-.035em;line-height:1;
 }
 .hero-dial s{
-  position:absolute;left:0;right:0;bottom:20px;text-align:center;text-decoration:none;
-  font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);
+  position:relative;text-decoration:none;
+  font-size:.56rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);
+}
+/* el 38° se apoya justo en el arranque del arco: el arco ES el recorrido 38°→24° */
+.hero-dial em{
+  position:absolute;left:-9px;bottom:7px;font-style:normal;
+  font-size:.7rem;font-weight:600;letter-spacing:-.01em;color:#6d7a8a;white-space:nowrap;
 }
 
 /* ---- regla fina al pie: precisión de plano técnico ---- */
@@ -215,12 +225,11 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   font-size:.66rem;letter-spacing:.19em;text-transform:uppercase;font-weight:600;
 }
 .hero-regla-in{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  display:flex;align-items:center;gap:14px;
   border-top:1px solid rgba(0,40,90,.14);padding-top:15px;padding-bottom:21px;
 }
-.hero-regla .izq{color:var(--gris)}
-.hero-regla .der{color:var(--navy);display:flex;align-items:center;gap:9px}
-.hero-regla .der b{color:var(--celeste);font-weight:600}
+.hero-regla .izq{color:#4f5a68}
+.hero-regla .izq b{color:var(--navy);font-weight:600}
 
 /* ---- chip de temperatura (sólo móvil, apoyado sobre la banda de foto) ---- */
 .hero-chip{display:none}
@@ -562,10 +571,12 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   }
   .nav.abierta { transform: translateY(0); }
   .hamburguesa { display: block; }
-  /* el hero pasa a columna: texto → banda de foto → regla */
-  .hero{display:flex;flex-direction:column;min-height:0;padding:0;overflow:hidden}
+  /* el hero pasa a columna: texto → banda de foto → regla.
+     align-items:stretch es obligatorio: si queda el center del desktop,
+     la regla del pie se encoge al ancho de su texto y aparece centrada. */
+  .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;padding:0;overflow:hidden}
   .hero-caja{order:1;padding-top:26px;padding-bottom:4px}
-  .hero-txt{max-width:none}
+  .hero-txt{max-width:600px}
   .hero-esc{order:2;position:relative;width:100%;height:min(29vh,230px);flex:none;margin-top:22px}
   .hero-regla{order:3;position:relative;bottom:auto}
   .hero-halo,.hero-dial{display:none}
@@ -576,18 +587,17 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
             mask-image:linear-gradient(180deg,#000 0%,#000 62%,rgba(0,0,0,.55) 88%,rgba(0,0,0,.18) 100%);
   }
   .hero-esc-int{
+    opacity:.42;
     -webkit-mask-image:linear-gradient(96deg,rgba(0,0,0,.5) 0%,#000 26%,#000 100%);
             mask-image:linear-gradient(96deg,rgba(0,0,0,.5) 0%,#000 26%,#000 100%);
   }
-  .hero-foto{left:0;width:100%;object-position:44% 16%;opacity:.5}
-  .hero-esc-int::after{opacity:.66}
+  .hero-foto{left:0;width:100%;object-position:44% 16%}
 
   .hero-kicker{margin-bottom:16px;font-size:.65rem;letter-spacing:.15em;gap:9px}
   .hero-kicker i{max-width:40px}
-  .hero-tit{font-size:clamp(2.05rem,9.2vw,2.55rem);line-height:1.05;max-width:none}
-  .hero-sub{font-size:1rem;margin-top:14px;max-width:32ch}
-  .hero-acciones{margin-top:24px;gap:18px;align-items:stretch;flex-direction:column}
-  .hero-cta{width:100%;font-size:1.05rem;padding:16px 24px}
+  .hero-sub{font-size:1rem;margin-top:14px;max-width:34ch}
+  .hero-acciones{margin-top:24px;gap:18px;align-items:flex-start;flex-direction:column}
+  .hero-cta{width:100%;max-width:430px;font-size:1.05rem;padding:16px 24px}
   .hero-cta2{align-self:flex-start}
   .hero-nota{margin-top:18px;font-size:.9rem;align-items:flex-start;max-width:32ch;line-height:1.45}
   .hero-pulso{margin-top:6px}
@@ -600,16 +610,15 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
     box-shadow:0 8px 22px rgba(0,40,90,.1);
     font-size:.78rem;font-weight:600;color:var(--navy);white-space:nowrap;letter-spacing:0;
   }
-  .hero-chip b{color:var(--celeste);font-weight:700}
+  /* el celeste no llega a AA como texto: los grados van en azul de marca */
+  .hero-chip b{color:var(--azul);font-weight:700}
   .hero-chip i{font-style:normal;color:var(--gris);font-weight:500}
 
+  .hero-tit{font-size:clamp(2.05rem,9.2vw,2.55rem);line-height:1.05;max-width:none;letter-spacing:-.032em}
   .hero-regla{font-size:.58rem;letter-spacing:.13em}
-  .hero-regla-in{padding-top:13px;padding-bottom:16px;gap:10px}
+  .hero-regla-in{padding-top:13px;padding-bottom:16px}
   .hero-regla .izq{white-space:nowrap}
-  /* la temperatura ya la muestra el chip sobre la foto, y acá quedaba debajo
-     del botón flotante */
-  .hero-regla .der{display:none}
-  .claims { grid-template-columns: 1fr 1fr; }
+
   .banda-cta { padding: 34px 26px; }
 }
 
@@ -631,6 +640,8 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 /* pantallas muy angostas (iPhone SE y similares): el pie en dos columnas
    desbordaba a lo ancho */
 @media (max-width: 400px) {
+  .hero-regla { font-size: .55rem; letter-spacing: .1em; }
+  .hero-regla .izq { white-space: normal; }
   .pie-grilla { grid-template-columns: 1fr; gap: 26px; }
   .claims { grid-template-columns: 1fr; }
 }

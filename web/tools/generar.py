@@ -291,13 +291,13 @@ def pagina_index():
   </div>
 
   <div class="hero-halo" aria-hidden="true"></div>
-  <div class="hero-dial" aria-hidden="true"><u>24°</u><s>adentro</s></div>'''
+  <div class="hero-dial" aria-hidden="true"><u>24°</u><s>adentro</s><em>38°</em></div>'''
     c = f'''
 <section class="hero">
   <div class="contenedor hero-caja">
     <div class="hero-txt">
       <p class="hero-kicker"><span class="hero-copo">❄</span><b>Aire acondicionado · corredor norte</b><i></i></p>
-      <h1 class="hero-tit">Tu casa a <em>24°</em>, todo el verano.</h1>
+      <h1 class="hero-tit">Tu casa a <em>24°</em>,<br>todo el verano.</h1>
       <p class="hero-sub">Equipo + instalación certificada + posventa. <b>Precio cerrado en el día.</b></p>
       <div class="hero-acciones">
         <a class="hero-cta" data-wsp="Hola Clima Baires, quiero un presupuesto de equipo + instalación." data-origen="hero" href="#">
@@ -312,8 +312,7 @@ def pagina_index():
 
   <div class="hero-regla" aria-hidden="true">
     <div class="contenedor hero-regla-in">
-      <span class="izq">Obra propia · Cassette 4 vías<span class="oculto-xs"> · Málaga</span></span>
-      <span class="der">38° afuera <b>→</b> 24° adentro</span>
+      <span class="izq"><b>Obra propia</b> · Cassette 4 vías · Málaga</span>
     </div>
   </div>
 {escena}
