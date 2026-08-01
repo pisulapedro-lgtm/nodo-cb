@@ -165,10 +165,11 @@ MEJORAS = {
 }
 
 # Foto que alimenta el hero de la portada y los og:image (la mejor toma).
-HERO_ORIGEN = 'e8bd4a26-WhatsApp_Image_20250915_at_1.46.04_PM_4.jpeg'
-# Ventana de recorte del hero, en fracciones (izq, arriba, der, abajo) sobre
-# la foto YA MEJORADA (recortada): banda con condensadoras + técnico + skyline.
-HERO_VENTANA = (0.0, 0.12, 1.0, 0.66)
+HERO_ORIGEN = '40a8ec06-IMG_1684.jpeg'
+# Ventanas de recorte (izq, arriba, der, abajo) sobre la foto YA MEJORADA:
+# tarjeta vertical 4:5 del hero (furgoneta rotulada + cartel) y banda og 1200×630.
+HERO_VENTANA_TARJETA = (0.16, 0.0, 1.0, 1.0)
+HERO_VENTANA_OG = (0.0, 0.28, 1.0, 0.78)
 
 # Originales inutilizables: archivo → motivo. Se mueven a descartadas/.
 DESCARTES = {}
@@ -305,16 +306,16 @@ def main():
     # 3. hero + og (desde la mejor foto)
     ruta_hero = os.path.join(ORIGINALES, HERO_ORIGEN)
     if os.path.exists(ruta_hero):
-        destinos_hero = [os.path.join(OBRAS, f'hero-home-{t}.webp') for t in TAMANOS]
+        destinos_hero = [os.path.join(OBRAS, f'hero-card-{t}.webp') for t in TAMANOS]
         destinos_og = [os.path.join(OBRAS, 'og-home.jpg'), os.path.join(OBRAS, 'og-obras.jpg')]
         if necesita_rehacer(ruta_hero, destinos_hero + destinos_og, force):
             im = mejorar(abrir_orientada(ruta_hero), HERO_ORIGEN)
-            banda = recorte_proporcional(im, HERO_VENTANA, 16 / 9)
+            tarjeta = recorte_proporcional(im, HERO_VENTANA_TARJETA, 4 / 5)
             for lado, destino in zip(TAMANOS, destinos_hero):
-                der = escalar(banda, lado)
+                der = escalar(tarjeta, lado)
                 peso = guardar_webp(der, destino)
                 print(f'  ✓ {os.path.basename(destino)} {der.size[0]}×{der.size[1]} · {peso // 1024} KB')
-            og = recorte_proporcional(im, HERO_VENTANA, 1200 / 630).resize((1200, 630), Image.LANCZOS)
+            og = recorte_proporcional(im, HERO_VENTANA_OG, 1200 / 630).resize((1200, 630), Image.LANCZOS)
             for destino in destinos_og:
                 og.save(destino, 'JPEG', quality=CALIDAD_JPG, optimize=True)
                 print(f'  ✓ {os.path.basename(destino)} 1200×630 · {os.path.getsize(destino) // 1024} KB')

@@ -36,8 +36,8 @@ se publican). El flujo:
    (galería con filtros, «Últimas obras», hero de portada, franja «así trabajamos»).
 5. `npm run web:shots` — el QA debe quedar en verde antes de publicar.
 
-La foto del hero de la home se elige con `HERO_ORIGEN` (+ ventana de recorte
-`HERO_VENTANA`) en `tools/fotos.py`.
+La foto de la tarjeta del hero (y de los `og:image`) se elige con `HERO_ORIGEN`
+(+ ventanas `HERO_VENTANA_TARJETA` y `HERO_VENTANA_OG`) en `tools/fotos.py`.
 
 ## Medición: GTM + eventos dataLayer
 

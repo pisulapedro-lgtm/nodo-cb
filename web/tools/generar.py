@@ -182,12 +182,14 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 '''
 
 def tarjeta_servicio(anchor, icono, titulo, texto, items, p=''):
-    lis = ''.join(f'<li>{i}</li>' for i in items)
+    lista = ''
+    if items:
+        lista = '<ul class="lista-check">%s</ul>' % ''.join(f'<li>{i}</li>' for i in items)
     return f'''<div class="tarjeta" id="{anchor}">
       <div class="icono">{SVC_ICONS[icono]}</div>
       <h3>{titulo}</h3>
       <p>{texto}</p>
-      <ul class="lista-check">{lis}</ul>
+      {lista}
     </div>'''
 
 def jsonld_local(nombre, url, zona=None):
@@ -211,75 +213,64 @@ def jsonld_local(nombre, url, zona=None):
 
 def pagina_index():
     chips = ''.join(f'<a href="zonas/{slug}.html">{nombre}</a>' for slug, nombre, *_ in ZONAS)
-    hero_img = ''
-    hero_clase = ''
+    tarjeta_hero = ''
     if HAY_FOTOS:
-        hero_clase = ' hero-foto'
-        hero_img = '''
-  <img class="hero-img" src="assets/img/obras/hero-home-800.webp"
-       srcset="assets/img/obras/hero-home-800.webp 800w, assets/img/obras/hero-home-1600.webp 1600w"
-       sizes="100vw" width="1600" height="900" alt="" fetchpriority="high">
-  <div class="hero-velo"></div>'''
+        tarjeta_hero = '''
+    <div class="hero-tarjeta">
+      <img src="assets/img/obras/hero-card-800.webp"
+           srcset="assets/img/obras/hero-card-800.webp 640w, assets/img/obras/hero-card-1600.webp 1280w"
+           sizes="(max-width: 900px) 92vw, 500px" width="640" height="800"
+           alt="La flota de Clima Baires lista para salir a instalar" fetchpriority="high">
+      <span class="chip-frio">38° afuera → 24° adentro</span>
+    </div>'''
     c = f'''
-<section class="hero{hero_clase}">{hero_img}
-  <div class="contenedor">
-    <span class="kicker">Aire acondicionado · corredor norte de Buenos Aires</span>
-    <h1>Instalamos el confort de tu casa, sin vueltas y sin sorpresas</h1>
-    <p class="sub">Venta, instalación certificada y posventa real de aire acondicionado en Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. Presupuesto el mismo día: lo que ves es lo que pagás.</p>
-    <div class="acciones">
-      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto de equipo + instalación." data-origen="hero" href="#">Pedir presupuesto por WhatsApp</a>
-      <a class="boton fantasma" style="border-color:#fff;color:#fff !important" href="calculadora-frigorias.html">Calcular frigorías</a>
-    </div>
-    <p class="mini">Respondemos en menos de 5 minutos en horario comercial · Seguros al día para ingresar a countries y barrios cerrados</p>
+<section class="hero">
+  <div class="contenedor hero-grid">
+    <div>
+      <span class="kicker">❄ Aire acondicionado · corredor norte</span>
+      <h1>Tu casa a 24°,<br>todo el verano.</h1>
+      <p class="sub">Equipo + instalación certificada + posventa. Precio cerrado en el día: lo que ves es lo que pagás.</p>
+      <div class="acciones">
+        <a class="boton" data-wsp="Hola Clima Baires, quiero un presupuesto de equipo + instalación." data-origen="hero" href="#">Pedir presupuesto</a>
+        <a class="boton fantasma" href="calculadora-frigorias.html">Calcular frigorías</a>
+      </div>
+      <p class="mini">Respondemos en minutos · Aptos countries y barrios cerrados</p>
+    </div>{tarjeta_hero}
   </div>
 </section>
 
 <div class="franja-marcas">
   <div class="contenedor">
-    <span>Trabajamos con:</span><span>Daikin</span><span>Mitsubishi</span><span>LG</span><span>Samsung</span><span>BGH</span><span>Surrey</span><span>Midea</span>
+    <span>Enfriamos con:</span><span>Daikin</span><span>Mitsubishi</span><span>LG</span><span>Samsung</span><span>BGH</span><span>Surrey</span><span>Midea</span>
   </div>
 </div>
 
 <section class="seccion" id="servicios">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Qué hacemos</span><h2>Un solo proveedor, de la compra al mantenimiento</h2>
-    <p class="intro">Nacimos en Málaga (España) instalando climatización en la Costa del Sol. Traemos ese estándar de servicio al corredor norte: transparencia de precios, obra prolija y una posventa que responde.</p></div>
-    <div class="grilla tres">
-      {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'Te asesoramos sobre la marca y la potencia justa para cada ambiente, con precio cerrado de equipo + instalación en una sola propuesta.', ['Split inverter, multisplit, piso-techo y conductos', 'Marcas líderes con garantía oficial', 'Sin stock viejo: pedimos tu equipo al distribuidor'])}
-      {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'Instaladores con certificación, seguros al día y checklist de calidad en cada obra. Dejamos todo funcionando y limpio.', ['Vacío de cañería y prueba de estanqueidad siempre', 'Protección de pisos y muebles, retiro de residuos', 'Apta countries: cumplimos los requisitos de acceso'])}
-      {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'El diferencial que aprendimos en España: seguir estando después de cobrar. Limpieza, service y reparación con visita programada.', ['Mantenimiento preventivo anual', 'Diagnóstico y reparación multimarca', 'Garantía escrita de la instalación'])}
+    <div class="centrado"><span class="kicker">Qué hacemos</span><h2>Vender, instalar, responder.</h2></div>
+    <div class="grilla tres" style="margin-top:30px">
+      {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'La potencia justa para tu ambiente. Un solo precio: equipo + materiales + instalación.', [])}
+      {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'Vacío de cañería, prueba de estanqueidad y obra limpia. Siempre.', [])}
+      {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa real', 'Seguimos estando después de cobrar: service anual y garantía escrita.', [])}
     </div>
   </div>
 </section>
 
 <section class="seccion alterna" id="zonas">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Dónde trabajamos</span><h2>Corredor norte, de Núñez a Pilar</h2>
-    <p class="intro">Atendemos casas, departamentos y barrios cerrados a lo largo de la Panamericana y el Acceso Norte. Elegí tu zona para ver el servicio en tu barrio.</p></div>
-    <div class="zona-chips centrado" style="justify-content:center">{chips}</div>
+    <div class="centrado"><span class="kicker">Dónde trabajamos</span><h2>De Núñez a Pilar</h2></div>
+    <div class="zona-chips centrado" style="justify-content:center; margin-top:24px">{chips}</div>
   </div>
 </section>
 
-<section class="seccion">
-  <div class="contenedor grilla dos">
-    <div>
-      <span class="kicker">Por qué Clima Baires</span>
-      <h2>Transparencia española, servicio argentino</h2>
-      <ul class="lista-check">
-        <li><strong>Presupuesto el mismo día</strong>, por escrito y sin letra chica: equipo, materiales e instalación en un solo precio.</li>
-        <li><strong>Lo que ves es lo que pagás</strong>: si aparece un adicional, te lo mostramos antes de hacerlo, nunca después.</li>
-        <li><strong>Posventa real</strong>: agenda de mantenimiento, respuesta rápida y garantía escrita.</li>
-        <li><strong>Seguros y papeles al día</strong> para entrar a Nordelta y a cualquier country sin demoras en la barrera.</li>
-      </ul>
-    </div>
-    <div class="tarjeta">
-      <h3>¿No sabés qué equipo necesitás?</h3>
-      <p>Usá nuestra calculadora de frigorías: en 30 segundos sabés qué potencia lleva tu ambiente y qué split te conviene. Después coordinamos una visita técnica sin cargo para confirmarlo.</p>
-      <a class="boton" href="calculadora-frigorias.html">Ir a la calculadora</a>
-    </div>
+<section class="seccion" style="padding:50px 0">
+  <div class="contenedor claims">
+    <div class="claim"><strong>Presupuesto</strong><span>en el día</span></div>
+    <div class="claim"><strong>Precio cerrado</strong><span>sin letra chica</span></div>
+    <div class="claim"><strong>Garantía</strong><span>por escrito</span></div>
+    <div class="claim"><strong>Countries</strong><span>seguros al día</span></div>
   </div>
 </section>
-
 {seccion_ultimas_obras()}
 <section class="seccion">
   <div class="contenedor">
@@ -306,8 +297,8 @@ def seccion_ultimas_obras():
     return f'''
 <section class="seccion alterna" id="obras">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Trabajo real, clientes reales</span><h2>Últimas obras</h2>
-    <p class="intro">Instalaciones, recambios y mantenimiento hechos por nuestro equipo. Así se ve una obra prolija: protección, vacío de cañería y limpieza final.</p></div>
+    <div class="centrado"><span class="kicker">Trabajo real</span><h2>Últimas obras</h2>
+    <p class="intro">Sin fotos de banco de imágenes: nuestro equipo, en obra.</p></div>
     <div class="obras-home">{tarjetas}</div>
     <div class="centrado" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a class="boton" href="obras.html">Ver todas las obras</a>
@@ -322,15 +313,15 @@ def pagina_servicios():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Servicios</nav>
     <h1>Servicios de climatización</h1>
-    <p class="bajada">De la elección del equipo a la limpieza anual: un solo proveedor responsable de que tu casa esté siempre a la temperatura justa.</p>
+    <p class="bajada">Un solo proveedor, de la compra al mantenimiento.</p>
   </div>
 </section>
 
 <section class="seccion" style="padding-top:20px">
   <div class="contenedor grilla tres">
-    {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'Elegimos juntos la potencia y la marca correcta para cada ambiente. Precio cerrado: equipo + materiales + instalación en una sola cifra.', ['Split inverter de 2.250 a 6.500 frigorías', 'Multisplit para casas: una condensadora, varios ambientes', 'Piso-techo, cassette y conductos para livings grandes y obra nueva', 'Marcas: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea'])}
-    {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'La instalación define la vida útil del equipo. Por eso nuestros técnicos siguen un checklist de calidad en cada obra, con fotos y firma al terminar.', ['Vacío de cañería con bomba y prueba de estanqueidad', 'Cañería de cobre soldada, ménsulas reforzadas y desagüe bien resuelto', 'Trabajo en altura con seguros y elementos certificados', 'Coordinación con administraciones de edificios y countries'])}
-    {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'Un aire limpio enfría más, gasta menos y dura años. Nuestro plan anual te olvida del tema: te avisamos nosotros cuando toca.', ['Limpieza profunda de filtros, turbina y serpentina', 'Control de gas, consumo y aislaciones', 'Reparaciones multimarca con repuestos originales', 'Prioridad de agenda para clientes con plan'])}
+    {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'La potencia y la marca justa para cada ambiente. Precio cerrado en una sola cifra.', ['Split inverter, multisplit, piso-techo y conductos', 'Marcas: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea'])}
+    {tarjeta_servicio('instalacion', 'instalacion', 'Instalación certificada', 'La instalación define la vida útil del equipo. Checklist de calidad en cada obra.', ['Vacío de cañería y prueba de estanqueidad, siempre', 'Trabajo en altura con seguros y elementos certificados', 'Coordinación con consorcios y countries'])}
+    {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'Un aire limpio enfría más y gasta menos. Te avisamos nosotros cuando toca.', ['Limpieza profunda + control de gas y consumo', 'Reparaciones multimarca con repuestos originales', 'Prioridad de agenda para clientes con plan'])}
   </div>
 </section>
 
@@ -338,10 +329,10 @@ def pagina_servicios():
   <div class="contenedor">
     <div class="centrado"><span class="kicker">Cómo trabajamos</span><h2>Cuatro pasos, cero sorpresas</h2></div>
     <div class="grilla dos" style="margin-top:26px">
-      <div class="tarjeta"><h3>1 · Contanos qué necesitás</h3><p>Por WhatsApp o con la calculadora de frigorías. Con fotos y medidas del ambiente ya podemos armar un presupuesto orientativo el mismo día.</p></div>
-      <div class="tarjeta"><h3>2 · Visita técnica sin cargo</h3><p>Confirmamos potencia, recorrido de cañería y ubicación de la condensadora. El presupuesto pasa a ser cerrado: lo que ves es lo que pagás.</p></div>
-      <div class="tarjeta"><h3>3 · Instalación con checklist</h3><p>Traemos el equipo, protegemos el espacio de trabajo, instalamos con vacío y prueba de estanqueidad, y te mostramos todo funcionando.</p></div>
-      <div class="tarjeta"><h3>4 · Posventa que responde</h3><p>Garantía escrita, mantenimiento anual programado y un WhatsApp que contesta cuando lo necesitás. Así de simple.</p></div>
+      <div class="tarjeta"><h3>1 · Contanos qué necesitás</h3><p>Por WhatsApp, con fotos del ambiente. Presupuesto orientativo el mismo día.</p></div>
+      <div class="tarjeta"><h3>2 · Visita técnica sin cargo</h3><p>Confirmamos todo en tu casa y el presupuesto pasa a ser cerrado.</p></div>
+      <div class="tarjeta"><h3>3 · Instalación con checklist</h3><p>Protegemos, instalamos, probamos y te mostramos todo funcionando.</p></div>
+      <div class="tarjeta"><h3>4 · Posventa que responde</h3><p>Garantía escrita y un WhatsApp que contesta cuando lo necesitás.</p></div>
     </div>
     <div class="centrado" style="margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
       <a class="boton" data-agenda data-origen="seccion" href="#">Agendar visita técnica</a>
@@ -370,7 +361,7 @@ def pagina_calculadora():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Calculadora de frigorías</nav>
     <h1>Calculadora de frigorías</h1>
-    <p class="bajada">¿Qué potencia necesita tu ambiente? Completá los datos y te lo decimos al instante. Es orientativa: antes de instalar siempre confirmamos con una visita técnica sin cargo.</p>
+    <p class="bajada">Completá los datos y en 30 segundos sabés qué equipo necesitás.</p>
   </div>
 </section>
 
@@ -473,7 +464,7 @@ def pagina_obras():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Obras recientes</nav>
     <h1>Obras recientes</h1>
-    <p class="bajada">Fotos reales de nuestro equipo trabajando: instalaciones, recambios y mantenimiento. Las primeras son de la casa matriz en Málaga (España); a medida que instalamos en el corredor norte se suman obras de tu zona.</p>
+    <p class="bajada">Nuestro equipo, en obra. Las primeras son de la casa matriz en Málaga; pronto, las de tu zona.</p>
   </div>
 </section>
 
@@ -553,13 +544,12 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
   <div class="contenedor grilla dos">
     <div>
       <h2>Instalación, venta y service en {nombre}</h2>
-      <p>Vendemos e instalamos equipos split, multisplit, piso-techo y conductos en {lista_barrios}. Presupuesto por WhatsApp el mismo día, visita técnica sin cargo y precio cerrado antes de empezar: lo que ves es lo que pagás.</p>
+      <p>Split, multisplit, piso-techo y conductos en {lista_barrios}. Presupuesto por WhatsApp en el día y precio cerrado: lo que ves es lo que pagás.</p>
       <p>{especial}</p>
       <ul class="lista-check">
-        <li>Instaladores certificados con seguros al día</li>
-        <li>Vacío de cañería y prueba de estanqueidad en toda instalación</li>
-        <li>Garantía escrita y mantenimiento anual programado</li>
-        <li>Marcas líderes: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea</li>
+        <li>Instaladores certificados, seguros al día</li>
+        <li>Vacío de cañería y prueba de estanqueidad, siempre</li>
+        <li>Garantía escrita y service anual</li>
       </ul>
       <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap">
         <a class="boton" data-wsp="Hola Clima Baires, estoy en {nombre} y quiero un presupuesto." data-origen="hero" href="#">Pedir presupuesto en {nombre}</a>
@@ -569,10 +559,10 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
     <div>
       <div class="tarjeta">
         <h3>Preguntas frecuentes en {nombre}</h3>
-        <p><strong>¿Cuánto tardan en venir?</strong><br>Visita técnica dentro de las 72 h; en temporada alta priorizamos por orden de reserva.</p>
-        <p><strong>¿El presupuesto tiene costo?</strong><br>No: la visita técnica y el presupuesto son sin cargo en todo el corredor norte.</p>
-        <p><strong>¿Puedo pagar en cuotas?</strong><br>Sí: aceptamos transferencia (con descuento), tarjetas y cuotas. Te detallamos las opciones con el presupuesto.</p>
-        <p><strong>¿Hacen mantenimiento de equipos que no instalaron?</strong><br>Sí, somos multimarca: limpieza, carga de gas y reparaciones con repuestos originales.</p>
+        <p><strong>¿Cuánto tardan en venir?</strong><br>Visita técnica dentro de las 72 h.</p>
+        <p><strong>¿El presupuesto tiene costo?</strong><br>No: visita y presupuesto sin cargo.</p>
+        <p><strong>¿Puedo pagar en cuotas?</strong><br>Sí: transferencia con descuento, tarjetas y cuotas.</p>
+        <p><strong>¿Atienden equipos que no instalaron?</strong><br>Sí, somos multimarca.</p>
       </div>
     </div>
   </div>
@@ -598,7 +588,7 @@ def pagina_nosotros():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Sobre nosotros</nav>
     <h1>De la Costa del Sol al corredor norte</h1>
-    <p class="bajada">Clima Baires nació en Málaga, España, instalando climatización para hogares de la Costa del Sol. Hoy traemos ese mismo estándar de servicio a Buenos Aires, de la mano de un equipo local.</p>
+    <p class="bajada">Nacimos en Málaga instalando climatización. Hoy traemos ese estándar a Buenos Aires.</p>
   </div>
 </section>
 
@@ -606,13 +596,13 @@ def pagina_nosotros():
   <div class="contenedor grilla dos">
     <div>
       <h2>Nuestra historia</h2>
-      <p>En España aprendimos que en este rubro el negocio no es vender un aparato: es que el cliente vuelva a llamarte al año siguiente. Por eso construimos Clima Baires sobre tres pilares que hoy cruzan el Atlántico:</p>
+      <p>En España aprendimos que el negocio no es vender un aparato: es que el cliente te vuelva a llamar al año siguiente.</p>
       <ul class="lista-check">
-        <li><strong>Transparencia</strong>: presupuesto por escrito, precio cerrado y cero letra chica. Lo que ves es lo que pagás.</li>
-        <li><strong>Rapidez</strong>: respuesta en minutos, presupuesto el mismo día y agenda que se cumple.</li>
-        <li><strong>Posventa real</strong>: seguimos estando después de cobrar — mantenimiento programado, garantía escrita y un WhatsApp que contesta.</li>
+        <li><strong>Transparencia</strong>: precio cerrado, cero letra chica.</li>
+        <li><strong>Rapidez</strong>: respuesta en minutos, presupuesto en el día.</li>
+        <li><strong>Posventa real</strong>: seguimos estando después de cobrar.</li>
       </ul>
-      <p style="margin-top:14px">La operación argentina está liderada desde Buenos Aires por un equipo local, con el respaldo y los procesos de la casa matriz española (<a href="https://www.climabaires.es" rel="noopener">climabaires.es</a>).</p>
+      <p style="margin-top:14px">Equipo local en Buenos Aires, procesos de la casa matriz (<a href="https://www.climabaires.es" rel="noopener">climabaires.es</a>).</p>
     </div>
     <div>
       <div class="tarjeta">
@@ -672,7 +662,7 @@ def pagina_contacto():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Contacto</nav>
     <h1>Hablemos de tu clima</h1>
-    <p class="bajada">El camino más corto es WhatsApp: contanos qué necesitás, mandanos fotos del ambiente y te pasamos un presupuesto orientativo el mismo día.</p>
+    <p class="bajada">El camino más corto es WhatsApp: fotos del ambiente y presupuesto en el día.</p>
   </div>
 </section>
 
