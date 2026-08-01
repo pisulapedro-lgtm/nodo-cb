@@ -92,6 +92,11 @@ MAPEO = {
         'alt': 'La base de Clima Baires: flota de vehículos rotulados y stock de equipos listos para instalar, Málaga (casa matriz)',
         'zona': 'malaga', 'tipo': 'equipo', 'destacada': True,
     },
+    '57977141-IMG_1666.jpeg': {
+        'slug': 'nave-vehiculo-rotulado-malaga-01',
+        'alt': 'Furgoneta rotulada de Clima Baires en la nave, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)',
+        'zona': 'malaga', 'tipo': 'equipo', 'destacada': False,
+    },
     '39aa3365-WhatsApp_Image_20250915_at_1.46.04_PM.jpeg': {
         'slug': 'equipo-obra-local-comercial-malaga-01',
         'alt': 'Técnico de Clima Baires preparando el acceso para climatizar un local comercial, Málaga',
@@ -143,6 +148,10 @@ MEJORAS = {
     # nave con flota y stock: menos cielorraso y menos piso vacío
     '40a8ec06-IMG_1684.jpeg': {
         'crop': (0.0, 0.08, 1.0, 0.90), 'brillo': 1.05, 'color': 1.08,
+    },
+    # frente de la furgoneta en la nave: centrar cartel + vehículo
+    '57977141-IMG_1666.jpeg': {
+        'crop': (0.0, 0.04, 0.96, 1.0), 'brillo': 1.05, 'color': 1.08,
     },
 }
 

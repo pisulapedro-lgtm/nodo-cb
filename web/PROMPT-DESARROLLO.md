@@ -2,6 +2,24 @@
 
 > Copiar todo el bloque de abajo y pegarlo en una sesión de Claude Code abierta sobre el repo `pisulapedro-lgtm/nodo-cb` (rama `claude/clima-baeres-argentina-plan-vzl5jx`). Antes de lanzar el prompt, subí las fotos originales a la carpeta `web/assets/img/originales/` (o adjuntalas a la sesión y el asistente las moverá ahí).
 
+## Estado de ejecución (08-2026, rama `claude/climabaires-web-dev-hvk85y`)
+
+**EJECUTADO.** Todos los puntos del prompt están implementados y verificados por el
+QA de Playwright (`npm run web:shots`): pipeline `web/tools/fotos.py` (con edición
+fotográfica por foto: recorte, revelado y nitidez), galería `obras.html` con filtros
+y lightbox accesible, hero fotográfico con velo de marca, sección «Últimas obras»,
+franja «así trabajamos», GTM + spec completa de eventos dataLayer, barra inferior
+móvil, nudge del flotante, agenda de Google Calendar con iframe en contacto y
+guía GA4 ↔ Ads en `web/README.md`.
+
+Pendiente que depende del negocio (documentado en `web/README.md`):
+- Reemplazar los placeholders `CB.whatsapp`, `CB.gtmId` y `CB.agendaUrl` en `assets/js/main.js`.
+- Fotos: el lote publicado (9) es del equipo en **Málaga (casa matriz)** y está
+  etiquetado como tal — sin inventar ubicaciones. Cuando haya fotos de obras en el
+  corredor norte, sumarlas vía `MAPEO` en `tools/fotos.py` (las páginas de zona se
+  ilustran SOLO con fotos de esa zona; los pares `antes-`/`despues-` activan el
+  bloque comparativo solo).
+
 ---
 
 ## PROMPT

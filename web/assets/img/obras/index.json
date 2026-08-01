@@ -85,6 +85,17 @@
       "h800": 800
     },
     {
+      "slug": "nave-vehiculo-rotulado-malaga-01",
+      "alt": "Furgoneta rotulada de Clima Baires en la nave, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)",
+      "zona": "malaga",
+      "tipo": "equipo",
+      "destacada": false,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    },
+    {
       "slug": "equipo-obra-local-comercial-malaga-01",
       "alt": "Técnico de Clima Baires preparando el acceso para climatizar un local comercial, Málaga",
       "zona": "malaga",
