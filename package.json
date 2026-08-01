@@ -4,7 +4,8 @@
   "description": "Plan de Acción 30 Días — Clima Baires Argentina: fuente regenerable del PDF, web climabaires.com y kit digital",
   "scripts": {
     "build": "node build/build.mjs",
-    "web:shots": "node web/tools/shots.mjs"
+    "web:shots": "node web/tools/shots.mjs",
+    "web:publicar": "python3 web/tools/publicar.py"
   },
   "repository": {
     "type": "git",

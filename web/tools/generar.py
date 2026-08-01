@@ -41,9 +41,12 @@ def hornear_enlaces(html):
     def enlace(mensaje):
         return 'https://wa.me/%s?text=%s' % (WSP_NUM, quote(mensaje))
 
+    # target/rel horneados: el clic abre WhatsApp en otra pestaña y el documento
+    # no se descarga, así el evento de conversión alcanza a salir hacia GTM
     html = re.sub(
         r'data-wsp="([^"]*)"([^>]*?)href="#"',
-        lambda m: 'data-wsp="%s"%shref="%s"' % (m.group(1), m.group(2), enlace(m.group(1))),
+        lambda m: 'data-wsp="%s"%shref="%s" target="_blank" rel="noopener"' % (
+            m.group(1), m.group(2), enlace(m.group(1))),
         html)
     html = re.sub(
         r'(data-agenda\b[^>]*?)href="#"',

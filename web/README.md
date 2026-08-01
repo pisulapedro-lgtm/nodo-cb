@@ -112,6 +112,20 @@ agregar contenido salta ese error, intercalá una `cinta_cta(...)` del generador
 | climabaires.com | Cloudflare Registrar (a costo, ~USD 10/año) o cualquier registrador | ~USD 10-15/año | Principal del sitio |
 | climabaires.com.ar | [nic.ar](https://nic.ar) | ARS 8.500 alta + 8.500/año | Requiere CUIT + clave fiscal nivel 2. Registrarlo **ya** para proteger la marca; redirigir 301 al .com |
 
+## Qué se sube al hosting
+
+**No subas `web/` tal cual**: pesa ~40 MB porque incluye los originales de las
+fotos (sin optimizar y con metadatos), las capturas de QA y los scripts. Si se
+publican, esas fotos quedan accesibles por URL.
+
+```
+npm run web:publicar     # deja el sitio listo en dist/sitio/ (~5 MB, 58 archivos)
+```
+
+El script copia sólo lo que el navegador necesita y agrega `_headers` (caché
+larga para fuentes e imágenes, corta para HTML) y `_redirects` (www → dominio
+raíz), que Cloudflare Pages y Netlify leen solos.
+
 ## Publicación recomendada (gratis, con SSL)
 
 **Opción A — Cloudflare Pages** (recomendada: CDN + SSL + dominio en el mismo panel):

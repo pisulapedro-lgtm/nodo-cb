@@ -39,8 +39,10 @@ function cbContexto(el) {
   };
 }
 
-/* Carga diferida de GTM (única puerta de medición: GA4, Ads y Meta se cargan
-   DESDE el contenedor). Con el placeholder no se inyecta nada. */
+/* GTM: única puerta de medición (GA4, Ads y Meta se cargan DESDE el contenedor).
+   Se dispara ANTES de cablear la página, no al final: un clic de WhatsApp abre
+   otra app y puede descargar el documento, así que si el contenedor todavía no
+   llegó, la conversión se pierde. Con el placeholder no se inyecta nada. */
 function cbCargarGTM() {
   if (!CB.gtmId || /XXXXXXX$/.test(CB.gtmId) || window.google_tag_manager) return;
   window.dataLayer = window.dataLayer || [];
@@ -51,12 +53,16 @@ function cbCargarGTM() {
   document.head.appendChild(s);
 }
 
+cbCargarGTM();   // no espera al DOMContentLoaded
+
 document.addEventListener('DOMContentLoaded', () => {
   const agendaActiva = /^https:/.test(CB.agendaUrl);
 
-  // Enlaces y textos de contacto
+  // Enlaces y textos de contacto. Los CTA abren WhatsApp en otra pestaña: así el
+  // documento no se descarga y el evento de conversión alcanza a salir.
   document.querySelectorAll('[data-wsp]').forEach((a) => {
     a.href = cbMensaje(a.dataset.wsp);
+    if (a.tagName === 'A') { a.target = '_blank'; a.rel = 'noopener'; }
     a.addEventListener('click', () => cbTrack('whatsapp_click', cbContexto(a)));
   });
   document.querySelectorAll('[data-wsp-num]').forEach((el) => { el.textContent = CB.whatsappVisible; });
@@ -406,5 +412,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  cbCargarGTM();
 });
