@@ -177,6 +177,24 @@ raíz), que Cloudflare Pages y Netlify leen solos.
 
 En los tres casos: apuntar también `www` (CNAME) y verificar que `https://climabaires.com/sitemap.xml` responda.
 
+## Preguntas frecuentes de las páginas de zona
+
+Las seis páginas de zona son las landings de Google Ads, y cada una tiene sus
+propias preguntas en `web/contenido/faq-zonas.json` — cuatro por zona, sobre lo
+que realmente cambia ahí (consorcio y ascensor en Núñez, recambio de equipos
+viejos en Vicente López, reglamento de fachada en Nordelta, obra nueva en Pilar,
+humedad del río en Tigre, multisplit y unidad a la vista en San Isidro).
+
+De ese archivo salen dos cosas a la vez: el acordeón visible y el bloque
+`FAQPage` de datos estructurados. Editás el JSON, corrés `npm run web:generar` y
+se actualizan los dos. Si una zona no figura en el archivo, el build no se rompe
+pero avisa (`! slug: sin preguntas propias…`) y publica las genéricas — que en
+una landing de Ads es plata tirada.
+
+Las respuestas van dentro de un `<details>`: están en el HTML aunque se vean
+plegadas, así que Google las lee igual y la página no queda como una pared de
+texto.
+
 ## Blog: cómo funciona y cómo se publica solo
 
 El blog no se escribe en HTML. Cada nota es un `.md` en `web/contenido/blog/`
@@ -246,7 +264,8 @@ web/
 ├── contenido/
 │   ├── blog/NN-slug.md         # las notas, en Markdown (esto es lo que se edita)
 │   ├── calendario.json         # temario: de qué escribe la próxima publicación
-│   └── estilo-blog.md          # guía de estilo que recibe quien escribe
+│   ├── estilo-blog.md          # guía de estilo que recibe quien escribe
+│   └── faq-zonas.json          # preguntas frecuentes de cada zona (acordeón + FAQPage)
 ├── sitemap.xml · robots.txt
 ├── assets/css/styles.css       # identidad de marca (paleta del manual)
 ├── assets/js/main.js           # config CB (contacto + gtmId + agendaUrl), medición, galería

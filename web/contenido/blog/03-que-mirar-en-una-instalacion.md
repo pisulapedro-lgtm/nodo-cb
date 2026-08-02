@@ -28,15 +28,15 @@ Qué pasa si queda aire y humedad adentro:
 
 ## Prueba de estanqueidad: la pérdida se busca antes
 
-Estanqueidad quiere decir, en criollo, que no pierda. El circuito trabaja a presión alta y una fuga mínima lo vacía en dos temporadas.
+Estanqueidad quiere decir, en criollo, que no pierda. El circuito trabaja a presión alta y una fuga mínima puede dejarlo sin gas en un par de temporadas.
 
 Con la cañería soldada y antes del vacío, se presuriza con nitrógeno seco a una presión mayor que la de trabajo y se deja quieto un rato con el manómetro puesto. Si la aguja baja, hay fuga: se busca con agua jabonosa en cada unión hasta que aparece la burbuja.
 
-Una pérdida chica no se nota el primer verano: el equipo pierde gas de a poco y cuando lo llamás ya laburó meses con poca carga. Cargar gas todos los años no es mantenimiento, es el síntoma de una instalación que perdió desde el día uno.
+Una pérdida chica no da la cara enseguida. El equipo se descarga de a poco y, cuando llamás, ya laburó meses con poca carga. Cargar gas todos los años no es mantenimiento: es el síntoma de una instalación que perdió desde el día uno.
 
 El orden correcto: soldar, estanqueidad con nitrógeno, vacío con bomba, abrir las válvulas y recién ahí la puesta en marcha.
 
-## Por qué el cobre se suelda y no se "aprieta"
+### Por qué el cobre se suelda y no se "aprieta"
 
 Toda unión mecánica —una rosca, una abrazadera— se afloja con la vibración y con los ciclos de frío y calor. Por eso los empalmes van soldados con soldadura fuerte, la de varilla con plata, y con nitrógeno circulando por dentro del caño mientras se calienta. Eso evita la cascarilla, que viaja con el aceite y termina tapando el filtro o la válvula de expansión.
 
@@ -46,15 +46,15 @@ Lo que no va nunca es un empalme escondido dentro de la pared. Cada empalme es u
 
 ## Ménsulas: la condensadora no se cuelga de cualquier manera
 
-La condensadora es la unidad de afuera, la que hace ruido. Pesa entre 30 y 60 kilos y va a quedar colgada de una pared diez años, vibrando.
+La condensadora es la unidad de afuera, la que hace ruido. Pesa entre 30 y 60 kilos y va a quedar colgada de una pared muchos años, vibrando.
 
-- **Ménsulas para el peso real**, amuradas con el anclaje que pide el material: en ladrillo hueco no alcanza un tarugo común, va taco químico.
+- **Ménsulas para el peso real**, amuradas con la fijación que pide el material: en ladrillo hueco no alcanza un tarugo común, va anclaje químico.
 - **Tacos antivibratorios** entre máquina y ménsula: la diferencia entre escuchar el compresor en el dormitorio o no escucharlo.
 - **Nivel**: nivelada, no "más o menos derecha".
 - **Separación de la pared**: 10 a 15 cm atrás y medio metro libre adelante. La máquina tira aire caliente; si lo tira contra una pared pegada o una celosía tapada, se lo vuelve a chupar: sube la presión, enfría menos y consume más. El error clásico de balcones cerrados y patios de aire y luz.
 - **Acceso para el service**. Si hay que desarmar media pérgola, en tres años no la limpia nadie.
 
-En countries hay además reglamento: dónde puede ir, si va oculta y con qué cerramiento. Mejor resolverlo antes de comprar el equipo: entre [Nordelta](../zonas/nordelta.html) y el resto de [Tigre](../zonas/tigre.html) cambia de un barrio al otro.
+En countries hay además reglamento: dónde puede ir, si va oculta y con qué cerramiento. Mejor resolverlo antes de comprar el equipo, porque entre [Nordelta](../zonas/nordelta.html) y el resto de [Tigre](../zonas/tigre.html) cambia de un barrio al otro.
 
 ## El desagüe: el detalle que termina en conflicto con el vecino
 
@@ -79,7 +79,7 @@ No es "lo prendieron y anduvo". Son mediciones que el instalador hace con vos al
 
 Algo que casi nadie pregunta: si el tendido supera los metros que trae el equipo de fábrica —suelen ser 3 a 5—, hay que **agregar refrigerante**, los gramos por metro que indica el fabricante. Si no se hace, enfría poco desde el primer día y nadie entiende por qué.
 
-La entrega se cierra con el control explicado, los filtros, la garantía escrita y la factura. Si quedaron las cajas, el cobre y el polvo del caladero, la instalación no terminó.
+Una entrega bien hecha se cierra con el control remoto explicado, cómo se sacan y se lavan los filtros, la garantía por escrito y la factura. Si quedaron las cajas, el cobre y el polvo del calado, la instalación no terminó.
 
 ## Las preguntas para hacerle a cualquier instalador
 
@@ -94,13 +94,13 @@ Copiá estas y mandalas antes de contratar a nadie, sea a nosotros o al de la es
 7. ¿A dónde descarga el agua del desagüe? Mostrámelo en la pared.
 8. ¿La aislación de la cañería queda protegida del sol?
 9. ¿Hacen la puesta en marcha conmigo presente y me muestran las mediciones?
-10. ¿Qué cubre la garantía escrita: sólo el equipo o también la mano de obra?
+10. ¿Qué cubre la garantía por escrito: solo el equipo o también la mano de obra?
 
 Y una más si vivís en un country o en un edificio: quién se ocupa del ingreso con la administración, de los seguros y del horario de obra que pide el barrio. Nosotros lo gestionamos, pero lo importante es que alguien lo haga y no te lo deje encima.
 
-## Si querés que lo veamos
+### Si querés que lo veamos
 
-Clima Baires viene de instalar en Málaga, España: ese es el estándar de la casa matriz. Acá en zona norte recién arrancamos y trabajamos igual, con el mismo checklist. Mirá [obras](../obras.html) y qué incluye cada [servicio](../servicios.html).
+Clima Baires viene de instalar en Málaga, España: ese es el estándar de la casa matriz, y las fotos que ves en [obras](../obras.html) son todas de allá. Acá en zona norte recién arrancamos y trabajamos con el mismo checklist.
 
 Si ya sabés qué ambiente querés climatizar, pasá por la [calculadora de frigorías](../calculadora-frigorias.html) y mandanos el resultado por WhatsApp con una foto. Los datos, en [contacto](../contacto.html).
 

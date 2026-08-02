@@ -1,0 +1,124 @@
+{
+  "_comentario": [
+    "Preguntas frecuentes de cada página de zona. Las lee web/tools/generar.py:",
+    "arma el acordeón visible y, con las mismas preguntas, el bloque FAQPage de",
+    "datos estructurados que Google puede mostrar en el resultado de búsqueda.",
+    "",
+    "Formato: \"slug-de-zona\": [[pregunta, respuesta], ...]. El slug es el mismo",
+    "que el archivo de zonas/. Si una zona no figura acá, generar.py usa las",
+    "preguntas genéricas y avisa al compilar.",
+    "",
+    "Son las páginas a las que llega el tráfico de Google Ads: cada respuesta",
+    "tiene que resolver la duda sola, sin obligar a escribir por WhatsApp."
+  ],
+  "zonas": {
+    "nunez": [
+      [
+        "¿Necesito permiso del consorcio para poner el aire?",
+        "En casi todos los edificios sí: el reglamento de copropiedad define si la unidad de afuera puede ir al balcón, al contrafrente o solamente al pulmón de aire. Pedí el visto bueno por escrito a la administración antes de comprar el equipo; nosotros te pasamos los datos que suelen pedir, que son medidas, peso y nivel sonoro. Si vivís en un PH sin administración, el acuerdo escrito con los otros propietarios te evita el mismo problema más adelante."
+      ],
+      [
+        "Vivo en un piso alto y no tengo patio. ¿Dónde va la condensadora?",
+        "La condensadora, la unidad que va afuera, se cuelga con ménsulas al contrafrente, se apoya en el piso del balcón o va a un pulmón de aire, según lo que permita el edificio. Lo que no cambia es que necesita espacio para respirar: unos 10 a 15 cm libres atrás y medio metro adelante. Metida en un cajón o detrás de una celosía tapada se vuelve a chupar su propio aire caliente, enfría menos y consume más."
+      ],
+      [
+        "¿Se va a escuchar en el departamento del vecino?",
+        "Lo que más se transmite en un edificio no es el ruido del ventilador, es la vibración que viaja por la pared y por la losa. Por eso el equipo va sobre tacos antivibratorios, nunca apoyado directo contra el muro medianero, y la descarga de aire no se orienta a la ventana de al lado."
+      ],
+      [
+        "¿Cómo manejan el ascensor y los horarios de obra?",
+        "Coordinamos con el encargado el día y la franja horaria que permite el edificio, subimos por el ascensor de servicio con las protecciones puestas y dejamos el palier como estaba. El escombro del agujero de pared, el cartón y el caño sobrante se los llevamos: no van al contenedor del consorcio."
+      ]
+    ],
+    "vicente-lopez": [
+      [
+        "Tengo un equipo de más de diez años que todavía enfría. ¿Conviene cambiarlo?",
+        "Depende de cuánto lo uses. Un equipo on-off, de los que arrancan y paran de golpe, consume bastante más que un inverter, que regula la velocidad del compresor en vez de cortar, y en una casa que usa el aire varios meses al año esa diferencia se ve en la boleta. Si además hay que cargarle gas todos los veranos, ya no es una reparación pendiente: está al final de su vida útil."
+      ],
+      [
+        "¿Sirve la cañería que ya está en la pared o hay que romper todo?",
+        "A veces sirve y a veces no, y eso se define en la visita, no por teléfono. Se puede reutilizar si el diámetro coincide con el que pide el equipo nuevo, si el recorrido está sano y si el caño es apto para el refrigerante actual, porque los equipos viejos trabajaban con R22 y hoy se usa R410A o R32, que van a más presión. Cuando se reutiliza, se hace un barrido y un vacío profundo para sacar el aceite y la humedad del sistema anterior."
+      ],
+      [
+        "¿Qué hacen con el equipo viejo que retiran?",
+        "Nos lo llevamos el mismo día, junto con las ménsulas y el caño que quedó sin uso, y el gas se recupera con máquina en vez de soltarlo al aire. Si preferís conservarlo para otro ambiente o para venderlo, lo desmontamos con cuidado y te lo dejamos donde nos digas."
+      ],
+      [
+        "La casa es vieja. ¿Aguanta la instalación eléctrica?",
+        "Es lo primero que miramos en las casas consolidadas de Olivos, Florida o Munro: muchos tableros no tienen un circuito exclusivo para el aire, con su térmica y su disyuntor. Si hace falta adecuarlo, te lo decimos en la visita y queda anotado en el presupuesto, para que no aparezca como sorpresa el día de la instalación."
+      ]
+    ],
+    "san-isidro": [
+      [
+        "¿Multisplit o un equipo por ambiente?",
+        "Un multisplit es una sola unidad exterior, la condensadora, el bloque que va afuera y tira el calor, conectada a varios equipos interiores: sirve cuando no querés cuatro máquinas colgadas en la fachada o cuando el patio no da para más. La contra es que si esa unidad se detiene te quedás sin frío en todos los ambientes a la vez, y el tendido de cañería es más largo. En casas de dos plantas suele cerrar mejor un mix: multisplit para los dormitorios de arriba y equipos independientes abajo."
+      ],
+      [
+        "¿Dónde ponen la unidad exterior para que no se vea desde el frente?",
+        "En las casas de Martínez, Acassuso o las Lomas la regla es sacarla del frente: lateral, patio de servicio, fondo o techo del garaje, siempre sobre una base firme y nivelada. Si el único lugar posible queda lejos del ambiente a climatizar, se estira el tendido de cobre y eso mueve el presupuesto, así que conviene definirlo en la visita y no el día de la obra."
+      ],
+      [
+        "Tengo árboles grandes y en otoño se llena de hojas. ¿Molesta?",
+        "Sí: las hojas y las semillas tapan las aletas de la unidad exterior, que es por donde tiene que pasar el aire para largar el calor, y tapada enfría menos y hace trabajar forzado al compresor. Con la arboleda que hay acá conviene una limpieza extra antes del verano y dejar la unidad separada del cantero, no encajada contra una pared con plantas encima."
+      ],
+      [
+        "Abajo funciona bien pero arriba no enfría igual. ¿Por qué?",
+        "Porque en planta alta pega la losa, que acumula sol todo el día y devuelve calor de noche. El mismo metraje pide más potencia arriba que abajo, alrededor de un 10% más, así que copiar el equipo que ya tenés en el living suele quedar corto."
+      ]
+    ],
+    "tigre": [
+      [
+        "¿La humedad del río afecta al equipo de afuera?",
+        "Sí, sobre todo en los lotes que dan al agua. La humedad constante ataca primero los puntos de metal desnudo, que son ménsulas, bulones y uniones, y después las aletas de aluminio de la unidad exterior. No cambia tanto qué equipo comprás: cambia cómo se monta y cada cuánto se limpia."
+      ],
+      [
+        "¿Qué protección extra conviene en un barrio náutico?",
+        "Ménsulas galvanizadas o de acero inoxidable con bulonería del mismo material, en lugar de hierro pintado, que en un par de temporadas empieza a chorrear óxido sobre la pared. Varias marcas ofrecen además modelos con tratamiento anticorrosivo en las aletas, pensados para ambientes costeros; en la visita te decimos si en tu caso se justifica el sobreprecio."
+      ],
+      [
+        "¿Cada cuánto hay que hacerle mantenimiento acá?",
+        "El service sigue siendo una vez al año, pero cerca del agua conviene sumar un enjuague de la unidad exterior a mitad de temporada para sacar lo que se deposita entre las aletas. Es agua de red a baja presión, no hidrolavadora: el chorro fuerte dobla las aletas y ahí sí arruinás el equipo."
+      ],
+      [
+        "¿El aire también me baja la humedad de adentro?",
+        "Sí: al enfriar, el equipo condensa agua y la saca por el desagüe, así que el ambiente queda menos húmedo. En Rincón de Milberg o en un lote al agua eso significa que el caño de desagüe trabaja mucho más que en una casa de la ciudad, y necesita pendiente continua y salida a un lugar que no te moje el deck ni la pared del vecino. Si está mal resuelto, la primera señal es agua goteando por debajo del equipo de adentro."
+      ]
+    ],
+    "nordelta": [
+      [
+        "¿Quién hace el trámite de ingreso, ustedes o yo?",
+        "Lo armamos nosotros: presentamos la nómina del personal que va a entrar, los datos del vehículo y la documentación que pide la administración, y te pasamos el aval del propietario para que lo firmes. Vos confirmás la fecha y poco más."
+      ],
+      [
+        "¿Cuánto tarda la aprobación del alta?",
+        "No lo define el instalador, lo define la administración: entre que se presenta la carpeta y sale la autorización pueden pasar de dos días a una semana, y se estira en noviembre y diciembre, cuando todos los proveedores presentan a la vez. Por eso pedimos el reglamento de tu barrio y arrancamos el trámite apenas aprobás el presupuesto."
+      ],
+      [
+        "Mi barrio tiene reglamento de fachada. ¿Dónde puede ir el equipo de afuera?",
+        "Cada barrio de Nordelta tiene el suyo, así que lo primero es leerlo: la mayoría pide que la condensadora, el equipo que va afuera, no se vea desde la calle ni desde los espacios comunes y quede detrás de un cerramiento. Se puede cumplir sin resignar rendimiento, pero el cerramiento tiene que dejar circular aire; encerrada en un cajón sin ventilación la máquina respira su propio calor y rinde menos."
+      ],
+      [
+        "Me entregan la unidad con preinstalación. ¿Qué falta para tenerla andando?",
+        "Preinstalación quiere decir que ya están los caños, el desagüe y el punto eléctrico dentro de la pared, pero no hay equipos. Antes de comprar conviene ver a qué potencia quedó dimensionada esa cañería y si el punto exterior previsto sirve para el equipo que querés, así que pedile los planos a la desarrolladora y mandanoslos. Con eso cotizamos equipo más instalación para que quede funcionando el día de la mudanza."
+      ]
+    ],
+    "pilar": [
+      [
+        "Estoy construyendo. ¿Cuándo tengo que llamar al instalador?",
+        "Antes del yeso, con las paredes todavía a la vista. Ese es el momento de embutir los caños de refrigerante, el desagüe y la alimentación eléctrica sin romper nada; una vez que la casa está terminada y pintada, cada caño nuevo significa canaleta, revoque y retoque."
+      ],
+      [
+        "¿Puedo dejar los caños puestos ahora y comprar los equipos después?",
+        "Sí, es lo habitual en obra: se hace la preinstalación durante la construcción y los equipos se compran cuando la casa está por habitarse. Lo importante es que la cañería quede dimensionada para la potencia que vas a necesitar en cada ambiente y con las puntas selladas, para que no entre tierra ni humedad mientras dura la obra. Si el caño queda chico, después te limita el equipo que podés poner."
+      ],
+      [
+        "¿Hasta qué distancia se puede llevar la cañería?",
+        "Hasta un punto. Cada equipo declara un largo máximo de caño y un desnivel máximo entre la condensadora, la unidad exterior, y el equipo de adentro, y pasado cierto metraje hay que agregar refrigerante para compensar. En casas con parque como las de los countries del km 40 al 60 los tendidos son bastante más largos que en un departamento: se puede hacer, pero suma metros de cobre, mano de obra y a veces una bomba para levantar el agua del desagüe."
+      ],
+      [
+        "¿Se puede climatizar el quincho o la galería?",
+        "Se puede, pero la cuenta es otra: en una galería semiabierta el aire se escapa, así que un equipo dimensionado como para un living cerrado del mismo metraje queda corto. Ahí se va a más potencia o a un piso-techo, y conviene definir de entrada si el sector se va a cerrar con paños vidriados o queda abierto."
+      ]
+    ]
+  }
+}

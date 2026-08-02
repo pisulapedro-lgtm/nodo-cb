@@ -351,6 +351,30 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height:
 .solo-movil { display: none; }
 @media (max-width: 900px) { .solo-movil { display: block; } }
 
+/* Acordeón de preguntas frecuentes: <details> nativo, así la respuesta está en
+   el HTML aunque esté plegada (Google la lee) y funciona sin JS ni teclado extra. */
+.faq-lista { max-width: 800px; margin: 26px auto 0; }
+.faq-item {
+  background: #fff; border: 1px solid var(--linea); border-radius: var(--radio);
+  margin-bottom: 12px; overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: 18px 52px 18px 22px; position: relative;
+  color: var(--navy); font-weight: 600; line-height: 1.35;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; border-radius: 50%; background: var(--hielo); color: var(--azul);
+  display: grid; place-items: center; font-size: 1.05rem; font-weight: 700;
+  transition: background .15s ease, transform .15s ease;
+}
+.faq-item[open] summary::after { content: '−'; background: var(--celeste); color: var(--navy); }
+.faq-item summary:hover::after { background: var(--celeste); color: var(--navy); }
+.faq-item summary:focus-visible { outline: 3px solid var(--azul); outline-offset: -3px; }
+.faq-item p { padding: 0 22px 20px; color: var(--gris); margin: 0; }
+.tarjeta-zona .boton { margin-top: 16px; }
+
 /* ---------- Zonas ---------- */
 .zona-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .zona-chips a {

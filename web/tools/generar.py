@@ -41,6 +41,18 @@ EMPRESA = {
 METROS_INCLUIDOS = 'PENDIENTE'
 
 
+def _faq_zonas():
+    """Preguntas frecuentes por zona, desde contenido/faq-zonas.json."""
+    ruta = os.path.join(RAIZ, 'contenido', 'faq-zonas.json')
+    if not os.path.exists(ruta):
+        return {}
+    with open(ruta, encoding='utf-8') as f:
+        return json.load(f).get('zonas', {})
+
+
+FAQ_ZONAS = _faq_zonas()
+
+
 def _config_de_main_js():
     ruta = os.path.join(RAIZ, 'assets', 'js', 'main.js')
     with open(ruta, encoding='utf-8') as f:
@@ -843,14 +855,29 @@ def pagina_obras():
         pagina_id='obras', wsp_barra='Hola Clima Baires, vi sus obras recientes y quiero un presupuesto.')
 
 
-def pagina_zona(slug, nombre, partido, intro, barrios, especial):
-    faq = [
+def faq_de_zona(slug, nombre):
+    """Las preguntas de cada zona viven en contenido/faq-zonas.json, no acá: son
+    contenido editable y son lo que Google levanta como FAQPage. Si falta una
+    zona no se rompe el build, pero se avisa: publicar las genéricas en una
+    landing de Ads es desperdiciarla."""
+    propias = FAQ_ZONAS.get(slug)
+    if propias:
+        return [(p, r) for p, r in propias]
+    print(f'  ! {slug}: sin preguntas propias en contenido/faq-zonas.json, van las genéricas')
+    return [
         (f'¿Cuánto tardan en venir a {nombre}?', 'Coordinamos la visita técnica dentro de las 72 horas.'),
         ('¿El presupuesto tiene costo?', 'No: la visita técnica y el presupuesto son sin cargo.'),
-        ('¿Puedo pagar en cuotas?', 'Sí: transferencia con descuento, tarjetas y cuotas.'),
         ('¿Atienden equipos que no instalaron ustedes?', 'Sí, somos multimarca: limpieza, carga de gas y reparación.'),
     ]
-    faq_html = ''.join(f'<p><strong>{p}</strong><br>{r}</p>' for p, r in faq)
+
+
+def pagina_zona(slug, nombre, partido, intro, barrios, especial):
+    faq = faq_de_zona(slug, nombre)
+    # acordeón nativo: la respuesta está en el HTML (Google la lee aunque esté
+    # plegada) y la página no se vuelve una pared de texto
+    faq_html = ''.join(
+        f'<details class="faq-item"><summary>{p}</summary><p>{r}</p></details>'
+        for p, r in faq)
     otras = ' · '.join(f'<a href="{s}.html">{n}</a>' for s, n, *_ in ZONAS if s != slug)
     lista_barrios = ', '.join(barrios)
     c = f'''
@@ -868,7 +895,6 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
     <div>
       <h2>Instalación, venta y service en {nombre}</h2>
       <p>Split, multisplit, piso-techo y conductos en {lista_barrios}. Presupuesto por WhatsApp en el día y precio cerrado: lo que ves es lo que pagás.</p>
-      <p>{especial}</p>
       <ul class="lista-check">
         <li>Instaladores certificados, seguros al día</li>
         <li>Vacío de cañería y prueba de estanqueidad, siempre</li>
@@ -880,15 +906,24 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
       </div>
     </div>
     <div>
-      <div class="tarjeta">
-        <h3>Preguntas frecuentes en {nombre}</h3>
-        {faq_html}
+      <div class="tarjeta tarjeta-zona">
+        <h3>Cómo trabajamos en {nombre}</h3>
+        <p>{especial}</p>
+        <a class="boton fantasma" data-wsp="Hola, estoy en {nombre} y quiero consultar por una instalación." data-origen="tarjeta" href="#">Consultar por WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
 <section class="seccion" style="padding:0 0 60px">{cinta_cta(f'¿Coordinamos una visita técnica en {nombre}? Sin cargo y sin compromiso.', f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')}
+</section>
+
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Dudas de la zona</span><h2>Preguntas frecuentes en {nombre}</h2></div>
+    <div class="faq-lista">{faq_html}</div>
+    <p class="centrado" style="margin-top:26px"><a class="boton verde" data-wsp="Hola, estoy en {nombre} y tengo una consulta que no está en las preguntas frecuentes." data-origen="faq" href="#">Preguntar lo que no está acá</a></p>
+  </div>
 </section>
 {bloque_quien_entra(alterna=True, p='../')}
 <section class="seccion alterna">
