@@ -14,8 +14,11 @@ Objetivo: tienda completa en modo privado, lista para revisar el viernes 7.
 
 ## Documentación
 
+- **[Prompt maestro](docs/PROMPT-MAESTRO.md)** — contexto completo del proyecto
+  para arrancar una conversación nueva.
 - **[Plan de ejecución — semana 1](docs/PLAN-SEMANA-1.md)** — el plan día a día
-  que se está siguiendo. Empezar por acá.
+  que se está siguiendo. Los días 3 y 5 asumen la instalación vendida dentro
+  de Shopify; pendientes de revisión con el modelo nuevo.
 - [Plan técnico](docs/PLAN-TECNICO.md) — arquitectura, elección de plataforma,
   sincronizador multi-proveedor y cumplimiento normativo UE/España.
   Escrito antes de confirmar el contexto de negocio: algunos supuestos quedaron
@@ -29,8 +32,17 @@ Objetivo: tienda completa en modo privado, lista para revisar el viernes 7.
 | Zona | Costa del Sol, validación por código postal |
 | Catálogo inicial | 30-40 SKUs: split 1x1, multisplit, conductos y cassette |
 | Idiomas | Español + inglés (mercado residente extranjero) |
-| Instalación | Propia, incluida en el precio mostrado |
+| Alcance de Shopify | **Solo el equipo.** La instalación se gestiona fuera |
 | Conductos y cassette | Solicitud de presupuesto, no compra directa |
+
+## Stack
+
+| Herramienta | Rol |
+|---|---|
+| Shopify | Tienda — venta del equipo |
+| Stripe | Cobros |
+| Holded | Facturación y gestión |
+| Google Calendar | Coordinación de instalaciones |
 
 ## Puntos de atención
 
