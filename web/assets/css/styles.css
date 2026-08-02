@@ -188,14 +188,6 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height:
 .hero-cta2:hover{border-bottom-color:var(--celeste);color:var(--azul)}
 .hero-cta2 span{color:var(--celeste);font-size:1.05rem;line-height:1}
 
-.hero-nota{
-  display:flex;align-items:center;gap:10px;margin-top:20px;
-  font-size:.94rem;font-weight:500;color:#48525f;
-}
-.hero-pulso{
-  width:8px;height:8px;border-radius:50%;background:#25D366;flex:none;
-  box-shadow:0 0 0 4px rgba(37,211,102,.2);
-}
 
 /* ---- dial de frío: decorativo, sin vidrio, sin backdrop-filter.
    Ancla el tercio inferior derecho y funde el dato 38°→24° en un solo objeto. ---- */
@@ -744,8 +736,6 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   .hero-acciones{margin-top:24px;gap:18px;align-items:flex-start;flex-direction:column}
   .hero-cta{width:100%;max-width:430px;font-size:1.05rem;padding:16px 24px}
   .hero-cta2{align-self:flex-start}
-  .hero-nota{margin-top:18px;font-size:.9rem;align-items:flex-start;max-width:32ch;line-height:1.45}
-  .hero-pulso{margin-top:6px}
 
   /* el chip reemplaza al pie de figura varado: dato frío sobre la foto */
   .hero-chip{

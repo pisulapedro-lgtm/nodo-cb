@@ -407,7 +407,6 @@ def pagina_index():
         </a>
         <a class="hero-cta2" href="calculadora-frigorias.html">Calcular frigorías <span>→</span></a>
       </div>
-      <p class="hero-nota"><span class="hero-pulso" aria-hidden="true"></span><span data-respuesta>Respondemos en minutos</span> · Aptos countries y barrios cerrados</p>
     </div>
   </div>
 
