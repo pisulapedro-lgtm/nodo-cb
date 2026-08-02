@@ -19,6 +19,26 @@ carpeta liviana con `npm run web:publicar` y se sube **`dist/sitio`**, nunca `we
 4. **Google Tag Manager** — `CB.gtmId` en el mismo bloque (hoy `GTM-XXXXXXX`, placeholder: no carga nada). Ver «Medición» más abajo.
 5. **Agenda de visitas** — `CB.agendaUrl` en el mismo bloque (hoy vacío: los botones «Agendar visita» derivan a WhatsApp). Ver «Agenda» más abajo.
 6. Si cambia el dominio (p. ej. se usa `climabaires.com.ar` como principal), regenerar las páginas: editar `DOMINIO` en `tools/generar.py` y correr `python3 web/tools/generar.py` (actualiza canónicas, Open Graph y sitemap).
+7. **Metros de cañería incluidos** — `METROS_INCLUIDOS` en `tools/generar.py` (hoy `PENDIENTE`). Es el único número del bloque «qué entra en el precio» de `servicios.html`, y el primero que un cliente va a reclamar si no coincide.
+
+### Promesas operativas a confirmar con el dueño
+
+El sitio compromete por escrito **cómo se trabaja**. Ninguna es un dato de
+contacto que se pueda verificar solo: hay que leerlas y confirmar que la
+operación argentina las va a cumplir desde el día uno, o cambiar el texto en
+`tools/generar.py` antes de publicar.
+
+| Dónde | Promesa |
+| --- | --- |
+| `bloque_quien_entra()` — nosotros + 6 zonas | Se manda por WhatsApp el nombre, la foto y el documento del técnico **el día anterior**, más la patente de la camioneta |
+| ídem | Franja de llegada de **dos horas**, camioneta rotulada, aviso si hay atraso |
+| ídem | Se cubren pisos y muebles; la aspiradora la trae el equipo |
+| ídem | Se retiran embalaje, restos de obra **y el equipo viejo** el mismo día |
+| ídem | El alta del contratista y los papeles del barrio los gestiona la empresa |
+| `bloque_que_incluye()` — servicios | Las 10 líneas de «entra en el precio» (vacío con bomba, estanqueidad con nitrógeno, desagüe probado con agua, puesta en marcha medida, garantía escrita de la instalación) |
+| ídem | Las 7 de «se cobra aparte»: que ninguna se cobre sin figurar antes en el presupuesto |
+| ídem | Ante un adicional durante la obra: se para, se muestra y se sigue **sólo con aprobación por WhatsApp** |
+| `servicios.html` | Marcas listadas: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea — confirmar que son las que efectivamente se venden |
 
 ## Cómo añadir fotos de obras
 

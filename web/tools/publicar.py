@@ -45,6 +45,11 @@ def revisar_placeholders():
     html = open(os.path.join(RAIZ, 'terminos.html'), encoding='utf-8').read() if os.path.exists(os.path.join(RAIZ, 'terminos.html')) else ''
     if 'PENDIENTE' in html:
         faltan.append(('garantía', 'el plazo de garantía de la instalación sigue como PENDIENTE en terminos.html'))
+    # el único número del bloque «qué entra en el precio»: es la promesa más
+    # concreta del sitio y la primera que un cliente va a reclamar
+    if re.search(r"METROS_INCLUIDOS\s*=\s*'PENDIENTE'", gen):
+        faltan.append(('METROS_INCLUIDOS', 'falta cuántos metros de cañería entran en el precio cerrado: '
+                                           'servicios.html lo muestra como «Hasta PENDIENTE metros»'))
     return faltan
 
 # lo que sí se publica

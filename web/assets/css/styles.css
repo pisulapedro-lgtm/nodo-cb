@@ -326,6 +326,31 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height:
   color: #fff; font-size: .75rem; font-weight: 700; display: grid; place-items: center;
 }
 
+/* Lo que se cobra aparte NO lleva ✓: un tilde ahí se lee como «esto también
+   está incluido», que es justo el malentendido que el bloque viene a borrar. */
+.lista-mas { list-style: none; margin-top: 14px; }
+.lista-mas li { padding-left: 30px; position: relative; margin-bottom: 10px; color: var(--gris); }
+.lista-mas li::before {
+  content: '+'; position: absolute; left: 0; top: 0;
+  width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--navy);
+  color: var(--navy); font-size: .8rem; font-weight: 700; display: grid; place-items: center;
+}
+.lista-detalle li { margin-bottom: 16px; }
+.lista-detalle li strong { display: block; color: var(--navy); font-weight: 600; margin-bottom: 2px; }
+.lista-detalle li span { display: block; font-size: .88rem; line-height: 1.6; }
+.nota { font-size: .85rem; color: var(--gris); }
+.compromiso {
+  margin-top: 26px; background: var(--navy); color: #fff;
+  border-radius: 18px; padding: 26px 30px;
+}
+.compromiso h3 { color: #fff; margin-bottom: 8px; }
+.compromiso p { color: #d8e6f5; margin: 0; line-height: 1.7; }
+.compromiso .boton { margin-top: 18px; }
+/* en escritorio las dos listas se leen a la par y no hace falta cortar al medio;
+   apiladas en móvil son cinco pantallas seguidas sin dónde tocar */
+.solo-movil { display: none; }
+@media (max-width: 900px) { .solo-movil { display: block; } }
+
 /* ---------- Zonas ---------- */
 .zona-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .zona-chips a {
@@ -746,3 +771,4 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   .pie-grilla { grid-template-columns: 1fr; gap: 26px; }
   .claims { grid-template-columns: 1fr; }
 }
+.corte-lista { margin: 8px 0 18px; }

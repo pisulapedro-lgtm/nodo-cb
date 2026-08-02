@@ -34,6 +34,12 @@ EMPRESA = {
     'responsable_datos': 'Ignacio (responsable de la base de datos)',
 }
 
+# Metros de cañería que entran en el precio cerrado (bloque «qué entra y qué se
+# cobra aparte» de servicios.html). Es el único número del bloque y la promesa
+# más concreta del sitio: publicarlo mal es peor que no publicarlo, así que
+# publicar.py se niega a compilar mientras siga en PENDIENTE.
+METROS_INCLUIDOS = 'PENDIENTE'
+
 
 def _config_de_main_js():
     ruta = os.path.join(RAIZ, 'assets', 'js', 'main.js')
@@ -562,7 +568,7 @@ def pagina_servicios():
 
 <section class="seccion" style="padding:0 0 50px">{cinta_cta('Contanos qué necesitás y te armamos el presupuesto hoy.', 'Hola Clima Baires, quiero un presupuesto.')}
 </section>
-
+{bloque_que_incluye()}
 <section class="seccion alterna">
   <div class="contenedor">
     <div class="centrado"><span class="kicker">Cómo trabajamos</span><h2>Cuatro pasos, cero sorpresas</h2></div>
@@ -884,7 +890,7 @@ def pagina_zona(slug, nombre, partido, intro, barrios, especial):
 
 <section class="seccion" style="padding:0 0 60px">{cinta_cta(f'¿Coordinamos una visita técnica en {nombre}? Sin cargo y sin compromiso.', f'Hola, estoy en {nombre} y quiero presupuesto de instalación.')}
 </section>
-
+{bloque_quien_entra(alterna=True, p='../')}
 <section class="seccion alterna">
   <div class="contenedor centrado">
     <h2>También trabajamos en</h2>
@@ -950,6 +956,7 @@ def pagina_nosotros():
 
 <section class="seccion" style="padding:0 0 60px">{cinta_cta('¿Te contamos cómo lo haríamos en tu casa?', 'Hola Clima Baires, quiero que me asesoren para climatizar mi casa.')}
 </section>
+{bloque_quien_entra(alterna=False)}
 {seccion_asi_trabajamos()}
 <section class="seccion">
   <div class="contenedor">
@@ -963,6 +970,139 @@ def pagina_nosotros():
     return layout(0, 'Sobre nosotros | Clima Baires Argentina',
         'Clima Baires nació en Málaga instalando climatización. Traemos ese estándar al corredor norte: transparencia, rapidez y posventa real.',
         c, f'{DOMINIO}/sobre-nosotros.html', jsonld_migas([('Inicio', '/'), ('Sobre nosotros', '/sobre-nosotros.html')]), 'nosotros', pagina_id='sobre-nosotros')
+
+
+def bloque_quien_entra(alterna=True, p=''):
+    """La objeción que nadie escribe en el formulario: meter en tu casa a dos
+    desconocidos con un taladro. Va en «sobre nosotros» y en las seis zonas —sin
+    datos locales adentro, así se inserta igual en las siete páginas."""
+    pasos = [
+        ('Nombre y foto antes',
+         'El día anterior te llega por WhatsApp el nombre, la foto y el documento del técnico que va a tu '
+         'casa, más la patente de la camioneta, para que lo dejes anotado en la guardia o se lo pases al '
+         'encargado sin tener que llamar a nadie.'),
+        ('Franja de dos horas',
+         'No te decimos «a la mañana»: te damos una franja de dos horas, el equipo llega en camioneta '
+         'rotulada y con ropa de trabajo, y si nos atrasamos te avisamos antes de que se cumpla la franja, '
+         'no después.'),
+        ('Protección antes de empezar',
+         'Antes de abrir la primera caja tapamos el piso, los muebles y el paso hasta el ambiente con '
+         'mantas y film, y la aspiradora la traemos nosotros: no se pide prestada ninguna herramienta de '
+         'la casa.'),
+        ('Se prueba con vos',
+         'El equipo se enciende con vos al lado y no nos vamos hasta que lo veas andar: frío, calor, '
+         'control remoto, cómo se sacan y se lavan los filtros y qué hacer si algún día no arranca.'),
+        ('Nos llevamos todo',
+         'Cartones, recortes de caño, restos de obra y el equipo viejo si lo había se van en nuestra '
+         'camioneta el mismo día, no al volquete del barrio ni al canasto del vecino.'),
+    ]
+    tarjetas = ''.join(
+        '<div class="tarjeta"%s><h3>%d · %s</h3><p>%s</p></div>' % (
+            ' style="grid-column:1/-1"' if i == len(pasos) - 1 else '', i + 1, t, d)
+        for i, (t, d) in enumerate(pasos))
+    return f'''
+<section class="seccion{' alterna' if alterna else ''}">
+  <div class="contenedor">
+    <div class="centrado">
+      <span class="kicker">El día de la obra</span>
+      <h2>Quién va a entrar a tu casa</h2>
+      <p class="intro">Meter en tu casa a dos personas con un taladro no es un trámite menor: estas cinco cosas las hacemos en toda obra, sin que tengas que pedirlas.</p>
+    </div>
+    <div class="grilla dos" style="margin-top:26px">{tarjetas}</div>
+    <p class="centrado nota" style="margin-top:22px">El alta del contratista y los papeles que pide cada barrio los gestionamos nosotros con la administración: vos no tenés que ir a la guardia a explicar quiénes somos.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding:0 0 46px">{cinta_cta('¿Querés saber cómo sería en tu casa? Preguntanos sin compromiso.', 'Hola Clima Baires, quiero saber cómo trabajan dentro de la casa.', 'Preguntar por WhatsApp')}
+</section>'''
+
+
+def bloque_que_incluye():
+    """«Precio cerrado» sin una lista no dice nada. Estas son las dos listas.
+
+    La de la derecha no lleva ✓: un tilde en lo que se cobra aparte se lee como
+    si también estuviera incluido, que es justo el malentendido que el bloque
+    viene a eliminar."""
+    incluido = [
+        ('Hasta %s metros de cañería de cobre, con aislación' % METROS_INCLUIDOS,
+         'El caño que une la unidad de adentro con la de afuera, forrado para que no transpire ni pierda frío. El tendido real se mide en la visita técnica.'),
+        ('Ménsulas, anclajes y tacos antivibratorios',
+         'Los soportes de la unidad exterior, con el anclaje que pide esa pared, y las gomas que evitan que el compresor se escuche adentro.'),
+        ('El paso de pared para la cañería',
+         'La perforación en pared común y su terminación. Si hay que romper y rehacer, eso ya es obra civil y está en la otra lista.'),
+        ('Vacío de cañería con bomba',
+         'Sacar el aire y la humedad del circuito antes de soltar el gas. Con bomba y vacuómetro, no con una purga de diez segundos. Es lo que define si el equipo llega a los diez años.'),
+        ('Prueba de estanqueidad',
+         'Estanqueidad, en criollo, es que no pierda. Se presuriza con nitrógeno y se controla que la aguja no baje, antes de cerrar nada.'),
+        ('La carga de refrigerante que pidan esos metros',
+         'Los equipos vienen de fábrica con gas para un tendido corto. Si el tuyo es más largo, hay que agregar. Dentro de los metros incluidos, va en el precio.'),
+        ('Desagüe con pendiente natural, probado con agua',
+         'La salida del agua de condensación, con caída continua y sin panzas, a un lugar que no sea la medianera ni el balcón del vecino. Se prueba antes de cerrar la pared.'),
+        ('Puesta en marcha con vos presente',
+         'Presiones, consumo en amperes y diferencia de temperatura entre el aire que entra y el que sale, medidos y explicados ahí mismo. No es «lo prendimos y anduvo».'),
+        ('Protección del ambiente y retiro de residuos',
+         'Cubrimos muebles y pisos antes de empezar, y nos llevamos cajas, recortes de cobre y polvo. La obra termina cuando no queda nada nuestro en tu casa.'),
+        ('Garantía escrita de la instalación',
+         'De nuestra mano de obra: uniones, desagüe, fijaciones y puesta en marcha. Va aparte de la garantía del fabricante del equipo, que también te entregamos con la factura.'),
+    ]
+    aparte = [
+        ('Metro adicional de cañería',
+         'Pasados los metros incluidos, se cobra por metro, con el refrigerante extra que ese tramo necesita. El valor del metro te lo decimos en el presupuesto, no después.'),
+        ('Trabajo en altura con andamio o plataforma',
+         'Cuando la condensadora va donde no llega una escalera. El andamio o la plataforma se alquilan por día y eso se cotiza aparte. Los elementos de seguridad del equipo no se cobran nunca: van siempre.'),
+        ('Grúa o izaje',
+         'Equipos pesados o accesos sin paso: piso-techo grandes, conductos, patios internos. Lo presta un tercero y se cotiza tal como lo cobra.'),
+        ('Obra civil: roturas, canaletas y reparación',
+         'Abrir mampostería para embutir la cañería, y después revocar y pintar. Si el tendido va por cablecanal a la vista, no hace falta. Si querés todo escondido, se presupuesta.'),
+        ('Bomba de condensado',
+         'Cuando la salida del desagüe queda más alta que el equipo, el agua no baja sola: hace falta una bomba que la empuje. Es un aparato más, con su instalación.'),
+        ('Punto eléctrico nuevo, térmica o tablero',
+         'El equipo necesita su propia línea con protección. Si en esa pared no hay nada, o el tablero no tiene lugar para una térmica más, es trabajo de electricidad.'),
+        ('Lo que cobra el barrio o el consorcio',
+         'Algunos countries piden derecho de obra, depósito de garantía o seguros. La gestión con la administración la hacemos nosotros; lo que cobra el barrio va detallado como tal, sin recargo nuestro encima.'),
+    ]
+    def lista(items, clase, corte=None):
+        """`corte` parte la lista para colar una cinta en el medio: apilada en
+        móvil, la de «entra en el precio» son diez ítems seguidos."""
+        li = [f'<li><strong>{t}</strong><span>{d}</span></li>' for t, d in items]
+        if corte is None:
+            return '<ul class="%s">%s</ul>' % (clase, ''.join(li))
+        cinta = cinta_cta_suelta('¿Todo esto entra en tu caso? Mandanos una foto del ambiente y te lo confirmamos.',
+                                 'Hola Clima Baires, quiero saber qué entra en el precio en mi caso. Les mando fotos.',
+                                 'Consultar', 'seccion')
+        return '<ul class="%s">%s</ul><div class="solo-movil corte-lista">%s</div><ul class="%s">%s</ul>' % (
+            clase, ''.join(li[:corte]), cinta, clase, ''.join(li[corte:]))
+    return f'''
+<section class="seccion alterna" id="que-incluye">
+  <div class="contenedor">
+    <div class="centrado">
+      <span class="kicker">Precio cerrado</span>
+      <h2>Qué entra en el precio y qué se cobra aparte</h2>
+      <p class="intro">Decir «precio cerrado» sin una lista es decir nada. Esta es la lista: lo que entra siempre en una instalación nuestra, y lo que se cobra aparte cuando la casa lo pide. Si algo de la segunda lista aplica en tu caso, lo ves en el presupuesto antes de que empiece la obra.</p>
+    </div>
+    <div class="grilla dos" style="margin-top:30px; align-items:start">
+      <div class="tarjeta">
+        <h3>Entra en el precio</h3>
+        <p class="nota">Siempre, en toda instalación. No se discute ni se recorta.</p>
+        {lista(incluido, 'lista-check lista-detalle', corte=5)}
+      </div>
+      <div class="solo-movil">{cinta_cta_suelta('¿Querés saber qué de esto aplica en tu casa? Mandanos una foto del ambiente.', 'Hola Clima Baires, quiero saber qué entra en el precio en mi caso. Les mando fotos.', 'Consultar', 'seccion')}</div>
+      <div class="tarjeta">
+        <h3>Se cobra aparte</h3>
+        <p class="nota">Solo si tu casa lo pide. Sale del presupuesto, con el importe a la vista, antes de arrancar.</p>
+        {lista(aparte, 'lista-mas lista-detalle')}
+      </div>
+    </div>
+    <div class="compromiso">
+      <h3>Nuestro compromiso con los adicionales</h3>
+      <p>Casi todo lo de la segunda lista se detecta en la visita técnica y entra al presupuesto cerrado antes de que compres nada. Si aun así aparece algo durante la obra, hacemos siempre lo mismo: paramos, te lo mostramos en el lugar, te decimos cuánto suma y seguimos recién cuando lo aprobás. Alcanza con un «dale» por WhatsApp, y queda escrito. Un adicional que aparece recién en la factura no existe acá.</p>
+      <a class="boton blanco" data-wsp="Hola Clima Baires, quiero un presupuesto con el detalle de qué entra y qué se cobra aparte." data-origen="seccion" href="#">Pedir el presupuesto detallado</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" style="padding:0 0 50px">{cinta_cta('Contanos cómo está tu casa y te decimos qué entra y qué no, antes de cobrarte nada.', 'Hola Clima Baires, quiero saber qué entra en el precio y qué se cobra aparte en mi caso.', 'Pedir el detalle por WhatsApp')}
+</section>'''
 
 
 def seccion_asi_trabajamos():
