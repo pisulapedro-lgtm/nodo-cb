@@ -264,6 +264,50 @@ export function escenarios(datos) {
   });
 }
 
+/**
+ * Año 3 y valoración. El modelo llega al mes 24; los socios necesitan ver qué hay
+ * después y qué recuperan. Se proyecta desde el año 2 con apalancamiento operativo:
+ * la facturación crece más rápido que la estructura, porque el costo fijo ya está
+ * puesto y la segunda cuadrilla es variable hasta que se la pasa a planta.
+ */
+export function horizonte(datos) {
+  const h = datos.horizonte;
+  const fin = datos.financiero;
+  const { blended } = unitEconomics(datos);
+  const { anios } = proyeccion24m(datos);
+  const a2 = anios[1];
+
+  const instalaciones = a2.instalaciones * h.crecimiento_anio3;
+  const ingresos = instalaciones * blended.ticket_ars;
+  const margenBruto = ingresos * blended.margenBrutoPct;
+  const comision = ingresos * fin.costos_instalacion.comision_cobro_pct;
+  const iibb = ingresos * fin.costos_instalacion.iibb_pct;
+
+  // La estructura crece, pero menos que la facturación: es el apalancamiento.
+  const fijos = a2.fijos * 1.25;
+  const marketing = a2.marketing * h.crecimiento_anio3;
+  const empleados = fin.empleado.costo_empleador_ars * 12 * 2; // el técnico del año 2 + la segunda cuadrilla
+
+  const resultadoOperativo = margenBruto - comision - iibb - fijos - marketing - empleados;
+  const impuesto = ganancias(datos, resultadoOperativo);
+  const resultadoNeto = resultadoOperativo - impuesto;
+
+  const anio3 = {
+    anio: 3, instalaciones, ingresos, margenBruto, comision, iibb,
+    fijos, marketing, empleado: empleados, resultadoOperativo, impuesto, resultadoNeto,
+  };
+
+  // Valoración: múltiplo sobre resultado operativo, con el castigo que sufre una
+  // empresa joven, dependiente del fundador y sin cartera recurrente consolidada.
+  const valoracion = h.multiplos_ebitda.map((m) => {
+    const bruta = resultadoOperativo * m;
+    const ajustada = bruta * (1 - h.descuento_empresa_joven);
+    return { multiplo: m, bruta, ajustada };
+  });
+
+  return { anio2: a2, anio3, valoracion, crecimiento: h.crecimiento_anio3 };
+}
+
 /** Volcado completo para el generador de Excel (`node build/financiero.mjs --json`). */
 export function resumen(datos) {
   return {

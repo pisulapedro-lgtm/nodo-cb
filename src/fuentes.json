@@ -327,5 +327,40 @@
     "url": "https://fuelads.tech/benchmarks-latam-2026",
     "fecha_consulta": "02-08-2026",
     "tipo": "profesional"
+  },
+  {
+    "id": "F48",
+    "titulo": "ENGHo 2017-2018 — uso hogareño de la energía (INDEC + Secretaría de Energía): 47,1 % de los hogares usa A/A; 61,7 % de uso de split en el quintil de mayores ingresos",
+    "url": "https://www.indec.gob.ar/ftp/cuadros/sociedad/engho_2017_2018_uso_energia.pdf",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F49",
+    "titulo": "Censo Nacional 2022 — resultados por gobierno local (población de Vicente López, San Isidro, Tigre y Pilar)",
+    "url": "https://censo.gob.ar/index.php/gobiernos-locales/",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F50",
+    "titulo": "Vida útil de un equipo split: 12-15 años, con recambio conveniente a partir de los 10-12",
+    "url": "https://expertclima.es/blog/cuanto-dura-la-vida-util-de-un-aire-acondicionado-split/",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F51",
+    "titulo": "Múltiplos de valoración por EBITDA: cerca del 90 % de las operaciones se cierran entre 4 y 6 veces",
+    "url": "https://empresax.com/blog/valoracion-multiplos-ebitda-sectores/",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F52",
+    "titulo": "Métodos prácticos de valuación de pymes en el contexto argentino",
+    "url": "https://krestonba.com/como-calcular-el-valor-real-de-tu-empresa-en-argentina-metodos-practicos/",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "profesional"
   }
 ]

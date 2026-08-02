@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.2",
+    "version": "1.3",
     "fecha_documento": "2026-08-01",
     "fecha_inicio": "2026-08-03",
     "dias_plan": 30,
@@ -749,6 +749,16 @@
     },
     {
       "antes": "20",
+      "numero": "VI",
+      "titulo": "La operación comercial"
+    },
+    {
+      "antes": "24",
+      "numero": "VII",
+      "titulo": "El horizonte"
+    },
+    {
+      "antes": "25",
       "numero": "",
       "titulo": "Anexos"
     }
@@ -874,5 +884,129 @@
         "nota": "Necesita 30 conversiones de historial para no quemar presupuesto. Antes de eso no se enciende."
       }
     ]
+  },
+  "mercado": {
+    "nota": "Dimensionamiento propio a partir de población censal [F49], penetración de la ENGHo [F48] y vida útil del equipo [F50]. Las cifras marcadas † son supuestos propios, no datos.",
+    "localidades": [
+      {
+        "nombre": "Núñez (CABA)",
+        "poblacion": 36000,
+        "fuente": "F49",
+        "caracter": "estimacion"
+      },
+      {
+        "nombre": "Vicente López",
+        "poblacion": 282281,
+        "fuente": "F49",
+        "caracter": "verificado"
+      },
+      {
+        "nombre": "San Isidro",
+        "poblacion": 298800,
+        "fuente": "F49",
+        "caracter": "verificado"
+      },
+      {
+        "nombre": "Tigre (incluye Nordelta)",
+        "poblacion": 447000,
+        "fuente": "F49",
+        "caracter": "verificado"
+      },
+      {
+        "nombre": "Pilar",
+        "poblacion": 400000,
+        "fuente": "F49",
+        "caracter": "verificado"
+      }
+    ],
+    "personas_por_hogar": 2.9,
+    "penetracion_split": 0.7,
+    "equipos_por_hogar_equipado": 1.8,
+    "vida_util_anios": 12,
+    "crecimiento_penetracion_anual": 0.015,
+    "equipos_por_trabajo": 1.4,
+    "ticket_medio_mercado_ars": 1600000,
+    "sam_pct": 0.25
+  },
+  "precios": {
+    "nota": "El precio de lista de cada categoría ES el ticket del modelo financiero: si uno cambia y el otro no, el build aborta. Incluye el costo de cobro con tarjeta en un pago.",
+    "descuento_transferencia": 0.08,
+    "descuento_segunda_unidad": 0.1,
+    "descuento_mantenimiento_contratado": 0.15,
+    "iva_pct": 0.21,
+    "cuotas": [
+      {
+        "cuotas": 3,
+        "tasa": 0.0778,
+        "fuente": "F28"
+      },
+      {
+        "cuotas": 6,
+        "tasa": 0.1456,
+        "fuente": "F28"
+      }
+    ],
+    "incluye": [
+      "Equipo nuevo con garantía oficial de fábrica",
+      "Hasta 3 metros de cañería de cobre con aislación",
+      "Soportes, ménsula y bandeja de condensado",
+      "Vacío de cañería con bomba y prueba de estanqueidad",
+      "Puesta en marcha, prueba de frío y calor, y limpieza del lugar",
+      "Checklist de calidad firmado y garantía escrita de instalación"
+    ],
+    "no_incluye": [
+      "Obra civil: roturas de mampostería, revoques y pintura",
+      "Instalación eléctrica nueva desde el tablero o cambio de térmica",
+      "Trabajo en altura que requiera andamio, silleta o hidroelevador",
+      "Desinstalación y retiro del equipo anterior"
+    ],
+    "adicionales": [
+      {
+        "concepto": "Metro adicional de cañería (a partir del 4.º)",
+        "ars": 45000,
+        "unidad": "por metro"
+      },
+      {
+        "concepto": "Desinstalación y retiro del equipo anterior",
+        "ars": 80000,
+        "unidad": "por equipo"
+      },
+      {
+        "concepto": "Bomba de condensado (cuando no hay pendiente)",
+        "ars": 120000,
+        "unidad": "por equipo"
+      },
+      {
+        "concepto": "Perforación de muro de más de 30 cm o piedra",
+        "ars": 90000,
+        "unidad": "por pasada"
+      },
+      {
+        "concepto": "Trabajo en altura con silleta o andamio",
+        "ars": 180000,
+        "unidad": "por jornada"
+      },
+      {
+        "concepto": "Hidroelevador para condensadora sin acceso",
+        "ars": 350000,
+        "unidad": "por jornada"
+      },
+      {
+        "concepto": "Circuito eléctrico nuevo desde el tablero",
+        "ars": 160000,
+        "unidad": "por equipo"
+      }
+    ]
+  },
+  "horizonte": {
+    "nota": "El año 3 se proyecta desde el año 2 del modelo con la segunda cuadrilla y crecimiento de mercado; la valoración es un rango de múltiplos sobre resultado operativo [F51], no una tasación.",
+    "crecimiento_anio3": 1.45,
+    "segunda_cuadrilla_mes": 30,
+    "multiplos_ebitda": [
+      3.0,
+      4.5,
+      6.0
+    ],
+    "descuento_empresa_joven": 0.3
   }
 }

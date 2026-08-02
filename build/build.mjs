@@ -12,6 +12,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as FIN from './financiero.mjs';
 import * as MK from './marketing.mjs';
+import * as CM from './comercial.mjs';
 
 const require_ = createRequire(import.meta.url);
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -48,6 +49,7 @@ const RESERVADOS = [
   'tabla_unit_economics', 'tabla_pyl', 'tabla_caja', 'tabla_breakeven',
   'tabla_escenarios', 'tabla_sena', 'indice', 'miniaturas_web',
   'tabla_reparto_pauta', 'tabla_embudo', 'tabla_canales', 'tabla_sensibilidad_cpc', 'tabla_campanas_google',
+  'tabla_mercado', 'tabla_tarifario', 'tabla_adicionales', 'tabla_horizonte', 'tabla_valoracion',
 ];
 
 // Cifras del modelo que se citan en la prosa de la sección 6. Se calculan acá,
@@ -112,6 +114,32 @@ const RESERVADOS = [
   };
 }
 
+// Cifras comerciales y de horizonte citadas en la prosa de las secciones 9, 20 y 24.
+{
+  const a1 = FIN.proyeccion24m(datos).anios[0];
+  const mc = CM.cuota(datos, a1.ingresos);
+  const h = FIN.horizonte(datos);
+  const un = (n, d = 0) => n.toFixed(d).replace('.', ',');
+
+  datos._cm = {
+    hogares: Math.round(mc.hogares),
+    parque: Math.round(mc.parque),
+    trabajos_anuales: Math.round(mc.trabajosAnuales),
+    tam: mc.tam, tam_eur: mc.tam / TC,
+    sam: mc.sam, sam_eur: mc.sam / TC,
+    som_tam_pct: un(mc.somSobreTam * 100, 2),
+    som_sam_pct: un(mc.somSobreSam * 100, 1),
+    instalaciones_al_2pct: Math.round(mc.instalacionesAl2pct),
+    instalaciones_a3: Math.round(h.anio3.instalaciones),
+    neto_a3: h.anio3.resultadoNeto,
+    neto_a3_eur: h.anio3.resultadoNeto / TC,
+    valor_bajo_eur: h.valoracion[0].ajustada / TC,
+    valor_alto_eur: h.valoracion[2].ajustada / TC,
+    socio30_bajo_eur: (h.valoracion[0].ajustada * 0.30) / TC,
+    socio30_alto_eur: (h.valoracion[2].ajustada * 0.30) / TC,
+  };
+}
+
 // ---------- helpers de plantilla ----------
 function getPath(obj, path) {
   return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
@@ -126,6 +154,8 @@ function sustituir(md) {
       if (fmt === 'ars') return ars(v);
       if (fmt === 'arsdeeur') return ars(v * TC);
       if (fmt === 'pct') return `${v}%`;
+      // `porc` recibe una fracción (0,08) y la escribe como porcentaje (8,0 %).
+      if (fmt === 'porc') return `${(v * 100).toFixed(1).replace('.', ',')} %`;
       return m;
     }
     // generadores reservados se resuelven fuera
@@ -566,6 +596,128 @@ function renderCampanasGoogle() {
   return html;
 }
 
+
+// ---------- generadores comerciales y de horizonte ----------
+function renderMercado() {
+  const m = CM.cuota(datos, FIN.proyeccion24m(datos).anios[0].ingresos);
+  const k = datos.mercado;
+  const n = (x) => fmtARS.format(Math.round(x));
+  const filas = [
+    ['Población de las seis localidades', n(m.poblacion), 'Censo 2022 [F49]; Nordelta va dentro de Tigre, no se suma aparte', ''],
+    ['Personas por hogar', nEs(k.personas_por_hogar, 1), 'Promedio del AMBA', '†'],
+    ['<strong>Hogares del corredor</strong>', `<strong>${n(m.hogares)}</strong>`, 'Población dividida por el tamaño del hogar', ''],
+    ['Penetración de split', pct(k.penetracion_split), 'Por encima del 61,7 % del quintil de mayores ingresos de 2017-18 [F48]: el dato es viejo y el corredor está sobrerrepresentado en ese quintil', '†'],
+    ['Equipos por hogar equipado', nEs(k.equipos_por_hogar_equipado, 1), 'En vivienda premium rara vez hay uno solo', '†'],
+    ['<strong>Parque instalado</strong>', `<strong>${n(m.parque)} equipos</strong>`, 'Lo que hay hoy funcionando en el corredor', ''],
+    ['Vida útil del equipo', `${k.vida_util_anios} años`, 'Recambio conveniente a partir de los 10-12 [F50]', ''],
+    ['Recambio anual', n(m.recambioAnual), 'El parque dividido por su vida útil', ''],
+    ['Altas anuales', n(m.altasAnuales), `Hogares que se equipan por primera vez (${pct(k.crecimiento_penetracion_anual)} de penetración al año)`, '†'],
+    ['Equipos por trabajo', nEs(k.equipos_por_trabajo, 1), 'Un multisplit es un solo trabajo con varios equipos', '†'],
+    ['<strong>Trabajos al año en el corredor</strong>', `<strong>${n(m.trabajosAnuales)}</strong>`, 'La demanda anual de instalación y recambio', ''],
+    ['Ticket medio del mercado', ars(k.ticket_medio_mercado_ars), 'Por debajo del nuestro: incluye gama baja e instalación informal', '†'],
+  ];
+  let html = '<table class="larga"><thead><tr><th>Paso</th><th class="num">Valor</th><th>De dónde sale</th><th class="num">†</th></tr></thead><tbody>';
+  for (const [c, v, d, e] of filas) {
+    html += `<tr><td>${c}</td><td class="num">${v}</td><td>${d}</td><td class="num"><span class="estimacion">${e}</span></td></tr>`;
+  }
+  html += `<tr class="total"><td>TAM — todo el gasto anual del corredor</td><td class="num">${ars(m.tam)}</td>`
+    + `<td colspan="2">${eur(m.tam / TC)} al año en equipos e instalación</td></tr>`;
+  html += `<tr class="total"><td>SAM — el segmento premium con instalación certificada (${pct(k.sam_pct)})</td><td class="num">${ars(m.sam)}</td>`
+    + `<td colspan="2">${eur(m.sam / TC)} — al que de verdad le hablamos</td></tr>`;
+  html += `<tr class="subtotal"><td>SOM — lo que factura el plan en el año 1</td><td class="num">${ars(m.som)}</td>`
+    + `<td colspan="2"><strong>${nEs(m.somSobreTam * 100, 2)} % del TAM</strong> y ${nEs(m.somSobreSam * 100, 1)} % del SAM</td></tr>`;
+  html += '</tbody></table>';
+  html += `<p class="leyenda">† = supuesto propio, no dato verificable. La aritmética queda a la vista a propósito: `
+    + `cambiar la penetración o la vida útil mueve el TAM, y es más honesto discutir los supuestos que la conclusión.</p>`;
+  return html;
+}
+
+function renderTarifario() {
+  const t = CM.tarifario(datos);
+  let html = '<table class="larga"><thead><tr><th>Categoría</th><th class="num">Lista (tarjeta 1 pago)</th>'
+    + '<th class="num">Transferencia</th>';
+  for (const c of datos.precios.cuotas) html += `<th class="num">${c.cuotas} cuotas</th>`;
+  html += '</tr></thead><tbody>';
+  for (const f of t.filas) {
+    html += `<tr><td><strong>${f.tipo}</strong> <small>[${f.fuente}]</small></td>`
+      + `<td class="num">${ars(f.lista)}</td>`
+      + `<td class="num">${ars(f.transferencia)}<br><small>−${pct(datos.precios.descuento_transferencia)}</small></td>`;
+    for (const c of f.cuotas) {
+      html += `<td class="num">${ars(c.total)}<br><small>${c.cuotas} × ${ars(c.porCuota)}</small></td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+  html += `<p class="leyenda">Precios finales con IVA incluido, en ARS de agosto-2026. El de lista ya contempla el costo de cobrar `
+    + `con tarjeta en un pago; por eso la transferencia baja ${pct(datos.precios.descuento_transferencia)} y las cuotas suman `
+    + `su costo financiero real [F28] neto de esa comisión, que no se cobra dos veces. `
+    + `<strong>Estos precios son los tickets del modelo financiero</strong>: no se escriben aparte, se derivan de él, `
+    + `así que no pueden contradecirlo. Lo que sí vigila el build es que ningún descuento deje el precio por debajo del costo.</p>`;
+  return html;
+}
+
+function renderAdicionales() {
+  let html = '<table><thead><tr><th>Adicional</th><th class="num">Precio</th><th>Unidad</th></tr></thead><tbody>';
+  for (const a of datos.precios.adicionales) {
+    html += `<tr><td>${a.concepto}</td><td class="num">${ars(a.ars)}</td><td>${a.unidad}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderHorizonte() {
+  const h = FIN.horizonte(datos);
+  const filas = [
+    ['Instalaciones', (a) => fmtARS.format(Math.round(a.instalaciones))],
+    ['Facturación', (a) => ars(a.ingresos)],
+    ['Margen bruto', (a) => ars(a.margenBruto)],
+    ['Estructura fija', (a) => ars(a.fijos)],
+    ['Marketing', (a) => ars(a.marketing)],
+    ['Personal en planta', (a) => ars(a.empleado)],
+    ['Resultado operativo', (a) => ars(a.resultadoOperativo)],
+    ['Resultado neto', (a) => ars(a.resultadoNeto)],
+    ['Resultado neto en euros', (a) => eur(a.resultadoNeto / TC)],
+  ];
+  // La variación se calcula sobre el valor crudo, no sobre el texto formateado.
+  const crudo = {
+    'Instalaciones': (a) => a.instalaciones, 'Facturación': (a) => a.ingresos,
+    'Margen bruto': (a) => a.margenBruto, 'Estructura fija': (a) => a.fijos,
+    'Marketing': (a) => a.marketing, 'Personal en planta': (a) => a.empleado,
+    'Resultado operativo': (a) => a.resultadoOperativo, 'Resultado neto': (a) => a.resultadoNeto,
+    'Resultado neto en euros': (a) => a.resultadoNeto,
+  };
+  let html = '<table><thead><tr><th>Concepto</th><th class="num">Año 2 (del modelo)</th><th class="num">Año 3 (proyectado †)</th><th class="num">Variación</th></tr></thead><tbody>';
+  for (const [nombre, fn] of filas) {
+    const esTotal = nombre === 'Resultado operativo' || nombre === 'Resultado neto';
+    const c2 = crudo[nombre](h.anio2), c3 = crudo[nombre](h.anio3);
+    const v = c2 ? `${c3 >= c2 ? '+' : ''}${nEs(((c3 / c2) - 1) * 100, 0)} %` : '—';
+    html += `<tr${esTotal ? ' class="total"' : ''}><td>${nombre}</td><td class="num">${fn(h.anio2)}</td>`
+      + `<td class="num">${fn(h.anio3)}</td><td class="num">${v}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderValoracion() {
+  const h = FIN.horizonte(datos);
+  const d = datos.horizonte.descuento_empresa_joven;
+  let html = '<table><thead><tr><th>Múltiplo sobre resultado operativo</th><th class="num">Valor bruto</th>'
+    + `<th class="num">Ajustado (−${pct(d)})</th><th class="num">En euros</th><th class="num">El 30 % de un socio</th></tr></thead><tbody>`;
+  const lectura = ['Extremo bajo: es donde cotiza una empresa de tres años, dependiente del fundador',
+    'Punto medio del rango de mercado [F51]',
+    'Extremo alto: exige cartera de mantenimiento consolidada y equipo que no dependa de una persona'];
+  h.valoracion.forEach((v, i) => {
+    html += `<tr${i === 0 ? ' class="subtotal"' : ''}><td><strong>× ${nEs(v.multiplo, 1)}</strong> — ${lectura[i]}</td>`
+      + `<td class="num">${ars(v.bruta)}</td><td class="num">${ars(v.ajustada)}</td>`
+      + `<td class="num">${eur(v.ajustada / TC)}</td><td class="num">${eur((v.ajustada * 0.30) / TC)}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  html += `<p class="leyenda">† Ejercicio de rangos, no una tasación. El descuento del ${pct(d)} recoge dos castigos reales: `
+    + `la iliquidez de una pyme sin mercado comprador y la dependencia del fundador. `
+    + `Se aplica sobre el resultado operativo del año 3, que es a su vez una proyección.</p>`;
+  return html;
+}
+
 // ---------- ensamblado ----------
 const archivos = readdirSync(SRC).filter((f) => f.endsWith('.md')).sort();
 if (archivos.length === 0) throw new Error('No hay .md en src/');
@@ -588,6 +740,11 @@ const bloques = {
   tabla_breakeven: renderBreakEven(),
   tabla_escenarios: renderEscenarios(),
   tabla_sena: renderSena(),
+  tabla_mercado: renderMercado(),
+  tabla_tarifario: renderTarifario(),
+  tabla_adicionales: renderAdicionales(),
+  tabla_horizonte: renderHorizonte(),
+  tabla_valoracion: renderValoracion(),
   tabla_reparto_pauta: renderRepartoPauta(),
   tabla_embudo: renderEmbudo(),
   tabla_canales: renderCanales(),
@@ -658,8 +815,13 @@ if (datos.marketing) {
   for (const d of c.desvios) {
     errores.push(`Pauta de ${d.mes}: los canales suman ${ars(d.canales)} pero el modelo prevé ${ars(d.modelo)}`);
   }
-  const pct = datos.marketing.campanas_google.reduce((s, x) => s + x.pct, 0);
-  if (Math.abs(pct - 1) > 0.005) errores.push(`Las campañas de Google reparten el ${(pct * 100).toFixed(1)}% del presupuesto, no el 100%`);
+  const p = datos.marketing.campanas_google.reduce((s, x) => s + x.pct, 0);
+  if (Math.abs(p - 1) > 0.005) errores.push(`Las campañas de Google reparten el ${(p * 100).toFixed(1)}% del presupuesto, no el 100%`);
+}
+
+// Los descuentos y recargos del tarifario no pueden romper el margen.
+if (datos.precios) {
+  for (const p of CM.guardasPrecios(datos).problemas) errores.push(p);
 }
 
 if (avisos.length) console.warn('AVISOS:\n - ' + avisos.join('\n - '));
