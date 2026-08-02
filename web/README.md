@@ -1,5 +1,10 @@
 # Web climabaires.com — guía de despliegue
 
+> Este archivo es el **manual técnico** del sitio: cómo se añaden fotos, cómo se mide, cómo
+> funciona el blog y cómo se publica. La lectura de negocio —qué hace cada página, cómo
+> convierte y qué falta para publicar— está en las **secciones 13 y 14 del «Plan de Negocio»**
+> (`dist/Plan-de-Negocio-Clima-Baires-Argentina_vX.Y.pdf`).
+
 Sitio **estático** (HTML/CSS/JS puro, sin build ni dependencias). Para publicarlo se arma primero la
 carpeta liviana con `npm run web:publicar` y se sube **`dist/sitio`**, nunca `web/` (ver «Qué se sube al hosting»).
 
@@ -52,7 +57,7 @@ Meta se configuran como etiquetas DENTRO del contenedor — nunca pegar snippets
 sueltos en el HTML. El contenedor se crea gratis en
 [tagmanager.google.com](https://tagmanager.google.com) con la cuenta de Workspace;
 el ID (`GTM-XXXXXXX`) se pega en **un solo lugar**: `CB.gtmId` en `assets/js/main.js`.
-`main.js` inyecta GTM en las 13 páginas con carga diferida (no penaliza el LCP); con
+`main.js` inyecta GTM en las 21 páginas con carga diferida (no penaliza el LCP); con
 el placeholder no se carga nada y la web funciona igual.
 
 Todos los CTA ya empujan eventos al `dataLayer` (verificado por el QA de Playwright):
@@ -243,4 +248,4 @@ web/
     └── shots.mjs               # QA: capturas + enlaces + eventos dataLayer (npm run web:shots)
 ```
 
-Las capturas de QA se generan en `web/tools/shots/` y no se commitean.
+Las capturas de QA se generan en `web/tools/shots/` y **sí se commitean**: de ahí salen las miniaturas del sitio que ilustran la sección 13 del PDF (`npm run miniaturas`).

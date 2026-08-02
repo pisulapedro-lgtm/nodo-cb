@@ -1,6 +1,6 @@
-# 13. Anexos
+# 17. Anexos
 
-## 13.1 Glosario argentino para los socios españoles
+## 17.1 Glosario argentino para los socios españoles
 
 | Término | Traducción al «español de España» |
 |---|---|
@@ -32,7 +32,7 @@
 | **AVN** | Asociación Vecinal Nordelta: administra la ciudad-pueblo y el registro de proveedores |
 | **Frigoría** | Unidad de frío usada en Argentina (1 frigoría = 1 kcal/h; 3.000 frigorías ≈ 12.000 BTU ≈ 3,5 kW) |
 
-## 13.2 Documentos a preparar en España (checklist de Pedro y Sebastián)
+## 17.2 Documentos a preparar en España (checklist de Pedro y Sebastián)
 
 1. Pasaporte vigente (escaneo color, todas las hojas con datos).
 2. Certificado de residencia fiscal española (AEAT) — para el CUIT de no residente y para aplicar el CDI a los dividendos.
@@ -41,7 +41,7 @@
 5. Justificante del origen de los € 5.000 (extracto) — lo pedirá el compliance bancario argentino.
 6. Datos completos: domicilio, estado civil, profesión, email para notificaciones.
 
-## 13.3 Enlaces y contactos oficiales
+## 17.3 Enlaces y contactos oficiales
 
 | Organismo / recurso | URL |
 |---|---|
@@ -57,16 +57,22 @@
 | BCRA (régimen cambiario) | https://www.bcra.gob.ar |
 | Boletín Oficial | https://www.boletinoficial.gob.ar |
 
-## 13.4 Fuentes citadas (con fecha de consulta)
+## 17.4 Fuentes citadas (con fecha de consulta)
 
 Las 14 cifras más sensibles del documento (TC, IVA, dividendos, escala de Ganancias, costos SAS, alícuotas IIBB, topes de monotributo, comisiones de cobro, impuestos sobre SaaS, costo laboral, dominios y escala UOM) fueron además contrastadas contra fuentes primarias en una pasada de verificación independiente el 01-08-2026: 11 confirmadas, 3 con matices incorporados al texto y 1 corregida (tasas de Cuotas MiPyME). Convención: [Fn] en el texto → fila de esta tabla. Tipos: oficial (organismo), profesional (estudios/portales especializados), comercial (proveedor), prensa, mercado.
 
 {{tabla_fuentes}}
 
-## 13.5 Cómo se regenera este documento
+## 17.5 Cómo se regenera este documento
 
-Este PDF se genera desde el repositorio `nodo-cb`: un archivo Markdown por sección (`src/`), los números centralizados en `src/datos.json` (tipo de cambio, presupuesto, cronograma, stack — los totales y conversiones los calcula el build, no la mano) y las fuentes en `src/fuentes.json`. Para actualizar cifras: editar los JSON y ejecutar `npm run build`. El repositorio incluye además la web completa (`web/`) y el kit digital (`kit-digital/`).
+Este PDF se genera desde el repositorio `nodo-cb`: un archivo Markdown por sección (`src/`), los números centralizados en `src/datos.json` (tipo de cambio, presupuesto, cronograma, stack, supuestos financieros y las partes del documento — los totales y conversiones los calcula el build, no la mano) y las fuentes en `src/fuentes.json`. Para actualizar cifras: editar los JSON y ejecutar `npm run build`.
 
-El modelo financiero de la sección 6 tiene una pieza extra: `build/financiero.mjs`, el motor de cálculo que produce **tanto las tablas del PDF como la planilla** `Modelo-Financiero-Clima-Baires-Argentina_v{{meta.version}}.xlsx` (`npm run modelo`). Documento y planilla leen los mismos supuestos de `src/datos.json` y el mismo código, de modo que no pueden contar historias distintas; la hoja «Verificación» de la planilla lo comprueba celda a celda. `npm run todo` regenera los dos de una vez.
+El documento se arma en **dos pasadas**: la primera lo pagina con el índice en blanco, y la segunda lee el PDF ya paginado para rellenar los números de página. Por eso el índice no puede mentir: sale de la paginación real, no de una estimación.
+
+El modelo financiero de la sección 6 tiene una pieza extra: `build/financiero.mjs`, el motor de cálculo que produce **tanto las tablas del PDF como la planilla** `Modelo-Financiero-Clima-Baires-Argentina_v{{meta.version}}.xlsx` (`npm run modelo`). Documento y planilla leen los mismos supuestos y el mismo código, de modo que no pueden contar historias distintas; la hoja «Verificación» de la planilla lo comprueba celda a celda.
+
+Las miniaturas de la sección 13 salen del sitio real: `npm run web:shots` captura las 21 páginas y `npm run miniaturas` las prepara. **`npm run todo` regenera los tres entregables de una vez.**
+
+El repositorio incluye además la web completa (`web/`, con su manual técnico en `web/README.md`) y las piezas gráficas de marca (`kit-digital/assets/`).
 
 El build aborta —no genera un PDF a medias— si queda un marcador `{{ … }}` sin resolver, si se cita una fuente `[Fn]` que no está en `fuentes.json`, si el presupuesto supera los {{eur:capital.total_eur}} o si falta el tipo de cambio. Es deliberado: un documento que se usa para decidir no debería poder publicarse con un hueco.

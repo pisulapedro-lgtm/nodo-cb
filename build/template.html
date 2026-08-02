@@ -135,6 +135,54 @@
     font-weight: 600; color: var(--navy); margin: 10pt 0 3pt;
     border-left: 3pt solid var(--celeste); padding-left: 5pt;
   }
+  /* ===== Antetítulo de parte ===== */
+  p.antetitulo {
+    font-size: 8.4pt; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--celeste); margin: 0 0 3pt; page-break-after: avoid;
+  }
+
+  /* ===== Índice ===== */
+  table.indice { font-size: 9.4pt; page-break-inside: auto; margin-top: 2pt; }
+  table.indice td { border: none; padding: 2.2pt 0; vertical-align: baseline; }
+  table.indice tbody tr:nth-child(even) td { background: transparent; }
+  table.indice tr.parte td {
+    font-weight: 700; color: var(--azul); font-size: 10pt;
+    padding: 11pt 0 3pt; border-bottom: 1pt solid var(--celeste);
+  }
+  table.indice tr.sec td { font-weight: 600; color: var(--navy); }
+  table.indice tr.sub td { padding-left: 13pt; color: #4a5563; font-size: 8.8pt; }
+  table.indice tr.sub td .n { color: #8a97a6; }
+  table.indice td .n { display: inline-block; min-width: 15pt; color: var(--azul); }
+  table.indice td.pag { text-align: right; white-space: nowrap; width: 12mm; }
+  /* Ancho fijo: el hueco de la primera pasada mide lo mismo que el número de la
+     segunda, así la paginación no se mueve entre una y otra. */
+  .pag-hueco { display: inline-block; min-width: 9mm; text-align: right; }
+
+  /* Marca de localización dentro de los encabezados: invisible en papel, legible
+     por pdftotext para saber en qué página cayó cada sección. */
+  /* Ancho cero para no desplazar el título, pero con cuerpo suficiente: por debajo
+     de ~4 pt pdftotext desordena los glifos y la marca deja de ser localizable. */
+  .ancla {
+    display: inline-block; width: 0; overflow: visible; white-space: nowrap;
+    font-size: 4pt; color: #fff; vertical-align: super;
+  }
+
+  /* ===== Miniaturas de la web ===== */
+  .miniaturas {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt 7pt; margin: 8pt 0 6pt;
+  }
+  .miniaturas figure { margin: 0; page-break-inside: avoid; }
+  .miniaturas img {
+    width: 100%; height: auto; display: block;
+    border: 0.75pt solid var(--gris-linea); border-radius: 2pt;
+  }
+  .miniaturas figcaption { font-size: 7.2pt; line-height: 1.35; color: #5a6675; margin-top: 2.5pt; }
+  .miniaturas figcaption strong { color: var(--navy); }
+
+  /* ===== Portada: franja de partes ===== */
+  .portada-partes {
+    font-size: 9pt; color: #bfe4ff; margin: 10pt 0 0; letter-spacing: 0.02em;
+  }
   .gantt-leyenda { font-size: 7.6pt; margin: 2pt 0 8pt; }
   .gantt-leyenda span.chip {
     display: inline-block; width: 8pt; height: 5pt; border-radius: 1pt;

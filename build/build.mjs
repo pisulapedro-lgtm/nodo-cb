@@ -45,7 +45,7 @@ const RESERVADOS = [
   'gantt', 'tabla_presupuesto', 'tabla_fuentes', 'tabla_stack',
   'tabla_semana_0', 'tabla_semana_1', 'tabla_semana_2', 'tabla_semana_3', 'tabla_semana_4',
   'tabla_unit_economics', 'tabla_pyl', 'tabla_caja', 'tabla_breakeven',
-  'tabla_escenarios', 'tabla_sena',
+  'tabla_escenarios', 'tabla_sena', 'indice', 'miniaturas_web',
 ];
 
 // Cifras del modelo que se citan en la prosa de la sección 6. Se calculan acá,
@@ -371,6 +371,62 @@ function renderSena() {
   return html;
 }
 
+// ---------- índice ----------
+// Marca que se imprime dentro de cada encabezado en blanco y a 0,6 pt: invisible en
+// papel, pero `pdftotext` la lee y con eso sabemos en qué página quedó cada sección.
+// Tiene que ser ASCII: los caracteres exóticos no están en la fuente y Chromium los descarta.
+const ANCLA = (numero) => `@@${numero}@@`;
+
+// El esquema sale de los propios encabezados de los .md: si se añade una sección,
+// el índice la recoge sin tocar nada más.
+function leerEsquema(archivos) {
+  const esquema = [];
+  for (const f of archivos) {
+    if (f.startsWith('00')) continue; // portada e índice no se indexan a sí mismos
+    const parte = (datos.partes ?? []).find((p) => f.startsWith(p.antes + '-'));
+    if (parte) esquema.push({ nivel: 0, titulo: parte.numero ? `Parte ${parte.numero} — ${parte.titulo}` : parte.titulo });
+    for (const linea of readFileSync(join(SRC, f), 'utf8').split('\n')) {
+      const m = linea.match(/^(#{1,2}) (\d+(?:\.\d+)?)\.? +(.+)$/);
+      if (m) esquema.push({ nivel: m[1].length, numero: m[2], titulo: m[3].trim() });
+    }
+  }
+  return esquema;
+}
+
+// El número de página se resuelve en la segunda pasada: acá va un hueco del mismo
+// ancho, para que la paginación no se mueva entre una pasada y la otra.
+function renderIndice(esquema) {
+  let html = '<table class="indice"><tbody>';
+  for (const e of esquema) {
+    if (e.nivel === 0) {
+      html += `<tr class="parte"><td colspan="2">${e.titulo}</td></tr>`;
+      continue;
+    }
+    const clase = e.nivel === 1 ? 'sec' : 'sub';
+    html += `<tr class="${clase}"><td><span class="n">${e.numero}</span> ${e.titulo}</td>`
+      + `<td class="pag"><span class="pag-hueco" data-n="${e.numero}">&nbsp;</span></td></tr>`;
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+// ---------- miniaturas de la web ----------
+function renderMiniaturas() {
+  const dir = join(ROOT, 'build', 'assets', 'web');
+  const manifiesto = join(dir, 'manifest.json');
+  if (!existsSync(manifiesto)) return '<p><em>Miniaturas pendientes: correr <code>npm run miniaturas</code>.</em></p>';
+  const items = JSON.parse(readFileSync(manifiesto, 'utf8'));
+  let html = '<div class="miniaturas">';
+  for (const it of items) {
+    html += `<figure><img src="../build/assets/web/${it.archivo}" alt="${it.titulo}">`
+      + `<figcaption><strong>${it.titulo}</strong><br>${it.pie}</figcaption></figure>`;
+  }
+  html += '</div>';
+  html += `<p class="leyenda">Capturas del sitio tal como está hoy en el repositorio (${items.length} vistas de 21 páginas). `
+    + `Se regeneran con <code>npm run web:shots &amp;&amp; npm run miniaturas</code>.</p>`;
+  return html;
+}
+
 // ---------- ensamblado ----------
 const archivos = readdirSync(SRC).filter((f) => f.endsWith('.md')).sort();
 if (archivos.length === 0) throw new Error('No hay .md en src/');
@@ -393,6 +449,8 @@ const bloques = {
   tabla_breakeven: renderBreakEven(),
   tabla_escenarios: renderEscenarios(),
   tabla_sena: renderSena(),
+  indice: renderIndice(leerEsquema(archivos)),
+  miniaturas_web: renderMiniaturas(),
 };
 
 // Red de seguridad de la doble registración: si un bloque queda solo en un sitio,
@@ -412,8 +470,24 @@ for (const f of archivos) {
   for (const [k, v] of Object.entries(bloques)) html = html.replaceAll(`{{${k}}}`, v);
   // marcas editoriales
   html = html.replaceAll(/\[VALIDAR CON ([^\]]+)\]/g, '<span class="validar">[VALIDAR CON $1]</span>');
-  const esPortada = f.startsWith('00');
-  contenido += `<section class="capitulo${esPortada ? ' portada' : ''}" id="sec-${f.slice(0, 2)}">\n${html}\n</section>\n`;
+
+  // Antetítulo de parte sobre el H1 de la primera sección de cada una.
+  const parte = (datos.partes ?? []).find((p) => f.startsWith(p.antes + '-'));
+  if (parte) {
+    const etiqueta = parte.numero ? `Parte ${parte.numero} · ${parte.titulo}` : parte.titulo;
+    html = `<p class="antetitulo">${etiqueta}</p>\n${html}`;
+  }
+
+  // Anclaje invisible en cada encabezado numerado: es lo que permite localizar en
+  // qué página cayó cada sección leyendo el PDF ya paginado. Va sólo en el cuerpo,
+  // nunca en el índice, para que la búsqueda no se encuentre a sí misma.
+  if (!f.startsWith('00')) {
+    html = html.replace(/<h([12])([^>]*)>((\d+(?:\.\d+)?)\.?\s)/g,
+      (m, n, attrs, literal, num) => `<h${n}${attrs}><span class="ancla" aria-hidden="true">${ANCLA(num)}</span>${literal}`);
+  }
+
+  const esPortada = f === '00-portada.md';
+  contenido += `<section class="capitulo${esPortada ? ' portada' : ''}" id="sec-${f.split('-')[0]}">\n${html}\n</section>\n`;
 }
 
 // ---------- validaciones ----------
@@ -442,36 +516,76 @@ if (errores.length) {
 
 // ---------- HTML final ----------
 const template = readFileSync(join(ROOT, 'build', 'template.html'), 'utf8');
-const TITULO = `Plan de Acción 30 Días — Clima Baires Argentina (v${VERSION})`;
-const pagina = template.replace('{{TITULO}}', TITULO).replace('{{CONTENIDO}}', contenido);
+const TITULO = `${datos.meta.titulo} (v${VERSION})`;
 const htmlPath = join(DIST, 'plan.html');
-writeFileSync(htmlPath, pagina);
-
-// ---------- PDF ----------
+const pdfPath = join(DIST, `${datos.meta.slug}_v${VERSION}.pdf`);
 const logoB64 = readFileSync(join(ROOT, 'build', 'assets', 'logo-header.png')).toString('base64');
-const pdfPath = join(DIST, `Plan-Accion-30-Dias-Clima-Baires-Argentina_v${VERSION}.pdf`);
+
+const escribirHtml = (cuerpo) => {
+  writeFileSync(htmlPath, template.replace('{{TITULO}}', TITULO).replace('{{CONTENIDO}}', cuerpo));
+};
 
 const browser = await chromium.launch({ args: ['--no-sandbox'] });
 const page = await browser.newPage();
-await page.goto('file://' + htmlPath, { waitUntil: 'load' });
-await page.pdf({
-  path: pdfPath,
-  format: 'A4',
-  printBackground: true,
-  displayHeaderFooter: true,
-  margin: { top: '24mm', bottom: '16mm', left: '15mm', right: '15mm' },
-  headerTemplate: `
-    <div style="width:100%; font-size:7.5px; font-family:Helvetica,Arial,sans-serif; color:#5a6675; padding:4mm 15mm 0; display:flex; align-items:center; justify-content:space-between;">
-      <img src="data:image/png;base64,${logoB64}" style="height:8mm"/>
-      <span style="text-align:right;">Plan de Acción 30 Días — Argentina · v${VERSION}</span>
-    </div>`,
-  footerTemplate: `
-    <div style="width:100%; font-size:7.5px; font-family:Helvetica,Arial,sans-serif; color:#5a6675; padding:0 15mm 4mm; display:flex; justify-content:space-between;">
-      <span>Clima Baires · confidencial — uso interno de los socios</span>
-      <span>Página <span class="pageNumber"></span> de <span class="totalPages"></span></span>
-    </div>`,
-});
+
+async function generarPDF(cuerpo, salida) {
+  escribirHtml(cuerpo);
+  await page.goto('file://' + htmlPath, { waitUntil: 'load' });
+  await page.pdf({
+    path: salida,
+    format: 'A4',
+    printBackground: true,
+    displayHeaderFooter: true,
+    margin: { top: '24mm', bottom: '16mm', left: '15mm', right: '15mm' },
+    headerTemplate: `
+      <div style="width:100%; font-size:7.5px; font-family:Helvetica,Arial,sans-serif; color:#5a6675; padding:4mm 15mm 0; display:flex; align-items:center; justify-content:space-between;">
+        <img src="data:image/png;base64,${logoB64}" style="height:8mm"/>
+        <span style="text-align:right;">${datos.meta.titulo} · v${VERSION}</span>
+      </div>`,
+    footerTemplate: `
+      <div style="width:100%; font-size:7.5px; font-family:Helvetica,Arial,sans-serif; color:#5a6675; padding:0 15mm 4mm; display:flex; justify-content:space-between;">
+        <span>Clima Baires · confidencial — uso interno de los socios</span>
+        <span>Página <span class="pageNumber"></span> de <span class="totalPages"></span></span>
+      </div>`,
+  });
+}
+
+// Primera pasada: el índice sale maquetado pero con los números en blanco.
+await generarPDF(contenido, pdfPath);
+
+// Segunda pasada: se lee el PDF ya paginado, se busca el anclaje de cada sección y
+// se rellenan los huecos. El alto del índice no cambia (los huecos tienen ancho fijo),
+// así que la paginación de la segunda pasada es idéntica a la de la primera.
+let numerado = 0;
+try {
+  const { execFileSync } = await import('node:child_process');
+  const texto = execFileSync('pdftotext', ['-layout', pdfPath, '-'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  const paginas = texto.split('\f');
+  const mapa = new Map();
+  paginas.forEach((t, i) => {
+    // A 0,6 pt pdftotext intercala espacios entre glifos («@ @ 1@ @»): se quitan todos
+    // antes de buscar, que para localizar la marca da igual.
+    const plano = t.replace(/\s+/g, '');
+    for (const m of plano.matchAll(/@@([\d.]+)@@/g)) if (!mapa.has(m[1])) mapa.set(m[1], i + 1);
+  });
+
+  const conNumeros = contenido.replace(
+    /<span class="pag-hueco" data-n="([\d.]+)">&nbsp;<\/span>/g,
+    (m, n) => {
+      if (!mapa.has(n)) return m;
+      numerado += 1;
+      return `<span class="pag-hueco" data-n="${n}">${mapa.get(n)}</span>`;
+    });
+
+  const huecos = (contenido.match(/pag-hueco/g) ?? []).length;
+  if (numerado < huecos) console.warn(`AVISO: ${huecos - numerado} entradas del índice quedaron sin número de página.`);
+  if (numerado > 0) await generarPDF(conNumeros, pdfPath);
+} catch (e) {
+  // Un número de página no vale romper el entregable: se emite el PDF sin ellos.
+  console.warn(`AVISO: no se pudo paginar el índice (${e.message.split('\n')[0]}); sale sin números.`);
+}
+
 await browser.close();
 
 console.log(`OK  ${pdfPath}`);
-console.log(`    versión ${VERSION} · TC ${fmtARS.format(TC)} ARS/EUR (${datos.cambio.fecha}) · ${archivos.length} secciones · ${fuentes.length} fuentes`);
+console.log(`    versión ${VERSION} · TC ${fmtARS.format(TC)} ARS/EUR (${datos.cambio.fecha}) · ${archivos.length} secciones · ${fuentes.length} fuentes · ${numerado} entradas de índice paginadas`);

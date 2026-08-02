@@ -1,0 +1,122 @@
+[
+  {
+    "archivo": "index-desktop.jpg",
+    "titulo": "Inicio",
+    "pie": "Hero con foto de obra real, marcas con las que trabajamos y últimas obras",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "servicios-desktop.jpg",
+    "titulo": "Servicios",
+    "pie": "Venta, instalación y posventa, con el encuadre de «instalación con provisión de equipo»",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "obras-desktop.jpg",
+    "titulo": "Obras",
+    "pie": "Galería filtrable por zona y tipo, con lightbox y pares antes/después",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "calculadora-frigorias-desktop.jpg",
+    "titulo": "Calculadora de frigorías",
+    "pie": "La herramienta de captación: calcula y pasa el resultado a WhatsApp",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "zonas_nunez-desktop.jpg",
+    "titulo": "Zona · Núñez",
+    "pie": "Página local de CABA; cada zona es además una landing de Google Ads",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "zonas_vicente-lopez-desktop.jpg",
+    "titulo": "Zona · Vicente López",
+    "pie": "Página local de la primera corona del corredor norte",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "zonas_san-isidro-desktop.jpg",
+    "titulo": "Zona · San Isidro",
+    "pie": "Página local orientada a vivienda unifamiliar",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "zonas_tigre-desktop.jpg",
+    "titulo": "Zona · Tigre",
+    "pie": "Página local con foco en countries y barrios cerrados",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "zonas_nordelta-desktop.jpg",
+    "titulo": "Zona · Nordelta",
+    "pie": "La página de mayor ticket esperado del sitio",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "zonas_pilar-desktop.jpg",
+    "titulo": "Zona · Pilar",
+    "pie": "Página local del extremo norte del corredor",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "blog_index-desktop.jpg",
+    "titulo": "Blog",
+    "pie": "Índice de notas: el motor de SEO que publica solo cada tres días",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "blog_cuantas-frigorias-necesito-desktop.jpg",
+    "titulo": "Nota del blog",
+    "pie": "Cada nota se escribe en Markdown y se publica cuando llega su fecha",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "sobre-nosotros-desktop.jpg",
+    "titulo": "Sobre nosotros",
+    "pie": "La historia Málaga → Buenos Aires y la franja «así trabajamos»",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "contacto-desktop.jpg",
+    "titulo": "Contacto",
+    "pie": "WhatsApp primero, agenda de Calendar después, formulario al final",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "privacidad-desktop.jpg",
+    "titulo": "Privacidad",
+    "pie": "Política de privacidad: requisito para publicar y para anunciar en Google",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "terminos-desktop.jpg",
+    "titulo": "Términos",
+    "pie": "Condiciones de servicio, garantías y derecho de arrepentimiento",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "404-desktop.jpg",
+    "titulo": "Página 404",
+    "pie": "Error con salida a WhatsApp en lugar de callejón sin salida",
+    "vista": "desktop"
+  },
+  {
+    "archivo": "index-movil.jpg",
+    "titulo": "Inicio · móvil",
+    "pie": "El grueso del tráfico llega por móvil: es la vista que más importa",
+    "vista": "movil"
+  },
+  {
+    "archivo": "obras-movil.jpg",
+    "titulo": "Obras · móvil",
+    "pie": "La galería en móvil, con la barra inferior fija de WhatsApp y agenda",
+    "vista": "movil"
+  },
+  {
+    "archivo": "chatbot-desktop.jpg",
+    "titulo": "Asistente",
+    "pie": "El asistente de 4 preguntas arma el mensaje y deriva el chat a WhatsApp",
+    "vista": "desktop"
+  }
+]

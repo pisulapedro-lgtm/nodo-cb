@@ -1,10 +1,13 @@
 {
   "meta": {
-    "version": "1.0",
+    "version": "1.1",
     "fecha_documento": "2026-08-01",
     "fecha_inicio": "2026-08-03",
     "dias_plan": 30,
-    "empresa": "Clima Baires"
+    "empresa": "Clima Baires",
+    "titulo": "Plan de Negocio — Clima Baires Argentina",
+    "slug": "Plan-de-Negocio-Clima-Baires-Argentina",
+    "subtitulo": "Desembarco en el corredor norte de Buenos Aires"
   },
   "cambio": {
     "eur_ars": 1760,
@@ -717,5 +720,32 @@
       ],
       "nota": "Desembolsos de una sola vez del presupuesto (constitución, legal, marca, identidad y equipamiento); se pagan en el mes 1."
     }
-  }
+  },
+  "partes": [
+    {
+      "antes": "01",
+      "numero": "I",
+      "titulo": "El plan de 30 días"
+    },
+    {
+      "antes": "06",
+      "numero": "II",
+      "titulo": "El modelo financiero"
+    },
+    {
+      "antes": "07",
+      "numero": "III",
+      "titulo": "Operación, mercado y personas"
+    },
+    {
+      "antes": "13",
+      "numero": "IV",
+      "titulo": "Los activos digitales"
+    },
+    {
+      "antes": "17",
+      "numero": "",
+      "titulo": "Anexos"
+    }
+  ]
 }

@@ -59,7 +59,7 @@ Si el crecimiento exige un depósito en 2027: **San Isidro**, nunca Pilar ni Tig
 
 - Convenio de los técnicos instaladores: **UOM CCT 260/75, Rama 17** (metalmecánica; incluye climatización — el encuadre exacto es interpretativo) [F13]. Escala congelada desde abril 2026 por la intervención judicial del gremio, con paritaria reactivándose en julio: prever recomposición. [VALIDAR CON ABOGADO] Oficial: $ 5.958,84/h ≈ $ 1.048.756/mes; ingreso mínimo de referencia $ 1.036.390.
 - Administrativos/vendedores: CCT 130/75 Comercio [F44] (básico jul-2026 ≈ $ 1.240.000 + presentismo).
-- **Costo empleador total de un técnico** (bruto de mercado $ 1.500.000): con SAC prorrateado, plus vacacional, contribuciones PyME ~24%, ART ~7% † y ropa/EPP → **≈ $ 2.183.000/mes (€ 1.240) — regla rápida: bruto × 1,45-1,55 †** [F13] (coeficiente práctico; el resultado real depende de la alícuota ART cotizada). Detalle completo y esquema de subcontratación segura: sección 9.
+- **Costo empleador total de un técnico** (bruto de mercado $ 1.500.000): con SAC prorrateado, plus vacacional, contribuciones PyME ~24%, ART ~7% † y ropa/EPP → **≈ $ 2.183.000/mes (€ 1.240) — regla rápida: bruto × 1,45-1,55 †** [F13] (coeficiente práctico; el resultado real depende de la alícuota ART cotizada). Detalle completo y esquema de subcontratación segura: sección 10.
 - La reforma laboral (Leyes 27.742 y 27.802) derogó las multas por empleo no registrado y blindó la contratación de monotributistas con factura y pago bancarizado [F39] — pero la primacía de la realidad sigue vigente: el checklist antifraude de la sección 10 no es opcional.
 
 ## 7.7 Beneficios MiPyME (tramitar en semana 3)
