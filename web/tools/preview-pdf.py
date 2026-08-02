@@ -45,10 +45,25 @@ NOMBRES = {
     'zonas_san-isidro': 'Zona · San Isidro', 'zonas_tigre': 'Zona · Tigre',
     'zonas_nordelta': 'Zona · Nordelta', 'zonas_pilar': 'Zona · Pilar',
     'chatbot': 'Asistente de WhatsApp', 'privacidad': 'Política de privacidad', 'terminos': 'Términos y condiciones',
+    'blog_index': 'Notas · índice del blog',
 }
+
+
+def nota_de_muestra():
+    """El QA captura el índice del blog y la nota más nueva. Cuál es la más nueva
+    cambia sola cada tres días, así que acá se busca en vez de nombrarla."""
+    for f in sorted(os.listdir(SHOTS)):
+        if f.startswith('blog_') and f.endswith('-movil.png') and not f.startswith('blog_index'):
+            clave = f[:-len('-movil.png')]
+            NOMBRES[clave] = 'Notas · una nota completa'
+            return [clave]
+    return []
+
+
 ORDEN = ['index', 'servicios', 'obras', 'calculadora-frigorias', 'contacto',
          'zonas_nordelta', 'zonas_nunez', 'zonas_vicente-lopez', 'zonas_san-isidro',
-         'zonas_tigre', 'zonas_pilar', 'sobre-nosotros', 'privacidad', 'terminos', '404']
+         'zonas_tigre', 'zonas_pilar', 'sobre-nosotros', 'blog_index'] + nota_de_muestra() + [
+         'privacidad', 'terminos', '404']
 
 
 def banda(lienzo, titulo, sub=''):
@@ -103,7 +118,7 @@ logo = Image.open(os.path.join(AQUI, '..', '..', 'kit-digital', 'assets', 'porta
 port.paste(logo.resize((700, 266)), ((HOJA[0] - 700) // 2, 210))
 d.text((HOJA[0] // 2, 580), 'climabaires.com', fill=BLANCO, font=fuente(64, True), anchor='mm')
 d.text((HOJA[0] // 2, 660), 'Vista previa — versión móvil', fill=(159, 212, 255), font=fuente(34), anchor='mm')
-d.text((HOJA[0] // 2, 730), '13 páginas capturadas en 390 px · el orden de lectura es de izquierda a derecha',
+d.text((HOJA[0] // 2, 730), '17 páginas capturadas en 390 px · el orden de lectura es de izquierda a derecha',
        fill=(159, 212, 255), font=fuente(24), anchor='mm')
 d.text((HOJA[0] // 2, 790), 'Anexo al final: las mismas páginas en escritorio (1440 px)',
        fill=(159, 212, 255), font=fuente(24), anchor='mm')
@@ -137,7 +152,7 @@ d.text((HOJA[0] // 2, HOJA[1] // 2 + 50), 'Inicio, obras, servicios, una zona y 
 paginas.append(sep)
 
 # el anexo es de referencia: sólo las páginas donde el escritorio cambia el diseño
-ANEXO = ['index', 'obras', 'servicios', 'zonas_nordelta', 'contacto']
+ANEXO = ['index', 'obras', 'servicios', 'zonas_nordelta', 'blog_index', 'contacto']
 for clave in ANEXO:
     f = os.path.join(SHOTS, f'{clave}-desktop.png')
     if not os.path.exists(f):
