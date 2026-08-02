@@ -251,7 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-chat]').forEach((a) => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        if (chat.hidden) abrir();
+        // abrir() sirve para los dos casos: si el chat ya estaba abierto,
+        // devuelve el foco a la pregunta en curso. Sin esto, tocar el botón de
+        // la barra con el asistente abierto no hacía nada y se leía como roto.
+        abrir();
       });
     });
     chat.querySelector('.chat-cerrar').addEventListener('click', cerrar);
