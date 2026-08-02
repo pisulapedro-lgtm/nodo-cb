@@ -36,16 +36,27 @@ img { max-width: 100%; display: block; }
 a { color: var(--azul); text-decoration: none; }
 .contenedor { max-width: var(--ancho); margin: 0 auto; padding: 0 22px; }
 
-h1, h2, h3 { line-height: 1.22; color: var(--navy); font-weight: 800; }
-h1 { font-size: clamp(1.9rem, 4.2vw, 3.1rem); }
-h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: .5em; }
-h3 { font-size: 1.12rem; font-weight: 600; }
+/* misma voz tipográfica que el hero: pesada, ajustada y con poco interlineado */
+h1, h2, h3 { line-height: 1.14; color: var(--navy); font-weight: 800; letter-spacing: -.03em; }
+h1 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); margin-bottom: .5em; }
+h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.22; }
+/* El celeste #00A8FC no llega a AA como texto (2,4:1 sobre hielo): en textos
+   usamos el azul de marca y dejamos el celeste para elementos decorativos. */
 .kicker {
-  display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--celeste); margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .73rem; font-weight: 600; letter-spacing: .19em;
+  text-transform: uppercase; color: var(--azul); margin-bottom: 16px;
 }
+/* el copo y la línea del hero, como firma de sección en todo el sitio */
+.kicker::before { content: '❄'; color: var(--celeste); font-size: .95rem; line-height: 1; }
+.kicker::after {
+  content: ''; width: 46px; height: 1px;
+  background: linear-gradient(90deg, rgba(0,168,252,.85), rgba(0,168,252,0));
+}
+.centrado .kicker::after { display: none; }
 .centrado { text-align: center; }
-.intro { color: var(--gris); max-width: 720px; margin: 0 auto 40px; }
+.intro { color: var(--gris); max-width: 660px; margin: 0 auto 40px; font-size: 1.05rem; }
 
 /* ---------- Header ---------- */
 .top {
@@ -65,51 +76,247 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   transition: transform .15s ease, box-shadow .15s ease; border: 0; cursor: pointer;
 }
 .boton:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,88,179,.35); }
-.boton.celeste { background: var(--celeste); }
+/* sobre celeste y sobre el verde de WhatsApp el texto va en navy: mantiene los
+   colores de marca y sube el contraste de 2,6:1 y 2,0:1 a 5,5:1 y 7,3:1 */
+.boton.celeste { background: var(--celeste); color: var(--navy) !important; }
 .boton.fantasma { background: transparent; color: var(--azul) !important; border: 2px solid var(--azul); }
 .boton.blanco { background: #fff; color: var(--azul) !important; }
 .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .hamburguesa span { display: block; width: 24px; height: 3px; background: var(--navy); margin: 5px 0; border-radius: 2px; }
 
-/* ---------- Hero ---------- */
-.hero {
-  background: linear-gradient(150deg, var(--azul) 0%, #01417f 58%, var(--navy) 100%);
-  color: #fff; padding: 84px 0 100px; position: relative; overflow: hidden;
+/* ============================================================
+   INICIO DEL BLOQUE QUE VA A styles.css
+   HERO — "Fade editorial asimétrico" (reemplaza el hero anterior)
+   ============================================================ */
+.hero{
+  position:relative; isolation:isolate; overflow:hidden;
+  display:flex; align-items:center;
+  min-height:min(calc(100vh - 74px), 668px);
+  min-height:min(calc(100dvh - 74px), 668px);
+  padding:0; border-bottom:1px solid var(--linea);
+  /* base de hielo con aurora fría: sin costura dura contra el header sticky */
+  background:
+    radial-gradient(58% 46% at 78% 4%,  rgba(0,168,252,.13) 0%, rgba(0,168,252,0) 100%),
+    radial-gradient(70% 62% at 96% 100%, rgba(0,88,179,.10) 0%, rgba(0,88,179,0) 100%),
+    linear-gradient(168deg, #ffffff 0%, #f6fafe 32%, #e9f2fc 72%, #dfecfa 100%);
 }
-.hero::after {
-  content: ''; position: absolute; right: -140px; top: -120px; width: 520px; height: 520px;
-  background: url('../img/icon-512.png') no-repeat center/contain; opacity: .08;
-}
-.hero h1 { color: #fff; max-width: 640px; }
-.hero p.sub { color: #cfe8ff; font-size: 1.15rem; max-width: 560px; margin: 18px 0 32px; }
-.hero .acciones { display: flex; gap: 14px; flex-wrap: wrap; }
-.hero .mini { margin-top: 26px; font-size: .88rem; color: #9fd4ff; }
 
-.franja-marcas { background: var(--hielo); border-bottom: 1px solid var(--linea); padding: 16px 0; }
-.franja-marcas .contenedor { display: flex; gap: 10px 34px; flex-wrap: wrap; justify-content: center; align-items: center; }
-.franja-marcas span { color: var(--gris); font-weight: 600; font-size: .92rem; letter-spacing: .04em; }
+/* ---- la escena: entra a sangre por la derecha y se disuelve antes del texto ---- */
+.hero-esc{
+  position:absolute; top:0; right:0; bottom:0; width:64%;
+  z-index:0; overflow:hidden; pointer-events:none;
+}
+/* corte diagonal (geometría de cristal) en vez de degradado recto */
+.hero-esc-m{
+  position:absolute; inset:0; overflow:hidden; isolation:isolate;
+  -webkit-mask-image:linear-gradient(101deg,
+     rgba(0,0,0,0) 8%, rgba(0,0,0,.10) 26%, rgba(0,0,0,.34) 45%,
+     rgba(0,0,0,.72) 66%, rgba(0,0,0,.95) 86%, #000 100%);
+          mask-image:linear-gradient(101deg,
+     rgba(0,0,0,0) 8%, rgba(0,0,0,.10) 26%, rgba(0,0,0,.34) 45%,
+     rgba(0,0,0,.72) 66%, rgba(0,0,0,.95) 86%, #000 100%);
+}
+/* segunda máscara (se INTERSECA porque va en un hijo): funde arriba y abajo.
+   La opacidad del fantasma vive ACÁ, no en la <img>: así el duotono de abajo
+   blend'ea contra una foto opaca y no contra transparencia (que la teñía de azul). */
+.hero-esc-int{
+  position:absolute; inset:0; overflow:hidden; isolation:isolate; opacity:.17;
+  -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 13%, #000 72%, rgba(0,0,0,.16) 97%, rgba(0,0,0,0) 100%);
+          mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 13%, #000 72%, rgba(0,0,0,.16) 97%, rgba(0,0,0,0) 100%);
+}
+/* la foto vertical se sobredimensiona y se corre para que entre el GESTO HUMANO
+   (el técnico sobre la escalera) y no sólo la turbina del equipo */
+.hero-foto{
+  position:absolute; top:0; bottom:0; left:9%; width:124%; height:100%;
+  object-fit:cover; object-position:50% 13%;
+  /* el brillo sube hasta que el cielorraso llega a papel: sobre el hielo del
+     hero el blanco desaparece y sólo sobrevive el dibujo de las sombras.
+     El contraste bajo evita que la remera negra vuelva a ser una mancha sólida. */
+  filter:grayscale(1) brightness(1.46) contrast(.88);
+}
+/* duotono azul de marca: 'color' conserva la luminancia, los blancos siguen blancos */
+.hero-esc-int::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(158deg, var(--celeste) 0%, #0d8fe4 42%, var(--azul) 100%);
+  mix-blend-mode:color;
+}
+
+/* ---- halo de escarcha detrás del texto: garantiza AA pase lo que pase ---- */
+.hero-halo{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(48% 58% at 24% 48%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.62) 46%, rgba(255,255,255,0) 78%),
+    linear-gradient(93deg, #ffffff 0%, rgba(255,255,255,.9) 26%, rgba(255,255,255,.45) 44%, rgba(255,255,255,0) 62%);
+}
+
+/* ---- columna de texto ---- */
+.hero-caja{position:relative;z-index:2;width:100%;padding-top:30px;padding-bottom:74px}
+.hero-txt{max-width:590px}
+
+.hero-kicker{
+  display:flex;align-items:center;gap:11px;margin-bottom:24px;
+  font-size:.73rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;color:var(--azul);
+}
+.hero-kicker b{font-weight:600}
+.hero-copo{color:var(--celeste);font-size:.95rem;line-height:1;flex:none}
+.hero-kicker i{display:block;flex:1 1 auto;max-width:72px;height:1px;background:linear-gradient(90deg,rgba(0,168,252,.85),rgba(0,168,252,0))}
+
+.hero-tit{
+  font-weight:800;color:var(--navy);letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(2.4rem,5vw,4rem);max-width:13ch;
+}
+.hero-tit em{font-style:normal;color:var(--azul)}
+.hero-sub{color:var(--gris);font-size:1.1rem;line-height:1.58;margin-top:22px;max-width:420px}
+.hero-sub b{color:var(--navy);font-weight:600}
+
+.hero-acciones{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:34px}
+.hero-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  background:#25D366;color:var(--navy)!important;
+  padding:17px 30px;min-height:56px;border-radius:999px;
+  font-weight:600;font-size:1.02rem;letter-spacing:-.01em;
+  box-shadow:0 12px 26px -11px rgba(18,140,68,.5), inset 0 1px 0 rgba(255,255,255,.42);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 20px 38px -10px rgba(20,150,72,.6)}
+.hero-cta svg{width:21px;height:21px;fill:var(--navy);flex:none}
+.hero-cta2{
+  display:inline-flex;align-items:center;gap:9px;color:var(--navy);
+  font-weight:600;font-size:1rem;padding-bottom:5px;border-bottom:1.5px solid #b9d1e8;
+  transition:border-color .15s ease,color .15s ease;
+}
+.hero-cta2:hover{border-bottom-color:var(--celeste);color:var(--azul)}
+.hero-cta2 span{color:var(--celeste);font-size:1.05rem;line-height:1}
+
+.hero-nota{
+  display:flex;align-items:center;gap:10px;margin-top:20px;
+  font-size:.94rem;font-weight:500;color:#48525f;
+}
+.hero-pulso{
+  width:8px;height:8px;border-radius:50%;background:#25D366;flex:none;
+  box-shadow:0 0 0 4px rgba(37,211,102,.2);
+}
+
+/* ---- dial de frío: decorativo, sin vidrio, sin backdrop-filter.
+   Ancla el tercio inferior derecho y funde el dato 38°→24° en un solo objeto. ---- */
+.hero-dial{
+  position:absolute;z-index:2;right:8.5%;bottom:132px;
+  width:158px;height:158px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+}
+.hero-dial::before,.hero-dial::after{content:'';position:absolute;inset:0;border-radius:50%;
+  -webkit-mask:radial-gradient(closest-side,transparent 0 94%,#000 95% 100%);
+          mask:radial-gradient(closest-side,transparent 0 94%,#000 95% 100%);
+}
+.hero-dial::before{background:rgba(0,40,90,.13)}
+.hero-dial::after{
+  background:conic-gradient(from 225deg,
+    var(--celeste) 0deg, #1391e6 130deg, var(--azul) 262deg,
+    rgba(0,88,179,.18) 268deg, rgba(0,88,179,0) 276deg 360deg);
+}
+.hero-dial u{
+  position:relative;text-decoration:none;font-weight:800;font-size:1.95rem;
+  color:var(--navy);letter-spacing:-.035em;line-height:1;
+}
+.hero-dial s{
+  position:relative;text-decoration:none;
+  font-size:.56rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);
+}
+/* el 38° se apoya justo en el arranque del arco: el arco ES el recorrido 38°→24° */
+.hero-dial em{
+  position:absolute;left:-9px;bottom:7px;font-style:normal;
+  font-size:.7rem;font-weight:600;letter-spacing:-.01em;color:#6d7a8a;white-space:nowrap;
+}
+
+/* ---- regla fina al pie: precisión de plano técnico ---- */
+.hero-regla{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  font-size:.66rem;letter-spacing:.19em;text-transform:uppercase;font-weight:600;
+}
+.hero-regla-in{
+  display:flex;align-items:center;gap:14px;
+  border-top:1px solid rgba(0,40,90,.14);padding-top:15px;padding-bottom:21px;
+}
+.hero-regla .izq{color:#4f5a68}
+.hero-regla .izq b{color:var(--navy);font-weight:600}
+
+/* ---- chip de temperatura (sólo móvil, apoyado sobre la banda de foto) ---- */
+.hero-chip{display:none}
+
+/* franja de claims cortos */
+.claims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
+.claim {
+  background: #fff; border: 1px solid var(--linea); border-radius: 18px; padding: 24px 14px;
+  box-shadow: 0 10px 30px rgba(0, 40, 90, .05);
+}
+.claim strong { display: block; color: var(--navy); font-weight: 800; font-size: 1.06rem; letter-spacing: -.02em; }
+.claim span { color: var(--gris); font-size: .87rem; }
+
+/* marquee de logos de marcas (originales, en loop continuo) */
+.franja-marcas { background: #fff; border-bottom: 1px solid var(--linea); padding: 20px 0; overflow: hidden; }
+.marcas-carrusel { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marcas-pista { display: flex; align-items: center; gap: 64px; width: max-content; padding-right: 64px; animation: marcas-loop 30s linear infinite; }
+.marcas-carrusel:hover .marcas-pista { animation-play-state: paused; }
+.marcas-pista img { height: 30px; width: auto; }
+@keyframes marcas-loop { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marcas-pista { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .marcas-pista img[aria-hidden] { display: none; }
+}
 
 /* ---------- Secciones ---------- */
-.seccion { padding: 76px 0; }
-.seccion.alterna { background: var(--hielo); }
+.seccion { padding: 84px 0; }
+/* las secciones alternas repiten el campo de hielo, no un plano liso */
+.seccion.alterna {
+  background:
+    radial-gradient(46% 60% at 84% 0%, rgba(0,168,252,.09) 0%, rgba(0,168,252,0) 100%),
+    linear-gradient(180deg, #f7fbff 0%, var(--hielo) 100%);
+  border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea);
+}
 
 .grilla { display: grid; gap: 26px; }
 .grilla.tres { grid-template-columns: repeat(3, 1fr); }
 .grilla.dos { grid-template-columns: repeat(2, 1fr); }
 
 .tarjeta {
-  background: #fff; border: 1px solid var(--linea); border-radius: var(--radio);
-  padding: 28px; box-shadow: var(--sombra);
+  background: #fff; border: 1px solid var(--linea); border-radius: 18px;
+  padding: 30px 28px; box-shadow: 0 14px 40px rgba(0, 40, 90, .07);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
+.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 22px 54px rgba(0, 40, 90, .11); border-color: #cfe0f2; }
 .tarjeta .icono {
-  width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
-  background: linear-gradient(135deg, var(--celeste), var(--azul)); margin-bottom: 16px;
+  width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center;
+  background: linear-gradient(140deg, var(--celeste), var(--azul)); margin-bottom: 18px;
+  box-shadow: 0 8px 18px -6px rgba(0, 88, 179, .5);
 }
 .tarjeta .icono svg { width: 28px; height: 28px; fill: #fff; }
 .tarjeta h3 { margin-bottom: 8px; }
 .tarjeta p { color: var(--gris); font-size: .95rem; }
 .tarjeta ul { margin: 10px 0 0 18px; color: var(--gris); font-size: .93rem; }
 .tarjeta .enlace { display: inline-block; margin-top: 14px; font-weight: 600; font-size: .92rem; }
+
+/* cinta de conversión: ninguna franja larga de scroll sin CTA de WhatsApp */
+.cinta-cta {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  background: linear-gradient(120deg, #ffffff 0%, var(--hielo) 100%);
+  border: 1px solid var(--linea); border-left: 4px solid #25D366;
+  border-radius: 18px; padding: 20px 24px;
+  box-shadow: 0 12px 34px rgba(0, 40, 90, .06);
+}
+.cinta-cta svg { width: 26px; height: 26px; fill: #25D366; flex: 0 0 auto; }
+.cinta-cta p { margin: 0; flex: 1 1 260px; color: var(--navy); font-weight: 500; font-size: .98rem; }
+.boton.verde { background: #25D366; color: var(--navy) !important; }
+.boton.verde:hover { box-shadow: 0 8px 20px rgba(37, 211, 102, .38); }
+
+/* tarjeta de CTA dentro del mosaico de obras */
+.obra-cta {
+  break-inside: avoid; margin: 0 0 22px; text-align: center;
+  background: linear-gradient(160deg, var(--azul), var(--navy)); color: #fff;
+  border-radius: var(--radio); padding: 30px 24px; box-shadow: var(--sombra);
+}
+.obra-cta svg { width: 40px; height: 40px; fill: #fff; opacity: .9; }
+.obra-cta-titulo { color: #fff; font-weight: 600; font-size: 1.12rem; line-height: 1.22; margin: 10px 0 6px; }
+.obra-cta p { color: #cfe8ff; font-size: .92rem; margin-bottom: 18px; }
 
 .lista-check { list-style: none; margin-top: 14px; }
 .lista-check li { padding-left: 30px; position: relative; margin-bottom: 10px; color: var(--gris); }
@@ -122,25 +329,47 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 /* ---------- Zonas ---------- */
 .zona-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .zona-chips a {
-  border: 1.5px solid var(--linea); border-radius: 999px; padding: 9px 18px;
-  font-weight: 500; font-size: .93rem; color: var(--navy); background: #fff;
-  transition: all .15s ease;
+  border: 1.5px solid var(--linea); border-radius: 999px; padding: 11px 22px;
+  font-weight: 500; font-size: .95rem; color: var(--navy); background: #fff;
+  transition: border-color .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
 }
-.zona-chips a:hover { border-color: var(--celeste); color: var(--azul); }
+.zona-chips a:hover {
+  border-color: var(--celeste); color: var(--azul);
+  transform: translateY(-2px); box-shadow: 0 10px 22px -10px rgba(0, 88, 179, .55);
+}
 
-.migas { font-size: .85rem; color: var(--gris); padding: 18px 0 0; }
+.migas {
+  font-size: .68rem; color: var(--gris); padding: 14px 0 20px;
+  letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+}
 .migas a { color: var(--gris); }
 .migas a:hover { color: var(--azul); }
 
-.cabecera-pagina { padding: 30px 0 50px; }
-.cabecera-pagina p.bajada { color: var(--gris); max-width: 700px; margin-top: 14px; font-size: 1.05rem; }
+/* cabecera de página: mismo campo de hielo con aurora fría que el hero */
+.cabecera-pagina {
+  position: relative; padding: 34px 0 54px; border-bottom: 1px solid var(--linea);
+  background:
+    radial-gradient(52% 60% at 88% 6%, rgba(0,168,252,.11) 0%, rgba(0,168,252,0) 100%),
+    radial-gradient(60% 70% at 98% 100%, rgba(0,88,179,.08) 0%, rgba(0,88,179,0) 100%),
+    linear-gradient(168deg, #ffffff 0%, #f7fbff 46%, #eaf3fd 100%);
+}
+.cabecera-pagina h1 { max-width: 16ch; }
+.cabecera-pagina p.bajada { color: var(--gris); max-width: 46ch; margin-top: 16px; font-size: 1.08rem; line-height: 1.55; }
+/* CTA pegado al título: en móvil tiene que entrar en el fold (landings de Ads) */
+.acciones-cabecera { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 28px; }
 
 /* ---------- CTA / banda ---------- */
 .banda-cta {
-  background: linear-gradient(135deg, var(--azul), var(--navy));
-  border-radius: var(--radio); color: #fff; padding: 46px 40px;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(70% 120% at 88% 8%, rgba(0,168,252,.34) 0%, rgba(0,168,252,0) 100%),
+    linear-gradient(135deg, var(--azul), var(--navy));
+  border-radius: 22px; color: #fff; padding: 48px 44px;
   display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap;
+  box-shadow: 0 22px 54px -18px rgba(0, 40, 90, .55);
 }
+/* sin esto los hijos no bajan de su ancho mínimo y desbordan en pantallas de 320 px */
+.banda-cta > * { min-width: 0; }
 .banda-cta h2 { color: #fff; margin: 0; }
 .banda-cta p { color: #cfe8ff; margin-top: 6px; }
 
@@ -176,7 +405,7 @@ h3 { font-size: 1.12rem; font-weight: 600; }
 .pie a:hover { color: #fff; }
 .pie-grilla { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 34px; margin-bottom: 40px; }
 .pie img.logo-pie { height: 46px; margin-bottom: 16px; }
-.pie h4 { color: #fff; font-size: .95rem; margin-bottom: 14px; }
+.pie h2 { color: #fff; font-size: .95rem; font-weight: 600; margin-bottom: 14px; }
 .pie ul { list-style: none; }
 .pie li { margin-bottom: 8px; font-size: .92rem; }
 .pie .legal {
@@ -184,16 +413,60 @@ h3 { font-size: 1.12rem; font-weight: 600; }
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .82rem;
 }
 
-/* ---------- WhatsApp flotante ---------- */
+/* ---------- WhatsApp flotante (píldora que acompaña todo el scroll) ---------- */
 .wsp-flotante {
   position: fixed; right: 22px; bottom: 22px; z-index: 60;
-  width: 60px; height: 60px; border-radius: 50%;
-  background: #25D366; display: grid; place-items: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,.28);
+  height: 58px; padding: 0 22px 0 16px; border: 0; border-radius: 999px;
+  background: #25D366; color: var(--navy); cursor: pointer;
+  display: flex; align-items: center; gap: 9px;
+  font: 600 .98rem 'Poppins', sans-serif;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .30);
   transition: transform .15s ease;
 }
-.wsp-flotante:hover { transform: scale(1.07); }
-.wsp-flotante svg { width: 32px; height: 32px; fill: #fff; }
+.wsp-flotante:hover { transform: scale(1.05); }
+.wsp-flotante:focus-visible { outline: 3px solid var(--celeste); outline-offset: 2px; }
+.wsp-flotante svg { width: 30px; height: 30px; fill: var(--navy); }
+.wsp-flotante.abierto .wsp-texto { display: none; }
+
+/* ---------- Chatbot (4 preguntas → WhatsApp) ---------- */
+.chat {
+  position: fixed; right: 22px; bottom: 94px; z-index: 80;
+  width: 344px; max-width: calc(100vw - 28px);
+  background: #fff; border: 1px solid var(--linea); border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 40, 90, .35);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.chat[hidden] { display: none; }
+.chat-cabecera {
+  background: linear-gradient(135deg, var(--azul), var(--navy)); color: #fff;
+  display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+}
+.chat-cabecera img { border-radius: 50%; background: #fff; }
+.chat-cabecera strong { font-size: .95rem; display: block; line-height: 1.2; }
+.chat-cabecera span { font-size: .75rem; color: #cfe8ff; }
+.chat-cerrar { margin-left: auto; background: none; border: 0; color: #fff; font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 2px 6px; }
+.chat-cerrar:focus-visible { outline: 2px solid #fff; }
+.chat-mensajes {
+  padding: 14px; display: flex; flex-direction: column; gap: 8px;
+  overflow-y: auto; max-height: 300px; min-height: 120px; background: var(--hielo);
+}
+.burbuja {
+  background: #fff; border: 1px solid var(--linea); border-radius: 14px 14px 14px 4px;
+  padding: 9px 13px; font-size: .9rem; max-width: 88%; align-self: flex-start;
+}
+.burbuja.mia { background: var(--azul); color: #fff; border: 0; border-radius: 14px 14px 4px 14px; align-self: flex-end; }
+.chat-pie { padding: 12px; background: #fff; border-top: 1px solid var(--linea); display: flex; flex-wrap: wrap; gap: 8px; }
+.chat-chip {
+  border: 1.5px solid var(--linea); background: #fff; border-radius: 999px;
+  padding: 8px 14px; font: 500 .86rem 'Poppins', sans-serif; color: var(--navy); cursor: pointer;
+  transition: border-color .15s ease, color .15s ease;
+}
+.chat-chip:hover { border-color: var(--celeste); color: var(--azul); }
+.chat-chip:focus-visible { outline: 3px solid var(--celeste); }
+.chat-form { display: flex; gap: 8px; width: 100%; }
+.chat-form input { flex: 1; min-width: 0; padding: 10px 12px; border: 1.5px solid var(--linea); border-radius: 10px; font: inherit; }
+.chat-form input:focus { outline: 2px solid var(--celeste); border-color: var(--celeste); }
+.chat-final { width: 100%; text-align: center; background: #25D366; }
 
 /* ---------- Tablas simples ---------- */
 table.simple { width: 100%; border-collapse: collapse; font-size: .93rem; margin: 18px 0; }
@@ -201,8 +474,189 @@ table.simple th { background: var(--azul); color: #fff; text-align: left; paddin
 table.simple td { border: 1px solid var(--linea); padding: 9px 14px; color: var(--gris); }
 table.simple tr:nth-child(even) td { background: var(--hielo); }
 
+/* ---------- Galería de obras ---------- */
+.filtros { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 6px; }
+.filtros .etiqueta { font-size: .85rem; font-weight: 600; color: var(--navy); margin-right: 4px; }
+.filtro {
+  border: 1.5px solid var(--linea); border-radius: 999px; padding: 8px 16px;
+  font: inherit; font-size: .88rem; font-weight: 500; color: var(--navy);
+  background: #fff; cursor: pointer;
+  /* nunca 'all': animar el outline retrasa el anillo de foco del teclado */
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+.filtro:hover { border-color: var(--celeste); color: var(--azul); }
+.filtro[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+.filtro:focus-visible, .obra-abrir:focus-visible { outline: 3px solid var(--celeste); outline-offset: 2px; }
+
+/* galería en mosaico: cada foto conserva su proporción natural */
+.obras-grilla { columns: 3 300px; column-gap: 22px; margin-top: 26px; }
+.obra { margin: 0 0 22px; break-inside: avoid; }
+.obra.oculta { display: none; }
+.obra-abrir {
+  display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
+  border-radius: var(--radio); overflow: hidden; background: var(--hielo);
+  box-shadow: var(--sombra);
+}
+.obra-abrir img { width: 100%; height: auto; transition: transform .25s ease; }
+.obra-abrir:hover img { transform: scale(1.03); }
+.obra figcaption { font-size: .82rem; color: var(--gris); margin-top: 8px; line-height: 1.45; }
+#obras-vacio { color: var(--gris); margin-top: 26px; }
+
+/* carrusel de obras en la home (scroll con snap + flechas) */
+.obras-carrusel-marco { position: relative; margin-top: 30px; }
+.obras-carrusel {
+  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 6px max(22px, calc((100vw - var(--ancho)) / 2 + 22px)) 18px;
+  scrollbar-width: thin; scrollbar-color: var(--celeste) transparent;
+}
+.obra-slide { flex: 0 0 auto; scroll-snap-align: start; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); background: var(--hielo); }
+.obra-slide img { height: 340px; width: auto; display: block; transition: transform .25s ease; }
+.obra-slide:hover img { transform: scale(1.03); }
+.car-flecha {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linea);
+  background: rgba(255,255,255,.95); color: var(--azul); font-size: 1.5rem;
+  cursor: pointer; box-shadow: var(--sombra); display: grid; place-items: center;
+}
+.car-flecha:hover { background: #fff; color: var(--navy); }
+.car-flecha:focus-visible { outline: 3px solid var(--celeste); }
+.car-prev { left: 14px; }
+.car-next { right: 14px; }
+
+/* franja "así trabajamos" */
+.franja-equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; align-items: start; }
+.franja-equipo img { width: 100%; height: auto; border-radius: var(--radio); box-shadow: var(--sombra); }
+
+/* antes / después */
+.antes-despues { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.antes-despues figure { position: relative; margin: 0; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
+.antes-despues img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.antes-despues figcaption {
+  position: absolute; left: 12px; top: 12px; background: var(--navy); color: #fff;
+  font-size: .78rem; font-weight: 600; padding: 4px 12px; border-radius: 999px;
+}
+
+/* ---------- Blog ---------- */
+.post-grilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; }
+.post-tarjeta { margin: 0; }
+.post-tarjeta.oculta { display: none; }
+.post-tarjeta > a {
+  display: block; height: 100%; background: #fff; border: 1px solid var(--linea);
+  border-radius: 18px; padding: 26px 24px; box-shadow: 0 14px 40px rgba(0, 40, 90, .07);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.post-tarjeta > a:hover { transform: translateY(-3px); box-shadow: 0 22px 54px rgba(0, 40, 90, .11); border-color: #cfe0f2; }
+.post-cat {
+  display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--azul); background: var(--hielo);
+  border: 1px solid var(--linea); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px;
+}
+.post-tarjeta h3 { color: var(--navy); margin-bottom: 8px; font-size: 1.16rem; }
+.post-tarjeta p { color: var(--gris); font-size: .94rem; }
+.post-meta { display: block; margin-top: 14px; font-size: .8rem; color: var(--gris); }
+#post-vacio { color: var(--gris); margin-top: 26px; }
+
+/* cuerpo del post: medida de lectura cómoda */
+.post-cuerpo { max-width: 68ch; }
+.post-cuerpo h2 { margin: 42px 0 14px; font-size: clamp(1.4rem, 2.6vw, 1.85rem); }
+.post-cuerpo h3 { margin: 30px 0 10px; font-size: 1.12rem; }
+.post-cuerpo p { color: var(--tinta); margin-bottom: 18px; line-height: 1.75; }
+.post-cuerpo ul, .post-cuerpo ol { margin: 0 0 20px; }
+.post-cuerpo ol.lista-num { padding-left: 22px; color: var(--gris); }
+.post-cuerpo ol.lista-num li { margin-bottom: 10px; }
+.post-cuerpo blockquote {
+  border-left: 4px solid var(--celeste); background: var(--hielo);
+  padding: 18px 22px; border-radius: 0 14px 14px 0; margin: 0 0 22px;
+  color: var(--navy); font-weight: 500;
+}
+.post-cuerpo a { text-decoration: underline; text-underline-offset: 3px; }
+.post-cuerpo code { background: var(--hielo); border: 1px solid var(--linea); border-radius: 6px; padding: 1px 6px; font-size: .92em; }
+.post-cuerpo table.simple { margin: 22px 0 26px; }
+/* CTA intercalado: una nota larga son diez pantallas de móvil y el que se
+   convence en la mitad tiene que tener dónde tocar sin volver arriba */
+.cinta-en-grilla { grid-column: 1 / -1; }
+.cta-intercalado { margin: 38px 0 34px; }
+.cta-intercalado .cinta-cta { margin: 0; }
+.cta-intercalado + h2 { margin-top: 0; }
+.post-cuerpo a.boton { text-decoration: none; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 90; background: rgba(0, 22, 48, .92);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox .lb-img { max-width: min(92vw, 900px); max-height: 72vh; object-fit: contain; border-radius: 10px; }
+.lightbox .lb-cap { color: #cfe8ff; font-size: .9rem; margin-top: 14px; max-width: 720px; text-align: center; }
+.lightbox .lb-wsp { margin-top: 16px; }
+.lb-cerrar, .lb-prev, .lb-next {
+  position: absolute; background: rgba(255,255,255,.12); color: #fff; border: 0;
+  width: 46px; height: 46px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
+  display: grid; place-items: center; transition: background .15s ease;
+}
+.lb-cerrar:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.28); }
+.lb-cerrar:focus-visible, .lb-prev:focus-visible, .lb-next:focus-visible { outline: 3px solid var(--celeste); }
+.lb-cerrar { top: 18px; right: 18px; }
+.lb-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 14px; top: 50%; transform: translateY(-50%); }
+
+/* ---------- Barra inferior móvil ---------- */
+.barra-movil {
+  display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+  background: #fff; border-top: 1px solid var(--linea);
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  grid-template-columns: 1fr 1fr; gap: 10px;
+  box-shadow: 0 -6px 20px rgba(0, 40, 90, .12);
+}
+.barra-movil.oculta { display: none !important; }
+.barra-movil a {
+  text-align: center; font-weight: 600; font-size: .95rem;
+  padding: 12px 10px; border-radius: 999px;
+}
+.barra-movil .bm-wsp { background: #25D366; color: var(--navy); }
+.barra-movil .bm-agenda { border: 2px solid var(--azul); color: var(--azul); }
+
+/* ---------- Nudge del botón flotante ---------- */
+.nudge {
+  position: fixed; right: 22px; bottom: 92px; z-index: 61;
+  background: #fff; border: 1px solid var(--linea); border-radius: 14px;
+  box-shadow: var(--sombra); padding: 10px 14px;
+  display: flex; align-items: center; gap: 8px; max-width: 240px;
+}
+.nudge[hidden] { display: none; }
+.nudge::after {
+  content: ''; position: absolute; right: 26px; bottom: -7px; transform: rotate(135deg);
+  width: 12px; height: 12px; background: #fff; border-right: 1px solid var(--linea); border-top: 1px solid var(--linea);
+}
+.nudge-texto {
+  border: 0; background: none; font: inherit; font-weight: 600; font-size: .88rem;
+  color: var(--navy); cursor: pointer; text-align: left; padding: 0;
+}
+.nudge-cerrar {
+  order: 2; border: 0; background: none; color: var(--gris); font-size: 1.05rem;
+  cursor: pointer; line-height: 1; padding: 2px 4px;
+}
+
+/* ---------- Agenda (iframe de reservas de Calendar) ---------- */
+.agenda-iframe { width: 100%; min-height: 640px; border: 1px solid var(--linea); border-radius: var(--radio); margin-top: 18px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  /* móvil primero: menos aire vertical, títulos que entran en una pantalla */
+  .seccion { padding: 56px 0; }
+  .cabecera-pagina { padding: 22px 0 38px; }
+  .cabecera-pagina h1 { max-width: none; }
+  .cabecera-pagina p.bajada { font-size: 1rem; margin-top: 12px; }
+  .acciones-cabecera { margin-top: 22px; gap: 10px; }
+  .acciones-cabecera .boton { flex: 1 1 100%; text-align: center; }
+  .intro { font-size: 1rem; margin-bottom: 30px; }
+  .tarjeta { padding: 24px 22px; border-radius: 16px; }
+  .banda-cta { border-radius: 18px; }
+  .franja-equipo { grid-template-columns: 1fr 1fr; }
+  .post-grilla { grid-template-columns: 1fr 1fr; }
+  .obra-slide img { height: 280px; }
+  .car-flecha { display: none; }
   .grilla.tres { grid-template-columns: 1fr; }
   .grilla.dos { grid-template-columns: 1fr; }
   .pie-grilla { grid-template-columns: 1fr 1fr; }
@@ -213,6 +667,82 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   }
   .nav.abierta { transform: translateY(0); }
   .hamburguesa { display: block; }
-  .hero { padding: 60px 0 76px; }
+  /* el hero pasa a columna: texto → banda de foto → regla.
+     align-items:stretch es obligatorio: si queda el center del desktop,
+     la regla del pie se encoge al ancho de su texto y aparece centrada. */
+  .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;padding:0;overflow:hidden}
+  .hero-caja{order:1;padding-top:26px;padding-bottom:4px}
+  .hero-txt{max-width:600px}
+  .hero-esc{order:2;position:relative;width:100%;height:min(29vh,230px);flex:none;margin-top:22px}
+  .hero-regla{order:3;position:relative;bottom:auto}
+  .hero-halo,.hero-dial{display:none}
+
+  /* en la banda inferior la foto sí tiene presencia: se ve al técnico trabajando */
+  .hero-esc-m{
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 62%,rgba(0,0,0,.55) 88%,rgba(0,0,0,.18) 100%);
+            mask-image:linear-gradient(180deg,#000 0%,#000 62%,rgba(0,0,0,.55) 88%,rgba(0,0,0,.18) 100%);
+  }
+  .hero-esc-int{
+    opacity:.42;
+    -webkit-mask-image:linear-gradient(96deg,rgba(0,0,0,.5) 0%,#000 26%,#000 100%);
+            mask-image:linear-gradient(96deg,rgba(0,0,0,.5) 0%,#000 26%,#000 100%);
+  }
+  .hero-foto{left:0;width:100%;object-position:44% 16%}
+
+  .hero-kicker{margin-bottom:16px;font-size:.65rem;letter-spacing:.15em;gap:9px}
+  .hero-kicker i{max-width:40px}
+  .hero-sub{font-size:1rem;margin-top:14px;max-width:34ch}
+  .hero-acciones{margin-top:24px;gap:18px;align-items:flex-start;flex-direction:column}
+  .hero-cta{width:100%;max-width:430px;font-size:1.05rem;padding:16px 24px}
+  .hero-cta2{align-self:flex-start}
+  .hero-nota{margin-top:18px;font-size:.9rem;align-items:flex-start;max-width:32ch;line-height:1.45}
+  .hero-pulso{margin-top:6px}
+
+  /* el chip reemplaza al pie de figura varado: dato frío sobre la foto */
+  .hero-chip{
+    display:inline-flex;align-items:center;gap:8px;position:absolute;z-index:2;
+    left:22px;bottom:16px;background:rgba(255,255,255,.9);
+    border:1px solid rgba(0,88,179,.16);border-radius:999px;padding:8px 16px;
+    box-shadow:0 8px 22px rgba(0,40,90,.1);
+    font-size:.78rem;font-weight:600;color:var(--navy);white-space:nowrap;letter-spacing:0;
+  }
+  /* el celeste no llega a AA como texto: los grados van en azul de marca */
+  .hero-chip b{color:var(--azul);font-weight:700}
+  .hero-chip i{font-style:normal;color:var(--gris);font-weight:500}
+
+  .hero-tit{font-size:clamp(2.05rem,9.2vw,2.55rem);line-height:1.05;max-width:none;letter-spacing:-.032em}
+  .hero-regla{font-size:.58rem;letter-spacing:.13em}
+  .hero-regla-in{padding-top:13px;padding-bottom:16px}
+  .hero-regla .izq{white-space:nowrap}
+
   .banda-cta { padding: 34px 26px; }
+}
+
+@media (max-width: 768px) {
+  .hero-regla .oculto-xs { display: none; }
+  .barra-movil { display: grid; }
+  body { padding-bottom: 76px; }             /* la barra fija no tapa contenido */
+  /* con la barra inferior ya visible, el flotante queda como ícono: abre el
+     asistente y estorba menos la lectura */
+  .wsp-flotante { bottom: 88px; right: 14px; width: 52px; height: 52px; padding: 0; justify-content: center; }
+  .wsp-flotante .wsp-texto { display: none; }
+  .wsp-flotante svg { width: 27px; height: 27px; }
+  .nudge { bottom: 156px; right: 14px; }
+  .chat { right: 14px; bottom: 156px; }
+  .chat-mensajes { max-height: 42vh; }
+}
+
+@media (max-width: 560px) {
+  .franja-equipo { grid-template-columns: 1fr; }
+  .post-grilla { grid-template-columns: 1fr; }
+  .antes-despues { grid-template-columns: 1fr; }
+}
+
+/* pantallas muy angostas (iPhone SE y similares): el pie en dos columnas
+   desbordaba a lo ancho */
+@media (max-width: 400px) {
+  .hero-regla { font-size: .55rem; letter-spacing: .1em; }
+  .hero-regla .izq { white-space: normal; }
+  .pie-grilla { grid-template-columns: 1fr; gap: 26px; }
+  .claims { grid-template-columns: 1fr; }
 }
