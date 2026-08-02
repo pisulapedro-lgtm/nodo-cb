@@ -18,7 +18,7 @@ Es logística, no dramatismo. Cuando llega el primer golpe de calor pasan tres c
 
 **La agenda se estira.** Fuera de temporada, coordinar una fecha es simple. Con la primera ola de calor las agendas se llenan todas al mismo tiempo y esperar pasa a ser la norma. En countries y barrios cerrados sumá los tiempos de ingreso: cada barrio tiene sus reglas y sus horarios de obra, y la administración suele estar más cargada en temporada. Nosotros gestionamos ese trámite con la administración de cada barrio, pero el calendario no lo manejamos.
 
-> En Málaga, donde está la casa matriz, el pico es en agosto y la regla es la misma: la temporada se prepara en marzo. Cambia el hemisferio, no la lógica.
+> Pasa en todos lados: el pico llega con el calor y la temporada se prepara meses antes. Cambia el hemisferio, no la lógica.
 
 ## Qué podés adelantar ahora, sin apuro
 
@@ -69,4 +69,4 @@ Una aclaración: en invierno se verifican presiones y se prueba el ciclo de calo
 
 Se instala igual. Solo que el margen para elegir es más chico y las fechas dependen de lo que haya en agenda. Si podés adelantar aunque sea la visita técnica y dejar definido el equipo, cuando aprieta el calor ya tenés medio camino hecho.
 
-Si querés arrancar por algún lado, mandanos las medidas del ambiente por WhatsApp y te decimos qué potencia necesitás y qué implica la instalación en tu casa. Podés escribirnos desde [contacto](../contacto.html) o ver fotos de obra de la casa matriz en [obras](../obras.html). Sin apuro, que para eso estamos en agosto.
+Si querés arrancar por algún lado, mandanos las medidas del ambiente por WhatsApp y te decimos qué potencia necesitás y qué implica la instalación en tu casa. Podés escribirnos desde [contacto](../contacto.html) o ver cómo trabajamos en [obras](../obras.html). Sin apuro, que para eso estamos en agosto.

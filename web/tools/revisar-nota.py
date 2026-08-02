@@ -60,6 +60,9 @@ PROMESAS = [
      'importe en pesos: se desactualiza y queda como mentira'),
     (r'respondemos\s+(?:siempre|24|las 24)', 'disponibilidad fuera del horario real'),
     (r'\bel mejor\b|\blíder\w*\s+(?:del|en)\b|\bnúmero uno\b', 'superlativo no demostrable'),
+    # el sitio se presenta 100% de Buenos Aires: nada de origen extranjero
+    (r'\bm[áa]laga\b|\bespañ\w+\b|\bcasa matriz\b|\bcosta del sol\b|\bpenínsul\w+\b',
+     'el sitio no menciona origen extranjero: reescribilo en clave Buenos Aires'),
     # magnitudes de mercado puestas para sonar concreto: nadie las midió
     (r'\b(?:cientos|decenas|miles)\s+de\b', 'magnitud inventada: si no la medimos, describila sin número'),
     (r'\b\d+\s*%\s+de\s+(?:los|las)\b', 'porcentaje sin fuente'),

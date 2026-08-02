@@ -100,7 +100,7 @@ Y una más si vivís en un country o en un edificio: quién se ocupa del ingreso
 
 ### Si querés que lo veamos
 
-Clima Baires viene de instalar en Málaga, España: ese es el estándar de la casa matriz, y las fotos que ves en [obras](../obras.html) son todas de allá. Acá en zona norte recién arrancamos y trabajamos con el mismo checklist.
+En Clima Baires trabajamos con este checklist en cada instalación, y las fotos de [obras](../obras.html) son de nuestro propio equipo: vacío con bomba, prueba de estanqueidad y puesta en marcha medida delante del cliente.
 
 Si ya sabés qué ambiente querés climatizar, pasá por la [calculadora de frigorías](../calculadora-frigorias.html) y mandanos el resultado por WhatsApp con una foto. Los datos, en [contacto](../contacto.html).
 

@@ -98,6 +98,6 @@ Por eso la primera pregunta útil no es qué equipo comprar. Es en qué barrio v
 
 ## Cómo lo resolvemos nosotros
 
-Clima Baires nació en Málaga, España, donde la casa matriz trabaja hace años con comunidades de propietarios que también tienen reglas de acceso y reglamento de fachada. Acá recién arrancamos, con el mismo planteo: el trámite lo hacemos nosotros. Pedimos el reglamento, armamos la carpeta, gestionamos con la administración el alta y los seguros que pida cada barrio y coordinamos la franja horaria.
+En Clima Baires el planteo es simple: el trámite lo hacemos nosotros. Pedimos el reglamento, armamos la carpeta, gestionamos con la administración el alta y los seguros que pida cada barrio y coordinamos la franja horaria.
 
 Para empezar, pasá por la [calculadora de frigorías](../calculadora-frigorias.html) con las medidas del ambiente y mandanos el resultado por WhatsApp, diciendo en qué barrio vivís. Con esos dos datos te decimos qué equipo va y cuánto tarda de verdad, trámite incluido. Qué cubre cada trabajo está en [servicios](../servicios.html) y los datos para escribirnos, en [contacto](../contacto.html).

@@ -323,7 +323,6 @@ def jsonld_local(nombre, url, zona=None):
         'areaServed': [{'@type': 'Place', 'name': a} for a in areas],
         'knowsAbout': ['aire acondicionado', 'instalación de split', 'mantenimiento HVAC', 'climatización residencial'],
         'openingHours': 'Mo-Sa 08:00-19:00',
-        'sameAs': ['https://www.climabaires.es'],
     }
 
 
@@ -381,9 +380,9 @@ def pagina_index():
   <div class="hero-esc" aria-hidden="true">
     <div class="hero-esc-m">
       <div class="hero-esc-int">
-        <img class="hero-foto" src="assets/img/obras/instalacion-cassette-oficina-malaga-01-800.webp"
-             srcset="assets/img/obras/instalacion-cassette-oficina-malaga-01-800.webp 648w,
-                     assets/img/obras/instalacion-cassette-oficina-malaga-01-1600.webp 1295w"
+        <img class="hero-foto" src="assets/img/obras/instalacion-cassette-oficina-01-800.webp"
+             srcset="assets/img/obras/instalacion-cassette-oficina-01-800.webp 648w,
+                     assets/img/obras/instalacion-cassette-oficina-01-1600.webp 1295w"
              sizes="(max-width: 900px) 100vw, 64vw"
              width="1295" height="1600" alt="" fetchpriority="high" decoding="async">
       </div>
@@ -412,7 +411,7 @@ def pagina_index():
 
   <div class="hero-regla" aria-hidden="true">
     <div class="contenedor hero-regla-in">
-      <span class="izq"><b>Obra propia</b> · Cassette 4 vías · Málaga</span>
+      <span class="izq"><b>Obra propia</b> · Cassette 4 vías en oficina</span>
     </div>
   </div>
 {escena}
@@ -542,7 +541,7 @@ def seccion_ultimas_obras():
 <section class="seccion alterna" id="obras">
   <div class="contenedor">
     <div class="centrado"><span class="kicker">Trabajo real</span><h2>Últimas obras</h2>
-    <p class="intro">Obras de nuestro equipo en la casa matriz de Málaga. Las primeras del corredor norte se suman apenas las hagamos.</p></div>
+    <p class="intro">Instalaciones, service y trabajo en altura hechos por nuestro equipo. Así trabajamos, y así vamos a trabajar en tu casa.</p></div>
   </div>
   <div class="obras-carrusel-marco">
     <button class="car-flecha car-prev" type="button" aria-label="Anteriores">‹</button>
@@ -720,11 +719,22 @@ def bloque_antes_despues(par):
 
 
 def pagina_obras():
-    zonas_presentes = sorted({f['zona'] for f in FOTOS})
+    # Una foto sin zona es una obra propia de la que no declaramos ubicación:
+    # no genera botón de filtro, porque «sin zona» no es una zona.
+    zonas_presentes = sorted({f['zona'] for f in FOTOS if f.get('zona')})
     tipos_presentes = sorted({f['tipo'] for f in FOTOS})
-    filtros_zona = ''.join(
-        f'<button class="filtro" data-grupo="zona" data-valor="{z}" aria-pressed="false">{ZONAS_FOTO[z]}</button>'
-        for z in zonas_presentes)
+    # Sin zonas, el grupo entero desaparece: una fila «Zona: Todas» con un solo
+    # botón es un control que no filtra nada y sólo invita a tocarlo.
+    fila_zona = ''
+    if zonas_presentes:
+        fila_zona = '''
+    <div class="filtros" role="group" aria-label="Filtrar por zona">
+      <span class="etiqueta">Zona:</span>
+      <button class="filtro" data-grupo="zona" data-valor="todas" aria-pressed="true">Todas</button>
+      %s
+    </div>''' % ''.join(
+            f'<button class="filtro" data-grupo="zona" data-valor="{z}" aria-pressed="false">{ZONAS_FOTO[z]}</button>'
+            for z in zonas_presentes)
     filtros_tipo = ''.join(
         f'<button class="filtro" data-grupo="tipo" data-valor="{t}" aria-pressed="false">{TIPOS_FOTO[t]}</button>'
         for t in tipos_presentes)
@@ -788,17 +798,13 @@ def pagina_obras():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Obras recientes</nav>
     <h1>Obras recientes</h1>
-    <p class="bajada">Nuestro equipo, en obra. Las primeras son de la casa matriz en Málaga; pronto, las de tu zona.</p>
+    <p class="bajada">Nuestro equipo en obra: instalación, service y trabajo en altura, con el detalle que después se nota.</p>
   </div>
 </section>
 
 <section class="seccion" style="padding-top:10px">
   <div class="contenedor">
-    <div class="filtros" role="group" aria-label="Filtrar por zona">
-      <span class="etiqueta">Zona:</span>
-      <button class="filtro" data-grupo="zona" data-valor="todas" aria-pressed="true">Todas</button>
-      {filtros_zona}
-    </div>
+{fila_zona}
     <div class="filtros" role="group" aria-label="Filtrar por tipo de trabajo">
       <span class="etiqueta">Trabajo:</span>
       <button class="filtro" data-grupo="tipo" data-valor="todos" aria-pressed="true">Todos</button>
@@ -951,8 +957,8 @@ def pagina_nosotros():
 <section class="cabecera-pagina">
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Sobre nosotros</nav>
-    <h1>De la Costa del Sol al corredor norte</h1>
-    <p class="bajada">Nacimos en Málaga instalando climatización. Hoy traemos ese estándar a Buenos Aires.</p>
+    <h1>Climatización en el corredor norte</h1>
+    <p class="bajada">Un equipo dedicado al aire acondicionado, con un estándar de trabajo que se sostiene obra tras obra.</p>
     {acciones_cabecera('Hola Clima Baires, quiero coordinar una visita técnica.', 'Hablar con nosotros', secundario='<a class="boton fantasma" href="obras.html">Ver obras</a>')}
   </div>
 </section>
@@ -961,13 +967,13 @@ def pagina_nosotros():
   <div class="contenedor grilla dos">
     <div>
       <h2>Nuestra historia</h2>
-      <p>En España aprendimos que el negocio no es vender un aparato: es que el cliente te vuelva a llamar al año siguiente.</p>
+      <p>Aprendimos que el negocio no es vender un aparato: es que el cliente te vuelva a llamar al año siguiente. Todo lo que hacemos sale de ahí.</p>
       <ul class="lista-check">
         <li><strong>Transparencia</strong>: precio cerrado, cero letra chica.</li>
         <li><strong>Rapidez</strong>: respuesta en minutos, presupuesto en el día.</li>
         <li><strong>Posventa real</strong>: seguimos estando después de cobrar.</li>
       </ul>
-      <p style="margin-top:14px">Equipo local en Buenos Aires, procesos de la casa matriz (<a href="https://www.climabaires.es" rel="noopener">climabaires.es</a>).</p>
+      <p style="margin-top:14px">Equipo propio en Buenos Aires, con procesos y checklist de obra escritos: lo que se promete es lo que se hace.</p>
     </div>
     <div>
       <div class="tarjeta">
@@ -1002,7 +1008,7 @@ def pagina_nosotros():
 </section>
 '''
     return layout(0, 'Sobre nosotros | Clima Baires Argentina',
-        'Clima Baires nació en Málaga instalando climatización. Traemos ese estándar al corredor norte: transparencia, rapidez y posventa real.',
+        'Clima Baires: venta, instalación y posventa de aire acondicionado en el corredor norte del AMBA. Transparencia, rapidez y posventa real.',
         c, f'{DOMINIO}/sobre-nosotros.html', jsonld_migas([('Inicio', '/'), ('Sobre nosotros', '/sobre-nosotros.html')]), 'nosotros', pagina_id='sobre-nosotros')
 
 

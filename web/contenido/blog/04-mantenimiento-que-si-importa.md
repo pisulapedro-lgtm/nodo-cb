@@ -74,4 +74,4 @@ Si además usás el equipo para calefaccionar, sumá un repaso de filtros a la s
 
 Bajá la térmica este sábado y lavá los filtros: es media hora y es lo que más rinde. Después agendá el service antes de octubre.
 
-En la casa matriz de Málaga trabajamos hace años con esta rutina de posventa y es la misma con la que arrancamos acá: [atendemos equipos multimarca](../servicios.html), los hayamos instalado nosotros o no. Si alguna de las señales te suena conocida, [escribinos por WhatsApp](../contacto.html) contándonos qué equipo tenés, en qué zona estás y qué está haciendo. Con eso te decimos si es filtro, si es service o si hay algo más para mirar.
+Esta es la rutina de posventa con la que trabajamos: [atendemos equipos multimarca](../servicios.html), los hayamos instalado nosotros o no. Si alguna de las señales te suena conocida, [escribinos por WhatsApp](../contacto.html) contándonos qué equipo tenés, en qué zona estás y qué está haciendo. Con eso te decimos si es filtro, si es service o si hay algo más para mirar.

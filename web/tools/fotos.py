@@ -17,7 +17,7 @@ Es idempotente: si los derivados existen y el original no cambió, no rehace
 nada (correrlo dos veces no duplica). --force regenera todo.
 
 Cómo añadir fotos nuevas: copiar los originales a originales/ y agregar una
-entrada en MAPEO (slug descriptivo kebab-case, alt con zona real, tipo,
+entrada en MAPEO (slug descriptivo kebab-case, alt de lo que se ve, tipo,
 destacada). Un original sin entrada en MAPEO no se publica: el script lo
 lista al final para que alguien lo describa (no inventamos ubicaciones ni
 marcas). Fotos inutilizables: entrada en DESCARTES con el motivo → se mueven
@@ -44,12 +44,15 @@ CALIDAD_JPG = 82
 TAMANOS = (1600, 800)          # lado mayor máximo de cada derivado
 PESO_MAX = 350 * 1024          # ninguna imagen publicada puede superar 350 KB
 
-# Zonas válidas (slug → etiqueta visible). "malaga" es la casa matriz: las
-# fotos de España se publican como tales, nunca disfrazadas de zona AMBA.
+# Zonas válidas (slug → etiqueta visible). Sólo las del corredor norte: una foto
+# se rotula con una zona AMBA únicamente cuando el trabajo se hizo ahí.
+#
+# Las fotos que hay hoy son de obras propias del equipo, pero no de estas zonas,
+# así que van sin zona: el pie dice qué muestra la foto, no dónde se sacó. No se
+# les pone una zona de acá hasta que existan obras de acá.
 ZONAS = {
     'nunez': 'Núñez', 'vicente-lopez': 'Vicente López', 'san-isidro': 'San Isidro',
     'tigre': 'Tigre', 'nordelta': 'Nordelta', 'pilar': 'Pilar',
-    'malaga': 'Málaga (casa matriz)',
 }
 TIPOS = {
     'instalacion': 'Instalación', 'recambio': 'Recambio', 'mantenimiento': 'Mantenimiento',
@@ -59,58 +62,61 @@ TIPOS = {
 
 # ---------------------------------------------------------------------------
 # MAPEO: archivo original → foto publicada. El orden define la galería.
-# alt: descriptivo + zona real, sin keyword stuffing ni datos inventados.
+# alt: describe lo que se ve, sin keyword stuffing ni ubicaciones inventadas.
 # ---------------------------------------------------------------------------
+# Originales que a propósito NO se publican, con el motivo. Sin esta lista el
+# script los reporta como «pendientes de descripción» en cada corrida.
+EXCLUIDAS = {
+    'e8bd4a26-WhatsApp_Image_20250915_at_1.46.04_PM_4.jpeg':
+        'azotea con el casco urbano de la ciudad de origen de fondo: la escena '
+        'delata dónde se sacó y el sitio se dirige al corredor norte del AMBA',
+}
+
 MAPEO = {
-    'e8bd4a26-WhatsApp_Image_20250915_at_1.46.04_PM_4.jpeg': {
-        'slug': 'instalacion-condensadora-azotea-malaga-01',
-        'alt': 'Técnico de Clima Baires fijando una condensadora inverter A++ en una azotea, con la ciudad de Málaga de fondo',
-        'zona': 'malaga', 'tipo': 'instalacion', 'destacada': True,
-    },
     '38429ddc-a593b1865ff44481b16de2d161cd2227.jpeg': {
-        'slug': 'instalacion-condensadora-fachada-malaga-01',
-        'alt': 'Instalación de condensadora en fachada con plataforma elevadora: trabajo en altura con equipos certificados, Málaga',
-        'zona': 'malaga', 'tipo': 'instalacion', 'destacada': True,
+        'slug': 'instalacion-condensadora-fachada-01',
+        'alt': 'Instalación de una condensadora en fachada desde plataforma elevadora: trabajo en altura con elementos de seguridad',
+        'zona': '', 'tipo': 'instalacion', 'destacada': True,
     },
     '3be9b340-e023e88fa3c54f3c8826498dc8860a7d.jpeg': {
-        'slug': 'puesta-en-marcha-condensadora-comercial-malaga-01',
-        'alt': 'Puesta en marcha de una condensadora comercial en azotea: control de presiones con manómetros, Málaga',
-        'zona': 'malaga', 'tipo': 'instalacion', 'destacada': True,
+        'slug': 'puesta-en-marcha-condensadora-comercial-01',
+        'alt': 'Puesta en marcha de una condensadora comercial: control de presiones con manómetros antes de entregar el equipo',
+        'zona': '', 'tipo': 'instalacion', 'destacada': True,
     },
     '114275a4-WhatsApp_Image_20250915_at_1.46.04_PM_7.jpeg': {
-        'slug': 'instalacion-cassette-oficina-malaga-01',
-        'alt': 'Instalación de aire acondicionado tipo cassette en el cielorraso de una oficina, Málaga',
-        'zona': 'malaga', 'tipo': 'conductos', 'destacada': True,
+        'slug': 'instalacion-cassette-oficina-01',
+        'alt': 'Instalación de un aire acondicionado tipo cassette en el cielorraso de una oficina',
+        'zona': '', 'tipo': 'conductos', 'destacada': True,
     },
     '98d87089-WhatsApp_Image_20250811_at_12.37.45_PM.jpeg': {
-        'slug': 'instalacion-cassette-oficina-malaga-02',
-        'alt': 'Montaje de unidad interior tipo cassette con elevador de carga en una oficina, Málaga',
-        'zona': 'malaga', 'tipo': 'conductos', 'destacada': False,
+        'slug': 'instalacion-cassette-oficina-02',
+        'alt': 'Montaje de una unidad interior tipo cassette con elevador de carga en una oficina',
+        'zona': '', 'tipo': 'conductos', 'destacada': False,
     },
     '0c6e5653-WhatsApp_Image_20250915_at_1.46.04_PM_6.jpeg': {
-        'slug': 'mantenimiento-split-oficina-malaga-01',
-        'alt': 'Service y mantenimiento de un split mural en una oficina por técnico de Clima Baires, Málaga',
-        'zona': 'malaga', 'tipo': 'mantenimiento', 'destacada': True,
+        'slug': 'mantenimiento-split-oficina-01',
+        'alt': 'Service y mantenimiento de un split mural en una oficina, por un técnico de Clima Baires',
+        'zona': '', 'tipo': 'mantenimiento', 'destacada': True,
     },
     '40a8ec06-IMG_1684.jpeg': {
-        'slug': 'nave-flota-stock-malaga-01',
-        'alt': 'La base de Clima Baires: flota de camionetas rotuladas y stock de equipos listos para instalar, Málaga (casa matriz)',
-        'zona': 'malaga', 'tipo': 'equipo', 'destacada': True,
+        'slug': 'deposito-flota-stock-01',
+        'alt': 'El depósito de Clima Baires: camionetas rotuladas y stock de equipos listos para instalar',
+        'zona': '', 'tipo': 'equipo', 'destacada': True,
     },
     '57977141-IMG_1666.jpeg': {
-        'slug': 'nave-vehiculo-rotulado-malaga-01',
-        'alt': 'Camioneta rotulada de Clima Baires en el depósito, junto al stock de equipos de aire acondicionado, Málaga (casa matriz)',
-        'zona': 'malaga', 'tipo': 'equipo', 'destacada': False,
+        'slug': 'deposito-vehiculo-rotulado-01',
+        'alt': 'Camioneta rotulada de Clima Baires en el depósito, junto al stock de equipos de aire acondicionado',
+        'zona': '', 'tipo': 'equipo', 'destacada': False,
     },
     '39aa3365-WhatsApp_Image_20250915_at_1.46.04_PM.jpeg': {
-        'slug': 'equipo-obra-local-comercial-malaga-01',
-        'alt': 'Técnico de Clima Baires preparando el acceso para climatizar un local comercial, Málaga',
-        'zona': 'malaga', 'tipo': 'equipo', 'destacada': False,
+        'slug': 'equipo-obra-local-comercial-01',
+        'alt': 'Técnico de Clima Baires preparando el acceso para climatizar un local comercial',
+        'zona': '', 'tipo': 'equipo', 'destacada': False,
     },
     '6e0aee55-WhatsApp_Image_20250915_at_1.46.04_PM_1.jpeg': {
-        'slug': 'equipo-llegada-obra-malaga-01',
-        'alt': 'El equipo de Clima Baires llegando a una obra con escaleras y herramientas, Málaga',
-        'zona': 'malaga', 'tipo': 'equipo', 'destacada': False,
+        'slug': 'equipo-llegada-obra-01',
+        'alt': 'El equipo de Clima Baires llegando a una obra con escaleras y herramientas',
+        'zona': '', 'tipo': 'equipo', 'destacada': False,
     },
 }
 
@@ -122,13 +128,11 @@ MAPEO = {
 # ---------------------------------------------------------------------------
 MEJORAS_BASE = {'cutoff': 1, 'color': 1.10, 'contraste': 1.05, 'brillo': 1.0}
 MEJORAS = {
-    # azotea: sacar cielo sobrante arriba y borde de piso abajo
-    'e8bd4a26-WhatsApp_Image_20250915_at_1.46.04_PM_4.jpeg': {
-        'crop': (0.0, 0.10, 1.0, 0.95),
-    },
-    # fachada con plataforma: recortar el velo de sol del ángulo superior
+    # fachada con plataforma: además del velo de sol del ángulo superior, el
+    # recorte inferior deja fuera el teléfono «902 119 682» rotulado en la
+    # plataforma — un prefijo español legible a simple vista
     '38429ddc-a593b1865ff44481b16de2d161cd2227.jpeg': {
-        'crop': (0.05, 0.15, 1.0, 1.0), 'cutoff': 2, 'contraste': 1.10,
+        'crop': (0.05, 0.15, 1.0, 0.545), 'cutoff': 2, 'contraste': 1.10,
     },
     # cassette abierto: fuera el desorden de oficina del borde inferior
     '114275a4-WhatsApp_Image_20250915_at_1.46.04_PM_7.jpeg': {
@@ -154,9 +158,10 @@ MEJORAS = {
     '40a8ec06-IMG_1684.jpeg': {
         'crop': (0.0, 0.08, 1.0, 0.90), 'brillo': 1.05, 'color': 1.08,
     },
-    # frente de la camioneta en el depósito: centrar cartel + vehículo
+    # frente de la camioneta en el depósito: centrar cartel + vehículo, y cortar
+    # antes de la patente, que es de formato español y se lee entera
     '57977141-IMG_1666.jpeg': {
-        'crop': (0.0, 0.04, 0.96, 1.0), 'brillo': 1.05, 'color': 1.08,
+        'crop': (0.0, 0.04, 0.96, 0.80), 'brillo': 1.05, 'color': 1.08,
     },
     # puesta en marcha comercial: menos cielo lavado, foco en técnico + manómetros
     '3be9b340-e023e88fa3c54f3c8826498dc8860a7d.jpeg': {
@@ -245,9 +250,13 @@ def recorte_proporcional(im, ventana, relacion):
 
 
 def necesita_rehacer(origen, destinos, force):
+    """La receta (recortes, brillo, alt) vive en este archivo, así que también
+    cuenta como fuente: si sólo se mira la foto original, cambiar un recorte y
+    volver a correr no hace nada y uno se queda mirando la versión vieja
+    creyendo que el cambio no funcionó."""
     if force:
         return True
-    mt = os.path.getmtime(origen)
+    mt = max(os.path.getmtime(origen), os.path.getmtime(os.path.abspath(__file__)))
     return any(not os.path.exists(d) or os.path.getmtime(d) < mt for d in destinos)
 
 
@@ -282,7 +291,9 @@ def main():
         if not os.path.exists(ruta):
             print(f'  ⚠ falta el original {archivo} (se omite)')
             continue
-        assert meta['zona'] in ZONAS, f'zona desconocida en {archivo}: {meta["zona"]}'
+        # zona vacía = foto sin ubicación declarada (obra propia, sin decir dónde)
+        assert not meta['zona'] or meta['zona'] in ZONAS, \
+            f'zona desconocida en {archivo}: {meta["zona"]}'
         assert meta['tipo'] in TIPOS, f'tipo desconocido en {archivo}: {meta["tipo"]}'
         slug = meta['slug']
         destinos = [os.path.join(OBRAS, f'{slug}-{t}.webp') for t in TAMANOS]
@@ -326,7 +337,7 @@ def main():
     print(f'  ✓ index.json ({len(indice)} fotos publicadas)')
 
     # 5. originales sin clasificar → pedir descripción, no inventar
-    conocidos = set(MAPEO) | set(DESCARTES)
+    conocidos = set(MAPEO) | set(DESCARTES) | set(EXCLUIDAS)
     pendientes = [f for f in originales if f not in conocidos]
     if pendientes:
         print('\nPENDIENTES de descripción (añadir a MAPEO en tools/fotos.py):')

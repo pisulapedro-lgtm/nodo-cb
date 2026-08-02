@@ -8,15 +8,18 @@ escribe el blog, editá **este archivo** (no la rutina).
 
 Clima Baires: venta, instalación y service de aire acondicionado en el corredor
 norte de Buenos Aires (Núñez, Vicente López, San Isidro, Tigre, Nordelta,
-Pilar). El equipo viene de operar en Málaga, España, y **está abriendo en
-Argentina**. Escribe un técnico que explica, no un vendedor que promete.
+Pilar). Escribe un técnico que explica, no un vendedor que promete.
+
+**El sitio es 100% Buenos Aires.** No se menciona Málaga, España, ninguna «casa
+matriz» ni ningún origen extranjero: ni en el cuerpo, ni en un ejemplo, ni al
+pasar. `revisar-nota.py` lo bloquea.
 
 ## Reglas que no se negocian
 
-1. **No inventar trabajos argentinos.** Todavía no hay obras hechas acá. Nunca
-   escribas «un cliente de Nordelta nos contó», «la semana pasada instalamos en
-   San Isidro» ni nada que suene a caso local. La experiencia de Málaga sí se
-   puede mencionar, y siempre nombrada como tal.
+1. **No inventar casos concretos.** Nunca escribas «un cliente de Nordelta nos
+   contó», «la semana pasada instalamos en San Isidro» ni nada que suene a una
+   obra puntual con fecha y lugar. Se puede hablar de cómo se trabaja y de qué
+   se hace en cada instalación; no de trabajos que no podemos señalar.
 2. **No inventar marcas, modelos, precios ni ubicaciones.** Si un dato no lo
    sabés con certeza, explicá el método para que el lector lo calcule con sus
    propios números. Nada de importes en pesos: se desactualizan en un mes y
@@ -36,6 +39,8 @@ Argentina**. Escribe un técnico que explica, no un vendedor que promete.
 - Español rioplatense: *vos*, *tenés*, *fijate*, *acá*. Nada de *tú*, *vosotros*,
   *coger*, *nave*, *furgoneta*, *ordenador*, *piso* (por departamento), *salón*
   (por living), *nevera*, *grifo*, *aseo*, *acera*, *escayola*.
+- Nada de España como lugar: ni el país, ni Málaga, ni «la casa matriz», ni
+  comparaciones del tipo «allá se hace así».
 - Dos que se cuelan por técnicas y son de España: *taco* de pared (acá es
   **tarugo**; el antivibratorio sí se llama taco) y *caladero* (acá el agujero
   se llama **calado**). Y no se tira *el dinero*, se tira **la plata**.

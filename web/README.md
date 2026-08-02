@@ -40,6 +40,25 @@ operación argentina las va a cumplir desde el día uno, o cambiar el texto en
 | ídem | Ante un adicional durante la obra: se para, se muestra y se sigue **sólo con aprobación por WhatsApp** |
 | `servicios.html` | Marcas listadas: Daikin, Mitsubishi, LG, Samsung, BGH, Surrey, Midea — confirmar que son las que efectivamente se venden |
 
+### El sitio no menciona origen extranjero
+
+Por decisión comercial, la web se presenta como un negocio del corredor norte y
+punto: no aparece Málaga, ni España, ni «casa matriz», ni el dominio .es. Está
+sacado del copy, de los textos alternativos, de los nombres de archivo de las
+fotos y de los datos estructurados. `revisar-nota.py` bloquea cualquier nota que
+lo reintroduzca, así que la rutina automática tampoco puede colarlo.
+
+Lo que **no** se hace, y conviene tener presente: las fotos de `obras.html` son
+de trabajos propios del equipo, pero no del AMBA. Por eso van con pie técnico
+—qué muestra la foto— y **sin ciudad**. Ninguna dice ni va a decir que se hizo
+en Nordelta o San Isidro mientras no haya obras de acá; en cuanto las haya, se
+cargan con su zona real en `tools/fotos.py` y el filtro de zonas de la galería
+reaparece solo.
+
+Dos fotos llevan recorte específico por esto: en una se leía un teléfono con
+prefijo español rotulado en la plataforma elevadora y en otra la patente del
+vehículo, de formato español. Están fuera de cuadro, no retocadas.
+
 ## Cómo añadir fotos de obras
 
 Las fotos reales viven en dos carpetas: `assets/img/originales/` (material en bruto,
