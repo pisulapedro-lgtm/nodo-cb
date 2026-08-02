@@ -102,16 +102,42 @@ argentina cambia rápido: si pasaron más de 60 días, revalidar antes de ejecut
 - **Costo / tiempo:** 0 €
 - **Valor real:** ______________  **Fecha:** __________
 
-### [ ] 11. Nombre y logo disponibles en clase 25
-- **Estado:** **"Rino Lino" + rinoceronte descartado** — colisión con Rino Indumentaria (AR,
-  menswear, logo de rinoceronte) y con Ecko Unltd (device de rinoceronte, titular global). Ver
-  Bloque 5.b.
-- **Impacto si falla:** bajo en costo, alto en tiempo perdido si se diseña identidad antes de
-  verificar.
-- **Cómo se valida:** portaltramites.inpi.gob.ar (denominativa, clase 25) + euipo.europa.eu
-  (eSearch plus) + nic.ar + handles. **Verificar 2–3 candidatos a la vez, no uno.**
+### [ ] 11. ¿Está "RINO" registrado en INPI clase 25?
+- **Nombre elegido:** **RINO LINO**, con logotipo de rinoceronte (decisión del socio).
+- **Estado:** existe **Rino Indumentaria** (AR, menswear, logo de rinoceronte) operando, pero
+  **se desconoce si tiene registro**. Argentina es sistema atributivo: la propiedad se obtiene
+  con el registro y la prelación es por día y hora de presentación (Ley 22.362). Una marca en uso
+  sin registro **no bloquea**.
+- **Impacto si falla:** alto si RINO está registrado por un tercero en clase 25 — obliga a
+  cambiar de nombre. Bajo si sale limpio.
+- **Cómo se valida:** portaltramites.inpi.gob.ar → búsqueda denominativa "RINO", clase 25. Gratis,
+  sin registro. Complementar con euipo.europa.eu (eSearch plus), nic.ar y handles.
 - **Costo / tiempo:** 0 € / 20 min
-- **Candidato elegido:** ______________  **Fecha:** __________
+- **Resultado de la búsqueda:** ______________  **Fecha:** __________
+
+**Regla de decisión:**
+
+| Resultado | Acción |
+|---|---|
+| No hay "RINO" registrado en cl. 25 | **Presentar "RINO LINO" el mismo día.** Prelación por día y hora. |
+| Rino Indumentaria tiene "RINO" registrado | Bloqueante → nombres alternativos (Camello / Galgo / Jabalí) |
+| Un tercero de peso tiene "RINO" | Cambiar |
+
+### [ ] 11.b Presentar la solicitud (si la búsqueda sale limpia)
+- **Costo:** 100 UMAPI = ARS 38.994 + IVA ≈ **ARS 47.183 ≈ 27,50 €** [VERIFICADO — Res. INPI
+  75/2026; UMAPI de julio 2026 = ARS 389,94]
+- **Ojo:** la UMAPI se actualiza mensualmente por inflación INDEC. Verificar el valor vigente en
+  inpi.gob.ar antes de presentar.
+- **Fecha y hora de presentación:** ______________  **N.º de acta:** __________
+
+### [ ] 11.c Encargar la ilustración del rinoceronte
+- **Dirección:** grabado estilo Durero (1515) — placas de armadura, línea fina, textura de
+  grabado. Refuerza el posicionamiento de durabilidad y se diferencia por construcción de la
+  silueta maciza de Ecko.
+- **Advertencia:** **no usar el grabado original tal cual.** Es dominio público, cualquiera puede
+  usarlo, y eso da un signo poco distintivo y débil de registrar. Encargar ilustración **original
+  en ese registro**.
+- **Hacer solo después de que 11 salga limpio.**
 
 ### [ ] 12. Percepción IIBB
 - **Valor usado en el plan:** 2,5 %

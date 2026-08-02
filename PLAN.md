@@ -371,8 +371,7 @@ Tanto "Nilo Lino" como "Rino Lino" comparten una debilidad: **"lino" es genéric
 clase 25 para productos de lino.** Un elemento descriptivo no aporta distintividad, así que la
 protección marcaria descansa entera sobre la otra palabra y sobre el logo.
 
-De ahí que la intuición de sumar un **animal como marca figurativa** sea correcta y haya que
-conservarla, aunque el rinoceronte específico no se pueda usar:
+De ahí que la decisión de sumar un **animal como marca figurativa** sea correcta:
 
 1. **Resuelve la debilidad marcaria.** Un logo figurativo distintivo convierte una marca floja en
    registrable y defendible.
@@ -383,11 +382,13 @@ conservarla, aunque el rinoceronte específico no se pueda usar:
    exactamente la propuesta de valor de 5.c. El animal tiene que decir "todos los días", no "una
    vez por verano".
 
-### 5.b "Rino Lino" + rinoceronte — descartado por dos colisiones
+### 5.b "Rino Lino" + rinoceronte — nombre elegido
 
-[VERIFICADO — búsqueda web 2026-08-02. **No sustituye una búsqueda marcaria en INPI.**]
+**Decisión del socio: se adopta "Rino Lino" con logotipo de rinoceronte.**
 
-**Colisión 1 — directa, en el mismo mercado y la misma categoría:**
+Hay dos antecedentes que revisar, ninguno de los cuales bloquea por sí solo.
+
+**Antecedente 1 — Rino Indumentaria (Argentina)**
 
 | Elemento | Dato |
 |---|---|
@@ -397,17 +398,64 @@ conservarla, aunque el rinoceronte específico no se pueda usar:
 | Rubro | Moda urbana **masculina**, envíos a todo el país |
 | Logo | **Rinoceronte** (usan 🦏 en la descripción de sus perfiles) |
 
-Mismo nombre, mismo animal, misma clase 25, mismo mercado. "Indumentaria" es descriptivo y "Lino"
-también: el elemento distintivo de ambas marcas es **RINO**. Son confundibles y previsiblemente
-se opondría el registro.
+[VERIFICADO — búsqueda web 2026-08-02. **No sustituye una búsqueda marcaria en INPI.**]
 
-**Colisión 2 — el device, a nivel global:**
+Mismo elemento distintivo (RINO), misma clase 25, mismo mercado. Pero **Argentina es un sistema
+atributivo, no de uso** [VERIFICADO — Ley 22.362]:
 
-La silueta de rinoceronte es el logo icónico de **Ecko Unltd** desde 1993, hoy de Iconix /
-IP Holdings UNLTD LLC, con marcas como *"WORLD FAMOUS RHINO BRAND"* para prendas. Titular grande
-con historial de defensa.
+> *"La propiedad de una marca y la exclusividad de uso se obtienen con **su registro**."*
+> *"El derecho de prelación se acordará por el **día y la hora** en que se presente la
+> solicitud."*
 
-**Direcciones alternativas que conservan las dos propiedades:**
+Una marca que se usa pero no se registró **no bloquea: pierde la prelación.** Su titular puede
+oponerse invocando interés legítimo como usuario de hecho, pero es una acción que debe financiar
+y ganar, no un derecho automático. La pregunta operativa no es "¿alguien usa Rino?" sino
+**"¿está RINO registrado en clase 25?"**.
+
+**Antecedente 2 — Ecko Unltd (device)**
+
+La silueta de rinoceronte es el logo de **Ecko Unltd** desde 1993 (Iconix / IP Holdings UNLTD
+LLC), con marcas como *"WORLD FAMOUS RHINO BRAND"*. Alcance real: Ecko es titular de **su
+silueta específica** — negra, maciza, embistiendo, en código streetwear — no de la especie. Un
+rinoceronte en otro registro visual no genera la misma impresión comercial.
+
+**Costo de registro en Argentina** [VERIFICADO — Resolución INPI 75/2026]:
+
+| Concepto | Valor |
+|---|---|
+| Marca nueva, 1 clase, hasta 20 indicaciones | 100 UMAPI |
+| 1 UMAPI (julio 2026) | ARS 389,94 |
+| Subtotal | ARS 38.994 |
+| **+ IVA 21 %** | **ARS 47.183 ≈ 27,50 €** |
+
+La UMAPI se actualiza mensualmente por inflación INDEC. Verificar el valor vigente en inpi.gob.ar
+antes de presentar.
+
+**Regla de decisión según lo que muestre INPI clase 25:**
+
+| Resultado de la búsqueda | Acción |
+|---|---|
+| **No hay "RINO" registrado** | **Presentar "RINO LINO" de inmediato.** 27,50 €. Se gana la prelación por día y hora. |
+| **Rino Indumentaria tiene "RINO" registrado** | Bloqueante. Pasar a nombres alternativos (tabla de abajo). |
+| **Un tercero de peso tiene "RINO"** | Cambiar. No vale la pena la pelea. |
+
+**Dirección de diseño recomendada: el rinoceronte de Durero (grabado, 1515, dominio público).**
+
+Resuelve los dos problemas de una sola vez y refuerza el posicionamiento:
+
+1. **Está dibujado con placas de armadura** — piel gruesa, blindaje. Es la propuesta de valor de
+   5.c convertida en imagen: uso diario, resistencia, nada delicado.
+2. **Es un grabado europeo del siglo XVI** — lee a oficio, procedencia y herencia. Coherente con
+   lino europeo.
+3. **Es lo opuesto visual a Ecko** — línea fina y textura de grabado contra silueta negra maciza
+   de streetwear. La diferenciación queda resuelta por construcción, no por negociación.
+
+**Advertencia de ejecución:** no usar el grabado tal cual. Al ser dominio público, cualquiera
+puede usarlo, lo que produce un signo poco distintivo y débil de registrar. Encargar una
+**ilustración original en ese registro** — línea fina, textura de grabado, las placas. Original,
+propia, distintiva y registrable.
+
+**Nombres alternativos, solo si INPI bloquea:**
 
 | Opción | Semántica | Riesgo a verificar |
 |---|---|---|
@@ -415,9 +463,8 @@ con historial de defensa.
 | **Galgo** | Seco, elegante, sin grasa. Argentino y estéticamente afín al lino. | Uso frecuente en marcas españolas |
 | **Jabalí** | Piel dura, ibérico, conecta con el origen en Málaga. | Connotación agresiva |
 
-**Regla de proceso:** la decisión de nombre **no bloquea la Fase 0**. Las cotizaciones mayoristas
-se piden con un nombre de trabajo. El FOB decide el proyecto; el nombre es reversible y gratuito
-de cambiar mientras no haya clientes.
+**Regla de proceso:** la búsqueda y el registro **no bloquean la Fase 0**. Las cotizaciones
+mayoristas se piden en paralelo. El FOB decide el proyecto; el nombre corre por su carril.
 
 ### 5.c Propuesta de valor en una frase
 
@@ -447,21 +494,18 @@ diciendo.
 
 **Riesgos de confusión detectados** [VERIFICADO — búsqueda 2026-08-02]:
 
-| Riesgo | Contra qué nombre | Gravedad |
+| Antecedente | Gravedad real | Por qué |
 |---|---|---|
-| **Rino Indumentaria** — menswear AR, logo de rinoceronte | "Rino Lino" | **Bloqueante** (ver 5.b) |
-| **Ecko Unltd** — device de rinoceronte, clase 25, titular global | Cualquier logo de rinoceronte | **Bloqueante** |
-| **@linomoda** — IG Buenos Aires, mayorista de ropa de lino, envíos a todo el país | Ambos | Medio — competidor directo y riesgo fonético |
-| **lino.com.ar** — "Tienda Online de Lino", operativa | Ambos | Medio |
-| **Abito** (MX), **Lino Ocean** | Ambos | Bajo — otro mercado |
+| **Rino Indumentaria** — menswear AR, logo de rinoceronte | **Depende del registro** | Sistema atributivo: bloquea solo si tiene "RINO" registrado en clase 25. Ver 5.b. |
+| **Ecko Unltd** — device de rinoceronte, clase 25, titular global | **Bajo con diseño diferenciado** | Es titular de su silueta específica, no de la especie. Ver dirección de diseño en 5.b. |
+| **@linomoda** — IG Buenos Aires, mayorista de ropa de lino, envíos a todo el país | Medio | Competidor directo y riesgo fonético sobre "lino" |
+| **lino.com.ar** — "Tienda Online de Lino", operativa | Medio | Ídem |
+| **Abito** (MX), **Lino Ocean** | Bajo | Otro mercado |
 
-**No se encontró una marca llamada "Nilo Lino" en actividad.** Buena señal, pero no sustituye la
-búsqueda en INPI.
-
-**Criterio de decisión:** cualquier candidato tiene que pasar los cuatro registros de la tabla de
-arriba **antes** de gastar un euro en diseño de logo. Son 20 minutos y 0 €. El error caro no es
-elegir mal el nombre: es diseñar la identidad, imprimir etiquetas y comprar stock antes de mirar
-el INPI.
+**Criterio de decisión:** hacer la búsqueda en INPI **antes** de encargar el diseño del logo. Son
+20 minutos y 0 €. El error caro no es elegir mal el nombre: es diseñar la identidad, imprimir
+etiquetas y comprar stock antes de mirar el INPI. Si la búsqueda sale limpia, presentar de
+inmediato: la prelación es por día y hora y cuesta 27,50 €.
 
 ---
 
@@ -723,8 +767,9 @@ portuguesa: si alguno responde bien, se puede visitar.
 ### Acción 2 — Cerrar las tres verificaciones gratis
 **Costo: 0 € · Tiempo: 60 minutos**
 
-1. INPI clase 25 en portaltramites.inpi.gob.ar + EUIPO + dominios + handles, para **dos o tres
-   candidatos de nombre a la vez**. ("Rino Lino" ya está descartado, ver 5.b.)
+1. **Buscar "RINO" en INPI clase 25** (portaltramites.inpi.gob.ar, gratis, sin registro) + EUIPO
+   + dominios + handles. **Si sale limpio, presentar "RINO LINO" el mismo día**: la prelación es
+   por día y hora y cuesta ~27,50 €. Ver la regla de decisión en 5.b.
 2. Cotizador de DHL y Correos: paquete de 500 g, Málaga → Buenos Aires.
 3. Pedirle a la persona de confianza **fotos de vidrieras y etiquetas con precio** de Zara
    Argentina y dos marcas locales. Es el único dato de temporada que falta y se consigue gratis
@@ -768,6 +813,8 @@ Todas consultadas el **2 de agosto de 2026**.
 
 **Marca**
 - [INPI Argentina — clasificación de marcas](https://www.argentina.gob.ar/inpi/marcas/clasificacion-de-marcas)
+- [Ley 22.362 de Marcas y Designaciones — texto actualizado](https://www.argentina.gob.ar/normativa/nacional/ley-22362-18803/actualizacion)
+- Resolución INPI 75/2026 — UMAPI, aranceles actualizados mensualmente
 - [Ecko Unltd — colección Rhino Logo](https://ecko.com/collections/rhino-logo)
 - Rino Indumentaria — rinoindumentaria.com.ar, @rinoshopindumentaria
 
