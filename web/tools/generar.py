@@ -440,16 +440,7 @@ def pagina_index():
   </div>
 </section>
 
-<section class="seccion" style="padding:50px 0">
-  <div class="contenedor claims">
-    <div class="claim"><strong>Presupuesto</strong><span>en el día</span></div>
-    <div class="claim"><strong>Precio cerrado</strong><span>sin letra chica</span></div>
-    <div class="claim"><strong>Garantía</strong><span>por escrito</span></div>
-    <div class="claim"><strong>Countries</strong><span>seguros al día</span></div>
-  </div>
-</section>
-
-<section class="seccion" style="padding:0 0 40px">{cinta_cta('Contanos qué ambiente querés climatizar y te pasamos precio hoy.', 'Hola Clima Baires, quiero un presupuesto de equipo + instalación.')}
+<section class="seccion" style="padding:36px 0 40px">{cinta_cta('Contanos qué querés climatizar y te pasamos precio hoy.', 'Hola Clima Baires, quiero un presupuesto de equipo + instalación.')}
 </section>
 {seccion_ultimas_obras()}
 <section class="seccion">

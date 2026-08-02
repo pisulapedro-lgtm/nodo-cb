@@ -235,15 +235,6 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height:
 /* ---- chip de temperatura (sólo móvil, apoyado sobre la banda de foto) ---- */
 .hero-chip{display:none}
 
-/* franja de claims cortos */
-.claims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
-.claim {
-  background: #fff; border: 1px solid var(--linea); border-radius: 18px; padding: 24px 14px;
-  box-shadow: 0 10px 30px rgba(0, 40, 90, .05);
-}
-.claim strong { display: block; color: var(--navy); font-weight: 800; font-size: 1.06rem; letter-spacing: -.02em; }
-.claim span { color: var(--gris); font-size: .87rem; }
-
 /* marquee de logos de marcas (originales, en loop continuo) */
 .franja-marcas { background: #fff; border-bottom: 1px solid var(--linea); padding: 20px 0; overflow: hidden; }
 .marcas-carrusel { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
@@ -296,7 +287,11 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height:
   box-shadow: 0 12px 34px rgba(0, 40, 90, .06);
 }
 .cinta-cta svg { width: 26px; height: 26px; fill: #25D366; flex: 0 0 auto; }
-.cinta-cta p { margin: 0; flex: 1 1 260px; color: var(--navy); font-weight: 500; font-size: .98rem; }
+.cinta-cta p {
+  margin: 0; flex: 1 1 260px; color: var(--navy); font-weight: 500; font-size: .98rem;
+  /* reparte los renglones parejos en vez de dejar una palabra sola abajo */
+  text-wrap: balance;
+}
 .boton.verde { background: #25D366; color: var(--navy) !important; }
 .boton.verde:hover { box-shadow: 0 8px 20px rgba(37, 211, 102, .38); }
 
@@ -783,6 +778,5 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   .hero-regla { font-size: .55rem; letter-spacing: .1em; }
   .hero-regla .izq { white-space: normal; }
   .pie-grilla { grid-template-columns: 1fr; gap: 26px; }
-  .claims { grid-template-columns: 1fr; }
 }
 .corte-lista { margin: 8px 0 18px; }
