@@ -63,6 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-wsp]').forEach((a) => {
     a.href = cbMensaje(a.dataset.wsp);
     if (a.tagName === 'A') { a.target = '_blank'; a.rel = 'noopener'; }
+    // Los que abren el asistente (data-chat) no cuentan como whatsapp_click acá:
+    // el clic no sale a WhatsApp todavía. Miden chatbot_inicio al abrirse y
+    // whatsapp_click recién cuando el usuario toca «Continuar en WhatsApp».
+    if (a.hasAttribute('data-chat')) return;
     a.addEventListener('click', () => cbTrack('whatsapp_click', cbContexto(a)));
   });
   document.querySelectorAll('[data-wsp-num]').forEach((el) => { el.textContent = CB.whatsappVisible; });
@@ -238,6 +242,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const cerrar = () => { chat.hidden = true; flotante.classList.remove('abierto'); };
 
     flotante.addEventListener('click', () => (chat.hidden ? abrir() : cerrar()));
+
+    // Los CTA fijos que acompañan todo el scroll entran por el asistente: cuatro
+    // preguntas y el mensaje sale con nombre, zona, servicio y tipo de equipo.
+    // Los CTA de contenido (hero, cintas, tarjetas) siguen yendo directo, porque
+    // cada uno ya lleva su propio mensaje con el contexto de dónde se tocó.
+    // El href a wa.me se deja puesto: si el JS no cargó, el botón igual sirve.
+    document.querySelectorAll('[data-chat]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (chat.hidden) abrir();
+      });
+    });
     chat.querySelector('.chat-cerrar').addEventListener('click', cerrar);
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !chat.hidden) cerrar();

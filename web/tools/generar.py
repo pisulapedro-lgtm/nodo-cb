@@ -38,7 +38,7 @@ EMPRESA = {
 # cobra aparte» de servicios.html). Es el único número del bloque y la promesa
 # más concreta del sitio: publicarlo mal es peor que no publicarlo, así que
 # publicar.py se niega a compilar mientras siga en PENDIENTE.
-METROS_INCLUIDOS = 'PENDIENTE'
+METROS_INCLUIDOS = 'tres'
 
 
 def _faq_zonas():
@@ -266,7 +266,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 </footer>
 
 <div class="barra-movil">
-  <a class="bm-wsp" data-wsp="{barra_msj}" data-origen="barra" href="#">WhatsApp</a>
+  <a class="bm-wsp" data-wsp="{barra_msj}" data-chat data-origen="barra" href="#">WhatsApp</a>
   <a class="bm-agenda" data-agenda data-origen="barra" href="#">Agendar visita</a>
 </div>
 
@@ -1070,7 +1070,7 @@ def bloque_que_incluye():
         ('Prueba de estanqueidad',
          'Estanqueidad, en criollo, es que no pierda. Se presuriza con nitrógeno y se controla que la aguja no baje, antes de cerrar nada.'),
         ('La carga de refrigerante que pidan esos metros',
-         'Los equipos vienen de fábrica con gas para un tendido corto. Si el tuyo es más largo, hay que agregar. Dentro de los metros incluidos, va en el precio.'),
+         'Los equipos vienen de fábrica con gas para un tendido corto. Si el tuyo es más largo, hay que agregar. Dentro de los %s metros, va en el precio.' % METROS_INCLUIDOS),
         ('Desagüe con pendiente natural, probado con agua',
          'La salida del agua de condensación, con caída continua y sin panzas, a un lugar que no sea la medianera ni el balcón del vecino. Se prueba antes de cerrar la pared.'),
         ('Puesta en marcha con vos presente',
@@ -1082,7 +1082,7 @@ def bloque_que_incluye():
     ]
     aparte = [
         ('Metro adicional de cañería',
-         'Pasados los metros incluidos, se cobra por metro, con el refrigerante extra que ese tramo necesita. El valor del metro te lo decimos en el presupuesto, no después.'),
+         'Pasados los %s metros, se cobra por metro, con el refrigerante extra que ese tramo necesita. El valor del metro te lo decimos en el presupuesto, no después.' % METROS_INCLUIDOS),
         ('Trabajo en altura con andamio o plataforma',
          'Cuando la condensadora va donde no llega una escalera. El andamio o la plataforma se alquilan por día y eso se cotiza aparte. Los elementos de seguridad del equipo no se cobran nunca: van siempre.'),
         ('Grúa o izaje',

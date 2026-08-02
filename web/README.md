@@ -79,17 +79,33 @@ Todos los CTA ya empujan eventos al `dataLayer` (verificado por el QA de Playwri
 
 | evento | parámetros | dispara |
 |---|---|---|
-| `whatsapp_click` | `origen` (hero/seccion/menu/barra/cinta/lightbox/calculadora/chatbot), `pagina`, `zona` | todo CTA de WhatsApp |
+| `whatsapp_click` | `origen` (hero/seccion/menu/cinta/nota/listado/faq/tarjeta/lightbox/calculadora/chatbot), `pagina`, `zona` | todo CTA que sale a WhatsApp |
 | `agenda_click` | `origen`, `pagina`, `zona` | CTA «Agendar visita» |
 | `calculadora_uso` | `m2`, `frigorias_resultado`, `equipo_recomendado` | submit de la calculadora |
 | `form_envio` | `zona` | formulario de contacto |
 | `tel_click` / `email_click` | `pagina` | enlaces de teléfono / email |
-| `chatbot_inicio` | `pagina` | apertura del asistente flotante |
+| `chatbot_inicio` | `pagina` | apertura del asistente (píldora flotante o barra inferior) |
 | `chatbot_paso` | `paso` (1-4), `respuesta`, `pagina` | cada respuesta del asistente (el nombre NO se envía: sin datos personales en el dataLayer) |
 
-**Chatbot**: el botón flotante abre un asistente de 4 preguntas (nombre, zona,
-servicio, tipo de aire) que arma el mensaje y deriva a WhatsApp con
-`origen=chatbot`. Sin backend ni librerías: vive en `assets/js/main.js`.
+**Chatbot**: el asistente hace 4 preguntas (nombre, zona, servicio, tipo de
+aire), arma el mensaje y recién ahí deriva a WhatsApp, con `origen=chatbot`. Sin
+backend ni librerías: vive en `assets/js/main.js`.
+
+Qué entra por el asistente y qué va directo:
+
+- **Los CTA fijos que acompañan todo el scroll** —la píldora flotante y el botón
+  WhatsApp de la barra inferior en móvil— abren el asistente. Son los que se
+  tocan sin contexto («quiero hablar»), así que conviene preguntar antes.
+- **Los CTA de contenido** (hero, cintas, tarjetas, notas del blog, preguntas de
+  zona) van directo a WhatsApp, porque cada uno ya lleva su propio mensaje con
+  el contexto de dónde se tocó: «leí la nota X», «estoy en Nordelta».
+
+Para mandar cualquier otro botón por el asistente alcanza con agregarle el
+atributo `data-chat`; el `href` a `wa.me` se deja igual, así el botón sigue
+sirviendo si el JS no cargó. Un botón con `data-chat` **no** dispara
+`whatsapp_click` al tocarlo: mide `chatbot_inicio`, y la conversión se cuenta
+recién en «Continuar en WhatsApp». Si contara antes, Ads optimizaría hacia
+gente que abre el chat y lo abandona.
 
 **Cobertura de conversión**: `npm run web:shots` falla si alguna página deja más
 de 2,5 pantallas de scroll sin un CTA de WhatsApp en el flujo del documento (el
