@@ -443,6 +443,7 @@ def pagina_index():
 <section class="seccion" style="padding:36px 0 40px">{cinta_cta('Contanos qué querés climatizar y te pasamos precio hoy.', 'Hola Clima Baires, quiero un presupuesto de equipo + instalación.')}
 </section>
 {seccion_ultimas_obras()}
+{seccion_ultimas_notas()}
 <section class="seccion">
   <div class="contenedor">
     <div class="banda-cta">
@@ -520,6 +521,29 @@ def franja_marcas(p=''):
     </div>
   </div>
 </div>'''
+
+
+def seccion_ultimas_notas():
+    """Las notas más nuevas, en la portada.
+
+    Un blog al que sólo se llega por el menú no lo lee nadie: la home es la
+    página que recibe el tráfico de Ads y la que más se comparte. Acá además
+    hace un trabajo de venta —muestra que sabemos de lo que hablamos— antes de
+    pedir nada."""
+    if not POSTS:
+        return ''
+    tarjetas = ''.join(tarjeta_post(p, 'blog/', 3) for p in POSTS[:3])
+    return f"""
+<section class="seccion" id="notas">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Para saber más</span><h2>Últimas notas</h2>
+    <p class="intro">Lo que explicamos en cada visita, escrito: cómo elegir la potencia, qué mirar en una instalación y cómo cuidar el equipo.</p></div>
+    <div class="post-grilla">{tarjetas}</div>
+    <div class="centrado" style="margin-top:30px">
+      <a class="boton fantasma" href="blog/">Ver todas las notas</a>
+    </div>
+  </div>
+</section>"""
 
 
 def seccion_ultimas_obras():
