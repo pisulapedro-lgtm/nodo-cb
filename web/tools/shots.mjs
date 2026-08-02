@@ -1,7 +1,7 @@
 // Capturas QA de climabaires.com (desktop 1440 y móvil 390) + chequeo de enlaces internos.
 // Uso: npm run web:shots   → escribe PNGs en web/tools/shots/
 import { createRequire } from 'node:module';
-import { readdirSync, mkdirSync } from 'node:fs';
+import { readdirSync, mkdirSync, existsSync, statSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,7 +18,18 @@ const paginas = [
   'index.html', 'servicios.html', 'obras.html', 'calculadora-frigorias.html',
   'sobre-nosotros.html', 'contacto.html', 'privacidad.html', 'terminos.html', '404.html',
   ...readdirSync(join(WEB, 'zonas')).map((f) => 'zonas/' + f),
+  // el blog crece solo: el índice siempre, y la nota más nueva como muestra
+  ...(existsSync(join(WEB, 'blog')) ? ['blog/index.html', ...ultimaNota()] : []),
 ];
+
+/** La nota publicada más reciente, para que la rutina automática pase por QA. */
+function ultimaNota() {
+  const notas = readdirSync(join(WEB, 'blog'))
+    .filter((f) => f.endsWith('.html') && f !== 'index.html')
+    .map((f) => ({ f, t: statSync(join(WEB, 'blog', f)).mtimeMs }))
+    .sort((a, b) => b.t - a.t);
+  return notas.length ? ['blog/' + notas[0].f] : [];
+}
 
 const browser = await chromium.launch({ args: ['--no-sandbox'] });
 const errores = [];

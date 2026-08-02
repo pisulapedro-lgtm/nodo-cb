@@ -157,6 +157,53 @@ raíz), que Cloudflare Pages y Netlify leen solos.
 
 En los tres casos: apuntar también `www` (CNAME) y verificar que `https://climabaires.com/sitemap.xml` responda.
 
+## Blog: cómo funciona y cómo se publica solo
+
+El blog no se escribe en HTML. Cada nota es un `.md` en `web/contenido/blog/`
+con cinco líneas de front-matter (título, resumen, fecha, categoría, minutos) y
+`generar.py` arma el índice, la página de cada nota, el RSS y las entradas del
+sitemap. Una nota con **fecha futura no se publica**: queda escrita esperando
+su turno, y aparece sola la próxima vez que se regenere el sitio.
+
+Publicar una nota a mano:
+
+```bash
+# 1. ¿de qué toca escribir?  (lee web/contenido/calendario.json)
+npm run blog:tema
+# 2. escribir el .md en la ruta que indicó el paso 1
+# 3. control de calidad — no publiques nada que salga con ✗
+npm run blog:revisar
+# 4. regenerar y verificar
+npm run web:generar && npm run web:shots
+```
+
+`revisar-nota.py` bloquea lo que no puede salir: castellano de España, trabajos
+argentinos inventados (todavía no hay ninguno), precios en pesos, plazos de
+garantía sin confirmar, enlaces rotos, notas demasiado cortas o sin subtítulos.
+Las reglas de fondo están en `web/contenido/estilo-blog.md`; si cambiás las
+reglas, actualizá también las expresiones de `revisar-nota.py`.
+
+### La publicación automática cada tres días
+
+Hay una Rutina programada que cada tres días abre una sesión, corre
+`siguiente-nota.py`, escribe la nota que toque siguiendo `estilo-blog.md`, la
+pasa por `revisar-nota.py` y por el QA, y la commitea. Si el calendario se queda
+sin temas **avisa y no publica nada**: no inventa uno.
+
+Para gobernarla:
+
+- **Cambiar los temas** → editar `web/contenido/calendario.json` (agregar al
+  final con `estado: "pendiente"`). Es la forma normal de dirigir el blog.
+- **Cambiar el tono o las reglas** → editar `web/contenido/estilo-blog.md`.
+- **Ver cómo viene** → `npm run blog:estado`.
+- **Pausarla, cambiarle el horario o la rama de destino** → desde las Rutinas de
+  la cuenta. Cuando el sitio esté en producción hay que apuntarla a la rama
+  desde la que publica el hosting.
+
+El estado real lo manda el disco, no el JSON: un tema está publicado si existe
+su `.md`. Si una corrida se cae a mitad de camino, la siguiente no repite tema
+ni duplica la nota.
+
 ## Después de publicar
 
 1. **Google Search Console**: dar de alta la propiedad `climabaires.com`, enviar `sitemap.xml`.
@@ -175,6 +222,11 @@ web/
 ├── contacto.html               # WhatsApp + formulario + agenda de visitas
 ├── 404.html
 ├── zonas/{nunez,vicente-lopez,san-isidro,tigre,nordelta,pilar}.html  # SEO local / landings de Ads
+├── blog/                       # generado: index, una página por nota y rss.xml
+├── contenido/
+│   ├── blog/NN-slug.md         # las notas, en Markdown (esto es lo que se edita)
+│   ├── calendario.json         # temario: de qué escribe la próxima publicación
+│   └── estilo-blog.md          # guía de estilo que recibe quien escribe
 ├── sitemap.xml · robots.txt
 ├── assets/css/styles.css       # identidad de marca (paleta del manual)
 ├── assets/js/main.js           # config CB (contacto + gtmId + agendaUrl), medición, galería
@@ -185,6 +237,9 @@ web/
 └── tools/
     ├── fotos.py                # pipeline de fotos (python3 web/tools/fotos.py)
     ├── generar.py              # regenera todas las páginas (python3 web/tools/generar.py)
+    ├── blog.py                 # lee los .md del blog y los pasa a HTML
+    ├── siguiente-nota.py       # de qué toca escribir (npm run blog:tema)
+    ├── revisar-nota.py         # control de calidad de una nota (npm run blog:revisar)
     └── shots.mjs               # QA: capturas + enlaces + eventos dataLayer (npm run web:shots)
 ```
 

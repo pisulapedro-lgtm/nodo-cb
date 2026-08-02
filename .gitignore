@@ -1,3 +1,4 @@
 node_modules/
 dist/plan.html
 dist/sitio/
+web/tools/__pycache__/

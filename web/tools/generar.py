@@ -4,8 +4,12 @@ Uso: python3 web/tools/generar.py   (desde la raíz del repo)
 Regenera todos los .html a partir del layout y el contenido de PAGINAS.
 Los .html generados son el artefacto desplegable: no requieren build en el hosting.
 """
-import os, json, re
+import os, re, sys, json
+from datetime import date, datetime, timezone
 from urllib.parse import quote
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import blog as _blog          # noqa: E402  (necesita el sys.path de arriba)
 
 RAIZ = os.path.join(os.path.dirname(__file__), '..')
 DOMINIO = 'https://climabaires.com'
@@ -167,6 +171,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 <link rel="icon" type="image/png" sizes="48x48" href="{p}assets/img/favicon-48.png">
 <link rel="apple-touch-icon" href="{p}assets/img/icon-192.png">
 <link rel="stylesheet" href="{p}assets/css/styles.css">
+<link rel="alternate" type="application/rss+xml" title="Notas de Clima Baires" href="{p}blog/rss.xml">
 <script>window.dataLayer = window.dataLayer || [];</script>
 {ld}
 </head>
@@ -180,6 +185,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
       <a href="{p}index.html"{act('inicio')}>Inicio</a>
       <a href="{p}servicios.html"{act('servicios')}>Servicios</a>
       <a href="{p}obras.html"{act('obras')}>Obras</a>
+      <a href="{p}blog/"{act('blog')}>Notas</a>
       <a href="{p}index.html#zonas"{act('zonas')}>Zonas</a>
       <a href="{p}calculadora-frigorias.html"{act('calc')}>Calculadora</a>
       <a href="{p}sobre-nosotros.html"{act('nosotros')}>Nosotros</a>
@@ -206,6 +212,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
           <li><a href="{p}servicios.html#instalacion">Instalación</a></li>
           <li><a href="{p}servicios.html#mantenimiento">Mantenimiento y posventa</a></li>
           <li><a href="{p}obras.html">Obras recientes</a></li>
+          <li><a href="{p}blog/">Notas</a></li>
           <li><a href="{p}calculadora-frigorias.html">Calculadora de frigorías</a></li>
         </ul>
       </div>
@@ -474,15 +481,21 @@ def acciones_cabecera(mensaje, primario='Pedir presupuesto', p='', secundario=No
     </div>'''
 
 
+def cinta_cta_suelta(titulo, mensaje, boton='Escribinos por WhatsApp', origen='cinta'):
+    """La cinta sin el contenedor: para meterla dentro de un bloque que ya tiene
+    su propio ancho (el cuerpo de una nota, por ejemplo)."""
+    return f'''<div class="cinta-cta">
+    {WSP_SVG}
+    <p>{titulo}</p>
+    <a class="boton verde" data-wsp="{mensaje}" data-origen="{origen}" href="#">{boton}</a>
+  </div>'''
+
+
 def cinta_cta(titulo, mensaje, boton='Escribinos por WhatsApp'):
     """Cinta compacta de conversión: ninguna franja larga de scroll sin CTA."""
     return f'''
 <div class="contenedor">
-  <div class="cinta-cta">
-    {WSP_SVG}
-    <p>{titulo}</p>
-    <a class="boton verde" data-wsp="{mensaje}" data-origen="cinta" href="#">{boton}</a>
-  </div>
+  {cinta_cta_suelta(titulo, mensaje, boton)}
 </div>'''
 
 
@@ -1026,6 +1039,189 @@ def pagina_contacto():
         c, f'{DOMINIO}/contacto.html', jsonld_migas([('Inicio', '/'), ('Contacto', '/contacto.html')]), 'contacto', pagina_id='contacto',
         wsp_barra='Hola Clima Baires, quiero hacer una consulta.')
 
+def tarjeta_post(post, base='blog/', nivel=2):
+    """`base` es el camino hasta la carpeta del blog desde la página que la usa
+    ('blog/' desde la raíz, '' desde una nota). `nivel` es el del encabezado: la
+    jerarquía tiene que quedar sin saltos en cada página donde se inserta."""
+    return f'''<article class="post-tarjeta" data-categoria="{post['categoria']}">
+        <a href="{base}{post['slug']}.html">
+          <span class="post-cat">{post['categoria_label']}</span>
+          <h{nivel}>{post['titulo']}</h{nivel}>
+          <p>{post['resumen']}</p>
+          <span class="post-meta">{post['fecha_larga']} · {post['minutos']} min de lectura</span>
+        </a>
+      </article>'''
+
+
+def intercalar_cta(cuerpo, mensaje):
+    """Mete cintas de conversión entre las secciones de una nota larga.
+
+    Una nota de 1.400 palabras son diez pantallas de móvil: si el único CTA está
+    al final, el que se convence en la mitad no tiene dónde tocar. Se inserta
+    antes de cada tercer `<h2>` (nunca antes del primero, que va pegado a la
+    entradilla) para no cortar la lectura más de la cuenta."""
+    partes = re.split(r'(?=<h[23]>)', cuerpo)
+    if len(partes) < 3:
+        return cuerpo
+    salida, acumulado = [], 0
+    for i, parte in enumerate(partes):
+        if i and acumulado > TRAMO_SIN_CTA:
+            salida.append('<div class="cta-intercalado">%s</div>' % cinta_cta_suelta(
+                'Si preferís que lo veamos nosotros, escribinos y coordinamos una visita.',
+                mensaje, 'Consultar', 'nota'))
+            acumulado = 0
+        salida.append(parte)
+        acumulado += alto_aproximado(parte)
+    return ''.join(salida)
+
+
+# Cuánto texto puede pasar sin un botón de WhatsApp, medido en caracteres
+# aproximados. Dos pantallas de móvil: el QA falla si algún tramo pasa de tres.
+TRAMO_SIN_CTA = 1250
+
+
+def alto_aproximado(html_):
+    """Los <li> y las filas de tabla ocupan mucho más alto por carácter que un
+    párrafo, así que cuentan doble a la hora de decidir dónde va el próximo CTA."""
+    texto = re.sub(r'<[^>]+>', '', html_)
+    return len(texto) + 45 * len(re.findall(r'<(?:li|tr)\b', html_))
+
+
+def pagina_blog(posts):
+    cats = sorted({p['categoria'] for p in posts})
+    filtros = ''.join(
+        f'<button class="filtro" data-grupo="cat" data-valor="{c}" aria-pressed="false">{_blog.CATEGORIAS[c]}</button>'
+        for c in cats)
+    # una cinta cada tres tarjetas: el listado crece solo con la rutina y sin
+    # esto queda un tramo largo de scroll sin dónde tocar
+    tarjetas = ''
+    for i, p in enumerate(posts):
+        if i and i % 3 == 0:
+            tarjetas += '<div class="cinta-en-grilla">%s</div>' % cinta_cta_suelta(
+                '¿Preferís preguntarlo directo? Escribinos y te respondemos.',
+                'Hola Clima Baires, leí una nota en su web y quiero hacer una consulta.',
+                'Preguntar', 'listado')
+        tarjetas += tarjeta_post(p, '')
+    vacio = '' if posts else '<p class="intro centrado">Estamos escribiendo las primeras notas. Volvé en unos días.</p>'
+    c = f'''
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="../index.html">Inicio</a> › Notas</nav>
+    <h1>Notas sobre climatización</h1>
+    <p class="bajada">Lo que aprendimos instalando: cómo elegir, qué mirar en una obra y cómo cuidar tu equipo.</p>
+    {acciones_cabecera('Hola Clima Baires, leí una nota en su web y quiero hacer una consulta.', 'Consultar por WhatsApp', '../')}
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:34px">
+  <div class="contenedor">
+    <div class="filtros" role="group" aria-label="Filtrar por tema">
+      <span class="etiqueta">Tema:</span>
+      <button class="filtro" data-grupo="cat" data-valor="todas" aria-pressed="true">Todos</button>
+      {filtros}
+    </div>
+    <div class="post-grilla" id="post-grilla">{tarjetas}</div>
+    <p id="post-vacio" hidden>No hay notas de ese tema todavía.</p>
+    {vacio}
+  </div>
+</section>
+
+<section class="seccion" style="padding:0 0 70px">{cinta_cta('¿Te quedó una duda de la nota? Preguntanos sin compromiso.', 'Hola Clima Baires, leí una nota en su web y tengo una consulta.', 'Preguntar')}
+</section>
+'''
+    ld = [
+        jsonld_migas([('Inicio', '/'), ('Notas', '/blog/')]),
+        {
+            '@context': 'https://schema.org', '@type': 'Blog',
+            'name': 'Notas de Clima Baires', 'url': f'{DOMINIO}/blog/',
+            'publisher': {'@id': DOMINIO + '/#negocio'},
+            'blogPost': [{'@type': 'BlogPosting', 'headline': p['titulo'],
+                          'url': f'{DOMINIO}/blog/{p["slug"]}.html', 'datePublished': p['fecha_iso']}
+                         for p in posts],
+        },
+    ]
+    return layout(1, 'Notas sobre climatización | Clima Baires',
+        'Guías prácticas de aire acondicionado: cuántas frigorías necesitás, qué mirar en una instalación y cómo mantener tu equipo.',
+        c, f'{DOMINIO}/blog/', ld, 'blog', pagina_id='blog',
+        wsp_barra='Hola Clima Baires, leí una nota en su web y quiero hacer una consulta.')
+
+
+def pagina_post(post, otros):
+    relacionadas = [o for o in otros if o['categoria'] == post['categoria']][:2] or otros[:2]
+    mas = ''
+    if relacionadas:
+        mas = f'''
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Seguir leyendo</span><h2>Otras notas</h2></div>
+    <div class="post-grilla" style="margin-top:26px">{''.join(tarjeta_post(o, '', 3) for o in relacionadas)}</div>
+  </div>
+</section>'''
+    msj = f'Hola Clima Baires, leí la nota «{post["titulo"]}» y quiero un presupuesto.'
+    c = f'''
+<article class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="../index.html">Inicio</a> › <a href="index.html">Notas</a> › {post['categoria_label']}</nav>
+    <span class="post-cat">{post['categoria_label']}</span>
+    <h1>{post['titulo']}</h1>
+    <p class="bajada">{post['resumen']}</p>
+    <p class="post-meta">Publicado el {post['fecha_larga']} · {post['minutos']} min de lectura</p>
+    {acciones_cabecera(msj, 'Pedir presupuesto', '../')}
+  </div>
+</article>
+
+<section class="seccion" style="padding-top:30px">
+  <div class="contenedor">
+    <div class="post-cuerpo">
+      {intercalar_cta(post['html'], msj)}
+    </div>
+  </div>
+</section>
+
+{mas}
+<section class="seccion" style="padding:34px 0 60px">{cinta_cta('¿Querés que lo veamos en tu casa? La visita y el presupuesto son sin cargo.', msj, 'Pedir presupuesto')}
+</section>'''
+    ld = [
+        jsonld_migas([('Inicio', '/'), ('Notas', '/blog/'), (post['titulo'], f'/blog/{post["slug"]}.html')]),
+        {
+            '@context': 'https://schema.org', '@type': 'BlogPosting',
+            'headline': post['titulo'], 'description': post['resumen'],
+            'datePublished': post['fecha_iso'], 'dateModified': post['fecha_iso'],
+            'author': {'@type': 'Organization', 'name': 'Clima Baires Argentina', '@id': DOMINIO + '/#negocio'},
+            'publisher': {'@id': DOMINIO + '/#negocio'},
+            'mainEntityOfPage': f'{DOMINIO}/blog/{post["slug"]}.html',
+            'image': f'{DOMINIO}/assets/img/obras/og-home.jpg' if HAY_FOTOS else '',
+            'wordCount': post['palabras'],
+            'inLanguage': 'es-AR',
+        },
+    ]
+    return layout(1, f'{post["titulo"]} | Clima Baires', post['resumen'],
+        c, f'{DOMINIO}/blog/{post["slug"]}.html', ld, 'blog', pagina_id=f'blog/{post["slug"]}',
+        wsp_barra=f'Hola Clima Baires, leí la nota «{post["titulo"]}» y quiero un presupuesto.')
+
+
+def rss(posts):
+    ahora = datetime.now(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')
+    items = ''.join(f'''
+    <item>
+      <title>{p['titulo']}</title>
+      <link>{DOMINIO}/blog/{p['slug']}.html</link>
+      <guid isPermaLink="true">{DOMINIO}/blog/{p['slug']}.html</guid>
+      <description>{p['resumen']}</description>
+      <category>{p['categoria_label']}</category>
+      <pubDate>{datetime.combine(p['fecha'], datetime.min.time()).strftime('%a, %d %b %Y')} 09:00:00 +0000</pubDate>
+    </item>''' for p in posts)
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>Notas de Clima Baires</title>
+  <link>{DOMINIO}/blog/</link>
+  <description>Guías de aire acondicionado para el corredor norte de Buenos Aires.</description>
+  <language>es-AR</language>
+  <lastBuildDate>{ahora}</lastBuildDate>{items}
+</channel></rss>
+'''
+
+
 def pagina_privacidad():
     e = EMPRESA
     c = f'''
@@ -1140,6 +1336,8 @@ def escribir(ruta, contenido):
         f.write(contenido)
     print('  ✓', ruta)
 
+POSTS = _blog.cargar()
+
 paginas = {
     'index.html': pagina_index(),
     'servicios.html': pagina_servicios(),
@@ -1154,14 +1352,30 @@ paginas = {
 for z in ZONAS:
     paginas[f'zonas/{z[0]}.html'] = pagina_zona(*z)
 
+paginas['blog/index.html'] = pagina_blog(POSTS)
+for post in POSTS:
+    paginas[f'blog/{post["slug"]}.html'] = pagina_post(post, [o for o in POSTS if o is not post])
+
 for ruta, html in paginas.items():
     escribir(ruta, html)
 
+# Notas borradas o renombradas: si el .html viejo se queda, Google lo sigue
+# mostrando y el visitante aterriza en una página que ya no está en el índice.
+vivas = {os.path.basename(r) for r in paginas if r.startswith('blog/')}
+for archivo in sorted(os.listdir(os.path.join(RAIZ, 'blog'))):
+    if archivo.endswith('.html') and archivo not in vivas:
+        os.remove(os.path.join(RAIZ, 'blog', archivo))
+        print('  ✗', f'blog/{archivo}', '(nota que ya no existe)')
+
 # sitemap + robots
-urls = [f'{DOMINIO}/'] + [f'{DOMINIO}/{r}' for r in paginas if r not in ('index.html', '404.html')]
+urls = [f'{DOMINIO}/'] + [
+    f'{DOMINIO}/blog/' if r == 'blog/index.html' else f'{DOMINIO}/{r}'
+    for r in paginas if r not in ('index.html', '404.html')
+]
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sitemap += ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls)
 sitemap += '</urlset>\n'
 escribir('sitemap.xml', sitemap)
+escribir('blog/rss.xml', rss(POSTS))
 escribir('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {DOMINIO}/sitemap.xml\n')
 print(f'Listo: {len(paginas)} páginas + sitemap + robots.')

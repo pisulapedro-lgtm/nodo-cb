@@ -536,6 +536,50 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   font-size: .78rem; font-weight: 600; padding: 4px 12px; border-radius: 999px;
 }
 
+/* ---------- Blog ---------- */
+.post-grilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; }
+.post-tarjeta { margin: 0; }
+.post-tarjeta.oculta { display: none; }
+.post-tarjeta > a {
+  display: block; height: 100%; background: #fff; border: 1px solid var(--linea);
+  border-radius: 18px; padding: 26px 24px; box-shadow: 0 14px 40px rgba(0, 40, 90, .07);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.post-tarjeta > a:hover { transform: translateY(-3px); box-shadow: 0 22px 54px rgba(0, 40, 90, .11); border-color: #cfe0f2; }
+.post-cat {
+  display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--azul); background: var(--hielo);
+  border: 1px solid var(--linea); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px;
+}
+.post-tarjeta h3 { color: var(--navy); margin-bottom: 8px; font-size: 1.16rem; }
+.post-tarjeta p { color: var(--gris); font-size: .94rem; }
+.post-meta { display: block; margin-top: 14px; font-size: .8rem; color: var(--gris); }
+#post-vacio { color: var(--gris); margin-top: 26px; }
+
+/* cuerpo del post: medida de lectura cómoda */
+.post-cuerpo { max-width: 68ch; }
+.post-cuerpo h2 { margin: 42px 0 14px; font-size: clamp(1.4rem, 2.6vw, 1.85rem); }
+.post-cuerpo h3 { margin: 30px 0 10px; font-size: 1.12rem; }
+.post-cuerpo p { color: var(--tinta); margin-bottom: 18px; line-height: 1.75; }
+.post-cuerpo ul, .post-cuerpo ol { margin: 0 0 20px; }
+.post-cuerpo ol.lista-num { padding-left: 22px; color: var(--gris); }
+.post-cuerpo ol.lista-num li { margin-bottom: 10px; }
+.post-cuerpo blockquote {
+  border-left: 4px solid var(--celeste); background: var(--hielo);
+  padding: 18px 22px; border-radius: 0 14px 14px 0; margin: 0 0 22px;
+  color: var(--navy); font-weight: 500;
+}
+.post-cuerpo a { text-decoration: underline; text-underline-offset: 3px; }
+.post-cuerpo code { background: var(--hielo); border: 1px solid var(--linea); border-radius: 6px; padding: 1px 6px; font-size: .92em; }
+.post-cuerpo table.simple { margin: 22px 0 26px; }
+/* CTA intercalado: una nota larga son diez pantallas de móvil y el que se
+   convence en la mitad tiene que tener dónde tocar sin volver arriba */
+.cinta-en-grilla { grid-column: 1 / -1; }
+.cta-intercalado { margin: 38px 0 34px; }
+.cta-intercalado .cinta-cta { margin: 0; }
+.cta-intercalado + h2 { margin-top: 0; }
+.post-cuerpo a.boton { text-decoration: none; }
+
 /* ---------- Lightbox ---------- */
 .lightbox {
   position: fixed; inset: 0; z-index: 90; background: rgba(0, 22, 48, .92);
@@ -610,6 +654,7 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
   .tarjeta { padding: 24px 22px; border-radius: 16px; }
   .banda-cta { border-radius: 18px; }
   .franja-equipo { grid-template-columns: 1fr 1fr; }
+  .post-grilla { grid-template-columns: 1fr 1fr; }
   .obra-slide img { height: 280px; }
   .car-flecha { display: none; }
   .grilla.tres { grid-template-columns: 1fr; }
@@ -689,6 +734,7 @@ table.simple tr:nth-child(even) td { background: var(--hielo); }
 
 @media (max-width: 560px) {
   .franja-equipo { grid-template-columns: 1fr; }
+  .post-grilla { grid-template-columns: 1fr; }
   .antes-despues { grid-template-columns: 1fr; }
 }
 

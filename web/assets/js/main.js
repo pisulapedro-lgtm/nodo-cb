@@ -337,6 +337,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (next) next.addEventListener('click', () => carrusel.scrollBy({ left: paso(), behavior: 'smooth' }));
   }
 
+  // Blog: filtro por tema (mismo patrón que la galería, sin lightbox)
+  const grillaPosts = document.getElementById('post-grilla');
+  if (grillaPosts) {
+    const posts = Array.from(grillaPosts.querySelectorAll('.post-tarjeta'));
+    document.querySelectorAll('.filtro[data-grupo="cat"]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const v = b.dataset.valor;
+        let visibles = 0;
+        posts.forEach((p) => {
+          const ok = v === 'todas' || p.dataset.categoria === v;
+          p.classList.toggle('oculta', !ok);
+          if (ok) visibles++;
+        });
+        document.querySelectorAll('.filtro[data-grupo="cat"]')
+          .forEach((o) => o.setAttribute('aria-pressed', o === b ? 'true' : 'false'));
+        const vacio = document.getElementById('post-vacio');
+        if (vacio) vacio.hidden = visibles > 0;
+      });
+    });
+  }
+
   // Galería de obras: filtros por zona/tipo + lightbox accesible
   const galeria = document.getElementById('obras-grilla');
   if (galeria) {
