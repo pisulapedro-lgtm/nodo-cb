@@ -98,6 +98,7 @@ PROMESAS = [
     # las ayudas cambian en cada convocatoria: ni importes, ni porcentajes, ni plazos
     (r'(?:subvención|subvenciones|ayudas?|deducci\w+|bonificaci\w+)[^.]{0,80}?\d',
      'cifra dentro de una ayuda pública: cambia en cada convocatoria'),
+    (r'\baerotermia\b', 'la empresa no instala aerotermia: no se ofrece ni se menciona como alternativa'),
     (r'respondemos\s+(?:siempre|24|las 24)', 'disponibilidad fuera del horario real'),
     (r'\bel mejor\b|\blíder\w*\s+(?:del|en)\b|\bnúmero uno\b', 'superlativo no demostrable'),
     # magnitudes de mercado puestas para sonar concreto: nadie las midió
@@ -116,7 +117,7 @@ SOSPECHAS = [
     # aquí SÍ se puede hablar de obra local, pero si se nombra una obra concreta
     # tiene que existir y alguien de la empresa tiene que poder señalarla
     (r'(?:instalamos|montamos|sustituimos|cambiamos|estuvimos|hicimos)\s+(?:\w+\s+){0,4}'
-     r'(?:en|para)\s+(?:Málaga|Marbella|Torremolinos|Benalmádena|Fuengirola|Mijas|'
+     r'(?:en|para)\s+(?:Málaga|Marbella|Torremolinos|Benalmádena|Fuengirola|Mijas|Estepona|'
      r'La Carihuela|Nueva Andalucía|Calahonda|Los Boliches)',
      'obra local concreta: se puede contar si ocurrió de verdad y alguien puede señalarla; si no, describe el mecanismo sin la anécdota'),
 ]

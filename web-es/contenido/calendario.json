@@ -10,23 +10,16 @@
     "Para sumar temas: añádelos al final de la lista con estado 'pendiente'.",
     "Cuando la lista se queda sin pendientes, la rutina avisa en vez de inventarse un tema.",
     "",
-    "Son temas del mercado español, no la traducción de los argentinos: aquí pesan la",
-    "aerotermia, las ayudas a la bomba de calor, el certificado energético, el salitre de",
+    "Son temas del mercado español, no la traducción de los argentinos: aquí pesan las",
+    "ayudas a la eficiencia, el certificado energético, el salitre de",
     "la costa y la comunidad de propietarios."
   ],
   "temas": [
     {
-      "slug": "aerotermia-o-aire-acondicionado",
-      "titulo": "Aerotermia o aire acondicionado: cuál te conviene",
-      "categoria": "equipos",
-      "angulo": "La duda que aparece en toda reforma de la Costa del Sol. Explicar que las dos son bomba de calor pero resuelven cosas distintas: el aire acondicionado climatiza estancias con aire; la aerotermia produce agua caliente para suelo radiante, radiadores y agua caliente sanitaria, y puede dar frío por suelo o por fancoil. Cuándo compensa cada una según si la vivienda ya tiene caldera, si se está reformando en profundidad y si hay espacio para el equipo. Sin importes: explicar de qué depende el coste, no cuánto cuesta.",
-      "estado": "pendiente"
-    },
-    {
       "slug": "ayudas-para-la-bomba-de-calor",
-      "titulo": "Ayudas para instalar bomba de calor: cómo funcionan",
+      "titulo": "Ayudas para cambiar a un equipo eficiente",
       "categoria": "eficiencia",
-      "angulo": "Orientar sin dar cifras. Qué tipos de ayuda suelen existir para sustituir un sistema por una bomba de calor eficiente: programas de rehabilitación energética gestionados por la comunidad autónoma, deducciones en el IRPF por obras que mejoran la eficiencia y bonificaciones municipales en el IBI o en el ICIO. Explicar el mecanismo, no el importe: casi todas exigen certificado energético antes y después, factura a nombre del solicitante, equipo dentro de unos mínimos de eficiencia e instalador dado de alta para la actividad. Qué documentación pedirle al instalador para no quedarte fuera por un papel. PROHIBIDO poner porcentajes, importes, plazos o nombres de convocatoria: cambian en cada edición. Remitir a la sede electrónica del organismo, sin enlazar.",
+      "angulo": "Orientar sin dar cifras. Qué tipos de ayuda suelen existir para sustituir un equipo antiguo por uno eficiente: programas de rehabilitación energética gestionados por la comunidad autónoma, deducciones en el IRPF por obras que mejoran la eficiencia y bonificaciones municipales en el IBI o en el ICIO. Explicar el mecanismo, no el importe: casi todas exigen certificado energético antes y después, factura a nombre del solicitante, equipo dentro de unos mínimos de eficiencia e instalador dado de alta para la actividad. Qué documentación pedirle al instalador para no quedarte fuera por un papel. PROHIBIDO poner porcentajes, importes, plazos o nombres de convocatoria: cambian en cada edición. Remitir a la sede electrónica del organismo, sin enlazar. No hablar de aerotermia: no es un servicio que prestemos.",
       "estado": "pendiente"
     },
     {

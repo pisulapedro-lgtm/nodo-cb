@@ -20,7 +20,7 @@ son dos negocios distintos en dos países distintos:
 | Desistimiento | 10 días + botón de arrepentimiento | **14 días naturales**, sin botón de arrepentimiento |
 | Cookies | Sin banner | **Banner de consentimiento previo**, obligatorio |
 | Aviso legal | No existe | **Página propia**, obligatoria (LSSI-CE art. 10) |
-| Zonas | 6 del corredor norte del AMBA | 6 con landing + **toda la Costa del Sol** |
+| Zonas | 6 del corredor norte del AMBA | 7 con landing + **toda la Costa del Sol** |
 | Hemisferio | Sur: suma potencia el **norte** | Norte: suma potencia el **sur** |
 
 Y una regla que va justo al revés que allí: **este sitio no menciona Argentina ni
@@ -109,22 +109,32 @@ texto en `tools/generar.py` antes de publicar.
 | `bloque_que_incluye()` — servicios | Las 10 líneas de «entra en el precio» (vacío con bomba, estanqueidad con nitrógeno, desagüe probado con agua, puesta en marcha medida, garantía por escrito) |
 | ídem | Las 7 de «se cobra aparte»: que ninguna se cobre sin figurar antes en el presupuesto |
 | ídem | Ante un extra durante la obra: se para, se enseña y se sigue **sólo con aprobación por WhatsApp** |
-| `servicios.html` | Marcas listadas: Daikin, Mitsubishi Electric, LG, Samsung, Midea — confirmar que son las que efectivamente se sirven |
+| `servicios.html` | Marcas listadas: Daikin, Mitsubishi Electric, LG, Samsung, Midea y Johnson — confirmar que son las que efectivamente se sirven |
 | `CB.horario` | De lunes a sábado, de 8:00 a 19:00. De ahí sale la promesa de «respondemos en minutos» del asistente |
-| `COBERTURA` y `OTRAS_ZONAS` | El sitio afirma dar servicio en **toda la Costa del Sol, de Manilva a Nerja**, y nombra diez municipios más allá de los seis con landing. Confirmar que se va a todos |
+| `COBERTURA` y `OTRAS_ZONAS` | El sitio afirma dar servicio en **toda la Costa del Sol, de Manilva a Nerja**, y nombra once municipios más allá de los siete con landing. Confirmar que se va a todos |
 
 > **Marcas**: se han quitado BGH y Surrey, que son argentinas y aquí no pintan
-> nada. En una de las fotos de obra se ve un equipo **Johnson**; si es una marca
-> con la que se trabaja habitualmente, conviene añadirla a `MARCAS` en
-> `generar.py` con su logo en `assets/img/marcas/`.
+> nada, y se ha añadido **Johnson**, que aparece en una de las fotos de obra. Su
+> logotipo (`assets/img/marcas/johnson.png`) se ha bajado del sitio oficial de la
+> marca en España, que hoy lleva EAS Electric: viene a 174×36 con transparencia y
+> se ha reescalado a los 80 px de alto de los demás endureciendo el canal alfa,
+> porque es una marca plana de un solo color. Si el distribuidor os pasa el
+> original en vectorial, sustituidlo y ganará un punto de nitidez.
+
+> **Aerotermia**: el sitio **no la ofrece**, por decisión del titular. Se ha
+> quitado de la tarjeta de servicios, de la FAQ de Marbella, del calendario del
+> blog y de los datos estructurados, y `revisar-nota.py` bloquea la palabra para
+> que la rutina automática no la reintroduzca. Lo que sí se dice es **bomba de
+> calor**, que es el mismo equipo de aire dando calor en invierno.
 
 ## Cobertura: seis landings, una comarca entera
 
-Las seis páginas de zona existen por SEO local y por Google Ads: son donde más
-obra hay y donde tiene sentido gastar presupuesto de campaña. **No son el límite
-del servicio.** El sitio dice en todas partes que se trabaja en toda la Costa del
-Sol, de Manilva a Nerja, más el interior cercano, y nombra los municipios sin
-landing propia.
+Las siete páginas de zona son las grandes ciudades de la costa entre Málaga y
+Estepona: Málaga capital, Torremolinos, Benalmádena, Fuengirola, Mijas, Marbella
+y Estepona. Existen por SEO local y por Google Ads, que es donde está el volumen
+y donde tiene sentido gastar campaña. **No son el límite del servicio.** El sitio
+dice en todas partes que se trabaja en toda la Costa del Sol, de Manilva a Nerja,
+más el interior cercano, y nombra los municipios sin landing propia.
 
 Dos constantes en `tools/generar.py` lo gobiernan todo:
 
@@ -370,13 +380,13 @@ las tiene que confirmar quien conoce la operación.
 
 ## Preguntas frecuentes de las páginas de zona
 
-Las seis páginas de zona son las landings de Google Ads, y cada una tiene sus
+Las siete páginas de zona son las landings de Google Ads, y cada una tiene sus
 propias preguntas en `contenido/faq-zonas.json` — cuatro por zona, sobre lo que
 realmente cambia allí: comunidad de propietarios y centro protegido en Málaga
-capital, normas de urbanización y segunda residencia en Marbella, salitre y
-alquiler turístico en Torremolinos, patios interiores y ruido en Benalmádena,
-ITE y cuadro eléctrico antiguo en Fuengirola, tendidos largos y obra nueva en
-Mijas.
+capital, patios interiores y ruido en Benalmádena, ITE y cuadro eléctrico antiguo
+en Fuengirola, salitre y alquiler turístico en Torremolinos, tendidos largos y
+obra nueva en Mijas, normas de urbanización y segunda residencia en Marbella, y
+preinstalación de promotora y comunidad recién constituida en Estepona.
 
 De ese archivo salen dos cosas a la vez: el acordeón visible y el bloque
 `FAQPage` de datos estructurados. Editas el JSON, ejecutas `npm run es:generar` y
@@ -394,9 +404,9 @@ su turno.
 
 `contenido/blog/` está **vacío a propósito**: las entradas argentinas hablaban de
 countries, consorcios y frigorías por ambiente, y no se traducen, se reescriben.
-El calendario editorial ya tiene doce temas del mercado español (aerotermia,
-ayudas a la bomba de calor, certificado energético, salitre, comunidad de
-propietarios, ITE, sustitución de equipos antiguos…).
+El calendario editorial ya tiene once temas del mercado español (ayudas a la
+eficiencia, certificado energético, salitre, comunidad de propietarios, ITE,
+sustitución de equipos antiguos…).
 
 Publicar una entrada a mano:
 
@@ -504,7 +514,7 @@ web-es/
 ├── cookies.html                # política de cookies
 ├── terminos.html               # TRLGDCU (desistimiento 14 días)
 ├── 404.html
-├── zonas/{malaga-capital,marbella,torremolinos,benalmadena,fuengirola,mijas}.html
+├── zonas/{malaga-capital,torremolinos,benalmadena,fuengirola,mijas,marbella,estepona}.html
 ├── blog/                       # generado: índice, una página por entrada y rss.xml
 ├── contenido/
 │   ├── blog/NN-slug.md         # las entradas, en Markdown (esto es lo que se edita)

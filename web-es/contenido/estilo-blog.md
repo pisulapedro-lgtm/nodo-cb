@@ -7,9 +7,9 @@ cómo escribe el blog, edita **este archivo** (no la rutina).
 ## Quién escribe
 
 Clima Baires: venta, instalación y mantenimiento de aire acondicionado en toda la
-Costa del Sol, de Manilva a Nerja. Las seis zonas con página propia —Málaga
-capital, Marbella, Torremolinos, Benalmádena, Fuengirola y Mijas— son donde más
-obra hay, pero **no son el límite del servicio**: si una entrada da a entender que
+Costa del Sol, de Manilva a Nerja. Las siete zonas con página propia —Málaga
+capital, Torremolinos, Benalmádena, Fuengirola, Mijas, Marbella y Estepona— son
+donde más obra hay, pero **no son el límite del servicio**: si una entrada da a entender que
 fuera de ellas no se va, está mal. Escribe un técnico que explica, no un comercial
 que promete.
 
@@ -53,7 +53,10 @@ queda igual de útil y deja de ser falso.
    19:00). Lo que sí se puede decir, porque es cómo se trabaja: que el gas
    refrigerante lo manipula personal con carné de gases fluorados y que hay
    seguro de responsabilidad civil en vigor.
-6. **No copiar de ningún sitio.** Texto original.
+6. **No ofrecer lo que no se hace.** La empresa **no instala aerotermia**: no se
+   menciona como servicio, ni como alternativa, ni de pasada. Sí se puede hablar
+   de bomba de calor, que es el propio equipo de aire dando calor en invierno.
+7. **No copiar de ningún sitio.** Texto original.
 
 ## Voz
 
@@ -75,7 +78,7 @@ queda igual de útil y deja de ser falso.
 - Vocabulario de aquí que conviene usar bien: *comunidad de propietarios*,
   *administrador de fincas*, *junta*, *licencia de obra menor*, *declaración
   responsable*, *ITE*, *cuadro eléctrico*, *magnetotérmico*, *roza*, *silentblock*,
-  *unidad exterior*, *suelo-techo*, *aerotermia*, *gases fluorados*.
+  *unidad exterior*, *suelo-techo*, *bomba de calor*, *gases fluorados*.
 - Frases cortas. Una idea por párrafo. Se lee en el móvil, de pie.
 - Segunda persona, directo al lector: «si tu equipo hace este ruido…».
 - Sin signos de admiración, sin emojis, sin «¡descúbrelo ya!». Si el texto suena
@@ -104,9 +107,9 @@ Dos o tres por entrada, con texto descriptivo, en rutas relativas desde
 - `../servicios.html` — servicios
 - `../obras.html` — obras
 - `../contacto.html` — contacto
-- `../zonas/malaga-capital.html`, `../zonas/marbella.html`,
-  `../zonas/torremolinos.html`, `../zonas/benalmadena.html`,
-  `../zonas/fuengirola.html`, `../zonas/mijas.html`
+- `../zonas/malaga-capital.html`, `../zonas/torremolinos.html`,
+  `../zonas/benalmadena.html`, `../zonas/fuengirola.html`,
+  `../zonas/mijas.html`, `../zonas/marbella.html`, `../zonas/estepona.html`
 
 Sin enlaces externos: no controlamos qué pasa al otro lado.
 

@@ -65,9 +65,12 @@ ANIOS_EXPERIENCIA = 'PENDIENTE — años de experiencia'
 # se va. De aquí salen la franja de confianza, la sección de zonas, el pie y las
 # áreas de servicio de los datos estructurados.
 COBERTURA = 'toda la Costa del Sol, de Manilva a Nerja'
+# Las siete con página propia son las grandes ciudades de la costa entre Málaga y
+# Estepona: es donde está el volumen y donde tiene sentido gastar campaña. Éstas
+# son las demás, que se sirven igual pero no justifican una landing.
 OTRAS_ZONAS = [
-    'Estepona', 'Benahavís', 'Ojén', 'Alhaurín de la Torre', 'Cártama', 'Coín',
-    'Rincón de la Victoria', 'Vélez-Málaga', 'Torrox', 'Nerja',
+    'Manilva', 'Casares', 'Benahavís', 'Ojén', 'Alhaurín de la Torre', 'Cártama',
+    'Coín', 'Rincón de la Victoria', 'Vélez-Málaga', 'Torrox', 'Nerja',
 ]
 
 # Metros de tubería que entran en el precio cerrado (bloque «qué entra y qué se
@@ -226,10 +229,14 @@ ZONAS = [
      'Los Boliches, Torreblanca, el centro: mucho bloque de los años setenta y ochenta con la instalación eléctrica justa y equipos que ya han cumplido su ciclo. Sustituir bien vale más que sustituir rápido.',
      ['Centro', 'Los Boliches', 'Torreblanca', 'Carvajal', 'El Boquetillo', 'Miramar'],
      'Antes de tocar nada miramos el cuadro eléctrico: en estos edificios es habitual que no haya circuito propio para el aire, con su magnetotérmico y su diferencial. Si hay que adecuarlo, se dice en la visita y va al presupuesto. Cuando la comunidad tiene la ITE en marcha, coordinamos para no montar sobre una fachada que se va a intervenir.'),
+    ('estepona', 'Estepona', 'Costa del Sol occidental',
+     'Del casco antiguo encalado a la Nueva Milla de Oro: mucha obra nueva pegada al mar, comunidades recién constituidas y un centro donde el ayuntamiento cuida la imagen de la calle hasta el último detalle.',
+     ['Casco antiguo', 'Puerto deportivo', 'Nueva Milla de Oro', 'Cancelada', 'El Padrón', 'Selwo', 'Costalita'],
+     'Estepona ha crecido a base de obra nueva junto a la playa, y eso cambia dos cosas. Muchas viviendas se entregan con preinstalación hecha por la promotora, que conviene revisar antes de comprar el equipo: no siempre está dimensionada para la potencia que vas a necesitar. Y casi todas están en comunidades con normas de fachada, a menudo recién estrenadas. Pedimos los planos a la promotora o a la administración antes de presupuestar. En el casco antiguo, donde las calles encaladas son parte del atractivo, buscamos siempre una salida que no se vea desde la vía pública.'),
     ('mijas', 'Mijas', 'Costa del Sol occidental',
      'Mijas Pueblo, Las Lagunas, La Cala, Calahonda y Riviera del Sol: villas y adosados repartidos por urbanizaciones con mucha parcela, donde el tendido entre las dos unidades casi nunca es corto.',
      ['Mijas Pueblo', 'Las Lagunas', 'La Cala de Mijas', 'Riviera del Sol', 'Calahonda', 'Mijas Golf'],
-     'En vivienda unifamiliar con parcela el recorrido de tubería manda sobre el presupuesto, así que lo medimos en la visita y no por teléfono. Acompañamos obra nueva y reforma desde la preinstalación —tubería, desagüe y línea eléctrica antes del enlucido— hasta la puesta en marcha, y estudiamos aerotermia cuando la vivienda también necesita calefacción y agua caliente.'),
+     'En vivienda unifamiliar con parcela el recorrido de tubería manda sobre el presupuesto, así que lo medimos en la visita y no por teléfono. Acompañamos obra nueva y reforma desde la preinstalación —tubería, desagüe y línea eléctrica antes del enlucido— hasta la puesta en marcha. Y como muchas de estas casas se usan también en invierno, dimensionamos mirando el rendimiento en modo calor y no sólo el frío.'),
 ]
 
 SVC_ICONS = {
@@ -426,7 +433,7 @@ def jsonld_local(nombre, url, zona=None, con_rating=False):
         'priceRange': '$$',
         'areaServed': [{'@type': 'Place', 'name': a} for a in areas],
         'knowsAbout': ['aire acondicionado', 'instalación de split', 'mantenimiento de climatización',
-                       'aerotermia', 'climatización residencial'],
+                       'bomba de calor', 'climatización residencial'],
         'openingHours': 'Mo-Sa 08:00-19:00',
     }
     # Datos que sólo entran cuando son reales: un marcado que no coincide con lo
@@ -593,7 +600,7 @@ def pagina_index():
 # promesa que se rompe.
 MARCAS = [
     ('daikin', 'Daikin', 142), ('mitsubishi', 'Mitsubishi Electric', 102), ('lg', 'LG', 68),
-    ('samsung', 'Samsung', 90), ('midea', 'Midea', 78),
+    ('samsung', 'Samsung', 90), ('midea', 'Midea', 78), ('johnson', 'Johnson', 144),
 ]
 
 WSP_SVG_CTA = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95'
@@ -812,7 +819,7 @@ def pagina_servicios():
     <h2 class="centrado" style="margin-bottom:30px">Qué incluye cada servicio</h2>
   </div>
   <div class="contenedor grilla tres">
-    {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'La potencia y la marca adecuadas para cada estancia. Precio cerrado en una sola cifra.', ['Split inverter, multisplit, suelo-techo, cassette y conductos', 'Aerotermia cuando la vivienda también necesita calefacción y agua caliente', 'Marcas: Daikin, Mitsubishi Electric, LG, Samsung, Midea'])}
+    {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'La potencia y la marca adecuadas para cada estancia. Precio cerrado en una sola cifra.', ['Split inverter, multisplit, suelo-techo, cassette y conductos', 'Bomba de calor: el mismo equipo enfría en verano y calienta en invierno', 'Marcas: Daikin, Mitsubishi Electric, LG, Samsung, Midea y Johnson'])}
     {tarjeta_servicio('instalacion', 'instalacion', 'Instalación sin atajos', 'La instalación define la vida útil del equipo. Lista de comprobación de calidad en cada obra.', ['Vacío de la tubería y prueba de estanqueidad, siempre', 'Gas manipulado por personal con carné de gases fluorados', 'Trabajo en altura con medios y equipos de protección homologados', 'Coordinación con la comunidad de propietarios y con la urbanización'])}
     {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'Un equipo limpio enfría más y gasta menos. Te avisamos nosotros cuando toca.', ['Limpieza a fondo, control de gas y de consumo', 'Reparación multimarca con recambios originales', 'Prioridad de agenda para clientes con plan de mantenimiento'])}
   </div>
@@ -847,7 +854,7 @@ def pagina_servicios():
 </section>
 '''
     return layout(0, 'Servicios de climatización | Clima Baires',
-        'Venta de split, multisplit, conductos y aerotermia, instalación cuidada y mantenimiento anual en toda la Costa del Sol, de Manilva a Nerja.',
+        'Venta de split, multisplit, cassette y conductos, instalación cuidada y mantenimiento anual en toda la Costa del Sol, de Manilva a Nerja.',
         c, f'{DOMINIO}/servicios.html', [
             jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'),
             jsonld_migas([('Inicio', '/'), ('Servicios', '/servicios.html')]),

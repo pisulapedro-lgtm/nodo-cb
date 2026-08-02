@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paso2 = () => {
       burbuja('¿Dónde vives?');
       cbTrack('chatbot_paso', { paso: 1, pagina: cbContexto(chat).pagina });
-      const zonas = ['Málaga capital', 'Marbella', 'Torremolinos', 'Benalmádena', 'Fuengirola', 'Mijas', 'Otro municipio de la costa'];
+      const zonas = ['Málaga capital', 'Torremolinos', 'Benalmádena', 'Fuengirola', 'Mijas', 'Marbella', 'Estepona', 'Otro municipio de la costa'];
       const propia = document.body.dataset.zona;
       if (propia && zonas.includes(propia)) zonas.splice(zonas.indexOf(propia), 1) && zonas.unshift(propia);
       chips(zonas, (z) => { r.zona = z; paso3(); });

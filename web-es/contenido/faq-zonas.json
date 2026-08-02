@@ -49,8 +49,8 @@
         "Sí, es habitual. Se coordina con quien tenga las llaves —persona de confianza, conserjería o administración de fincas— y dejamos por escrito qué se ha hecho, con fotos del antes y el después. La víspera te enviamos el nombre, la foto y el documento del técnico y la matrícula de la furgoneta, para que puedas autorizar la entrada sin tener que llamar a nadie."
       ],
       [
-        "Estoy reformando la villa. ¿Aire acondicionado o aerotermia?",
-        "Depende de qué necesites resolver. Si sólo buscas frío en verano y algo de calor puntual, un sistema por conductos o varios equipos lo cubren bien. Si en la reforma también entran la calefacción y el agua caliente sanitaria, la aerotermia se estudia en serio, porque una sola máquina hace las tres cosas y se integra con suelo radiante. La decisión se toma con el proyecto delante, y no cuesta lo mismo: te damos las dos opciones presupuestadas."
+        "Estoy reformando la villa. ¿Conductos o equipos independientes?",
+        "Depende de si la reforma toca los techos. Los conductos van ocultos en falso techo y sólo se ven las rejillas: una máquina climatiza toda una planta y la casa queda limpia, pero hay que tener altura suficiente y decidirlo antes de cerrar el techo. Los equipos independientes se ponen en cualquier momento, cuestan menos y permiten encender sólo la estancia que usas, a cambio de una unidad interior visible en cada una. Si la reforma ya prevé falso techo, los conductos casi siempre compensan; si no, no merece la pena abrir la casa entera para conseguirlos."
       ]
     ],
     "torremolinos": [
@@ -123,6 +123,24 @@
       [
         "¿Se puede climatizar el porche o la terraza cubierta?",
         "Se puede, pero la cuenta es otra. En un espacio semiabierto el aire frío se escapa, así que un equipo dimensionado como para un salón cerrado del mismo metraje se queda corto. Ahí se va a más potencia, a un suelo-techo o a un sistema pensado para exterior, y conviene definir de entrada si el porche se va a cerrar con cristaleras o queda abierto: la diferencia cambia el equipo entero."
+      ]
+    ],
+    "estepona": [
+      [
+        "Mi piso viene con preinstalación de la promotora. ¿Qué falta?",
+        "Preinstalación quiere decir que dentro de la pared ya están la tubería, el desagüe y la línea eléctrica, pero no hay equipos. Antes de comprar conviene ver a qué potencia quedó dimensionada esa tubería y si el punto exterior previsto sirve para el equipo que quieres: no siempre coinciden, porque la promotora dimensiona para un estándar y tu salón puede pedir más. Pídele los planos a la promotora o a la administración y mándanoslos: con eso presupuestamos equipo más montaje para que quede funcionando el día de la mudanza."
+      ],
+      [
+        "Vivo en el casco antiguo. ¿Puedo poner la máquina en la fachada?",
+        "A la calle, no. Las calles encaladas del centro son parte de lo que hace atractivo a Estepona y el Ayuntamiento cuida esa imagen: las máquinas no pueden quedar a la vista desde la vía pública, y tocar fachada suele exigir licencia de obra menor o declaración responsable. La salida es el patio interior, la cubierta o un hueco con celosía. Se comprueba antes de presupuestar, no el día del montaje."
+      ],
+      [
+        "La comunidad acaba de constituirse. ¿A quién pido permiso?",
+        "En obra nueva es la duda de siempre. Mientras la promotora conserve una parte de las viviendas suele seguir marcando el criterio, y en cuanto hay administrador de fincas el interlocutor pasa a ser él. Lo práctico es pedir a la administración las normas de régimen interior y el acta de constitución: ahí suele estar dicho dónde admite la comunidad la unidad exterior y con qué acabado. Nosotros preparamos la ficha técnica y el seguro que os van a pedir."
+      ],
+      [
+        "Tengo cubierta plana. ¿Puedo subir la unidad exterior al tejado?",
+        "Se puede, y en vivienda de una o dos plantas suele ser la mejor solución: la máquina queda fuera de la vista y respira de sobra. Hay tres cosas que mirar. Que el recorrido de tubería y el desnivel entren en lo que admite el equipo. Que vaya sobre bancada con soportes antivibratorios, porque una cubierta transmite la vibración a toda la casa mucho mejor que una pared. Y que quede un acceso seguro para el mantenimiento: una máquina a la que no se puede subir sin riesgo es una máquina que nadie limpia."
       ]
     ]
   }
