@@ -26,9 +26,9 @@ export function cuadre(datos) {
 }
 
 /**
- * Embudo mes a mes: de pesos de pauta a obras cerradas.
+ * Embudo mes a mes: de pesos de pauta a instalaciones cerradas.
  *
- * La cadena de Search es clic → conversación → obra; la de Meta arranca en el lead
+ * La cadena de Search es clic → conversación → instalación; la de Meta arranca en el lead
  * (el formulario nativo se paga por lead, no por clic). Lo que la pauta no alcanza a
  * cubrir tiene que salir de los canales propios, y ese hueco es el dato de gestión:
  * dice cuánto depende el plan del SEO, del perfil de Google y de las reseñas.
@@ -43,17 +43,17 @@ export function embudo(datos, cpcMult = 1) {
     const cpc = mk.cpc_ars[i] * cpcMult;
     const clics = g[i] / cpc;
     const leadsGoogle = clics * e.conv_clic_lead;
-    const obrasGoogle = leadsGoogle * e.conv_lead_obra_google;
+    const instalacionesGoogle = leadsGoogle * e.conv_lead_instalacion_google;
 
     const leadsMeta = m[i] / (e.cpl_meta_ars * cpcMult);
-    const obrasMeta = leadsMeta * e.conv_lead_obra_meta;
+    const instalacionesMeta = leadsMeta * e.conv_lead_instalacion_meta;
 
-    const plan = fin.obras_mes[i];
-    const pagas = obrasGoogle + obrasMeta;
+    const plan = fin.instalaciones_mes[i];
+    const pagas = instalacionesGoogle + instalacionesMeta;
     meses.push({
       i, etiqueta: etiquetaMes(fin, i), cpc,
-      inversionGoogle: g[i], clics, leadsGoogle, obrasGoogle,
-      inversionMeta: m[i], leadsMeta, obrasMeta,
+      inversionGoogle: g[i], clics, leadsGoogle, instalacionesGoogle,
+      inversionMeta: m[i], leadsMeta, instalacionesMeta,
       leads: leadsGoogle + leadsMeta,
       plan, pagas, propias: plan - pagas,
       cubiertoPct: plan > 0 ? pagas / plan : 0,
@@ -67,14 +67,14 @@ export function embudo(datos, cpcMult = 1) {
     inversion,
     inversionTotal: fin.marketing_ars.slice(0, 12).reduce((s, x) => s + x, 0),
     leads: sum((x) => x.leads),
-    obrasPagas: sum((x) => x.pagas),
-    obrasPlan: sum((x) => x.plan),
-    obrasPropias: sum((x) => x.plan - x.pagas),
+    instalacionesPagas: sum((x) => x.pagas),
+    instalacionesPlan: sum((x) => x.plan),
+    instalacionesPropias: sum((x) => x.plan - x.pagas),
     cpl: inversion / sum((x) => x.leads),
     cac: inversion / sum((x) => x.pagas),
     cacSobrePlan: fin.marketing_ars.slice(0, 12).reduce((s, x) => s + x, 0) / sum((x) => x.plan),
   };
-  totales.cubiertoPct = totales.obrasPagas / totales.obrasPlan;
+  totales.cubiertoPct = totales.instalacionesPagas / totales.instalacionesPlan;
 
   return { meses, totales };
 }
@@ -86,15 +86,15 @@ export function porCanal(datos) {
   const sum = (f) => a1.reduce((s, x) => s + f(x), 0);
   const e = datos.marketing.embudo;
 
-  const g = { nombre: 'Google Search', inversion: sum((x) => x.inversionGoogle), leads: sum((x) => x.leadsGoogle), obras: sum((x) => x.obrasGoogle) };
-  const m = { nombre: 'Meta (IG y FB)', inversion: sum((x) => x.inversionMeta), leads: sum((x) => x.leadsMeta), obras: sum((x) => x.obrasMeta) };
+  const g = { nombre: 'Google Search', inversion: sum((x) => x.inversionGoogle), leads: sum((x) => x.leadsGoogle), instalaciones: sum((x) => x.instalacionesGoogle) };
+  const m = { nombre: 'Meta (IG y FB)', inversion: sum((x) => x.inversionMeta), leads: sum((x) => x.leadsMeta), instalaciones: sum((x) => x.instalacionesMeta) };
   const c = datos.marketing.canales.find((x) => x.clave === 'countries');
-  const co = { nombre: 'Medios de countries', inversion: c.ars.slice(0, 12).reduce((s, x) => s + x, 0), leads: null, obras: null };
+  const co = { nombre: 'Medios de countries', inversion: c.ars.slice(0, 12).reduce((s, x) => s + x, 0), leads: null, instalaciones: null };
 
   for (const f of [g, m]) {
     f.cpl = f.inversion / f.leads;
-    f.cac = f.inversion / f.obras;
-    f.convLeadObra = f.obras / f.leads;
+    f.cac = f.inversion / f.instalaciones;
+    f.convLeadInstalacion = f.instalaciones / f.leads;
   }
   return [g, m, co];
 }
@@ -107,9 +107,9 @@ export function sensibilidad(datos) {
       mult,
       cpl: totales.cpl,
       cac: totales.cac,
-      obrasPagas: totales.obrasPagas,
+      instalacionesPagas: totales.instalacionesPagas,
       cubiertoPct: totales.cubiertoPct,
-      obrasPropias: totales.obrasPropias,
+      instalacionesPropias: totales.instalacionesPropias,
     };
   });
 }

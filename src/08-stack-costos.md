@@ -20,7 +20,7 @@ Criterio: replicar la experiencia Holded + Google Workspace de Málaga con herra
 
 ## 8.3 Técnicos en campo (field service)
 
-Fase 1 (lean, $ 0): **Google Calendar** (agenda de obras compartida) + **Google Forms** (checklist de instalación con fotos y conformidad del cliente desde el celular del instalador) + **Sheets** (tablero de órdenes de trabajo). Primer upgrade cuando haya 2+ técnicos full-time en calle: **Kizeo Forms** (€ 15/usuario/mes, español, offline) manteniendo la agenda en Calendar. Las FSM completas (ServiceM8 US$ 29, Jobber US$ 29+) quedan documentadas pero no se pagan todavía.
+Fase 1 (lean, $ 0): **Google Calendar** (agenda de instalaciones compartida) + **Google Forms** (checklist de instalación con fotos y conformidad del cliente desde el celular del instalador) + **Sheets** (tablero de órdenes de trabajo). Primer upgrade cuando haya 2+ técnicos full-time en calle: **Kizeo Forms** (€ 15/usuario/mes, español, offline) manteniendo la agenda en Calendar. Las FSM completas (ServiceM8 US$ 29, Jobber US$ 29+) quedan documentadas pero no se pagan todavía.
 
 ## 8.4 Comunicación y cobros digitales
 
@@ -31,4 +31,4 @@ Fase 1 (lean, $ 0): **Google Calendar** (agenda de obras compartida) + **Google 
 
 ## 8.5 Costo mensual total del stack
 
-El total del cuadro 8.1 (≈ **$ 164.000/mes ≈ € 93**) es la versión mínima; sube a ≈ $ 245.000 (€ 139) al sumar Kizeo con la primera dupla de técnicos estable. A modo de referencia: un solo punto de margen recuperado en una obra premium paga tres meses de stack completo.
+El total del cuadro 8.1 (≈ **$ 164.000/mes ≈ € 93**) es la versión mínima; sube a ≈ $ 245.000 (€ 139) al sumar Kizeo con la primera dupla de técnicos estable. A modo de referencia: un solo punto de margen recuperado en una instalación premium paga tres meses de stack completo.

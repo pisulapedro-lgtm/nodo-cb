@@ -29,21 +29,21 @@ export function puestaEnMarcha(datos) {
   return { eur, ars: eur * datos.cambio.eur_ars };
 }
 
-/** Desglose de una obra por categoría del mix + el promedio ponderado (blended). */
+/** Desglose de una instalación por categoría del mix + el promedio ponderado (blended). */
 export function unitEconomics(datos) {
   const fin = datos.financiero;
-  const c = fin.costos_obra;
+  const c = fin.costos_instalacion;
 
   const filas = fin.mix.map((m) => {
     const costoEquipo = m.ticket_ars * m.costo_equipo_pct;
-    const instalacion = m.instalacion_ars;
+    const montaje = m.montaje_ars;
     const materiales = m.materiales_ars;
-    const margenBruto = m.ticket_ars - costoEquipo - instalacion - materiales;
+    const margenBruto = m.ticket_ars - costoEquipo - montaje - materiales;
     const comision = m.ticket_ars * c.comision_cobro_pct;
     const iibb = m.ticket_ars * c.iibb_pct;
     const contribucion = margenBruto - comision - iibb;
     return {
-      ...m, costoEquipo, instalacion, materiales, margenBruto, comision, iibb, contribucion,
+      ...m, costoEquipo, montaje, materiales, margenBruto, comision, iibb, contribucion,
       margenBrutoPct: margenBruto / m.ticket_ars,
       contribucionPct: contribucion / m.ticket_ars,
     };
@@ -51,11 +51,11 @@ export function unitEconomics(datos) {
 
   const pond = (campo) => filas.reduce((s, f) => s + f[campo] * f.peso, 0);
   const blended = {
-    tipo: 'Promedio ponderado (obra tipo)',
+    tipo: 'Promedio ponderado (instalación tipo)',
     peso: filas.reduce((s, f) => s + f.peso, 0),
     ticket_ars: pond('ticket_ars'),
     costoEquipo: pond('costoEquipo'),
-    instalacion: pond('instalacion'),
+    montaje: pond('montaje'),
     materiales: pond('materiales'),
     margenBruto: pond('margenBruto'),
     comision: pond('comision'),
@@ -70,33 +70,33 @@ export function unitEconomics(datos) {
 }
 
 /** Estado de resultados mes a mes (24 meses). */
-export function proyeccion24m(datos, escenario = { obras_mult: 1, ticket_mult: 1 }) {
+export function proyeccion24m(datos, escenario = { instalaciones_mult: 1, ticket_mult: 1 }) {
   const fin = datos.financiero;
   const { blended } = unitEconomics(datos);
   const fijosMes = fin.fijos_mensuales_ars.reduce((s, f) => s + f.ars, 0);
 
   const meses = [];
   for (let i = 0; i < fin.meses; i++) {
-    const obras = fin.obras_mes[i] * escenario.obras_mult;
+    const instalaciones = fin.instalaciones_mes[i] * escenario.instalaciones_mult;
     const ticket = blended.ticket_ars * escenario.ticket_mult;
-    const ingresos = obras * ticket;
+    const ingresos = instalaciones * ticket;
 
     // Los costos variables escalan con el ticket salvo instalación y materiales,
-    // que son costos físicos por obra y no se mueven con el precio de venta.
-    const costoEquipo = obras * blended.costoEquipo * escenario.ticket_mult;
-    const instalacion = obras * blended.instalacion;
-    const materiales = obras * blended.materiales;
-    const margenBruto = ingresos - costoEquipo - instalacion - materiales;
+    // que son costos físicos por instalación y no se mueven con el precio de venta.
+    const costoEquipo = instalaciones * blended.costoEquipo * escenario.ticket_mult;
+    const montaje = instalaciones * blended.montaje;
+    const materiales = instalaciones * blended.materiales;
+    const margenBruto = ingresos - costoEquipo - montaje - materiales;
 
-    const comision = ingresos * fin.costos_obra.comision_cobro_pct;
-    const iibb = ingresos * fin.costos_obra.iibb_pct;
+    const comision = ingresos * fin.costos_instalacion.comision_cobro_pct;
+    const iibb = ingresos * fin.costos_instalacion.iibb_pct;
     const marketing = fin.marketing_ars[i];
     const empleado = i >= fin.empleado.mes_alta_indice ? fin.empleado.costo_empleador_ars : 0;
 
     const resultadoOperativo = margenBruto - comision - iibb - fijosMes - marketing - empleado;
     meses.push({
-      i, etiqueta: etiquetaMes(fin, i), obras, ingresos,
-      costoEquipo, instalacion, materiales, margenBruto,
+      i, etiqueta: etiquetaMes(fin, i), instalaciones, ingresos,
+      costoEquipo, montaje, materiales, margenBruto,
       comision, iibb, fijos: fijosMes, marketing, empleado, resultadoOperativo,
     });
   }
@@ -109,7 +109,7 @@ export function proyeccion24m(datos, escenario = { obras_mult: 1, ticket_mult: 1
     return {
       anio: a + 1,
       ingresos: tramo.reduce((s, m) => s + m.ingresos, 0),
-      obras: tramo.reduce((s, m) => s + m.obras, 0),
+      instalaciones: tramo.reduce((s, m) => s + m.instalaciones, 0),
       margenBruto: tramo.reduce((s, m) => s + m.margenBruto, 0),
       fijos: tramo.reduce((s, m) => s + m.fijos, 0),
       marketing: tramo.reduce((s, m) => s + m.marketing, 0),
@@ -142,9 +142,9 @@ export function ganancias(datos, resultado) {
 /**
  * Flujo de caja mensual. El descalce real del negocio:
  * el cliente paga una seña al firmar y el saldo al terminar (mes siguiente si la
- * obra cae a fin de mes), mientras el mayorista cobra contado hasta que haya historial.
+ * instalación cae a fin de mes), mientras el mayorista cobra contado hasta que haya historial.
  */
-export function flujoCaja(datos, escenario = { obras_mult: 1, ticket_mult: 1 }) {
+export function flujoCaja(datos, escenario = { instalaciones_mult: 1, ticket_mult: 1 }) {
   const fin = datos.financiero;
   const { meses } = proyeccion24m(datos, escenario);
   const sena = fin.cobros.sena_pct;
@@ -161,14 +161,14 @@ export function flujoCaja(datos, escenario = { obras_mult: 1, ticket_mult: 1 }) 
     const m = meses[i];
     const ant = meses[i - 1];
 
-    // Cobros: seña de las obras del mes + saldo (parte este mes, parte el siguiente).
+    // Cobros: seña de las instalaciones del mes + saldo (parte este mes, parte el siguiente).
     const cobroSena = m.ingresos * sena;
     const cobroSaldoMes = m.ingresos * (1 - sena) * (1 - difSaldo);
     const cobroSaldoAnterior = ant ? ant.ingresos * (1 - sena) * difSaldo : 0;
     const cobros = cobroSena + cobroSaldoMes + cobroSaldoAnterior;
 
-    // Pagos: el equipo se paga al pedirlo (mismo mes que la obra), el resto también.
-    const operativos = m.costoEquipo + m.instalacion + m.materiales + m.comision + m.iibb
+    // Pagos: el equipo se paga al pedirlo (mismo mes que la instalación), el resto también.
+    const operativos = m.costoEquipo + m.montaje + m.materiales + m.comision + m.iibb
       + m.fijos + m.marketing + m.empleado;
     // Los desembolsos de una sola vez del presupuesto (constitución, marca, identidad,
     // equipamiento) salen de la caja en el primer mes: es plata que ya no está.
@@ -215,7 +215,7 @@ export function sensibilidadSena(datos) {
   });
 }
 
-/** Obras/mes necesarias para cubrir los costos de estructura. */
+/** Instalaciones/mes necesarias para cubrir los costos de estructura. */
 export function breakEven(datos) {
   const fin = datos.financiero;
   const { blended } = unitEconomics(datos);
@@ -224,13 +224,13 @@ export function breakEven(datos) {
   const marketingValle = Math.min(...fin.marketing_ars.slice(0, 12));
 
   return {
-    contribucionPorObra: blended.contribucion,
-    contribucionNetaPorObra: blended.contribucion - fin.costos_obra.cac_ars,
+    contribucionPorInstalacion: blended.contribucion,
+    contribucionNetaPorInstalacion: blended.contribucion - fin.costos_instalacion.cac_ars,
     fijos,
     soloFijos: fijos / blended.contribucion,
-    conMarketingValle: (fijos + marketingValle) / (blended.contribucion - fin.costos_obra.cac_ars),
-    conMarketingPico: (fijos + marketingTemporada) / (blended.contribucion - fin.costos_obra.cac_ars),
-    conEmpleado: (fijos + marketingTemporada + fin.empleado.costo_empleador_ars) / (blended.contribucion - fin.costos_obra.cac_ars),
+    conMarketingValle: (fijos + marketingValle) / (blended.contribucion - fin.costos_instalacion.cac_ars),
+    conMarketingPico: (fijos + marketingTemporada) / (blended.contribucion - fin.costos_instalacion.cac_ars),
+    conEmpleado: (fijos + marketingTemporada + fin.empleado.costo_empleador_ars) / (blended.contribucion - fin.costos_instalacion.cac_ars),
     facturacionEquilibrioMes: (fijos / blended.contribucionPct),
   };
 }
@@ -250,7 +250,7 @@ export function escenarios(datos) {
 
     return {
       nombre: e.nombre,
-      obrasAnio1: a1.obras,
+      instalacionesAnio1: a1.instalaciones,
       ingresosAnio1: a1.ingresos,
       resultadoNetoAnio1: a1.resultadoNeto,
       resultadoNetoAnio1Eur: a1.resultadoNeto / TC,

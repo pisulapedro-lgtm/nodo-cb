@@ -8,9 +8,9 @@ Son **21 páginas** de HTML estático: sin framework, sin base de datos, sin ser
 
 | Página | Qué hace en el negocio |
 |---|---|
-| **Inicio** | Propuesta de valor en una frase, foto de obra real y presupuesto por WhatsApp arriba de todo |
+| **Inicio** | Propuesta de valor en una frase, foto de instalación real y presupuesto por WhatsApp arriba de todo |
 | **Servicios** | Venta, instalación y posventa como un solo proveedor — el encuadre que sostiene el IIBB de la sección 7 |
-| **Obras** | Galería filtrable por zona y tipo, con ampliación de cada foto. Es la prueba de que sabemos hacerlo |
+| **Instalaciones** | Galería filtrable por zona y tipo, con ampliación de cada foto. Es la prueba de que sabemos hacerlo |
 | **Calculadora de frigorías** | Herramienta de captación: resuelve una duda real y termina en un chat |
 | **6 páginas de zona** | Núñez, Vicente López, San Isidro, Tigre, Nordelta y Pilar. SEO local **y** landings de Google Ads |
 | **Blog** | Índice y notas. El motor de tráfico orgánico que no depende de la pauta |
@@ -25,14 +25,14 @@ Las páginas de zona merecen un párrafo aparte porque son la pieza de mayor ret
 
 La regla editorial del sitio es que **ninguna franja larga de scroll queda sin un botón de WhatsApp** — y no es una buena intención, es una prueba automática: el control de calidad falla si alguna página deja más de dos pantallas y media sin un llamado a la acción. Sobre esa base:
 
-- **Mensajes prellenados por contexto.** El botón no abre un chat vacío. Desde Nordelta escribe «estoy en Nordelta y quiero presupuesto de instalación»; desde la galería, «vi esta obra en su web»; desde la calculadora, con los metros y las frigorías ya calculadas. Ignacio recibe el chat sabiendo de qué hablan.
+- **Mensajes prellenados por contexto.** El botón no abre un chat vacío. Desde Nordelta escribe «estoy en Nordelta y quiero presupuesto de instalación»; desde la galería, «vi esta instalación en su web»; desde la calculadora, con los metros y las frigorías ya calculadas. Ignacio recibe el chat sabiendo de qué hablan.
 - **Asistente de cuatro preguntas.** El botón flotante abre un cuestionario corto —nombre, zona, servicio, tipo de equipo— que arma el mensaje y lo pasa a WhatsApp. Convierte a quien no sabe qué escribir, que es la mitad de la gente. Sin backend y sin librerías: son unas líneas de JavaScript.
 - **Barra fija en móvil** con «WhatsApp» y «Agendar visita», siempre a un pulgar de distancia.
 - **Funcionan sin JavaScript.** Los enlaces de WhatsApp, el email y las redes están escritos en el HTML: si el JavaScript no carga, los botones siguen llevando al chat. Un lead perdido por un script que no cargó es un lead que se pagó y no llegó.
 
 ## 13.3 Las fotos son reales, y de dónde salen
 
-La galería tiene **10 obras propias con 6 destacadas en la portada**, y todas son de **Málaga**: instalaciones, conductos, mantenimiento y equipo en la nave. Es una decisión consciente y hay que decirla en voz alta antes de que la pregunte un socio: **no hay ni una foto de archivo, y no hay ni una obra argentina, porque todavía no existe**. La primera instalación en el corredor norte entra a la galería el día que se haga.
+La galería tiene **10 instalaciones propias con 6 destacadas en la portada**, y todas son de **Málaga**: instalaciones, conductos, mantenimiento y equipo en la nave. Es una decisión consciente y hay que decirla en voz alta antes de que la pregunte un socio: **no hay ni una foto de archivo, y no hay ni una instalación argentina, porque todavía no existe**. La primera instalación en el corredor norte entra a la galería el día que se haga.
 
 Esto no es una debilidad del sitio: es exactamente lo que lo separa de la competencia local, que ilustra con catálogos del fabricante. Y está protegido por el proceso: el pipeline de fotos **borra los metadatos** de cada imagen antes de publicarla —hay domicilios de clientes ahí dentro— y el control de calidad del blog bloquea cualquier texto que invente un trabajo argentino que no ocurrió.
 
@@ -40,7 +40,7 @@ Esto no es una debilidad del sitio: es exactamente lo que lo separa de la compet
 
 Cada tres días, una rutina programada elige el siguiente tema del calendario, escribe la nota siguiendo la guía de estilo, la pasa por un control de calidad y la publica. Hay **5 notas publicadas y 8 temas en cola**.
 
-El control de calidad es lo que hace que esto sea utilizable y no un generador de relleno: rechaza castellano de España, obras argentinas inventadas, precios en pesos que envejecen mal, plazos de garantía sin confirmar, enlaces rotos y notas demasiado cortas. Si el calendario se queda sin temas, **avisa y no publica nada** — no se inventa uno.
+El control de calidad es lo que hace que esto sea utilizable y no un generador de relleno: rechaza castellano de España, instalaciones argentinas inventadas, precios en pesos que envejecen mal, plazos de garantía sin confirmar, enlaces rotos y notas demasiado cortas. Si el calendario se queda sin temas, **avisa y no publica nada** — no se inventa uno.
 
 Para los socios la gobernanza es simple: para dirigir de qué habla el blog se edita el temario; para cambiar el tono, la guía de estilo. El SEO de contenidos es el único canal de captación cuyo costo marginal es cero y cuyo efecto se acumula: la nota que se publica en septiembre sigue trayendo consultas en diciembre, cuando el clic pago está en su precio más caro del año [F26].
 

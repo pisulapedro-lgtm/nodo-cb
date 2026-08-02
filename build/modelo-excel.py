@@ -106,16 +106,16 @@ texto = [
     ('sostiene y los valores nominales solo agregarían ruido. La conversión a euros es informativa para los socios.', f_n),
     ('', None),
     ('Qué NO hay que creerse', f_b),
-    ('La curva de obras/mes es el supuesto más frágil del modelo: es un pronóstico, no un dato verificable.', f_n),
+    ('La curva de instalaciones/mes es el supuesto más frágil del modelo: es un pronóstico, no un dato verificable.', f_n),
     ('Todo lo demás (márgenes, costos, alícuotas) está anclado en precios de mercado citados en el PDF.', f_n),
     ('Las cifras derivadas son proyecciones sobre supuestos editables, no compromisos.', f_n),
     ('', None),
     ('Hojas del libro', f_b),
-    ('Supuestos — lo único editable. Mix de producto, costos, estructura, marketing y obras mes a mes.', f_n),
-    ('Unit economics — qué deja cada obra, por categoría y en promedio ponderado.', f_n),
+    ('Supuestos — lo único editable. Mix de producto, costos, estructura, marketing y instalaciones mes a mes.', f_n),
+    ('Unit economics — qué deja cada instalación, por categoría y en promedio ponderado.', f_n),
     ('P&L 24 meses — estado de resultados mensual y anual.', f_n),
     ('Flujo de caja — cobros, pagos y saldo mes a mes, con la seña y el descalce del saldo.', f_n),
-    ('Break-even — obras/mes necesarias según qué estructura haya que cubrir.', f_n),
+    ('Break-even — instalaciones/mes necesarias según qué estructura haya que cubrir.', f_n),
     ('Escenarios — conservador / base / optimista, con el selector de la celda Supuestos!B4.', f_n),
     ('Dashboard — las seis cifras que miran los socios, y la curva de caja.', f_n),
     ('Verificación — control cruzado contra el motor de cálculo del PDF.', f_n),
@@ -145,7 +145,7 @@ sel.alignment = Alignment(horizontal='center')
 dv = DataValidation(type='list', formula1='"%s"' % ','.join(e['nombre'] for e in FIN['escenarios']), allow_blank=False)
 sp.add_data_validation(dv)
 dv.add(sel)
-celda(sp, r, 7, 'Elegir de la lista: cambia obras y ticket de todo el modelo.')
+celda(sp, r, 7, 'Elegir de la lista: cambia instalaciones y ticket de todo el modelo.')
 FILA_ESC = r
 
 r += 1
@@ -160,13 +160,13 @@ celda(sp, r, 1, 'Multiplicadores de escenario', negrita=True, fondo='D8E6F5')
 for c in range(2, 8):
     celda(sp, r, c, None, fondo='D8E6F5')
 r += 1
-cabecera(sp, r, ['Escenario', 'Obras ×', 'Ticket ×', '', '', '', 'Nota'])
+cabecera(sp, r, ['Escenario', 'Instalaciones ×', 'Ticket ×', '', '', '', 'Nota'])
 sp.freeze_panes = None
 FILA_MULT = r + 1
 for e in FIN['escenarios']:
     r += 1
     celda(sp, r, 1, e['nombre'])
-    celda(sp, r, 2, e['obras_mult'], PCT, editable=True)
+    celda(sp, r, 2, e['instalaciones_mult'], PCT, editable=True)
     celda(sp, r, 3, e['ticket_mult'], PCT, editable=True)
     celda(sp, r, 7, e.get('nota', ''))
 r += 1
@@ -174,11 +174,11 @@ celda(sp, r, 1, 'ACTIVO', negrita=True, fondo='D8E6F5')
 celda(sp, r, 2, f'=INDEX(B{FILA_MULT}:B{FILA_MULT + 2},MATCH($B${FILA_ESC},$A${FILA_MULT}:$A${FILA_MULT + 2},0))', PCT, negrita=True, fondo='D8E6F5')
 celda(sp, r, 3, f'=INDEX(C{FILA_MULT}:C{FILA_MULT + 2},MATCH($B${FILA_ESC},$A${FILA_MULT}:$A${FILA_MULT + 2},0))', PCT, negrita=True, fondo='D8E6F5')
 celda(sp, r, 7, 'Lo que usa el resto del libro.', negrita=True, fondo='D8E6F5')
-OBRAS_MULT, TICKET_MULT = f'Supuestos!$B${r}', f'Supuestos!$C${r}'
+INSTAL_MULT, TICKET_MULT = f'Supuestos!$B${r}', f'Supuestos!$C${r}'
 
 # --- mix de producto ---
 r += 2
-celda(sp, r, 1, 'Mix de producto y economía de la obra', negrita=True, fondo='D8E6F5')
+celda(sp, r, 1, 'Mix de producto y economía de la instalación', negrita=True, fondo='D8E6F5')
 for c in range(2, 8):
     celda(sp, r, c, None, fondo='D8E6F5')
 r += 1
@@ -191,7 +191,7 @@ for m in FIN['mix']:
     celda(sp, r, 2, m['peso'], PCT, editable=True)
     celda(sp, r, 3, m['ticket_ars'], ARS, editable=True)
     celda(sp, r, 4, m['costo_equipo_pct'], PCT, editable=True)
-    celda(sp, r, 5, m['instalacion_ars'], ARS, editable=True)
+    celda(sp, r, 5, m['montaje_ars'], ARS, editable=True)
     celda(sp, r, 6, m['materiales_ars'], ARS, editable=True)
     celda(sp, r, 7, m.get('fuente', ''))
 FILA_MIX_FIN = r
@@ -205,11 +205,11 @@ r += 2
 celda(sp, r, 1, 'Costos variables y alícuotas', negrita=True, fondo='D8E6F5')
 for c in range(2, 8):
     celda(sp, r, c, None, fondo='D8E6F5')
-co = FIN['costos_obra']
+co = FIN['costos_instalacion']
 vars_ = [
     ('Comisión de cobro (tarjeta / MP)', co['comision_cobro_pct'], PCT, 'Sobre la facturación.'),
     ('Ingresos Brutos (promedio CABA + PBA)', co['iibb_pct'], PCT, 'Encuadre «instalación con provisión de equipo».'),
-    ('Costo de adquisición de cliente (CAC)', co['cac_ars'], ARS, 'Pauta dividida por obras cerradas.'),
+    ('Costo de adquisición de cliente (CAC)', co['cac_ars'], ARS, 'Pauta dividida por instalaciones cerradas.'),
     ('Seña cobrada al firmar', FIN['cobros']['sena_pct'], PCT, 'Lo que financia la compra del equipo.'),
     ('Días hasta cobrar el saldo', FIN['cobros']['dias_saldo'], NUM, 'Parte del saldo cae en el mes siguiente.'),
     ('Impuesto al cheque (débitos + créditos)', FIN['impuestos']['imp_cheque_pct'], PCT, 'Computable como pago a cuenta de Ganancias (MiPyME).'),
@@ -270,10 +270,10 @@ celda(sp, r, 1, 'Mes')
 for i in range(N):
     celda(sp, r, 2 + i, MOTOR['proyeccion']['meses'][i]['etiqueta'], negrita=True, fondo='D8E6F5')
 r += 1
-FILA_OBRAS = r
-celda(sp, r, 1, 'Obras del mes (antes del escenario)', negrita=True)
+FILA_INSTAL = r
+celda(sp, r, 1, 'Instalaciones del mes (antes del escenario)', negrita=True)
 for i in range(N):
-    celda(sp, r, 2 + i, FIN['obras_mes'][i], NUM, editable=True)
+    celda(sp, r, 2 + i, FIN['instalaciones_mes'][i], NUM, editable=True)
 r += 1
 FILA_MKT = r
 celda(sp, r, 1, 'Marketing del mes (ARS)', negrita=True)
@@ -285,10 +285,10 @@ for i in range(N):
 # =====================================================================
 # 3. UNIT ECONOMICS
 # =====================================================================
-ue = hoja('Unit economics', 'Unit economics — qué deja cada obra', [40, 12, 15, 15, 15, 15, 15, 15, 15, 15])
-ue['A2'] = 'Todo se calcula desde «Supuestos». La obra tipo es el promedio ponderado por el mix.'
+ue = hoja('Unit economics', 'Unit economics — qué deja cada instalación', [40, 12, 15, 15, 15, 15, 15, 15, 15, 15])
+ue['A2'] = 'Todo se calcula desde «Supuestos». La instalación tipo es el promedio ponderado por el mix.'
 ue['A2'].font = f_small
-cabecera(ue, 4, ['Categoría', 'Mix', 'Ticket', 'Equipo', 'Instalación', 'Materiales',
+cabecera(ue, 4, ['Categoría', 'Mix', 'Ticket', 'Equipo', 'Montaje', 'Materiales',
                  'Margen bruto', '% MB', 'Comisión + IIBB', 'Contribución'])
 r = 5
 FILA_UE = r
@@ -306,7 +306,7 @@ for i in range(len(FIN['mix'])):
     celda(ue, r, 10, f'=G{r}-I{r}', ARS)
     r += 1
 FILA_UE_FIN = r - 1
-celda(ue, r, 1, 'OBRA TIPO (promedio ponderado)', negrita=True, fondo='D8E6F5')
+celda(ue, r, 1, 'INSTALACIÓN TIPO (promedio ponderado)', negrita=True, fondo='D8E6F5')
 celda(ue, r, 2, f'=SUM(B{FILA_UE}:B{FILA_UE_FIN})', PCT, negrita=True, fondo='D8E6F5')
 for col in range(3, 11):
     L = get_column_letter(col)
@@ -323,7 +323,7 @@ r += 2
 celda(ue, r, 1, 'Menos costo de adquisición de cliente (CAC)', negrita=True)
 celda(ue, r, 2, f'=-{CAC}', ARS)
 r += 1
-celda(ue, r, 1, 'CONTRIBUCIÓN NETA POR OBRA TIPO', negrita=True)
+celda(ue, r, 1, 'CONTRIBUCIÓN NETA POR INSTALACIÓN TIPO', negrita=True)
 celda(ue, r, 2, f'={CONTRIB_TIPO}-{CAC}', ARS, negrita=True)
 celda(ue, r, 3, f'=B{r}/{TC_REF}', EUR, negrita=True)
 CONTRIB_NETA = f"'Unit economics'!$B${r}"
@@ -332,7 +332,7 @@ celda(ue, r, 1, 'Seña que se cobra al firmar', negrita=True)
 celda(ue, r, 2, f'={TICKET_TIPO}*{SENA}', ARS)
 celda(ue, r, 7, '← tiene que alcanzar para pagar el equipo antes de pedirlo', negrita=True)
 r += 1
-celda(ue, r, 1, 'Costo del equipo de la obra tipo')
+celda(ue, r, 1, 'Costo del equipo de la instalación tipo')
 celda(ue, r, 2, f'={EQUIPO_TIPO}', ARS)
 r += 1
 celda(ue, r, 1, 'Colchón de la seña sobre el equipo', negrita=True)
@@ -365,16 +365,16 @@ def fila_pl(r, nombre, formula, fmt=ARS, negrita=False, fondo=None, total_signo=
 
 
 r = 5
-R_OBRAS = r
-r = fila_pl(r, 'Obras', lambda i, L: f'=Supuestos!{L}${FILA_OBRAS}*{OBRAS_MULT}', NUM, negrita=True)
+R_INSTAL = r
+r = fila_pl(r, 'Instalaciones', lambda i, L: f'=Supuestos!{L}${FILA_INSTAL}*{INSTAL_MULT}', NUM, negrita=True)
 R_ING = r
-r = fila_pl(r, 'Facturación', lambda i, L: f'={L}{R_OBRAS}*{TICKET_TIPO}')
+r = fila_pl(r, 'Facturación', lambda i, L: f'={L}{R_INSTAL}*{TICKET_TIPO}')
 R_EQ = r
-r = fila_pl(r, 'Costo de equipos', lambda i, L: f'=-{L}{R_OBRAS}*{EQUIPO_TIPO}')
+r = fila_pl(r, 'Costo de equipos', lambda i, L: f'=-{L}{R_INSTAL}*{EQUIPO_TIPO}')
 R_INST = r
-r = fila_pl(r, 'Instalación subcontratada', lambda i, L: f'=-{L}{R_OBRAS}*{INST_TIPO}')
+r = fila_pl(r, 'Montaje subcontratado', lambda i, L: f'=-{L}{R_INSTAL}*{INST_TIPO}')
 R_MAT = r
-r = fila_pl(r, 'Materiales', lambda i, L: f'=-{L}{R_OBRAS}*{MAT_TIPO}')
+r = fila_pl(r, 'Materiales', lambda i, L: f'=-{L}{R_INSTAL}*{MAT_TIPO}')
 R_MB = r
 r = fila_pl(r, 'MARGEN BRUTO', lambda i, L: f'=SUM({L}{R_ING}:{L}{R_MAT})', negrita=True, fondo='D8E6F5')
 R_MBP = r
@@ -528,10 +528,10 @@ PAYBACK = f"'Flujo de caja'!$B${r}"
 # =====================================================================
 # 6. BREAK-EVEN
 # =====================================================================
-be = hoja('Break-even', 'Punto de equilibrio — cuántas obras hay que hacer', [46, 20, 20, 18, 52])
-be['A2'] = 'Obras/mes necesarias para cubrir cada nivel de estructura, con la contribución de la obra tipo.'
+be = hoja('Break-even', 'Punto de equilibrio — cuántas instalaciones hay que hacer', [46, 20, 20, 18, 52])
+be['A2'] = 'Instalaciones/mes necesarias para cubrir cada nivel de estructura, con la contribución de la instalación tipo.'
 be['A2'].font = f_small
-cabecera(be, 4, ['Escenario de estructura', 'Costo a cubrir / mes', 'Contribución por obra', 'Obras/mes', 'Lectura'])
+cabecera(be, 4, ['Escenario de estructura', 'Costo a cubrir / mes', 'Contribución por instalación', 'Instalaciones/mes', 'Lectura'])
 mkt_valle = f'MIN(Supuestos!B{FILA_MKT}:M{FILA_MKT})'
 mkt_pico = f'MAX(Supuestos!B{FILA_MKT}:M{FILA_MKT})'
 filas_be = [
@@ -553,8 +553,8 @@ r += 1
 celda(be, r, 1, 'Facturación de equilibrio / mes (solo estructura)', negrita=True)
 celda(be, r, 2, f'=IF({CONTRIB_TIPO}=0,0,{FIJOS}/({CONTRIB_TIPO}/{TICKET_TIPO}))', ARS, negrita=True)
 r += 1
-celda(be, r, 1, 'Obras mínimas del mes valle proyectado', negrita=True)
-celda(be, r, 2, f'=MIN(Supuestos!B{FILA_OBRAS}:M{FILA_OBRAS})*{OBRAS_MULT}', NUM, negrita=True)
+celda(be, r, 1, 'Instalaciones mínimas del mes valle proyectado', negrita=True)
+celda(be, r, 2, f'=MIN(Supuestos!B{FILA_INSTAL}:M{FILA_INSTAL})*{INSTAL_MULT}', NUM, negrita=True)
 celda(be, r, 5, f'=IF(B{r}>={BE_EMPL},"El valle sostiene un técnico en planta",'
                 f'"El valle NO sostiene un técnico en planta: subcontratar")', negrita=True)
 
@@ -567,7 +567,7 @@ es['A2'] = ('Los tres escenarios se calculan cambiando Supuestos!B4. Esta hoja g
 es['A2'].font = f_small
 cabecera(es, 4, ['Métrica', 'Escenario activo', 'Referencia del motor (base)', 'Diferencia'])
 metricas = [
-    ('Obras año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_OBRAS}", MOTOR['proyeccion']['anios'][0]['obras'], NUM),
+    ('Instalaciones año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_INSTAL}", MOTOR['proyeccion']['anios'][0]['instalaciones'], NUM),
     ('Facturación año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_ING}", MOTOR['proyeccion']['anios'][0]['ingresos'], ARS),
     ('Margen bruto año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_MB}", MOTOR['proyeccion']['anios'][0]['margenBruto'], ARS),
     ('Resultado operativo año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_RO}", MOTOR['proyeccion']['anios'][0]['resultadoOperativo'], ARS),
@@ -601,7 +601,7 @@ db['A2'] = 'Todo se mueve con el escenario elegido en Supuestos!B4 y con las ser
 db['A2'].font = f_small
 kpis = [
     ('Escenario activo', f'=Supuestos!B{FILA_ESC}', None, 'Cambiar en la hoja «Supuestos».'),
-    ('Obras del año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_OBRAS}", NUM, 'Suma de los primeros 12 meses.'),
+    ('Instalaciones del año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_INSTAL}", NUM, 'Suma de los primeros 12 meses.'),
     ('Facturación del año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_ING}", ARS, ''),
     ('Margen bruto del año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_MBP}", PCT, 'Después de equipo, instalación y materiales.'),
     ('Resultado neto del año 1', f"='P&L 24 meses'!{get_column_letter(COL_A1)}{R_NETO}", ARS, ''),
@@ -610,8 +610,8 @@ kpis = [
     ('Caja mínima del período', f'={CAJA_MIN}', ARS, 'Si es negativa, el capital no alcanza.'),
     ('Caja al mes 24', f'={CAJA_FIN}', ARS, ''),
     ('Recupero del aporte', f'={PAYBACK}', None, 'Primer mes con caja ≥ capital aportado.'),
-    ('Contribución por obra tipo', f'={CONTRIB_TIPO}', ARS, 'Antes del CAC.'),
-    ('Break-even en temporada', f'={BE_PICO}', NUM, 'Obras/mes con la pauta al máximo.'),
+    ('Contribución por instalación tipo', f'={CONTRIB_TIPO}', ARS, 'Antes del CAC.'),
+    ('Break-even en temporada', f'={BE_PICO}', NUM, 'Instalaciones/mes con la pauta al máximo.'),
     ('Break-even con técnico en planta', f'={BE_EMPL}', NUM, 'La razón para subcontratar.'),
 ]
 r = 4
@@ -667,13 +667,13 @@ for nombre, formula, ref, fmt in metricas:
     celda(vf, r, 4, f'=IF(C{r}=0,0,(B{r}-C{r})/C{r})', PCT)
     celda(vf, r, 5, f'=IF(ABS(D{r})<0.005,"OK","REVISAR")', negrita=True)
     r += 1
-celda(vf, r, 1, 'Contribución por obra tipo', negrita=True)
+celda(vf, r, 1, 'Contribución por instalación tipo', negrita=True)
 celda(vf, r, 2, f'={CONTRIB_TIPO}', ARS)
 celda(vf, r, 3, MOTOR['unitEconomics']['blended']['contribucion'], ARS)
 celda(vf, r, 4, f'=IF(C{r}=0,0,(B{r}-C{r})/C{r})', PCT)
 celda(vf, r, 5, f'=IF(ABS(D{r})<0.005,"OK","REVISAR")', negrita=True)
 r += 1
-celda(vf, r, 1, 'Break-even en temporada (obras/mes)', negrita=True)
+celda(vf, r, 1, 'Break-even en temporada (instalaciones/mes)', negrita=True)
 celda(vf, r, 2, f'={BE_PICO}', NUM)
 celda(vf, r, 3, MOTOR['breakEven']['conMarketingPico'], NUM)
 celda(vf, r, 4, f'=IF(C{r}=0,0,(B{r}-C{r})/C{r})', PCT)

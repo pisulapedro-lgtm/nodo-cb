@@ -22,8 +22,8 @@ Para tildar el 31-08/01-09. Si algo no está, tiene dueño y fecha — no se «v
 - [ ] 2 instaladores con contrato de locación de obra firmado, monotributo verificado y AP con no repetición vigente
 - [ ] Cuenta de gremio abierta en ≥ 2 mayoristas con descuento y plazo de retiro pactados
 - [ ] Póliza RC de la empresa emitida; pliegos de requisitos de AVN/countries archivados
-- [ ] Checklist de instalación (Forms) probado en las obras fundacionales, con fotos y conformidad firmada
-- [ ] 2-3 obras fundacionales terminadas → cartera mínima para el alta AVN
+- [ ] Checklist de instalación (Forms) probado en las instalaciones fundacionales, con fotos y conformidad firmada
+- [ ] 2-3 instalaciones fundacionales terminadas → cartera mínima para el alta AVN
 
 ## Comercial
 - [ ] climabaires.com publicada con dominio propio y Search Console verificado

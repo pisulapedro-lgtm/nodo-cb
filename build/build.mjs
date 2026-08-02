@@ -75,7 +75,7 @@ const RESERVADOS = [
     peso_temporada: un((temporada / anios[0].ingresos) * 100),
     be_pico: un(be.conMarketingPico),
     be_empleado: un(be.conEmpleado),
-    // Piso de caja operativo: tres meses de estructura + el equipo de tres obras tipo.
+    // Piso de caja operativo: tres meses de estructura + el equipo de tres instalaciones tipo.
     piso_caja: datos.financiero.fijos_mensuales_ars.reduce((s, f) => s + f.ars, 0) * 3 + ue.blended.costoEquipo * 3,
   };
 }
@@ -96,15 +96,15 @@ const RESERVADOS = [
     inversion_medible: t.inversion,
     inversion_countries: co.inversion,
     leads: un(t.leads),
-    obras_pagas: un(t.obrasPagas),
-    obras_propias: un(t.obrasPropias),
+    instalaciones_pagas: un(t.instalacionesPagas),
+    instalaciones_propias: un(t.instalacionesPropias),
     cubierto_pct: un(t.cubiertoPct * 100),
     cpl: t.cpl,
     cac: t.cac,
     // Techo de tolerancia del CPL: el del escenario en que el clic se encarece un 30 %.
     cpl_techo: sens[1].cpl,
     pct_google: un((g.inversion / t.inversion) * 100),
-    pct_obras_google: un((g.obras / t.obrasPagas) * 100),
+    pct_instalaciones_google: un((g.instalaciones / t.instalacionesPagas) * 100),
     cac_google: g.cac,
     cac_meta: m.cac,
     google_anual: g.inversion,
@@ -266,25 +266,27 @@ const pct = (n) => `${(n * 100).toFixed(1).replace('.', ',')} %`;
 function renderUnitEconomics() {
   const { filas, blended } = FIN.unitEconomics(datos);
   let html = '<table><thead><tr><th>Categoría</th><th class="num">Mix</th><th class="num">Ticket</th>'
-    + '<th class="num">Equipo</th><th class="num">Instalación</th><th class="num">Materiales</th>'
+    + '<th class="num">Equipo</th><th class="num">Montaje</th><th class="num">Materiales</th>'
     + '<th class="num">Margen bruto</th><th class="num">Comisión + IIBB</th><th class="num">Contribución</th></tr></thead><tbody>';
   for (const f of filas) {
     html += `<tr><td><strong>${f.tipo}</strong> <small>[${f.fuente}]</small></td><td class="num">${pct(f.peso)}</td>`
       + `<td class="num">${ars(f.ticket_ars)}</td><td class="num">${ars(f.costoEquipo)}</td>`
-      + `<td class="num">${ars(f.instalacion)}</td><td class="num">${ars(f.materiales)}</td>`
+      + `<td class="num">${ars(f.montaje)}</td><td class="num">${ars(f.materiales)}</td>`
       + `<td class="num">${ars(f.margenBruto)}<br><small>${pct(f.margenBrutoPct)}</small></td>`
       + `<td class="num">${ars(f.comision + f.iibb)}</td>`
       + `<td class="num">${ars(f.contribucion)}<br><small>${pct(f.contribucionPct)}</small></td></tr>`;
   }
-  html += `<tr class="total"><td>OBRA TIPO (promedio ponderado)</td><td class="num">100,0 %</td>`
+  html += `<tr class="total"><td>INSTALACIÓN TIPO (promedio ponderado)</td><td class="num">100,0 %</td>`
     + `<td class="num">${ars(blended.ticket_ars)}</td><td class="num">${ars(blended.costoEquipo)}</td>`
-    + `<td class="num">${ars(blended.instalacion)}</td><td class="num">${ars(blended.materiales)}</td>`
+    + `<td class="num">${ars(blended.montaje)}</td><td class="num">${ars(blended.materiales)}</td>`
     + `<td class="num">${ars(blended.margenBruto)}<br><small>${pct(blended.margenBrutoPct)}</small></td>`
     + `<td class="num">${ars(blended.comision + blended.iibb)}</td>`
     + `<td class="num">${ars(blended.contribucion)}<br><small>${pct(blended.contribucionPct)}</small></td></tr>`;
   html += '</tbody></table>';
   html += `<p class="leyenda">† Todas las cifras son estimaciones propias sobre precios de mercado de agosto-2026 en ARS constantes. `
-    + `Restando el costo de adquisición de cliente (${ars(datos.financiero.costos_obra.cac_ars)}), cada obra tipo deja `
+    + `El conteo mensual de «instalaciones» del modelo incluye las visitas de mantenimiento, que son el `
+    + `${pct(datos.financiero.mix[3].peso)} del mix: son trabajos con ticket y margen propios, no instalaciones nuevas. `
+    + `Restando el costo de adquisición de cliente (${ars(datos.financiero.costos_instalacion.cac_ars)}), cada instalación tipo deja `
     + `<strong>${ars(blended.contribucionNeta)}</strong> (${eur(blended.contribucionNeta / TC)}) para cubrir estructura.</p>`;
   return html;
 }
@@ -292,7 +294,7 @@ function renderUnitEconomics() {
 function renderPyL() {
   const { meses, anios } = FIN.proyeccion24m(datos);
   const cols = [
-    ['Obras', (m) => fmtARS.format(Math.round(m.obras)), (a) => fmtARS.format(Math.round(a.obras))],
+    ['Instalaciones', (m) => fmtARS.format(Math.round(m.instalaciones)), (a) => fmtARS.format(Math.round(a.instalaciones))],
     ['Facturación', (m) => ars(m.ingresos), (a) => ars(a.ingresos)],
     ['Margen bruto', (m) => ars(m.margenBruto), (a) => ars(a.margenBruto)],
     ['Estructura', (m) => ars(m.fijos), (a) => ars(a.fijos)],
@@ -349,16 +351,16 @@ function renderCaja() {
 function renderBreakEven() {
   const be = FIN.breakEven(datos);
   const filas = [
-    ['Solo estructura fija', be.fijos, be.contribucionPorObra, be.soloFijos, 'Contador, stack, seguros, autónomos, movilidad y bancarios.'],
-    ['Estructura + marketing de valle', be.fijos + Math.min(...datos.financiero.marketing_ars.slice(0, 12)), be.contribucionNetaPorObra, be.conMarketingValle, 'Meses de invierno, con la pauta al mínimo de sostenimiento.'],
-    ['Estructura + marketing de temporada', be.fijos + Math.max(...datos.financiero.marketing_ars.slice(0, 12)), be.contribucionNetaPorObra, be.conMarketingPico, 'Pico de diciembre-enero, con la pauta al máximo.'],
-    ['… + primer técnico en relación de dependencia', be.fijos + Math.max(...datos.financiero.marketing_ars.slice(0, 12)) + datos.financiero.empleado.costo_empleador_ars, be.contribucionNetaPorObra, be.conEmpleado, 'Costo empleador completo (Rama 17 UOM + cargas + ART).'],
+    ['Solo estructura fija', be.fijos, be.contribucionPorInstalacion, be.soloFijos, 'Contador, stack, seguros, autónomos, movilidad y bancarios.'],
+    ['Estructura + marketing de valle', be.fijos + Math.min(...datos.financiero.marketing_ars.slice(0, 12)), be.contribucionNetaPorInstalacion, be.conMarketingValle, 'Meses de invierno, con la pauta al mínimo de sostenimiento.'],
+    ['Estructura + marketing de temporada', be.fijos + Math.max(...datos.financiero.marketing_ars.slice(0, 12)), be.contribucionNetaPorInstalacion, be.conMarketingPico, 'Pico de diciembre-enero, con la pauta al máximo.'],
+    ['… + primer técnico en relación de dependencia', be.fijos + Math.max(...datos.financiero.marketing_ars.slice(0, 12)) + datos.financiero.empleado.costo_empleador_ars, be.contribucionNetaPorInstalacion, be.conEmpleado, 'Costo empleador completo (Rama 17 UOM + cargas + ART).'],
   ];
   let html = '<table><thead><tr><th>Escenario de estructura</th><th class="num">Costo a cubrir/mes</th>'
-    + '<th class="num">Contribución por obra</th><th class="num">Obras/mes para empatar</th><th>Lectura</th></tr></thead><tbody>';
-  for (const [nombre, costo, contrib, obras, nota] of filas) {
+    + '<th class="num">Contribución por instalación</th><th class="num">Instalaciones/mes para empatar</th><th>Lectura</th></tr></thead><tbody>';
+  for (const [nombre, costo, contrib, instalaciones, nota] of filas) {
     html += `<tr><td><strong>${nombre}</strong></td><td class="num">${ars(costo)}</td>`
-      + `<td class="num">${ars(contrib)}</td><td class="num"><strong>${obras.toFixed(1).replace('.', ',')}</strong></td><td>${nota}</td></tr>`;
+      + `<td class="num">${ars(contrib)}</td><td class="num"><strong>${instalaciones.toFixed(1).replace('.', ',')}</strong></td><td>${nota}</td></tr>`;
   }
   html += '</tbody></table>';
   return html;
@@ -371,8 +373,8 @@ function renderEscenarios() {
   for (const e of escs) html += `<th class="num">${e.nombre}</th>`;
   html += '</tr></thead><tbody>';
   const filas = [
-    ['Supuesto', (e, i) => `${pct(defs[i].obras_mult)} obras · ${pct(defs[i].ticket_mult)} ticket`],
-    ['Obras año 1', (e) => fmtARS.format(Math.round(e.obrasAnio1))],
+    ['Supuesto', (e, i) => `${pct(defs[i].instalaciones_mult)} instalaciones · ${pct(defs[i].ticket_mult)} ticket`],
+    ['Instalaciones año 1', (e) => fmtARS.format(Math.round(e.instalacionesAnio1))],
     ['Facturación año 1', (e) => ars(e.ingresosAnio1)],
     ['Resultado neto año 1', (e) => `${ars(e.resultadoNetoAnio1)}<br><small>${eur(e.resultadoNetoAnio1Eur)}</small>`],
     ['Resultado neto año 2', (e) => `${ars(e.resultadoNetoAnio2)}<br><small>${eur(e.resultadoNetoAnio2 / TC)}</small>`],
@@ -489,7 +491,7 @@ function renderRepartoPauta() {
 function renderEmbudo() {
   const { meses, totales } = MK.embudo(datos);
   let html = '<table class="larga"><thead><tr><th>Mes</th><th class="num">CPC †</th><th class="num">Clics</th>'
-    + '<th class="num">Leads</th><th class="num">Obras de pauta</th><th class="num">Plan</th>'
+    + '<th class="num">Leads</th><th class="num">Instalaciones de pauta</th><th class="num">Plan</th>'
     + '<th class="num">De canales propios</th><th class="num">Cubierto por pauta</th></tr></thead><tbody>';
   for (const m of meses.slice(0, 12)) {
     const falta = m.propias > 0.5;
@@ -500,12 +502,12 @@ function renderEmbudo() {
       + `<td class="num">${nEs(m.cubiertoPct * 100, 0)} %</td></tr>`;
   }
   html += `<tr class="total"><td>AÑO 1</td><td class="num">—</td><td class="num">—</td>`
-    + `<td class="num">${nEs(totales.leads, 0)}</td><td class="num">${nEs(totales.obrasPagas, 0)}</td>`
-    + `<td class="num">${totales.obrasPlan}</td><td class="num">${nEs(totales.obrasPropias, 0)}</td>`
+    + `<td class="num">${nEs(totales.leads, 0)}</td><td class="num">${nEs(totales.instalacionesPagas, 0)}</td>`
+    + `<td class="num">${totales.instalacionesPlan}</td><td class="num">${nEs(totales.instalacionesPropias, 0)}</td>`
     + `<td class="num">${nEs(totales.cubiertoPct * 100, 0)} %</td></tr></tbody></table>`;
   html += `<p class="leyenda">† CPC estimado con estacionalidad: en diciembre y enero puja todo el rubro a la vez [F46]. `
     + `Las filas sombreadas son los meses en que la pauta cubre el plan por sí sola. `
-    + `CPL medio ${ars(totales.cpl)} y CAC medio ${ars(totales.cac)} — por debajo de los ${ars(datos.financiero.costos_obra.cac_ars)} `
+    + `CPL medio ${ars(totales.cpl)} y CAC medio ${ars(totales.cac)} — por debajo de los ${ars(datos.financiero.costos_instalacion.cac_ars)} `
     + `que asume el modelo financiero, que queda así como el techo tolerable.</p>`;
   return html;
 }
@@ -513,14 +515,14 @@ function renderEmbudo() {
 function renderCanales() {
   const canales = MK.porCanal(datos);
   let html = '<table><thead><tr><th>Canal</th><th class="num">Inversión año 1</th><th class="num">Leads</th>'
-    + '<th class="num">CPL</th><th class="num">Lead → obra</th><th class="num">Obras</th><th class="num">CAC</th></tr></thead><tbody>';
+    + '<th class="num">CPL</th><th class="num">Lead → instalación</th><th class="num">Instalaciones</th><th class="num">CAC</th></tr></thead><tbody>';
   for (const c of canales) {
     html += `<tr><td><strong>${c.nombre}</strong></td><td class="num">${ars(c.inversion)}</td>`;
     if (c.leads === null) {
       html += '<td class="num" colspan="5">No genera leads medibles: compra acceso y credibilidad</td></tr>';
     } else {
       html += `<td class="num">${nEs(c.leads, 0)}</td><td class="num">${ars(c.cpl)}</td>`
-        + `<td class="num">${nEs(c.convLeadObra * 100, 0)} %</td><td class="num">${nEs(c.obras, 0)}</td>`
+        + `<td class="num">${nEs(c.convLeadInstalacion * 100, 0)} %</td><td class="num">${nEs(c.instalaciones, 0)}</td>`
         + `<td class="num">${ars(c.cac)}</td></tr>`;
     }
   }
@@ -534,11 +536,11 @@ function renderSensibilidadCPC() {
     'El clic se encarece un 30 %: entra más competencia o sube la puja de temporada.',
     'El clic se encarece un 60 %: guerra de pujas en diciembre. Es el escenario que hay que poder aguantar.'];
   let html = '<table><thead><tr><th>Escenario</th><th class="num">CPL</th><th class="num">CAC</th>'
-    + '<th class="num">Obras de pauta</th><th class="num">Cubierto</th><th class="num">A cubrir con canales propios</th></tr></thead><tbody>';
+    + '<th class="num">Instalaciones de pauta</th><th class="num">Cubierto</th><th class="num">A cubrir con canales propios</th></tr></thead><tbody>';
   filas.forEach((f, i) => {
     html += `<tr><td><strong>${lectura[i]}</strong></td><td class="num">${ars(f.cpl)}</td>`
-      + `<td class="num">${ars(f.cac)}</td><td class="num">${nEs(f.obrasPagas, 0)}</td>`
-      + `<td class="num">${nEs(f.cubiertoPct * 100, 0)} %</td><td class="num">${nEs(f.obrasPropias, 0)} obras</td></tr>`;
+      + `<td class="num">${ars(f.cac)}</td><td class="num">${nEs(f.instalacionesPagas, 0)}</td>`
+      + `<td class="num">${nEs(f.cubiertoPct * 100, 0)} %</td><td class="num">${nEs(f.instalacionesPropias, 0)} instalaciones</td></tr>`;
   });
   html += '</tbody></table>';
   return html;

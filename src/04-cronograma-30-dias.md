@@ -4,7 +4,7 @@ Día 1 = lunes 03-08-2026 · Día 30 = martes 01-09-2026. Vista Gantt por workst
 
 {{gantt}}
 
-**Cómo leerlo:** el plan tiene dos motores en paralelo. El motor **legal-fiscal** (constitución → CUIT → altas → banco) avanza a la velocidad de IGJ y ARCA; el motor **comercial** (web, redes, mayoristas, puente monotributo, obras fundacionales) no espera a nadie. Si IGJ se atrasa una semana, la venta no se entera.
+**Cómo leerlo:** el plan tiene dos motores en paralelo. El motor **legal-fiscal** (constitución → CUIT → altas → banco) avanza a la velocidad de IGJ y ARCA; el motor **comercial** (web, redes, mayoristas, puente monotributo, instalaciones fundacionales) no espera a nadie. Si IGJ se atrasa una semana, la venta no se entera.
 
 ## Semana 1 (lun 03-08 → dom 09-08) — Fundaciones
 
@@ -30,4 +30,4 @@ Día 1 = lunes 03-08-2026 · Día 30 = martes 01-09-2026. Vista Gantt por workst
 | Septiembre | SWIFT de € 5.000 de cada socio español a la cuenta de la SAS (aporte irrevocable) | Pedro y Sebastián |
 | Octubre | Aumento de capital: entrada formal de Pedro y Sebastián, equity 40/30/30 con prima de emisión + elevación del pacto | Escribano + los 3 |
 | Octubre | Escalado de pauta (Ads ×2) y pauta en Revista Nordelta; revisión de Factura A plena ante ARCA | Pedro + Contador |
-| Noviembre | Decisión de primera contratación en dependencia para el pico (según pipeline de obras) | Los 3 |
+| Noviembre | Decisión de primera contratación en dependencia para el pico (según pipeline de instalaciones) | Los 3 |

@@ -24,9 +24,9 @@ CALIDAD = 80
 
 # Orden de lectura del sitio, no orden alfabético.
 PAGINAS = [
-    ('index',                'Inicio',                  'Hero con foto de obra real, marcas con las que trabajamos y últimas obras'),
+    ('index',                'Inicio',                  'Hero con foto de instalación real, marcas con las que trabajamos y últimos trabajos'),
     ('servicios',            'Servicios',               'Venta, instalación y posventa, con el encuadre de «instalación con provisión de equipo»'),
-    ('obras',                'Obras',                   'Galería filtrable por zona y tipo, con lightbox y pares antes/después'),
+    ('obras',                'Obras',                   'La galería del sitio: filtrable por zona y tipo, con ampliación y pares antes/después'),
     ('calculadora-frigorias', 'Calculadora de frigorías', 'La herramienta de captación: calcula y pasa el resultado a WhatsApp'),
     ('zonas_nunez',          'Zona · Núñez',            'Página local de CABA; cada zona es además una landing de Google Ads'),
     ('zonas_vicente-lopez',  'Zona · Vicente López',    'Página local de la primera corona del corredor norte'),

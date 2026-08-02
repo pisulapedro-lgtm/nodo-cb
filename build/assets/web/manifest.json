@@ -2,7 +2,7 @@
   {
     "archivo": "index-desktop.jpg",
     "titulo": "Inicio",
-    "pie": "Hero con foto de obra real, marcas con las que trabajamos y últimas obras",
+    "pie": "Hero con foto de instalación real, marcas con las que trabajamos y últimos trabajos",
     "vista": "desktop"
   },
   {
@@ -14,7 +14,7 @@
   {
     "archivo": "obras-desktop.jpg",
     "titulo": "Obras",
-    "pie": "Galería filtrable por zona y tipo, con lightbox y pares antes/después",
+    "pie": "La galería del sitio: filtrable por zona y tipo, con ampliación y pares antes/después",
     "vista": "desktop"
   },
   {

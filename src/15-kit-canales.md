@@ -51,7 +51,7 @@ Foto: el avatar del kit de marca. **Dirección: vacía** — se trabaja a domici
 
 Categoría principal: **servicio de aire acondicionado**; secundarias: contratista de climatización y servicio de reparación. Teléfono: el WhatsApp comercial. La verificación, sin local, suele resolverse por video mostrando herramientas y vehículo.
 
-**Checklist del perfil completo:** horario de lunes a sábado de 8 a 19 · descripción (la misma de WhatsApp) · logo y diez fotos reales de obra, subiendo nuevas cada semana · servicios con precio «desde» · preguntas frecuentes precargadas (zonas, visita sin cargo, cuotas, countries) · mensajería activada, con objetivo de respuesta en menos de cinco minutos.
+**Checklist del perfil completo:** horario de lunes a sábado de 8 a 19 · descripción (la misma de WhatsApp) · logo y diez fotos reales de instalación, subiendo nuevas cada semana · servicios con precio «desde» · preguntas frecuentes precargadas (zonas, visita sin cargo, cuotas, countries) · mensajería activada, con objetivo de respuesta en menos de cinco minutos.
 
 **Plan de reseñas a 90 días.** Crear el enlace corto de reseña y su QR para el remito. El flujo: 24 a 48 horas después de cada instalación, confirmado que todo funciona, se manda el `/gracias` con el enlace.
 
@@ -92,6 +92,6 @@ Los grupos son gratis y se comportan como buzones compartidos. Arrancar con tres
 **Configuración de la primera semana:**
 
 - **Calendar**: calendario compartido «Instalaciones» con técnico, dirección, equipo y estado. Es el sistema de gestión de campo del arranque, y es el mismo Calendar que recibe las reservas de la web (sección 13.5).
-- **Drive compartido «Clima Baires Ops»**: carpetas de Presupuestos, Obras (fotos del checklist), Proveedores y Fiscal.
+- **Drive compartido «Clima Baires Ops»**: carpetas de Presupuestos, Instalaciones (fotos del checklist), Proveedores y Fiscal.
 - **Forms**: «Checklist de instalación» con fotos y firma del cliente desde el celular del instalador. Es la evidencia que sostiene la garantía y el argumento de calidad frente a las administraciones de countries.
 - **Verificación en dos pasos obligatoria** para todos los usuarios.

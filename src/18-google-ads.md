@@ -97,7 +97,7 @@ Descripciones (máximo 90 caracteres):
 
 **Extensiones** (obligatorias todas):
 
-- **Enlaces de sitio**: Calculadora de frigorías · Obras recientes · Zonas que cubrimos · Service y mantenimiento
+- **Enlaces de sitio**: Calculadora de frigorías · Instalaciones recientes · Zonas que cubrimos · Service y mantenimiento
 - **Textos destacados**: Presupuesto en el día · Precio cerrado · Aptos countries · Garantía escrita · Sin anticipo para presupuestar
 - **Fragmentos estructurados** (Servicios): Instalación · Recambio · Multisplit · Conductos · Mantenimiento
 - **Llamada**: el WhatsApp comercial, en horario de atención
@@ -111,7 +111,7 @@ Sin extensión de ubicación: la empresa es de área de servicio y no tiene loca
 |---|---|---|
 | **Días 1-30** | Maximizar clics con CPC máximo | Sin conversiones acumuladas, la puja automática no tiene con qué aprender. El tope evita que un clic de diciembre se lleve el día |
 | **A partir de 15 conversiones** | Maximizar conversiones | Ya hay señal suficiente para que el algoritmo trabaje |
-| **A partir de 30 conversiones** | CPA objetivo, arrancando en {{ars:_mk.cac}} | Se fija el costo por obra y se deja que el sistema busque volumen dentro de ese techo |
+| **A partir de 30 conversiones** | CPA objetivo, arrancando en {{ars:_mk.cac}} | Se fija el costo por instalación y se deja que el sistema busque volumen dentro de ese techo |
 | **Nunca** | ROAS objetivo | Requiere pasar el valor de cada conversión, y acá el valor real se conoce recién al firmar |
 
 **Ajustes**: +20 % en móvil (de ahí llega el grueso del tráfico y es donde el botón de WhatsApp convierte mejor) y +15 % en el horario de 18 a 21 de días hábiles, que es cuando la gente resuelve la casa.
@@ -128,6 +128,6 @@ Sin extensión de ubicación: la empresa es de área de servicio y no tiene loca
 | 10 | Encender Marca y Service |
 | 15 | Revisión de CPL por campaña. Lo que esté al doble del objetivo se pausa, no se «optimiza» |
 | 22 | Segunda ronda de negativas. Subir presupuesto en el grupo con mejor coste por conversación |
-| 30 | Balance del mes: CPL, conversaciones, presupuestos enviados y obras cerradas. Decidir el reparto del mes siguiente |
+| 30 | Balance del mes: CPL, conversaciones, presupuestos enviados y instalaciones cerradas. Decidir el reparto del mes siguiente |
 
 > **Lo que no se hace el primer mes:** activar Performance Max. Necesita unas 30 conversiones de historial para no dispersar el presupuesto en tráfico irrelevante; encenderla antes es la forma más habitual de quemar el presupuesto de una cuenta nueva. Está prevista para el mes 3.

@@ -8,7 +8,7 @@ Todas las alícuotas verificadas al 01-08-2026 con fuente fechada. Argentina cam
 |---|---|---|
 | Venta de equipos de A/A | **21%** | Sin alícuota diferencial para splits domésticos |
 | Instalación sobre vivienda **preexistente** (el caso típico) | **21%** | El retrofit hogareño no goza de reducción |
-| Instalación en **obra nueva / en curso** destino vivienda | **10,5%** | Ley IVA art. 28 inc. c. Relevante para el canal desarrolladores (Nordelta/Remeros): exigir respaldo documental (certificados de obra) [VALIDAR CON CONTADOR] |
+| Instalación en **obra nueva / en curso** destino vivienda | **10,5%** | Ley IVA art. 28 inc. c. Relevante para el canal desarrolladores (Nordelta/Remeros): exigir respaldo documental (certificados de instalación) [VALIDAR CON CONTADOR] |
 | Percepción IVA en compras a mayoristas (RG 2408) | 3% sobre neto | Pago a cuenta; se recupera en la DDJJ mensual |
 
 Facturación electrónica: desde el **01-08-2026** rige el esquema de **CAE en tiempo real** como modalidad principal (RG 5782/5785 [F35]) — cualquier ERP debe estar homologado (Xubio lo está). Facturas B con IVA discriminado obligatorio (transparencia fiscal). Sin controlador fiscal: todo electrónico.
@@ -38,7 +38,7 @@ Alta por **Registro Único Tributario** en ARCA (único canal desde el 01-08-202
 | Venta minorista de equipos (4753 / 475300) | 5% general · 2,5% si ingresos ≤ $47M · 3,5% si ≤ $1.223M | 3% si ≤ $391M · 5% encima |
 | Reparación/posventa (9521 / 952100) | 4,5% · 4% · 3,5% según tramo | 3% / 5% |
 
-→ De aquí sale la decisión de encuadre de la sección 2: **facturar como obra de instalación con provisión de equipo** (2,5%/2%) y no como venta + servicio. Ahorro: 1 a 2,5 puntos de la facturación. [VALIDAR CON CONTADOR]
+→ De aquí sale la decisión de encuadre de la sección 2: **facturar como instalación de instalación con provisión de equipo** (2,5%/2%) y no como venta + servicio. Ahorro: 1 a 2,5 puntos de la facturación. [VALIDAR CON CONTADOR]
 
 **El «goteo»**: SIRCREB (acreditaciones bancarias), SIRCUPA (Mercado Pago — PBA adherida desde 10-2025) y regímenes de tarjetas retienen IIBB a cuenta en cada cobro (0,01%-5% según padrón). Una pyme nueva puede sufrir retenciones mayores al impuesto real → saldos a favor de recupero lento. Gestión: DDJJ en término, monitoreo mensual de padrones, reclamo de reducción en ARBA/AGIP con 2-3 meses de saldo a favor, y preferencia por el cobro por transferencia directa.
 
