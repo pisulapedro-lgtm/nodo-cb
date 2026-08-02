@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de frigorías y BTU | Clima Baires</title>
+<meta name="description" content="Calcula cuántas frigorías y cuántos BTU necesita tu estancia y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en la Costa del Sol.">
+<link rel="canonical" href="https://climabaires.es/calculadora-frigorias.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculadora de frigorías y BTU | Clima Baires">
+<meta property="og:description" content="Calcula cuántas frigorías y cuántos BTU necesita tu estancia y qué split te conviene. Herramienta gratuita de Clima Baires, instaladores en la Costa del Sol.">
+<meta property="og:url" content="https://climabaires.es/calculadora-frigorias.html">
+<meta property="og:image" content="https://climabaires.es/assets/img/obras/og-home.jpg">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Clima Baires">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0058B3">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="alternate" type="application/rss+xml" title="Blog de Clima Baires" href="blog/rss.xml">
+<script>window.dataLayer = window.dataLayer || [];</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://climabaires.es/"}, {"@type": "ListItem", "position": 2, "name": "Calculadora de frigorías", "item": "https://climabaires.es/calculadora-frigorias.html"}]}</script>
+</head>
+<body data-pagina="calculadora-frigorias" data-zona="">
+<header class="top">
+  <div class="contenedor top-inner">
+    <a class="logo" href="index.html" aria-label="Clima Baires — inicio">
+      <img src="assets/img/logo.webp" alt="Clima Baires" width="145" height="44">
+    </a>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="obras.html">Obras</a>
+      <a href="blog/">Blog</a>
+      <a href="index.html#zonas">Zonas</a>
+      <a href="calculadora-frigorias.html" class="activo">Calculadora</a>
+      <a href="sobre-nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+      <a class="boton celeste" data-wsp="Hola Clima Baires, quiero pedir presupuesto." data-origen="menu" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20pedir%20presupuesto." target="_blank" rel="noopener">Pedir presupuesto</a>
+    </nav>
+    <button class="hamburguesa" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+
+<section class="cabecera-pagina">
+  <div class="contenedor">
+    <nav class="migas"><a href="index.html">Inicio</a> › Calculadora de frigorías</nav>
+    <h1>Calculadora de frigorías</h1>
+    <p class="bajada">Rellena los datos y en 30 segundos sabes qué equipo necesitas, en frigorías y en BTU.</p>
+    <div class="acciones-cabecera">
+      <a class="boton verde" data-wsp="Hola Clima Baires, quiero saber qué equipo necesito para mi estancia." data-origen="hero" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20saber%20qu%C3%A9%20equipo%20necesito%20para%20mi%20estancia." target="_blank" rel="noopener">Que lo calculéis vosotros</a>
+      <a class="boton fantasma" data-agenda data-origen="hero" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20concertar%20una%20visita%20t%C3%A9cnica.">Concertar visita</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:10px">
+  <div class="contenedor">
+    <form class="calc" id="calc-frigorias">
+      <label for="m2">Superficie de la estancia (m²)</label>
+      <input type="number" id="m2" name="m2" min="4" max="200" step="0.5" placeholder="Ej.: 25" required>
+
+      <label for="altura">Altura del techo (m)</label>
+      <select id="altura" name="altura">
+        <option value="2.6" selected>Estándar (2,6 m)</option>
+        <option value="3">Alta (3 m)</option>
+        <option value="3.5">Muy alta o doble altura (3,5 m o más)</option>
+      </select>
+
+      <label for="orientacion">Orientación predominante</label>
+      <select id="orientacion" name="orientacion">
+        <option value="norte" selected>Norte o este (menos sol)</option>
+        <option value="sur">Sur (sol gran parte del día)</option>
+        <option value="oeste">Oeste (sol fuerte de tarde)</option>
+      </select>
+
+      <label for="ventanales">¿Ventanales grandes o cubierta expuesta al sol?</label>
+      <select id="ventanales" name="ventanales">
+        <option value="no" selected>No</option>
+        <option value="si">Sí</option>
+      </select>
+
+      <label for="personas">Personas que usan la estancia habitualmente</label>
+      <select id="personas" name="personas">
+        <option value="2" selected>1 – 2</option>
+        <option value="4">3 – 4</option>
+        <option value="6">5 o más</option>
+      </select>
+
+      <button class="boton" type="submit" style="margin-top:22px;width:100%">Calcular frigorías</button>
+
+      <div class="resultado" id="calc-resultado">
+        <div class="cifra"></div>
+        <p class="equipo" style="margin:8px 0 16px"></p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+          <a class="boton celeste" data-wsp-calc href="#">Pedir presupuesto con este cálculo</a>
+          <a class="boton fantasma" data-agenda data-origen="calculadora" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20concertar%20una%20visita%20t%C3%A9cnica.">Concertar visita técnica</a>
+        </div>
+      </div>
+
+      <p class="nota">El cálculo parte de 100 frigorías/m² de referencia y lo ajusta por altura, orientación, ganancia solar y ocupación. Aquí, en el hemisferio norte, la fachada sur es la que se lleva el sol todo el día y la oeste, el golpe de calor de la tarde: por eso suman potencia. Cocinas, áticos bajo cubierta y estancias con muchos electrodomésticos pueden pedir más: lo verificamos en la visita técnica.</p>
+    </form>
+  </div>
+</section>
+
+<section class="seccion" style="padding:0 0 46px">
+<div class="contenedor">
+  <div class="cinta-cta">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>
+    <p>¿Te sale un número raro? Mándanos las medidas y lo revisamos.</p>
+    <a class="boton verde" data-wsp="Hola Clima Baires, he usado la calculadora y quiero verificar el resultado." data-origen="cinta" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20he%20usado%20la%20calculadora%20y%20quiero%20verificar%20el%20resultado." target="_blank" rel="noopener">Consultar</a>
+  </div>
+</div>
+</section>
+
+<section class="seccion alterna">
+  <div class="contenedor">
+    <div class="centrado"><span class="kicker">Tabla de referencia</span><h2>¿Cuántas frigorías por metro cuadrado?</h2>
+    <p class="intro">Valores orientativos para techo estándar de 2,6 m y orientación norte o este. Si la estancia tiene ventanales grandes, recibe sol de tarde o la usan varias personas, suma potencia: eso lo ajusta la calculadora de arriba.</p></div>
+    <table class="simple">
+      <thead><tr><th>Superficie</th><th>Estancia típica</th><th>Frigorías necesarias</th><th>Equipo comercial</th></tr></thead>
+      <tbody><tr><td>10 m²</td><td>dormitorio pequeño</td><td>1.000</td><td><strong>2.250</strong> frigorías · 9.000 BTU</td></tr><tr><td>15 m²</td><td>dormitorio</td><td>1.500</td><td><strong>2.250</strong> frigorías · 9.000 BTU</td></tr><tr><td>20 m²</td><td>dormitorio grande o despacho</td><td>2.000</td><td><strong>2.250</strong> frigorías · 9.000 BTU</td></tr><tr><td>25 m²</td><td>salón comedor</td><td>2.500</td><td><strong>3.000</strong> frigorías · 12.000 BTU</td></tr><tr><td>30 m²</td><td>salón amplio</td><td>3.000</td><td><strong>3.000</strong> frigorías · 12.000 BTU</td></tr><tr><td>40 m²</td><td>salón comedor integrado</td><td>4.000</td><td><strong>4.500</strong> frigorías · 18.000 BTU</td></tr><tr><td>50 m²</td><td>planta baja diáfana</td><td>5.000</td><td><strong>6.000</strong> frigorías · 24.000 BTU</td></tr></tbody>
+    </table>
+    <p class="nota centrado" style="margin-top:18px">La equivalencia es directa: 1 frigoría/h son unas 3,97 BTU/h. Cuando en la tienda te hablen de un 3×1 de 12.000 BTU, son 3.000 frigorías.</p>
+  </div>
+</section>
+
+<section class="seccion" style="padding:0 0 70px">
+<div class="contenedor">
+  <div class="cinta-cta">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>
+    <p>¿Prefieres que lo veamos nosotros? Mándanos las medidas por WhatsApp.</p>
+    <a class="boton verde" data-wsp="Hola Clima Baires, quiero saber qué equipo necesito para mi estancia." data-origen="cinta" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20saber%20qu%C3%A9%20equipo%20necesito%20para%20mi%20estancia." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+  </div>
+</div>
+</section>
+
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-grilla">
+      <div>
+        <img class="logo-pie" src="assets/img/logo-blanco.webp" alt="Clima Baires" width="151" height="46" loading="lazy">
+        <p>Venta, instalación y posventa de aire acondicionado en Málaga y la Costa del Sol. Tu confort, nuestra prioridad.</p>
+        <p style="margin-top:12px;font-size:.86rem">Empresa instaladora habilitada RITE: PENDIENTE — nº de empresa instaladora RITE</p>
+      </div>
+      <div>
+        <h2>Servicios</h2>
+        <ul>
+          <li><a href="servicios.html#venta">Venta de equipos</a></li>
+          <li><a href="servicios.html#instalacion">Instalación</a></li>
+          <li><a href="servicios.html#mantenimiento">Mantenimiento y posventa</a></li>
+          <li><a href="obras.html">Obras recientes</a></li>
+          <li><a href="blog/">Blog</a></li>
+          <li><a href="calculadora-frigorias.html">Calculadora de frigorías</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Zonas</h2>
+        <ul>
+          <li><a href="zonas/malaga-capital.html">Málaga capital</a></li><li><a href="zonas/marbella.html">Marbella</a></li><li><a href="zonas/torremolinos.html">Torremolinos</a></li><li><a href="zonas/benalmadena.html">Benalmádena</a></li><li><a href="zonas/fuengirola.html">Fuengirola</a></li><li><a href="zonas/mijas.html">Mijas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contacto</h2>
+        <ul>
+          <li>WhatsApp: <span data-wsp-num>+34 600 00 00 00</span></li>
+          <li><a data-email href="mailto:info@climabaires.es">info@climabaires.es</a></li>
+          <li><span data-horario>De lunes a sábado, de 8:00 a 19:00</span></li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span data-anio></span> Clima Baires · PENDIENTE — denominación social · CIF PENDIENTE — CIF/NIF</span>
+      <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a> · <a href="terminos.html">Términos y condiciones</a> · <button class="pie-cookies" type="button" data-cookies-abrir>Preferencias de cookies</button></span>
+    </div>
+    <div class="legal" style="border:0;padding-top:8px">
+      <span>Málaga y Costa del Sol: Málaga capital · Marbella · Torremolinos · Benalmádena · Fuengirola · Mijas</span>
+    </div>
+  </div>
+</footer>
+
+<div class="barra-movil">
+  <a class="bm-wsp" data-wsp="Hola Clima Baires, quiero saber qué equipo necesito para mi estancia." data-chat data-origen="barra" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20saber%20qu%C3%A9%20equipo%20necesito%20para%20mi%20estancia." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="bm-agenda" data-agenda data-origen="barra" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20concertar%20una%20visita%20t%C3%A9cnica.">Agendar visita</a>
+</div>
+
+<div class="nudge" id="nudge" hidden>
+  <button class="nudge-texto" type="button">¿Te pasamos presupuesto hoy?</button>
+  <button class="nudge-cerrar" type="button" aria-label="Cerrar aviso">×</button>
+</div>
+
+<div class="chat" id="chat" hidden role="dialog" aria-label="Asistente de Clima Baires">
+  <div class="chat-cabecera">
+    <img src="assets/img/avatar-chat.png" alt="" width="34" height="34" loading="lazy">
+    <div><strong>Clima Baires</strong><span data-respuesta>Respondemos en minutos</span></div>
+    <button class="chat-cerrar" type="button" aria-label="Cerrar chat">×</button>
+  </div>
+  <div class="chat-mensajes" id="chat-mensajes" aria-live="polite"></div>
+  <div class="chat-pie" id="chat-pie"></div>
+</div>
+
+<button class="wsp-flotante" type="button" data-origen="flotante" aria-label="Habla con nosotros por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>
+  <span class="wsp-texto">Escríbenos</span>
+</button>
+
+<div class="cookies" id="cookies" hidden role="dialog" aria-label="Consentimiento de cookies">
+  <div class="cookies-in">
+    <p>Usamos cookies propias para que el sitio funcione y, sólo si nos das permiso, cookies de Google para medir el tráfico y la publicidad. Ese mismo permiso es el que carga el mapa y la agenda de citas. Puedes cambiar de idea cuando quieras desde el pie de página. Todo el detalle, en la <a href="cookies.html">política de cookies</a>.</p>
+    <div class="cookies-botones">
+      <button class="ck-rechazar" type="button">Rechazar</button>
+      <button class="ck-aceptar" type="button">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

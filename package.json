@@ -10,7 +10,15 @@
     "web:publicar": "python3 web/tools/publicar.py",
     "blog:tema": "python3 web/tools/siguiente-nota.py",
     "blog:estado": "python3 web/tools/siguiente-nota.py --estado",
-    "blog:revisar": "python3 web/tools/revisar-nota.py"
+    "blog:revisar": "python3 web/tools/revisar-nota.py",
+    "es:generar": "python3 web-es/tools/generar.py",
+    "es:fotos": "python3 web-es/tools/fotos.py",
+    "es:shots": "node web-es/tools/shots.mjs",
+    "es:preview": "python3 web-es/tools/preview-html.py",
+    "es:publicar": "python3 web-es/tools/publicar.py",
+    "es:blog:tema": "python3 web-es/tools/siguiente-nota.py",
+    "es:blog:estado": "python3 web-es/tools/siguiente-nota.py --estado",
+    "es:blog:revisar": "python3 web-es/tools/revisar-nota.py"
   },
   "repository": {
     "type": "git",

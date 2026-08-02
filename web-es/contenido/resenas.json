@@ -1,0 +1,31 @@
+{
+  "_comentario": [
+    "Reseñas de la ficha de Google, transcritas a mano. Las lee web-es/tools/generar.py.",
+    "",
+    "Por qué a mano: Google no permite incrustar el TEXTO de las reseñas con un iframe.",
+    "El mapa embebido muestra la ficha y la puntuación, no lo que dice la gente; la",
+    "Places API devuelve hasta cinco reseñas pero exige clave, facturación activa y",
+    "cumplir sus políticas de atribución; y un widget de terceros es una carga externa",
+    "más, con cuota mensual, que rompe el «sin dependencias» del proyecto.",
+    "",
+    "Así que: mapa incrustado (prueba visual y puntuación) + dos o tres reseñas reales",
+    "transcritas + enlace al perfil para verificarlas. Sin clave, sin coste, sin",
+    "dependencias.",
+    "",
+    "REGLAS, y no son negociables:",
+    "  · Sólo reseñas que existan de verdad en la ficha, con el nombre y la fecha que",
+    "    figuran ahí. Una reseña inventada es publicidad engañosa.",
+    "  · 'puntuacion' y 'total' tienen que ser los valores REALES y actuales de la",
+    "    ficha. De ellos sale el aggregateRating de los datos estructurados, y Google",
+    "    penaliza el marcado que no coincide con lo visible en la página.",
+    "  · Mientras sigan en PENDIENTE no se publica ningún aggregateRating y el bloque",
+    "    de reseñas sale como aviso. publicar.py tampoco deja compilar.",
+    "  · Al actualizar la puntuación o el número, hay que volver a correr generar.py.",
+    "",
+    "El Place ID no va aquí: vive en CB.placeId (assets/js/main.js), que es el único",
+    "punto de configuración del sitio."
+  ],
+  "puntuacion": "PENDIENTE — puntuación media real de la ficha (ej.: 4.8)",
+  "total": "PENDIENTE — número total de reseñas de la ficha (ej.: 127)",
+  "resenas": []
+}

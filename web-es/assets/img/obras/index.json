@@ -1,0 +1,131 @@
+{
+  "zonas": {
+    "malaga-capital": "Málaga capital",
+    "marbella": "Marbella",
+    "torremolinos": "Torremolinos",
+    "benalmadena": "Benalmádena",
+    "fuengirola": "Fuengirola",
+    "mijas": "Mijas"
+  },
+  "tipos": {
+    "instalacion": "Instalación",
+    "sustitucion": "Sustitución",
+    "mantenimiento": "Mantenimiento",
+    "suelo-techo": "Suelo-techo",
+    "conductos": "Cassette y conductos",
+    "antes-despues": "Antes / después",
+    "equipo": "Equipo en obra"
+  },
+  "fotos": [
+    {
+      "slug": "instalacion-unidad-exterior-fachada-01",
+      "alt": "Instalación de una unidad exterior en fachada desde plataforma elevadora: trabajo en altura con equipos de protección",
+      "zona": "",
+      "tipo": "instalacion",
+      "destacada": true,
+      "w1600": 1140,
+      "h1600": 632,
+      "w800": 800,
+      "h800": 444
+    },
+    {
+      "slug": "instalacion-unidad-exterior-azotea-01",
+      "alt": "Técnico de Clima Baires montando una unidad exterior inverter en la azotea de un edificio, sobre los tejados de la ciudad",
+      "zona": "",
+      "tipo": "instalacion",
+      "destacada": true,
+      "w1600": 1446,
+      "h1600": 1600,
+      "w800": 723,
+      "h800": 800
+    },
+    {
+      "slug": "puesta-en-marcha-unidad-exterior-comercial-01",
+      "alt": "Puesta en marcha de una unidad exterior comercial: control de presiones con manómetros antes de entregar el equipo",
+      "zona": "",
+      "tipo": "instalacion",
+      "destacada": true,
+      "w1600": 882,
+      "h1600": 1408,
+      "w800": 501,
+      "h800": 800
+    },
+    {
+      "slug": "instalacion-cassette-oficina-01",
+      "alt": "Instalación de un aire acondicionado tipo cassette en el falso techo de una oficina",
+      "zona": "",
+      "tipo": "conductos",
+      "destacada": true,
+      "w1600": 1295,
+      "h1600": 1600,
+      "w800": 648,
+      "h800": 800
+    },
+    {
+      "slug": "instalacion-cassette-oficina-02",
+      "alt": "Montaje de una unidad interior tipo cassette con elevador de carga en una oficina",
+      "zona": "",
+      "tipo": "conductos",
+      "destacada": false,
+      "w1600": 1038,
+      "h1600": 1600,
+      "w800": 519,
+      "h800": 800
+    },
+    {
+      "slug": "mantenimiento-split-oficina-01",
+      "alt": "Mantenimiento de un split de pared en una oficina, por un técnico de Clima Baires",
+      "zona": "",
+      "tipo": "mantenimiento",
+      "destacada": true,
+      "w1600": 1372,
+      "h1600": 1600,
+      "w800": 686,
+      "h800": 800
+    },
+    {
+      "slug": "nave-flota-stock-01",
+      "alt": "La nave de Clima Baires: furgonetas rotuladas y stock de equipos listos para instalar",
+      "zona": "",
+      "tipo": "equipo",
+      "destacada": true,
+      "w1600": 1463,
+      "h1600": 1600,
+      "w800": 732,
+      "h800": 800
+    },
+    {
+      "slug": "nave-furgoneta-rotulada-01",
+      "alt": "Furgoneta rotulada de Clima Baires en la nave, junto al stock de equipos de aire acondicionado",
+      "zona": "",
+      "tipo": "equipo",
+      "destacada": false,
+      "w1600": 1280,
+      "h1600": 1600,
+      "w800": 640,
+      "h800": 800
+    },
+    {
+      "slug": "equipo-obra-local-comercial-01",
+      "alt": "Técnico de Clima Baires preparando el acceso para climatizar un local comercial",
+      "zona": "",
+      "tipo": "equipo",
+      "destacada": false,
+      "w1600": 1317,
+      "h1600": 1600,
+      "w800": 659,
+      "h800": 800
+    },
+    {
+      "slug": "equipo-llegada-obra-01",
+      "alt": "El equipo de Clima Baires llegando a una obra con escaleras y herramientas",
+      "zona": "",
+      "tipo": "equipo",
+      "destacada": false,
+      "w1600": 1200,
+      "h1600": 1600,
+      "w800": 600,
+      "h800": 800
+    }
+  ]
+}

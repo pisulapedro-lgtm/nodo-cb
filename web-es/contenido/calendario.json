@@ -1,0 +1,103 @@
+{
+  "_comentario": [
+    "Calendario editorial del blog. Lo consume web-es/tools/siguiente-nota.py, que es lo primero",
+    "que ejecuta la rutina automática cada tres días para saber sobre qué escribir.",
+    "",
+    "Cada tema tiene: slug (nombre del archivo), titulo orientativo, categoria",
+    "(guia|mantenimiento|zonas|equipos|eficiencia), angulo (de qué va a hablar) y estado.",
+    "estado: 'pendiente' → todavía no se ha escrito · 'publicado' → ya existe el .md",
+    "",
+    "Para sumar temas: añádelos al final de la lista con estado 'pendiente'.",
+    "Cuando la lista se queda sin pendientes, la rutina avisa en vez de inventarse un tema.",
+    "",
+    "Son temas del mercado español, no la traducción de los argentinos: aquí pesan la",
+    "aerotermia, las ayudas a la bomba de calor, el certificado energético, el salitre de",
+    "la costa y la comunidad de propietarios."
+  ],
+  "temas": [
+    {
+      "slug": "aerotermia-o-aire-acondicionado",
+      "titulo": "Aerotermia o aire acondicionado: cuál te conviene",
+      "categoria": "equipos",
+      "angulo": "La duda que aparece en toda reforma de la Costa del Sol. Explicar que las dos son bomba de calor pero resuelven cosas distintas: el aire acondicionado climatiza estancias con aire; la aerotermia produce agua caliente para suelo radiante, radiadores y agua caliente sanitaria, y puede dar frío por suelo o por fancoil. Cuándo compensa cada una según si la vivienda ya tiene caldera, si se está reformando en profundidad y si hay espacio para el equipo. Sin importes: explicar de qué depende el coste, no cuánto cuesta.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "ayudas-para-la-bomba-de-calor",
+      "titulo": "Ayudas para instalar bomba de calor: cómo funcionan",
+      "categoria": "eficiencia",
+      "angulo": "Orientar sin dar cifras. Qué tipos de ayuda suelen existir para sustituir un sistema por una bomba de calor eficiente: programas de rehabilitación energética gestionados por la comunidad autónoma, deducciones en el IRPF por obras que mejoran la eficiencia y bonificaciones municipales en el IBI o en el ICIO. Explicar el mecanismo, no el importe: casi todas exigen certificado energético antes y después, factura a nombre del solicitante, equipo dentro de unos mínimos de eficiencia y empresa instaladora habilitada. Qué documentación pedirle al instalador para no quedarte fuera por un papel. PROHIBIDO poner porcentajes, importes, plazos o nombres de convocatoria: cambian en cada edición. Remitir a la sede electrónica del organismo, sin enlazar.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "certificado-energetico-y-climatizacion",
+      "titulo": "Qué pinta la climatización en el certificado energético",
+      "categoria": "eficiencia",
+      "angulo": "Para quien va a vender o alquilar, o quien va a pedir una ayuda. Qué es el certificado de eficiencia energética, quién lo firma y por qué el sistema de climatización pesa en la letra final junto al aislamiento y las ventanas. Qué cambia al pasar de un equipo antiguo de arranque y parada a un inverter o a una bomba de calor, y por qué el certificado se vuelve a hacer después de la reforma cuando se pide una ayuda. Explicar qué son SEER y SCOP y cómo se leen en la etiqueta del equipo.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "salitre-y-aire-acondicionado-en-la-costa",
+      "titulo": "Salitre: por qué en la costa el equipo dura menos",
+      "categoria": "zonas",
+      "angulo": "Específico de la primera línea de playa: La Carihuela, Fuengirola, La Cala. Cómo actúa el aire marino sobre la unidad exterior —tornillería, soportes, aletas de la batería— y por qué se ve antes en los soportes que en la máquina. Qué material usar (galvanizado o inoxidable frente a hierro pintado), qué es el tratamiento anticorrosivo de batería y cuándo compensa, y cómo se enjuaga bien: agua de red a baja presión, nunca hidrolimpiadora. Cerrar con una recomendación de frecuencia de revisión para vivienda de costa.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "donde-poner-la-unidad-exterior",
+      "titulo": "Dónde poner la unidad exterior (y dónde no)",
+      "categoria": "guia",
+      "angulo": "La decisión que más problemas trae después: distancia máxima a la unidad interior, espacio libre para que respire, sol directo, ruido para el vecino, normas de fachada de la comunidad y de las urbanizaciones, altura para poder hacer el mantenimiento, y por qué no va encima de la ventana del dormitorio. Incluir el caso del patio interior en las torres de la costa y el del centro histórico, donde no puede verse desde la vía pública.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "permiso-de-la-comunidad-de-propietarios",
+      "titulo": "Permiso de la comunidad para instalar el aire",
+      "categoria": "guia",
+      "angulo": "Guía práctica para pisos. Por qué la fachada, la cubierta y el patio de luces son elementos comunes y qué implica eso; qué suelen decir los estatutos y las normas de régimen interior; cuándo hace falta llevarlo a junta y cuándo basta con comunicarlo al administrador; qué documentación conviene presentar (ficha del equipo con medidas, peso y nivel sonoro, punto de anclaje, seguro de responsabilidad civil del instalador). Mencionar que además puede hacer falta licencia de obra menor o declaración responsable municipal si se toca fachada. Sin citar artículos concretos de la Ley de Propiedad Horizontal salvo que se esté seguro.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "frigorias-btu-y-kw",
+      "titulo": "Frigorías, BTU y kW: cómo leer la potencia",
+      "categoria": "guia",
+      "angulo": "El lío de unidades que se encuentra cualquiera que entra en una tienda. Qué mide cada una, cómo se convierten entre sí, por qué el catálogo habla de un 3x1 de 12.000 BTU y la ficha técnica de 3,5 kW, y qué significa la potencia en frío frente a la potencia en calor. Explicar que el número que importa no es el del cartel sino el que necesita tu estancia, y enlazar la calculadora del sitio. Incluir una tabla de equivalencias.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "cuanto-consume-un-aire-acondicionado",
+      "titulo": "Cuánto consume un aire acondicionado al mes",
+      "categoria": "equipos",
+      "angulo": "Explicar cómo se lee el consumo de un equipo, qué significa inverter y por qué gasta menos que uno de arranque y parada, cómo influye la temperatura elegida (cada grado de menos se paga) y hábitos que bajan la factura sin renunciar al confort. Sin dar importes en euros: explicar el método para que cada uno lo calcule con su tarifa y con las horas reales de uso. Mencionar SEER como el dato comparable entre equipos.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "senales-de-que-necesita-revision",
+      "titulo": "Seis señales de que tu equipo necesita revisión",
+      "categoria": "mantenimiento",
+      "angulo": "Entrada corta y práctica: enfría menos que el año pasado, tarda más en llegar a temperatura, gotea dentro, huele mal al arrancar, hace un ruido nuevo, la unidad exterior se escarcha. Qué significa cada una, cuál se resuelve en casa con los filtros y cuál necesita técnico. Recordar que quien manipula el gas refrigerante necesita carné de gases fluorados.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "sustituir-un-equipo-antiguo",
+      "titulo": "Cuándo conviene sustituir el equipo en vez de repararlo",
+      "categoria": "equipos",
+      "angulo": "Muy pedido en los bloques de Fuengirola y de Torremolinos, donde hay muchos equipos de más de diez años. Criterios: edad, tipo de refrigerante (los antiguos usan gases ya descatalogados), coste de la reparación frente al de uno nuevo, diferencia de consumo entre un equipo de arranque y parada y un inverter actual, y qué pasa con el equipo retirado (recuperación del gas con máquina y entrega a gestor autorizado). Explicar cuándo se puede reutilizar la tubería existente y cuándo no.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "preinstalacion-en-obra",
+      "titulo": "Preinstalación: qué dejar hecho antes del enlucido",
+      "categoria": "guia",
+      "angulo": "Para quien está construyendo o reformando, sobre todo en las urbanizaciones de Mijas y Marbella. Qué se deja empotrado antes de cerrar los tabiques (tubería de refrigerante, desagüe, línea eléctrica), cuánto ahorra hacerlo en ese momento, cómo se coordina con el arquitecto o el aparejador y qué pasa si se olvida. Insistir en dimensionar la tubería para la potencia futura y en sellar las puntas mientras dura la obra.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "ruido-del-aire-acondicionado",
+      "titulo": "Por qué hace ruido tu aire (y qué se puede hacer)",
+      "categoria": "mantenimiento",
+      "angulo": "Diferenciar los ruidos normales de los que avisan de un problema: vibración de la unidad exterior por soporte flojo, ruido de agua, chasquidos de dilatación, turbina sucia, compresor. Qué se resuelve con mantenimiento y qué con una instalación mejor hecha. Incluir la convivencia con el vecino en pisos y las ordenanzas municipales de ruido en horario nocturno.",
+      "estado": "pendiente"
+    }
+  ]
+}

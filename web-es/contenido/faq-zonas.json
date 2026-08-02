@@ -1,0 +1,129 @@
+{
+  "_comentario": [
+    "Preguntas frecuentes de cada página de zona. Las lee web-es/tools/generar.py:",
+    "arma el acordeón visible y, con las mismas preguntas, el bloque FAQPage de",
+    "datos estructurados que Google puede mostrar en el resultado de búsqueda.",
+    "",
+    "Formato: \"slug-de-zona\": [[pregunta, respuesta], ...]. El slug es el mismo",
+    "que el archivo de zonas/. Si una zona no figura aquí, generar.py usa las",
+    "preguntas genéricas y avisa al compilar.",
+    "",
+    "Son las páginas a las que llega el tráfico de Google Ads: cada respuesta",
+    "tiene que resolver la duda sola, sin obligar a escribir por WhatsApp.",
+    "",
+    "NO son la traducción de las argentinas. Allí las dudas eran el alta de",
+    "contratista y el reglamento del barrio cerrado; aquí son la comunidad de",
+    "propietarios, la licencia de obra menor, la ITE y el salitre. Y aquí sí se",
+    "puede hablar de trabajo hecho en la zona, porque lo hay."
+  ],
+  "zonas": {
+    "malaga-capital": [
+      [
+        "¿Necesito permiso de la comunidad de propietarios?",
+        "En la mayoría de las fincas sí, porque la unidad exterior acaba apoyada en un elemento común: fachada, patio de luces o cubierta. Mandan los estatutos y las normas de régimen interior; si no dicen nada, lo habitual es llevarlo a junta. Pide el acuerdo por escrito antes de comprar el equipo. Nosotros preparamos la ficha que suele reclamar el administrador: medidas, peso, nivel sonoro y punto exacto de anclaje, más nuestro seguro de responsabilidad civil."
+      ],
+      [
+        "Vivo en el Centro Histórico. ¿Puedo poner el aparato en la fachada?",
+        "A la calle, prácticamente nunca. En el ámbito protegido del centro la normativa urbanística obliga a que las máquinas no sean visibles desde la vía pública, así que la salida es el patio interior, la cubierta o un hueco con celosía integrada. Además, tocar fachada o cubierta suele exigir licencia de obra menor o declaración responsable en el Ayuntamiento. Eso se comprueba antes de presupuestar, no el día de la instalación."
+      ],
+      [
+        "En una finca antigua, ¿por dónde pasa la tubería?",
+        "Es lo que decide el presupuesto. En edificios antiguos rara vez hay un patinillo libre, así que se estudia el recorrido más corto hasta el patio de luces o la cubierta y se decide si va por canaleta vista o empotrada en roza. Con muros gruesos y techos altos, el paso de pared lleva más trabajo del que parece, y el desagüe necesita pendiente continua hasta un punto que no sea el patio del vecino. Por eso la medición se hace en la visita y no por teléfono."
+      ],
+      [
+        "¿Me dais certificado de la instalación?",
+        "Sí. Somos empresa instaladora habilitada según el RITE, que es requisito legal para montar climatización en España, y entregamos la documentación de la instalación junto con la factura y la garantía del fabricante. Si tu instalación entra en los supuestos que exigen registro ante el organismo competente de la Junta, lo tramitamos nosotros. Y el gas refrigerante lo manipula personal con carné de gases fluorados: eso no es un extra, es la condición para poder trabajar."
+      ]
+    ],
+    "marbella": [
+      [
+        "Mi urbanización tiene normas de estética. ¿Dónde puede ir la unidad exterior?",
+        "Lo primero es leer la normativa de la comunidad, porque en Nueva Andalucía, la Milla de Oro o Elviria cada una tiene la suya: hay urbanizaciones que exigen que la máquina no se vea desde el vial y otras que imponen el color del cerramiento. Se cumple sin resignar rendimiento, con una condición: el cerramiento tiene que dejar circular el aire. Encerrada en un cajón ciego, la unidad respira su propio calor, enfría menos y consume más."
+      ],
+      [
+        "Uso la casa sólo unos meses al año. ¿Qué mantenimiento necesita?",
+        "El de una vivienda que no se usa es distinto al de una habitual. Tras una parada larga conviene revisar filtros, comprobar que el sifón del desagüe no se ha secado —si se seca, entra olor— y hacer un arranque supervisado antes de que llegue el calor, no el primer día de vacaciones. Lo razonable es programar la revisión unas semanas antes de tu llegada: te avisamos nosotros y lo dejamos comprobado."
+      ],
+      [
+        "¿Podéis entrar si yo no estoy en Marbella?",
+        "Sí, es habitual. Se coordina con quien tenga las llaves —persona de confianza, conserjería o administración de fincas— y dejamos por escrito qué se ha hecho, con fotos del antes y el después. La víspera te enviamos el nombre, la foto y el documento del técnico y la matrícula de la furgoneta, para que puedas autorizar la entrada sin tener que llamar a nadie."
+      ],
+      [
+        "Estoy reformando la villa. ¿Aire acondicionado o aerotermia?",
+        "Depende de qué necesites resolver. Si sólo buscas frío en verano y algo de calor puntual, un sistema por conductos o varios equipos lo cubren bien. Si en la reforma también entran la calefacción y el agua caliente sanitaria, la aerotermia se estudia en serio, porque una sola máquina hace las tres cosas y se integra con suelo radiante. La decisión se toma con el proyecto delante, y no cuesta lo mismo: te damos las dos opciones presupuestadas."
+      ]
+    ],
+    "torremolinos": [
+      [
+        "Vivo en primera línea de playa. ¿El salitre se carga el equipo?",
+        "Ataca primero al metal desnudo —soportes, tornillería y uniones— y después a las aletas de aluminio de la unidad exterior, que es por donde tiene que pasar el aire para soltar el calor. En La Carihuela o en Playamar eso no es una teoría: se ve en dos temporadas. No cambia tanto qué equipo compras, cambia cómo se monta y cada cuánto se enjuaga."
+      ],
+      [
+        "¿Qué protección extra conviene tan cerca del mar?",
+        "Soportes galvanizados o de acero inoxidable con tornillería del mismo material, en lugar de hierro pintado, que a las dos temporadas empieza a chorrear óxido sobre la fachada. Varias marcas ofrecen además modelos con tratamiento anticorrosivo en la batería, pensados para ambiente marino; en la visita te decimos si en tu caso compensa el sobreprecio o si con el montaje y el mantenimiento es suficiente."
+      ],
+      [
+        "Tengo un apartamento turístico. ¿Cada cuánto hay que revisarlo?",
+        "Un piso de alquiler turístico trabaja muchas más horas que una vivienda habitual, y lo usa gente que no lo va a cuidar. Ahí el mantenimiento no se rige por el calendario de una casa: conviene limpiar filtros con más frecuencia y sumar un enjuague de la unidad exterior a mitad de temporada para sacar la sal depositada entre las aletas. Con agua de red a baja presión, nunca con hidrolimpiadora: el chorro fuerte dobla las aletas y ahí sí destrozas el equipo."
+      ],
+      [
+        "¿El aire me quita también la humedad de casa?",
+        "Sí: al enfriar, el equipo condensa agua y la saca por el desagüe, de modo que el ambiente queda menos húmedo. A pie de playa eso significa que el tubo de desagüe trabaja mucho más que en un piso de interior, y necesita pendiente continua y salida a un punto que no moje la fachada ni la terraza del vecino. Si está mal resuelto, la primera señal es agua goteando por debajo de la unidad interior."
+      ]
+    ],
+    "benalmadena": [
+      [
+        "La unidad exterior tiene que ir al patio interior. ¿Es viable?",
+        "Suele serlo, pero en las torres de la costa el problema no es la potencia: es el aire y el ruido. La máquina necesita espacio para respirar —del orden de diez a quince centímetros libres por detrás y medio metro por delante— y no puede quedar enfrentada a otra unidad que le devuelva su propio aire caliente. Medimos el hueco antes de pedir el equipo, porque un modelo más estrecho puede ser la diferencia entre poder montarlo y no poder."
+      ],
+      [
+        "¿Se va a oír en casa del vecino?",
+        "Lo que más se transmite en un edificio no es el ruido del ventilador, es la vibración que viaja por el muro y por el forjado. Por eso la máquina va sobre silentblocks y nunca apoyada directamente contra la medianera, y la descarga de aire no se orienta a la ventana de al lado. Las ordenanzas municipales fijan límites de ruido, sobre todo en horario nocturno: elegir un modelo silencioso y colocarlo bien resuelve el problema antes de que exista."
+      ],
+      [
+        "La comunidad me pide documentación. ¿Qué le entregáis?",
+        "Lo que suele pedir un administrador de fincas: ficha técnica del equipo con medidas, peso y nivel sonoro, punto y sistema de anclaje previstos, nuestro seguro de responsabilidad civil en vigor y los datos de la empresa como instaladora habilitada. Si la junta quiere ver dónde queda la máquina, mandamos también un montaje sobre la foto de la fachada. Ese trámite lo llevamos nosotros."
+      ],
+      [
+        "Vivo en Benalmádena Pueblo, no en la costa. ¿Cambia algo?",
+        "Cambia bastante. Arriba hay menos aire salino y más diferencia de temperatura entre el día y la noche, así que el equipo sufre menos corrosión pero se le pide más en invierno. En esas casas conviene mirar el rendimiento en modo calor y no sólo en frío, porque una bomba de calor bien dimensionada puede ser toda la calefacción que necesitas."
+      ]
+    ],
+    "fuengirola": [
+      [
+        "Mi edificio está con la ITE. ¿Puedo instalar ahora?",
+        "Se puede, pero conviene hablarlo antes. Si la inspección técnica del edificio ha detectado que hay que intervenir en la fachada donde iría la máquina, montar ahora significa desmontar y volver a montar cuando entre la obra, y eso lo paga alguien. Lo que hacemos es preguntar a la administración qué está previsto y en qué plazo, y ajustar el punto de instalación o la fecha. Es una llamada, y ahorra un trabajo entero."
+      ],
+      [
+        "El cuadro eléctrico es antiguo. ¿Aguanta un aire acondicionado?",
+        "Es lo primero que miramos en los bloques de los setenta y ochenta de Los Boliches o Torreblanca. El equipo necesita su propio circuito, con magnetotérmico y protegido por diferencial; en muchas viviendas de esa época no lo hay, o el cuadro no tiene sitio para uno más. Si hace falta adecuarlo, te lo decimos en la visita y va detallado en el presupuesto, para que no aparezca como sorpresa el día de la instalación."
+      ],
+      [
+        "Tengo un equipo de más de diez años. ¿Reparar o sustituir?",
+        "Depende de tres cosas: cuánto lo usas, con qué gas trabaja y cuánto cuesta la avería. Los equipos antiguos funcionan con refrigerantes ya descatalogados, y cuando pierden gas la reparación deja de tener sentido económico. Un equipo de arranque y parada consume bastante más que un inverter, que regula la velocidad del compresor en lugar de cortar. Si además hay que recargarlo cada verano, no es una avería pendiente: es el final de su vida útil."
+      ],
+      [
+        "¿Sirve la tubería que ya está en la pared?",
+        "A veces sí y a veces no, y eso se decide en la visita. Se puede reutilizar si el diámetro coincide con el que pide el equipo nuevo, si el recorrido está sano y si el tubo es apto para el refrigerante actual, porque los equipos antiguos trabajaban con R22 y hoy se usa R410A o R32, que van a más presión. Cuando se reutiliza, se hace un barrido y un vacío profundo para sacar el aceite y la humedad del sistema anterior."
+      ]
+    ],
+    "mijas": [
+      [
+        "La unidad exterior queda lejos del salón. ¿Hasta dónde llega la tubería?",
+        "Hasta un punto. Cada equipo declara una longitud máxima de tubería y un desnivel máximo entre la unidad exterior y la interior, y pasado cierto metraje hay que añadir refrigerante para compensar. En las villas y adosados de Calahonda, Riviera del Sol o Mijas Golf los recorridos son bastante más largos que en un piso: se puede hacer, pero suma metros de cobre, mano de obra y a veces una bomba para elevar el agua del desagüe. Por eso se mide en la visita."
+      ],
+      [
+        "Estoy construyendo. ¿Cuándo tengo que llamar al instalador?",
+        "Antes del enlucido, con los tabiques aún a la vista. Ese es el momento de empotrar la tubería de refrigerante, el desagüe y la línea eléctrica sin picar nada; una vez la casa está terminada y pintada, cada tubo nuevo significa roza, yeso y repaso de pintura. Puedes dejar la preinstalación hecha y comprar los equipos más adelante, siempre que la tubería quede dimensionada para la potencia que vas a necesitar y con las puntas selladas mientras dure la obra."
+      ],
+      [
+        "¿Multisplit o un equipo por estancia?",
+        "Un multisplit es una sola unidad exterior conectada a varias interiores: sirve cuando no quieres cuatro máquinas colgadas en la fachada o cuando el lateral de la parcela no da para más. La contra es que si esa unidad se detiene te quedas sin frío en toda la casa a la vez, y el recorrido de tubería es más largo. En vivienda de dos plantas suele cerrar mejor una mezcla: multisplit para los dormitorios de arriba y equipos independientes abajo."
+      ],
+      [
+        "¿Se puede climatizar el porche o la terraza cubierta?",
+        "Se puede, pero la cuenta es otra. En un espacio semiabierto el aire frío se escapa, así que un equipo dimensionado como para un salón cerrado del mismo metraje se queda corto. Ahí se va a más potencia, a un suelo-techo o a un sistema pensado para exterior, y conviene definir de entrada si el porche se va a cerrar con cristaleras o queda abierto: la diferencia cambia el equipo entero."
+      ]
+    ]
+  }
+}

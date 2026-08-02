@@ -4,3 +4,8 @@ dist/sitio/
 dist/preview-climabaires.html
 dist/preview-movil-climabaires.html
 web/tools/__pycache__/
+dist/sitio-es/
+dist/preview-climabaires-es.html
+dist/preview-movil-climabaires-es.html
+web-es/tools/__pycache__/
+web-es/tools/shots/
