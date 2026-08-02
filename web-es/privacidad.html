@@ -146,7 +146,7 @@
 </footer>
 
 <div class="barra-movil">
-  <a class="bm-wsp" data-wsp="Hola Clima Baires, quiero pedir presupuesto." data-chat data-origen="barra" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20pedir%20presupuesto." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="bm-wsp" data-wsp="Hola Clima Baires, quiero pedir presupuesto." data-origen="barra" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20pedir%20presupuesto." target="_blank" rel="noopener">WhatsApp</a>
   <a class="bm-agenda" data-agenda data-origen="barra" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20concertar%20una%20visita%20t%C3%A9cnica.">Agendar visita</a>
 </div>
 
@@ -155,20 +155,14 @@
   <button class="nudge-cerrar" type="button" aria-label="Cerrar aviso">×</button>
 </div>
 
-<div class="chat" id="chat" hidden role="dialog" aria-label="Asistente de Clima Baires">
-  <div class="chat-cabecera">
-    <img src="assets/img/avatar-chat.png" alt="" width="34" height="34" loading="lazy">
-    <div><strong>Clima Baires</strong><span data-respuesta>Respondemos en minutos</span></div>
-    <button class="chat-cerrar" type="button" aria-label="Cerrar chat">×</button>
-  </div>
-  <div class="chat-mensajes" id="chat-mensajes" aria-live="polite"></div>
-  <div class="chat-pie" id="chat-pie"></div>
-</div>
-
-<button class="wsp-flotante" type="button" data-origen="flotante" aria-label="Habla con nosotros por WhatsApp">
+<!-- Aquí vivía un asistente de cuatro preguntas. Se quitó porque el número de
+     WhatsApp de destino ya es un bot que hace ese mismo filtro: preguntar dos
+     veces lo mismo se lee como que algo está roto. Ahora TODOS los CTA van
+     directos a WhatsApp con su mensaje de contexto, y el filtro lo hace el bot. -->
+<a class="wsp-flotante" data-wsp="Hola Clima Baires, quiero pedir presupuesto." data-origen="flotante" href="https://wa.me/34600000000?text=Hola%20Clima%20Baires%2C%20quiero%20pedir%20presupuesto." target="_blank" rel="noopener" aria-label="Habla con nosotros por WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.1 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.3.6.9 2.1.9 2.3.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1l2.3 1.1c.3.2.5.2.6.4 0 .1 0 .8-.3 1.5z"/></svg>
   <span class="wsp-texto">Escríbenos</span>
-</button>
+</a>
 
 <div class="cookies" id="cookies" hidden role="dialog" aria-label="Consentimiento de cookies">
   <div class="cookies-in">

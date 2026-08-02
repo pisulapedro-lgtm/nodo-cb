@@ -5,9 +5,8 @@ Uso: python3 web-es/tools/preview-html.py
 Salida: dist/preview-climabaires-es.html
 
 Para qué: una captura muestra cómo se ve; esto deja *usarlo*. Se abre en el
-móvil, se pulsa el botón de WhatsApp, se contestan las cuatro preguntas del
-asistente, se decide sobre las cookies, se filtran las obras, se abre el
-lightbox. Todo el sitio entra en un archivo —sin servidor y sin conexión—
+móvil, se pulsa el botón de WhatsApp, se decide sobre las cookies, se filtran las
+obras, se abre el lightbox. Todo el sitio entra en un archivo —sin servidor y sin conexión—
 porque se publica como artifact y ahí no se puede cargar nada de fuera.
 
 Cómo funciona: cada página se muestra dentro de un iframe con su HTML completo,
@@ -226,7 +225,7 @@ DOC = """<title>climabaires.es — vista previa navegable</title>
 
 <nav class="paginas">%(menu)s</nav>
 
-<p class="aviso">Es el sitio real, funcionando. Pulsa el botón verde de WhatsApp para probar el asistente de cuatro preguntas, y decide sobre las cookies en la banda inferior. Los datos de contacto todavía son de ejemplo, así que los enlaces a WhatsApp no llevan a ningún chat, y todo lo que se ve como PENDIENTE está esperando un dato tuyo.</p>
+<p class="aviso">Es el sitio real, funcionando. Pulsa cualquier botón verde y verás el mensaje que llegaría a WhatsApp, ya escrito con el contexto de dónde se pulsó. Decide también sobre las cookies en la banda inferior. Los datos de contacto todavía son de ejemplo, así que los enlaces a WhatsApp no llevan a ningún chat, y todo lo que se ve como PENDIENTE está esperando un dato tuyo.</p>
 
 <div class="escena">
   <div class="marco telefono" id="marco">

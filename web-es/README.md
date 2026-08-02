@@ -319,27 +319,30 @@ ejemplo no se carga nada, y sin consentimiento tampoco.
 | `form_envio` | `zona` | formulario de contacto |
 | `tel_click` / `email_click` | `pagina` | enlaces de teléfono / email |
 | `resenas_click` | `destino` (ver/escribir/maps), `pagina` | enlaces a la ficha de Google |
-| `chatbot_inicio` | `pagina` | apertura del asistente |
-| `chatbot_paso` | `paso` (1-4), `respuesta`, `pagina` | cada respuesta del asistente (el nombre NO se envía: sin datos personales en el dataLayer) |
 | `cookies_consentimiento` | `decision` (aceptado/rechazado) | decisión del banner |
 
-**Chatbot**: cuatro preguntas (nombre, zona, servicio, tipo de aire), arma el
-mensaje y sólo entonces deriva a WhatsApp, con `origen=chatbot`. Sin backend ni
-librerías: vive en `assets/js/main.js`.
+### El sitio no tiene asistente propio
 
-Qué entra por el asistente y qué va directo:
+Lo tuvo: un chat de cuatro preguntas —nombre, zona, servicio, tipo de equipo— que
+armaba el mensaje y sólo entonces derivaba a WhatsApp. **Se retiró**, porque el
+número de destino es un bot que hace exactamente ese mismo filtro inicial: quien
+completaba el asistente llegaba a WhatsApp y le volvían a preguntar lo mismo, que
+es la clase de detalle que hace pensar que algo está roto.
 
-- **Los CTA fijos que acompañan todo el scroll** —el botón flotante y el de
-  WhatsApp de la barra inferior en móvil— abren el asistente. Son los que se
-  pulsan sin contexto («quiero hablar»), así que conviene preguntar antes.
-- **Los CTA de contenido** (hero, cintas, tarjetas, entradas del blog, preguntas
-  de zona) van directos a WhatsApp, porque cada uno lleva su propio mensaje con
-  el contexto de dónde se pulsó.
+Ahora **todos los CTA salen directos a WhatsApp**, cada uno con su mensaje de
+contexto: dónde se pulsó, en qué zona, desde qué entrada del blog. Ese mensaje es
+lo primero que ve el bot, así que lo que se pierde en el sitio se gana en la
+conversación. Todos disparan `whatsapp_click` con su `origen`, sin excepciones.
 
-Para mandar cualquier otro botón por el asistente basta con añadirle el atributo
-`data-chat`; el `href` a `wa.me` se deja igual, así el botón sigue sirviendo si el
-JS no cargó. Un botón con `data-chat` **no** dispara `whatsapp_click` al pulsarlo:
-mide `chatbot_inicio`, y la conversión se cuenta en «Continuar en WhatsApp».
+Consecuencias prácticas, por si algún día se quiere volver atrás:
+
+- Los eventos `chatbot_inicio` y `chatbot_paso` ya no existen. Si estaban
+  configurados en GTM, sus etiquetas se quedan sin disparador y conviene
+  borrarlas.
+- El botón flotante es un `<a>` a `wa.me`, no un `<button>`. El QA lo comprueba:
+  si vuelve a ser un botón, o pierde el mensaje, falla.
+- El atributo `data-chat` ya no lo lee nadie. El CSS del asistente y el avatar
+  `avatar-chat.png` se han borrado con él.
 
 **Cobertura de conversión**: `npm run es:shots` falla si alguna página deja más de
 2,5 pantallas de scroll sin un CTA de WhatsApp en el flujo del documento (el botón

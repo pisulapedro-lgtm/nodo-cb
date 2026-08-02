@@ -1,8 +1,12 @@
 // Capturas QA de climabaires.es (escritorio 1440 y móvil 390) + comprobación de enlaces internos.
 // Uso: npm run es:shots   → escribe PNGs en web-es/tools/shots/
 //
-// Frente al QA del sitio argentino hay una pieza nueva y bloqueante: el banner de
-// consentimiento de cookies. En la UE nada que no sea estrictamente necesario
+// Dos diferencias con el QA del sitio argentino. Una pieza nueva y bloqueante: el
+// banner de consentimiento de cookies. Y una que ya no está: el asistente de
+// cuatro preguntas, retirado porque el bot del WhatsApp de destino hace ese mismo
+// filtro. En su lugar se comprueba que el flotante es un enlace directo.
+//
+// Sobre el banner de cookies: En la UE nada que no sea estrictamente necesario
 // puede cargarse antes del «sí», así que se comprueba que aparece, que rechazar
 // funciona y que mientras está abierto no hay dos capas peleando por la esquina
 // inferior. Como tapa la pantalla, en el resto de páginas se despacha justo
@@ -254,26 +258,24 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
     if (!evAg || evAg.pagina !== 'servicios') errores.push('dataLayer sin agenda_click: ' + JSON.stringify(evAg));
     else console.log('dataLayer agenda_click →', JSON.stringify(evAg));
 
-    // chatbot: 4 preguntas → enlace de WhatsApp armado + eventos
+    // el flotante y la barra móvil ya no abren ningún asistente: son enlaces
+    // directos a wa.me con el mensaje de la página. Si alguno volviera a ser un
+    // <button>, o perdiera el mensaje, el visitante llegaría a WhatsApp en blanco.
     await ir(page, 'index.html');
-    await page.click('.wsp-flotante');
-    await page.fill('#chat-pie input', 'Test QA');
-    await page.click('#chat-pie button[type=submit]');
-    await page.click('.chat-chip[data-valor="Marbella"]');
-    await page.click('.chat-chip[data-valor="Instalación nueva"]');
-    await page.click('.chat-chip[data-valor="Split"]');
-    const hrefChat = await page.getAttribute('.chat-final', 'href');
-    const evChat = await page.evaluate(() => ({
-      inicio: (window.dataLayer || []).some((e) => e.event === 'chatbot_inicio'),
-      pasos: (window.dataLayer || []).filter((e) => e.event === 'chatbot_paso').length,
-    }));
-    if (!hrefChat || !hrefChat.includes('Test%20QA') || !hrefChat.includes('Marbella')) {
-      errores.push('chatbot: enlace final sin datos (' + hrefChat + ')');
+    const flot = await page.evaluate(() => {
+      const a = document.querySelector('.wsp-flotante');
+      return { etiqueta: a?.tagName, href: a?.getAttribute('href') || '', chat: !!document.getElementById('chat') };
+    });
+    if (flot.etiqueta !== 'A' || !/^https:\/\/wa\.me\/\d+\?text=.+/.test(flot.href)) {
+      errores.push('el flotante no es un enlace directo a WhatsApp con mensaje: ' + JSON.stringify(flot));
     }
-    if (!evChat.inicio || evChat.pasos !== 4) errores.push('chatbot: eventos dataLayer incompletos ' + JSON.stringify(evChat));
-    await page.keyboard.press('Escape');
-    if (await page.isVisible('#chat')) errores.push('chatbot no cierra con Escape');
-    console.log('Chatbot OK →', decodeURIComponent(hrefChat.split('text=')[1] || ''));
+    if (flot.chat) errores.push('quedó markup del asistente (#chat) en la página');
+    await page.evaluate(() => document.addEventListener('click', (e) => e.preventDefault(), true));
+    await page.click('.wsp-flotante');
+    const evFlot = await page.evaluate(() => (window.dataLayer || []).find(
+      (e) => e.event === 'whatsapp_click' && e.origen === 'flotante'));
+    if (!evFlot) errores.push('el flotante no empuja whatsapp_click con origen=flotante');
+    else console.log('Flotante OK →', decodeURIComponent(flot.href.split('text=')[1] || ''));
 
     // accesibilidad por teclado: anillo de foco visible en filtros y fotos
     await ir(page, 'obras.html');
@@ -292,16 +294,6 @@ for (const [nombre, viewport] of [['desktop', { width: 1440, height: 900 }], ['m
       if (!visto) errores.push(`.${clase} no es alcanzable con Tab`);
       else if (!(visto.w >= 2 && visto.s !== 'none')) errores.push(`.${clase} sin anillo de foco visible (${visto.w}px ${visto.s})`);
     }
-
-    // captura del asistente para la revisión (una conversación completa)
-    await ir(page, 'index.html');
-    await page.click('.wsp-flotante');
-    await page.fill('#chat-pie input', 'Sofía');
-    await page.click('#chat-pie button[type=submit]');
-    await page.click('.chat-chip[data-valor="Málaga capital"]');
-    await page.click('.chat-chip[data-valor="Sustitución de equipo"]');
-    await page.click('.chat-chip[data-valor="Multisplit"]');
-    await page.screenshot({ path: join(OUT, 'chatbot-desktop.png') });
 
     // galería: filtros + lightbox accesible (abre, navega, cierra con Escape)
     await ir(page, 'obras.html');

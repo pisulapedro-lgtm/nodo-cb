@@ -1,5 +1,10 @@
 /* Clima Baires — climabaires.es
    Configuración central de contacto y medición: EDITAR SOLO AQUÍ.
+
+   El sitio NO tiene asistente propio: todos los CTA salen directos a WhatsApp con
+   su mensaje de contexto, y el filtro inicial —nombre, zona, servicio, tipo de
+   equipo— lo hace el bot del número de destino. Duplicarlo aquí obligaba a
+   contestar dos veces lo mismo.
    - whatsapp: placeholder hasta el alta de la línea española (web-es/README.md → "Antes de publicar").
    - gtmId: contenedor de Google Tag Manager (GTM-XXXXXXX = placeholder → no se carga nada).
      OJO: el contenedor argentino no sirve, son propiedades distintas.
@@ -166,10 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-wsp]').forEach((a) => {
     a.href = cbMensaje(a.dataset.wsp);
     if (a.tagName === 'A') { a.target = '_blank'; a.rel = 'noopener'; }
-    // Los que abren el asistente (data-chat) no cuentan como whatsapp_click aquí:
-    // el clic no sale a WhatsApp todavía. Miden chatbot_inicio al abrirse y
-    // whatsapp_click sólo cuando el usuario pulsa «Continuar en WhatsApp».
-    if (a.hasAttribute('data-chat')) return;
+    // Todos los CTA salen a WhatsApp, así que todos cuentan igual. Antes había un
+    // asistente en el sitio y los botones fijos entraban por él sin medir aquí;
+    // ahora el filtro de cuatro preguntas lo hace el bot del propio WhatsApp.
     a.addEventListener('click', () => cbTrack('whatsapp_click', cbContexto(a)));
   });
   document.querySelectorAll('[data-wsp-num]').forEach((el) => { el.textContent = CB.whatsappVisible; });
@@ -256,17 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav');
   if (btn && nav) btn.addEventListener('click', () => nav.classList.toggle('abierta'));
 
-  // La promesa de respuesta se ajusta al horario real (de lunes a sábado, de 8:00
-  // a 19:00): prometer «en minutos» un domingo de madrugada es una promesa que no
-  // se cumple.
-  const ahora = new Date();
-  const enHorario = ahora.getDay() !== 0 && ahora.getHours() >= 8 && ahora.getHours() < 19;
-  if (!enHorario) {
-    document.querySelectorAll('[data-respuesta]').forEach((el) => {
-      el.textContent = 'Te respondemos al abrir: de lunes a sábado, de 8:00 a 19:00';
-    });
-  }
-
   // Año en el pie
   document.querySelectorAll('[data-anio]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
@@ -277,127 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.matches('input, textarea, select')) barra.classList.add('oculta');
     });
     document.addEventListener('focusout', () => setTimeout(() => barra.classList.remove('oculta'), 150));
-  }
-
-  // Chatbot: 4 preguntas (nombre, zona, servicio, tipo de aire) → WhatsApp
-  const chat = document.getElementById('chat');
-  const flotante = document.querySelector('.wsp-flotante');
-  if (chat && flotante) {
-    const mensajes = document.getElementById('chat-mensajes');
-    const pie = document.getElementById('chat-pie');
-    const r = { nombre: '', zona: '', servicio: '', tipo: '' };
-    let iniciado = false;
-
-    const burbuja = (texto, mia) => {
-      const b = document.createElement('div');
-      b.className = 'burbuja' + (mia ? ' mia' : '');
-      b.textContent = texto;
-      mensajes.appendChild(b);
-      mensajes.scrollTop = mensajes.scrollHeight;
-    };
-
-    const chips = (opciones, alElegir) => {
-      pie.innerHTML = '';
-      opciones.forEach((op) => {
-        const c = document.createElement('button');
-        c.type = 'button';
-        c.className = 'chat-chip';
-        c.dataset.valor = op;
-        c.textContent = op;
-        c.addEventListener('click', () => { burbuja(op, true); alElegir(op); });
-        pie.appendChild(c);
-      });
-    };
-
-    const entradaNombre = (alEnviar) => {
-      pie.innerHTML = '';
-      const form = document.createElement('form');
-      form.className = 'chat-form';
-      form.innerHTML = '<input name="nombre" placeholder="Tu nombre" autocomplete="given-name" maxlength="40" required>' +
-                       '<button class="boton" type="submit">Enviar</button>';
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const v = form.nombre.value.trim().slice(0, 40);
-        if (!v) return;
-        burbuja(v, true);
-        alEnviar(v);
-      });
-      pie.appendChild(form);
-      form.nombre.focus();
-    };
-
-    const paso2 = () => {
-      burbuja('¿Dónde vives?');
-      cbTrack('chatbot_paso', { paso: 1, pagina: cbContexto(chat).pagina });
-      const zonas = ['Málaga capital', 'Torremolinos', 'Benalmádena', 'Fuengirola', 'Mijas', 'Marbella', 'Estepona', 'Otro municipio de la costa'];
-      const propia = document.body.dataset.zona;
-      if (propia && zonas.includes(propia)) zonas.splice(zonas.indexOf(propia), 1) && zonas.unshift(propia);
-      chips(zonas, (z) => { r.zona = z; paso3(); });
-    };
-    const paso3 = () => {
-      burbuja('¿Qué servicio buscas?');
-      cbTrack('chatbot_paso', { paso: 2, respuesta: r.zona, pagina: cbContexto(chat).pagina });
-      chips(['Instalación nueva', 'Sustitución de equipo', 'Mantenimiento y limpieza', 'Reparación'], (s) => { r.servicio = s; paso4(); });
-    };
-    const paso4 = () => {
-      burbuja('¿Qué tipo de aire acondicionado?');
-      cbTrack('chatbot_paso', { paso: 3, respuesta: r.servicio, pagina: cbContexto(chat).pagina });
-      chips(['Split', 'Multisplit', 'Suelo-techo', 'Cassette o conductos', 'No lo sé, necesito asesoramiento'], (t) => { r.tipo = t; cierre(); });
-    };
-    const cierre = () => {
-      cbTrack('chatbot_paso', { paso: 4, respuesta: r.tipo, pagina: cbContexto(chat).pagina });
-      burbuja('Listo, ' + r.nombre + '. Pulsa el botón y seguimos por WhatsApp con tu consulta ya preparada. Respondemos en minutos.');
-      const msj = 'Hola, soy ' + r.nombre + ' y vivo en ' + r.zona + '. Busco: ' + r.servicio +
-                  '. Tipo de aire: ' + r.tipo + '.';
-      pie.innerHTML = '';
-      const a = document.createElement('a');
-      a.className = 'boton chat-final';
-      a.href = cbMensaje(msj);
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.textContent = 'Continuar en WhatsApp';
-      a.addEventListener('click', () => cbTrack('whatsapp_click', {
-        origen: 'chatbot', pagina: cbContexto(chat).pagina, zona: r.zona,
-      }));
-      pie.appendChild(a);
-      a.focus();
-    };
-
-    const abrir = () => {
-      chat.hidden = false;
-      flotante.classList.add('abierto');
-      if (!iniciado) {
-        iniciado = true;
-        cbTrack('chatbot_inicio', { pagina: cbContexto(chat).pagina });
-        burbuja('Hola ❄ Soy el asistente de Clima Baires. Cuatro preguntas y seguimos por WhatsApp.');
-        burbuja('¿Cómo te llamas?');
-        entradaNombre((v) => { r.nombre = v; paso2(); });
-      } else if (pie.querySelector('input')) {
-        pie.querySelector('input').focus();
-      }
-    };
-    const cerrar = () => { chat.hidden = true; flotante.classList.remove('abierto'); };
-
-    flotante.addEventListener('click', () => (chat.hidden ? abrir() : cerrar()));
-
-    // Los CTA fijos que acompañan todo el scroll entran por el asistente: cuatro
-    // preguntas y el mensaje sale con nombre, zona, servicio y tipo de equipo.
-    // Los CTA de contenido (hero, cintas, tarjetas) siguen yendo directos, porque
-    // cada uno ya lleva su propio mensaje con el contexto de dónde se pulsó.
-    // El href a wa.me se deja puesto: si el JS no ha cargado, el botón sirve igual.
-    document.querySelectorAll('[data-chat]').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        // abrir() sirve para los dos casos: si el chat ya estaba abierto,
-        // devuelve el foco a la pregunta en curso. Sin esto, pulsar el botón de
-        // la barra con el asistente abierto no hacía nada y se leía como roto.
-        abrir();
-      });
-    });
-    chat.querySelector('.chat-cerrar').addEventListener('click', cerrar);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !chat.hidden) cerrar();
-    });
   }
 
   // Nudge del botón flotante: una sola vez por sesión, a los 20 s o al 50% de scroll
@@ -420,6 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
       nudge.hidden = true;
       clearTimeout(timer);
     });
+    // el flotante es un <a> a wa.me: pulsarlo por programa navega igual, y el
+    // clic del usuario sobre el aviso cuenta como gesto, así que no lo bloquea
+    // ningún navegador
     nudge.querySelector('.nudge-texto').addEventListener('click', () => {
       nudge.hidden = true;
       document.querySelector('.wsp-flotante').click();
