@@ -1,28 +1,28 @@
-# 22. Manual de operaciones y calidad
+# 23. Manual de operaciones y calidad
 
 La sección 12 dice qué tiene que estar listo el Día 1. Esta dice **cómo se trabaja todos los días**: es el procedimiento que convierte el posicionamiento de calidad en algo que se puede repetir y auditar.
 
-## 22.1 El circuito, de la consulta a la posventa
+## 23.1 El circuito, de la consulta a la posventa
 
 | Paso | Qué pasa | Plazo comprometido | Herramienta |
 |---|---|---|---|
 | **1. Entra la consulta** | WhatsApp, formulario o llamada. Se etiqueta `🆕 Lead` | **Respuesta en menos de 5 min** en horario | WhatsApp Business (15.1) |
 | **2. Calificación** | Zona, tipo de trabajo, ambientes y urgencia. Si es fuera de zona se deriva y se cierra | En la misma conversación | Respuestas rápidas `/presupuesto` `/zonas` |
 | **3. Visita técnica** | Sin cargo. Se mide, se fotografía el recorrido de cañería y el lugar de la condensadora, y se detectan adicionales | **Dentro de las 48 h hábiles** | Agenda de Calendar (15.3) |
-| **4. Presupuesto** | Precio cerrado con adicionales ya cotizados, por PDF | **El mismo día de la visita** | Plantilla de 21.1 · Xubio |
+| **4. Presupuesto** | Precio cerrado con adicionales ya cotizados, por PDF | **El mismo día de la visita** | Plantilla de 22.1 · Xubio |
 | **5. Seguimiento** | Un contacto a las 48 h y otro a los 5 días. Después se archiva | Etiqueta `📋 Presupuesto enviado` | WhatsApp |
 | **6. Aceptación y seña** | Aceptación escrita + 50 %. **Sin seña no se pide el equipo** | — | Transferencia o link de pago |
 | **7. Pedido al mayorista** | Mismo día de la seña. Se confirma disponibilidad y fecha | — | Sección 23 |
 | **8. Agenda** | Fecha y franja horaria confirmadas por escrito. Si es country, alta de acceso con seguros | Al confirmar el pedido | Calendar «Instalaciones» |
-| **9. Instalación** | Con el checklist de 21.3 y fotos | Franja de 3 h, no «por la mañana» | Google Forms |
-| **10. Entrega** | Prueba con el cliente presente, explicación del equipo, checklist y garantía firmados, saldo cobrado | El mismo día | Plantillas de 21.2 y 21.3 |
+| **9. Instalación** | Con el checklist de 22.3 y fotos | Franja de 3 h, no «por la mañana» | Google Forms |
+| **10. Entrega** | Prueba con el cliente presente, explicación del equipo, checklist y garantía firmados, saldo cobrado | El mismo día | Plantillas de 22.2 y 22.3 |
 | **11. Facturación** | Factura B emitida con CAE el mismo día | — | Xubio (sección 8) |
 | **12. Reseña** | Pedido por WhatsApp con el enlace corto | **A las 24-48 h**, no antes | Respuesta rápida `/gracias` |
 | **13. Posventa** | Contacto a los 30 días y recordatorio de mantenimiento a los 11 meses | — | Etiqueta `🔧 Posventa` |
 
 El paso 13 es el que casi nadie hace y el que más vale: **el recordatorio a los 11 meses convierte una instalación de diciembre en un service de noviembre siguiente**, justo antes del pico y sin costo de captación. Es el mecanismo concreto con el que se construye la base recurrente que sostiene el invierno.
 
-## 22.2 Los cinco compromisos que se publican
+## 23.2 Los cinco compromisos que se publican
 
 Se publican en la web y se cumplen. Un compromiso que no se puede sostener en diciembre es peor que no tenerlo.
 
@@ -32,7 +32,7 @@ Se publican en la web y se cumplen. Un compromiso que no se puede sostener en di
 4. **Ningún adicional sin aprobación escrita previa.**
 5. **Ante un reclamo de garantía, respuesta en menos de 48 horas hábiles.**
 
-## 22.3 Qué se hace cuando algo sale mal
+## 23.3 Qué se hace cuando algo sale mal
 
 Escrito de antemano, porque en el momento no hay tiempo de pensarlo.
 
@@ -48,7 +48,7 @@ Escrito de antemano, porque en el momento no hay tiempo de pensarlo.
 
 La regla que ordena esta tabla: **el problema se comunica antes de que el cliente lo descubra**. Un retraso avisado con 48 horas es un inconveniente; el mismo retraso descubierto por el cliente esperando en su casa es una reseña negativa en plena temporada.
 
-## 22.4 Los indicadores de la operación
+## 23.4 Los indicadores de la operación
 
 Distintos de los de marketing de la sección 19.4: estos miden si el trabajo se está haciendo bien.
 

@@ -50,6 +50,7 @@ const RESERVADOS = [
   'tabla_escenarios', 'tabla_sena', 'indice', 'miniaturas_web',
   'tabla_reparto_pauta', 'tabla_embudo', 'tabla_canales', 'tabla_sensibilidad_cpc', 'tabla_campanas_google',
   'tabla_mercado', 'tabla_tarifario', 'tabla_adicionales', 'tabla_horizonte', 'tabla_valoracion',
+  'semana_ignacio',
 ];
 
 // Cifras del modelo que se citan en la prosa de la sección 6. Se calculan acá,
@@ -718,6 +719,15 @@ function renderValoracion() {
   return html;
 }
 
+
+// La semana de Ignacio vive en src/anexos/, fuera del glob de secciones, para que
+// el mismo archivo alimente esta subsección y la hoja suelta de build/semana.mjs.
+function renderSemanaIgnacio() {
+  const ruta = join(SRC, 'anexos', 'semana-ignacio.md');
+  if (!existsSync(ruta)) return '<p><em>Hoja de la semana pendiente.</em></p>';
+  return marked.parse(readFileSync(ruta, 'utf8'), { gfm: true });
+}
+
 // ---------- ensamblado ----------
 const archivos = readdirSync(SRC).filter((f) => f.endsWith('.md')).sort();
 if (archivos.length === 0) throw new Error('No hay .md en src/');
@@ -740,6 +750,7 @@ const bloques = {
   tabla_breakeven: renderBreakEven(),
   tabla_escenarios: renderEscenarios(),
   tabla_sena: renderSena(),
+  semana_ignacio: renderSemanaIgnacio(),
   tabla_mercado: renderMercado(),
   tabla_tarifario: renderTarifario(),
   tabla_adicionales: renderAdicionales(),
@@ -793,6 +804,12 @@ for (const f of archivos) {
 
 // ---------- validaciones ----------
 const errores = [], avisos = [];
+// Un número que no se pudo calcular no puede llegar impreso al PDF. Pasó una vez:
+// un renombrado dejó una clave de datos.json sin actualizar y el embudo entero salió
+// en NaN sin que ninguna validación se quejara.
+const nan = contenido.match(/\bNaN\b|\bInfinity\b|\bundefined\b/g);
+if (nan) errores.push(`Valores sin calcular en el documento: ${nan.length} apariciones de ${[...new Set(nan)].join(', ')}`);
+
 const residual = contenido.match(/\{\{[\w.:]+\}\}/g);
 if (residual) errores.push(`Placeholders sin resolver: ${[...new Set(residual)].join(', ')}`);
 

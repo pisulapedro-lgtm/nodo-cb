@@ -23,24 +23,26 @@ El PDF reúne todo el proyecto en siete partes:
 | III | 7-12 | Operación: fiscal, stack, go-to-market, personas, riesgos y checklist del Día 1 |
 | IV | 13-16 | Los activos digitales: la web, su despliegue y el kit digital |
 | V | 17-19 | Marketing y publicidad: embudo, Google Ads y Meta listos para cargar, y el tablero |
-| VI | 20-23 | La operación comercial: tarifario, los documentos que se firman, manual de calidad y proveedores |
-| VII | 24 | El horizonte: año 3, cuánto vale la empresa y cómo sale un socio |
-| — | 25 | Anexos: glosario, checklist de España y las fuentes fechadas |
+| VI | 20-24 | La operación comercial: tarifario, guion de venta, documentos que se firman, manual de calidad y proveedores |
+| VII | 25 | El horizonte: año 3, cuánto vale la empresa y cómo sale un socio |
+| — | 26 | Anexos: glosario, checklist de España y las fuentes fechadas |
 
 ## Cómo regenerar los entregables
 
 ```bash
 npm install          # una sola vez (dependencia: marked)
-npm run todo         # miniaturas + PDF + planilla
+npm run todo         # miniaturas + PDF + planilla + hoja de la semana + tablero
 ```
 
 O por separado:
 
 ```bash
 npm run miniaturas   # build/assets/web/ desde las capturas del sitio
-npm run build        # → dist/Plan-de-Negocio-Clima-Baires-Argentina_v1.3.pdf
-npm run modelo       # → dist/Modelo-Financiero-Clima-Baires-Argentina_v1.3.xlsx
-npm run build -- --version 1.4   # para emitir una versión distinta de la de datos.json
+npm run build        # → dist/Plan-de-Negocio-Clima-Baires-Argentina_v1.4.pdf
+npm run modelo       # → dist/Modelo-Financiero-Clima-Baires-Argentina_v1.4.xlsx
+npm run semana       # → dist/Semana-1-Ignacio_03-10-agosto.pdf (hoja imprimible)
+npm run tablero      # → dist/Tablero-Semanal-Clima-Baires_v1.4.xlsx
+npm run build -- --version 1.5   # para emitir una versión distinta de la de datos.json
 ```
 
 Los importes y el cronograma viven en `src/datos.json`: al cambiar un número (por ejemplo el tipo de cambio `cambio.eur_ars`), el build recalcula todas las conversiones, los totales del presupuesto (aborta si superan los € 15.000) y regenera el Gantt. La prosa vive en `src/*.md`; añadir un archivo `NN-titulo.md` lo incorpora al documento y al índice sin tocar nada más.
@@ -48,6 +50,13 @@ Los importes y el cronograma viven en `src/datos.json`: al cambiar un número (p
 **El índice se pagina en dos pasadas**: la primera renderiza el PDF con los números en blanco, la segunda lo lee ya paginado con `pdftotext`, localiza el anclaje invisible de cada encabezado y rellena los números. Por eso el índice no puede mentir. Si `pdftotext` falta, el build avisa y emite el PDF sin números en lugar de fallar.
 
 Requisitos del entorno: Node 22 + Playwright con Chromium (el build los detecta). Además: `poppler-utils` (paginación del índice y extracción de la marca), Python 3 con Pillow (miniaturas), `openpyxl` (planilla) y `libreoffice-calc` (para verificarla).
+
+## La hoja de la semana y el tablero
+
+Dos entregables que existen para que el plan se use, no solo se lea:
+
+- **`build/semana.mjs`** renderiza `src/anexos/semana-ignacio.md` como hoja suelta imprimible. Ese archivo es **la misma fuente** que el build del plan inyecta en la subsección 4.1, así que la hoja y el documento no pueden decir cosas distintas. Es lo único del repositorio que caduca: cada lunes se reescribe con la semana nueva.
+- **`build/tablero-excel.py`** genera el tablero semanal donde Ignacio carga seis números y ve los KPI con semáforos. Los objetivos se vuelcan desde `marketing.mjs` y el modelo financiero: el tablero no puede pedir un CAC distinto del que dice el plan.
 
 ## El motor comercial
 
@@ -85,10 +94,11 @@ Detalle completo —fotos de obra, medición con GTM, agenda de Calendar y el bl
 
 ## Estado
 
+- **v1.4** — suma el guion de venta, la captación del instalador, el plan B con disparadores, el tablero semanal y la hoja de la semana de Ignacio. 26 secciones, 69 páginas. Agosto 2026.
 - **v1.3** — suma el dimensionamiento de mercado y las Partes VI y VII: tarifario, plantillas de presupuesto-contrato, garantía, checklist y locación de obra, manual de operaciones, plan de proveedores, año 3 y valoración. 25 secciones, 62 páginas, 52 fuentes. Agosto 2026.
 - **v1.2** — Parte V: plan de marketing y publicidad. Histórico en `dist/`.
 - **v1.1** — documento único: plan de 30 días + modelo financiero + web y activos digitales, con índice paginado. Histórico en `dist/`.
 - **v1.0** — plan de acción con modelo financiero, sin la parte digital. Histórico en `dist/`.
 - **v0.9** — borrador previo, sin modelo financiero. Histórico en `dist/`.
 
-Pendiente de los socios: revisión del v1.3, el **número real de WhatsApp Business** (hoy hay un placeholder en `web/assets/js/main.js` y sin él la web no se publica) y la validación profesional de los puntos marcados `[VALIDAR CON …]`.
+Pendiente de los socios: revisión del v1.4, el **número real de WhatsApp Business** (hoy hay un placeholder en `web/assets/js/main.js` y sin él la web no se publica) y la validación profesional de los puntos marcados `[VALIDAR CON …]`.

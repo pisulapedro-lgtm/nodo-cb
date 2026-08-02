@@ -31,3 +31,9 @@ Día 1 = lunes 03-08-2026 · Día 30 = martes 01-09-2026. Vista Gantt por workst
 | Octubre | Aumento de capital: entrada formal de Pedro y Sebastián, equity 40/30/30 con prima de emisión + elevación del pacto | Escribano + los 3 |
 | Octubre | Escalado de pauta (Ads ×2) y pauta en Revista Nordelta; revisión de Factura A plena ante ARCA | Pedro + Contador |
 | Noviembre | Decisión de primera contratación en dependencia para el pico (según pipeline de instalaciones) | Los 3 |
+
+## 4.1 Tu semana, Ignacio: lunes 3 a lunes 10 de agosto
+
+Esta es la semana 1 del cronograma de arriba, pero contada desde el otro lado: no qué tiene que pasar, sino qué tenés que hacer vos, día por día. **Se entrega también como hoja suelta** (`Semana-1-Ignacio_03-10-agosto.pdf`) para imprimir o llevar en el celular — y es lo único de este documento que caduca: el lunes 10 se rehace para la semana siguiente.
+
+{{semana_ignacio}}

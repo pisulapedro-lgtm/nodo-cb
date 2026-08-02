@@ -1,12 +1,14 @@
 {
   "name": "clima-baires-argentina",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "description": "Plan de Negocio Clima Baires Argentina: fuente regenerable del PDF, modelo financiero, web climabaires.com y kit digital",
   "scripts": {
     "build": "node build/build.mjs",
     "modelo": "python3 build/modelo-excel.py",
+    "semana": "node build/semana.mjs",
+    "tablero": "python3 build/tablero-excel.py",
     "miniaturas": "python3 build/preparar-miniaturas.py",
-    "todo": "npm run miniaturas && npm run build && npm run modelo",
+    "todo": "npm run miniaturas && npm run build && npm run modelo && npm run semana && npm run tablero",
     "web:generar": "python3 web/tools/generar.py",
     "web:shots": "node web/tools/shots.mjs",
     "web:publicar": "python3 web/tools/publicar.py",

@@ -50,7 +50,7 @@ El blog merece una nota, porque es el activo que menos se valora y más se acumu
 
 ## 19.4 El tablero
 
-Ocho números, revisados cada lunes por Ignacio y compartidos con los socios (es el mismo tablero de la sección 10.4):
+Ocho números, revisados cada lunes por Ignacio y compartidos con los socios (es el mismo tablero de la sección 10.5):
 
 | Indicador | Objetivo | Qué decide |
 |---|---|---|

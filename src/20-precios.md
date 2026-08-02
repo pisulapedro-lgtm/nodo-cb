@@ -19,7 +19,7 @@ Esta lista es el corazón del argumento comercial, porque el adicional sorpresa 
 - Soportes, ménsula y bandeja de condensado
 - Vacío de cañería con bomba y prueba de estanqueidad
 - Puesta en marcha, prueba de frío y calor, y limpieza del lugar al terminar
-- Checklist de calidad firmado y garantía escrita de instalación (sección 21)
+- Checklist de calidad firmado y garantía escrita de instalación (sección 22)
 
 **No incluido, y se dice antes de empezar:**
 

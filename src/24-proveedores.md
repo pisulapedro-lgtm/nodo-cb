@@ -1,8 +1,8 @@
-# 23. Proveedores y compras
+# 24. Proveedores y compras
 
 El equipo es el **57-60 % del ticket** (sección 6.1) y se paga antes de cobrar el saldo. Eso convierte al proveedor en la pieza que más margen y más caja controla, y en el mayor riesgo operativo del pico: sin equipo no hay instalación, por muchos leads que haya comprado la pauta.
 
-## 23.1 Cómo se elige
+## 24.1 Cómo se elige
 
 Con la escala del primer año no hay poder de negociación, así que la selección se hace por lo que sí se puede evaluar:
 
@@ -17,7 +17,7 @@ Con la escala del primer año no hay poder de negociación, así que la selecci�
 
 **La decisión: un mayorista principal y uno de respaldo, desde el día 1.** Concentrar todo en uno consigue mejor precio y antigüedad más rápido para la cuenta corriente; tener solo uno significa que su rotura de stock es la nuestra. El respaldo se mantiene activo con compras chicas aunque sea más caro: es el precio del seguro. Clima Design, identificado en la sección 9.7 como competidor premium, es también candidato a mayorista — y esa doble condición hay que tenerla presente al negociar [F38].
 
-## 23.2 La negociación de la cuenta corriente
+## 24.2 La negociación de la cuenta corriente
 
 Es el objetivo comercial más rentable del trimestre y **no cuesta un euro**. El modelo financiero asume pago contado hasta octubre y luego cuenta corriente; conseguirla antes libera capital de trabajo justo cuando más hace falta.
 
@@ -38,7 +38,7 @@ Es el objetivo comercial más rentable del trimestre y **no cuesta un euro**. El
 
 > Si en octubre no hay cuenta corriente, **no es un fracaso sino un dato**: significa que diciembre se financia con la seña del 50 %, que es exactamente para lo que está. La sensibilidad de la sección 6.4 muestra qué pasa si además la seña baja.
 
-## 23.3 Política de stock: cero, con dos excepciones
+## 24.3 Política de stock: cero, con dos excepciones
 
 No se compra equipo para tener. El modelo entero —sin local, sin depósito, capital de trabajo mínimo— depende de comprar contra pedido, y un equipo en depósito es plata parada que además se puede volver obsoleta cuando cambia la gama.
 
@@ -47,7 +47,7 @@ Las dos excepciones:
 1. **Materiales de consumo** —cañería, aislación, soportes, cinta, bandejas— por unas 10 instalaciones. Son baratos, no se vuelven obsoletos y quedarse sin ellos frena una instalación por una tontería.
 2. **Dos equipos de la gama más vendida en noviembre**, y solo si hay cuenta corriente. Es el colchón para la urgencia de diciembre, que es el trabajo mejor pagado del año: quien puede instalar mañana cobra más que quien instala en dos semanas.
 
-## 23.4 Si falta equipo en diciembre
+## 24.4 Si falta equipo en diciembre
 
 El plan de contingencia, en orden:
 

@@ -1,10 +1,10 @@
-# 21. Los documentos que se firman
+# 22. Los documentos que se firman
 
 Los tres diferenciales del negocio —precio cerrado, garantía escrita y checklist firmado— son afirmaciones hasta que existen en papel. Acá están las cuatro plantillas, listas para adaptar.
 
 > **[VALIDAR CON ABOGADO]** — Son borradores de trabajo para que el abogado societario corrija y adapte, no documentos para firmar tal cual. El presupuesto de la sección 5 ya contempla su honorario. Lo que sí está pensado con criterio es **qué tiene que decir cada uno y por qué**, que es la parte que un abogado no puede adivinar.
 
-## 21.1 Presupuesto-contrato
+## 22.1 Presupuesto-contrato
 
 Es el documento más importante del negocio: hace de presupuesto, de contrato y de prueba. Se manda por WhatsApp en PDF y se acepta por escrito en el mismo chat.
 
@@ -31,7 +31,7 @@ Es el documento más importante del negocio: hace de presupuesto, de contrato y 
 
 Dos cosas de este documento merecen defensa. La **cláusula 3** es la que convierte «precio cerrado» en una obligación contractual y no en un eslogan; es también la que protege a la empresa, porque deja escrito que el adicional existe y cómo se aprueba. La **cláusula 7** es la que evita el conflicto más frecuente del rubro: el cliente que se arrepiente cuando el equipo ya está comprado.
 
-## 21.2 Certificado de garantía
+## 22.2 Certificado de garantía
 
 Se entrega firmado al terminar, junto con el checklist. Es lo que ningún instalador informal puede dar, y por eso es un argumento de venta antes que un papel de posventa.
 
@@ -51,7 +51,7 @@ Se entrega firmado al terminar, junto con el checklist. Es lo que ningún instal
 
 La última cláusula es deliberada: atar la garantía a contratar el mantenimiento propio es una práctica que genera desconfianza y, en el marco de defensa del consumidor, es discutible. Cuesta más de lo que rinde.
 
-## 21.3 Checklist de calidad
+## 22.3 Checklist de calidad
 
 Se completa en el celular al terminar (Google Forms, sección 15.3), con fotos, y se firma en el domicilio. Genera un PDF que se manda por WhatsApp con la garantía.
 
@@ -72,7 +72,7 @@ Se completa en el celular al terminar (Google Forms, sección 15.3), con fotos, 
 
 El punto 5 no es un trámite: **el vacío con bomba es lo que separa una instalación profesional de una que va a fallar en dos años**, y es exactamente lo que se saltea quien cobra la mitad. Dejarlo escrito y fotografiado es el argumento de calidad más concreto que tiene la empresa.
 
-## 21.4 Contrato de locación de obra con el instalador
+## 22.4 Contrato de locación de obra con el instalador
 
 Es el que sostiene la decisión de subcontratar de la sección 10.2. Su función es evitar que la relación se interprete como laboral: la reforma de las Leyes 27.742 y 27.802 blindó la contratación de monotributistas con factura y pago bancarizado [F39], **pero la primacía de la realidad sigue vigente**, y ningún papel salva a una relación que en los hechos es de dependencia.
 

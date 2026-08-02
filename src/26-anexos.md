@@ -1,6 +1,6 @@
-# 25. Anexos
+# 26. Anexos
 
-## 25.1 Glosario argentino para los socios españoles
+## 26.1 Glosario argentino para los socios españoles
 
 | Término | Traducción al «español de España» |
 |---|---|
@@ -32,7 +32,7 @@
 | **AVN** | Asociación Vecinal Nordelta: administra la ciudad-pueblo y el registro de proveedores |
 | **Frigoría** | Unidad de frío usada en Argentina (1 frigoría = 1 kcal/h; 3.000 frigorías ≈ 12.000 BTU ≈ 3,5 kW) |
 
-## 25.2 Documentos a preparar en España (checklist de Pedro y Sebastián)
+## 26.2 Documentos a preparar en España (checklist de Pedro y Sebastián)
 
 1. Pasaporte vigente (escaneo color, todas las hojas con datos).
 2. Certificado de residencia fiscal española (AEAT) — para el CUIT de no residente y para aplicar el CDI a los dividendos.
@@ -41,7 +41,7 @@
 5. Justificante del origen de los € 5.000 (extracto) — lo pedirá el compliance bancario argentino.
 6. Datos completos: domicilio, estado civil, profesión, email para notificaciones.
 
-## 25.3 Enlaces y contactos oficiales
+## 26.3 Enlaces y contactos oficiales
 
 | Organismo / recurso | URL |
 |---|---|
@@ -57,13 +57,13 @@
 | BCRA (régimen cambiario) | https://www.bcra.gob.ar |
 | Boletín Oficial | https://www.boletinoficial.gob.ar |
 
-## 25.4 Fuentes citadas (con fecha de consulta)
+## 26.4 Fuentes citadas (con fecha de consulta)
 
 Las 14 cifras más sensibles del documento (TC, IVA, dividendos, escala de Ganancias, costos SAS, alícuotas IIBB, topes de monotributo, comisiones de cobro, impuestos sobre SaaS, costo laboral, dominios y escala UOM) fueron además contrastadas contra fuentes primarias en una pasada de verificación independiente el 01-08-2026: 11 confirmadas, 3 con matices incorporados al texto y 1 corregida (tasas de Cuotas MiPyME). Convención: [Fn] en el texto → fila de esta tabla. Tipos: oficial (organismo), profesional (estudios/portales especializados), comercial (proveedor), prensa, mercado.
 
 {{tabla_fuentes}}
 
-## 25.5 Cómo se regenera este documento
+## 26.5 Cómo se regenera este documento
 
 Este PDF se genera desde el repositorio `nodo-cb`: un archivo Markdown por sección (`src/`), los números centralizados en `src/datos.json` (tipo de cambio, presupuesto, cronograma, stack, supuestos financieros y las partes del documento — los totales y conversiones los calcula el build, no la mano) y las fuentes en `src/fuentes.json`. Para actualizar cifras: editar los JSON y ejecutar `npm run build`.
 
