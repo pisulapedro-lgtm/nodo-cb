@@ -6,6 +6,7 @@
     "build": "node build/build.mjs",
     "web:generar": "python3 web/tools/generar.py",
     "web:shots": "node web/tools/shots.mjs",
+    "web:preview": "python3 web/tools/preview-html.py",
     "web:publicar": "python3 web/tools/publicar.py",
     "blog:tema": "python3 web/tools/siguiente-nota.py",
     "blog:estado": "python3 web/tools/siguiente-nota.py --estado",

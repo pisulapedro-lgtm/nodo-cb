@@ -293,6 +293,7 @@ web/
     ├── fotos.py                # pipeline de fotos (python3 web/tools/fotos.py)
     ├── generar.py              # regenera todas las páginas (python3 web/tools/generar.py)
     ├── blog.py                 # lee los .md del blog y los pasa a HTML
+    ├── preview-html.py         # vista previa navegable en un solo archivo
     ├── siguiente-nota.py       # de qué toca escribir (npm run blog:tema)
     ├── revisar-nota.py         # control de calidad de una nota (npm run blog:revisar)
     └── shots.mjs               # QA: capturas + enlaces + eventos dataLayer (npm run web:shots)
