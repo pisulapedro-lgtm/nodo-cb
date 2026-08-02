@@ -749,6 +749,12 @@ depósito y el IVA inmovilizado.
 
 Ver [`supuestos.md`](./supuestos.md) — checklist ordenado por cuánto mueve el resultado.
 
+## Continuar en otro chat
+
+Ver [`HANDOFF.md`](./HANDOFF.md) — prompt autocontenido con el estado verificado, los pendientes
+y las dos correcciones metodológicas. Se copia entero como primer mensaje; solo se edita la
+última sección.
+
 ---
 
 ## Qué hacer esta semana — 3 acciones
