@@ -2770,7 +2770,1352 @@
           }
         }
       }
+    },
+    {
+      "slug": "pastelera-bandeja-variedad",
+      "titulo": "La pastelera con la bandeja de dulces",
+      "alt": "Pastelera de Cucina di Marce con chaqueta blanca sosteniendo una bandeja con tarteletas, alfajores de maicena, bocaditos de coco y budin de arandanos",
+      "origen": {
+        "archivo": "pastelera-bandeja-variedad.jpg",
+        "px": [
+          1206,
+          795
+        ],
+        "kb": 52
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          218.9,
+          217.7,
+          217.1
+        ],
+        "ganancias_wb": [
+          0.995,
+          1.002,
+          1.003
+        ],
+        "blanco_medido": 220.8,
+        "factor_exposicion": 1.175
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.1,
+        "vibrance": 0.15,
+        "saturation": 1.02,
+        "clarity": 0.13,
+        "sharpen": 0.48,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/pastelera-bandeja-variedad.jpg",
+          "px": [
+            1206,
+            795
+          ],
+          "kb": 149
+        },
+        "comparativa": "comparativas/pastelera-bandeja-variedad.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-400.avif",
+                "kb": 14.6
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-400.webp",
+                "kb": 21.3
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-400.jpg",
+                "kb": 34.6
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-600.avif",
+                "kb": 24.1
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-600.webp",
+                "kb": 36.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-600.jpg",
+                "kb": 62.1
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-800.avif",
+                "kb": 34.9
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-800.webp",
+                "kb": 51.9
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-bandeja-variedad-800.jpg",
+                "kb": 93.8
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-400.avif",
+                "kb": 11.1
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-400.webp",
+                "kb": 16.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-400.jpg",
+                "kb": 26.3
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-600.avif",
+                "kb": 18.8
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-600.webp",
+                "kb": 27.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-600.jpg",
+                "kb": 48.2
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-800.avif",
+                "kb": 27.9
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-800.webp",
+                "kb": 41.3
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-800.jpg",
+                "kb": 74.8
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-1000.avif",
+                "kb": 36.2
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-1000.webp",
+                "kb": 53.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-bandeja-variedad-1000.jpg",
+                "kb": 100.6
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-800.avif",
+                "kb": 16.6
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-800.webp",
+                "kb": 24.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-800.jpg",
+                "kb": 42.6
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-1200.avif",
+                "kb": 28.6
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-1200.webp",
+                "kb": 40.9
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-1200.jpg",
+                "kb": 77.0
+              }
+            },
+            {
+              "ancho": 1600,
+              "alto": 900,
+              "avif": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-1600.avif",
+                "kb": 39.9
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-1600.webp",
+                "kb": 58.1
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-bandeja-variedad-1600.jpg",
+                "kb": 116.3
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/pastelera-bandeja-variedad.jpg",
+              "kb": 182.9
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/pastelera-bandeja-variedad.webp",
+              "kb": 94.5
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/pastelera-bandeja-variedad.jpg",
+              "kb": 145.7
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/pastelera-bandeja-variedad.webp",
+              "kb": 76.7
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/pastelera-bandeja-variedad.jpg",
+              "kb": 230.1
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/pastelera-bandeja-variedad.webp",
+              "kb": 112.0
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "pastelera-cheesecake-frutos-rojos",
+      "titulo": "La pastelera con el cheesecake de frutos rojos",
+      "alt": "Pastelera de Cucina di Marce sosteniendo una fuente rectangular con cheesecake cubierto de frutos rojos y hojas de menta",
+      "origen": {
+        "archivo": "pastelera-cheesecake-frutos-rojos.jpg",
+        "px": [
+          1206,
+          795
+        ],
+        "kb": 54
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          222.5,
+          222.8,
+          222.1
+        ],
+        "ganancias_wb": [
+          1.003,
+          0.997,
+          0.999
+        ],
+        "blanco_medido": 221.7,
+        "factor_exposicion": 1.165
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.1,
+        "vibrance": 0.15,
+        "saturation": 1.02,
+        "clarity": 0.13,
+        "sharpen": 0.48,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/pastelera-cheesecake-frutos-rojos.jpg",
+          "px": [
+            1206,
+            795
+          ],
+          "kb": 144
+        },
+        "comparativa": "comparativas/pastelera-cheesecake-frutos-rojos.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-400.avif",
+                "kb": 14.6
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-400.webp",
+                "kb": 21.3
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-400.jpg",
+                "kb": 34.7
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-600.avif",
+                "kb": 25.3
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-600.webp",
+                "kb": 37.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-600.jpg",
+                "kb": 63.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-800.avif",
+                "kb": 36.9
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-800.webp",
+                "kb": 54.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-cheesecake-frutos-rojos-800.jpg",
+                "kb": 95.6
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-400.avif",
+                "kb": 11.0
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-400.webp",
+                "kb": 15.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-400.jpg",
+                "kb": 26.0
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-600.avif",
+                "kb": 19.0
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-600.webp",
+                "kb": 27.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-600.jpg",
+                "kb": 48.0
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-800.avif",
+                "kb": 28.7
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-800.webp",
+                "kb": 41.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-800.jpg",
+                "kb": 74.4
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-1000.avif",
+                "kb": 37.8
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-1000.webp",
+                "kb": 54.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-cheesecake-frutos-rojos-1000.jpg",
+                "kb": 101.4
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-800.avif",
+                "kb": 15.2
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-800.webp",
+                "kb": 21.6
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-800.jpg",
+                "kb": 39.4
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-1200.avif",
+                "kb": 26.6
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-1200.webp",
+                "kb": 37.8
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-1200.jpg",
+                "kb": 73.0
+              }
+            },
+            {
+              "ancho": 1600,
+              "alto": 900,
+              "avif": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-1600.avif",
+                "kb": 38.2
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-1600.webp",
+                "kb": 54.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-cheesecake-frutos-rojos-1600.jpg",
+                "kb": 108.6
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/pastelera-cheesecake-frutos-rojos.jpg",
+              "kb": 184.8
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/pastelera-cheesecake-frutos-rojos.webp",
+              "kb": 99.1
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/pastelera-cheesecake-frutos-rojos.jpg",
+              "kb": 146.5
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/pastelera-cheesecake-frutos-rojos.webp",
+              "kb": 78.9
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/pastelera-cheesecake-frutos-rojos.jpg",
+              "kb": 237.1
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/pastelera-cheesecake-frutos-rojos.webp",
+              "kb": 117.6
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "te-con-tarteleta",
+      "titulo": "Tarteleta y te",
+      "alt": "Tarteleta de crema con hilos de chocolate y frutilla junto a una taza de porcelana azul mientras se sirve el te",
+      "origen": {
+        "archivo": "te-con-tarteleta.jpg",
+        "px": [
+          1206,
+          799
+        ],
+        "kb": 89
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          240.9,
+          239.7,
+          239.4
+        ],
+        "ganancias_wb": [
+          0.999,
+          1.003,
+          0.997
+        ],
+        "blanco_medido": 242.0,
+        "factor_exposicion": 0.955
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.07,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.22,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/te-con-tarteleta.jpg",
+          "px": [
+            1206,
+            799
+          ],
+          "kb": 252
+        },
+        "comparativa": "comparativas/te-con-tarteleta.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/te-con-tarteleta-400.avif",
+                "kb": 14.0
+              },
+              "webp": {
+                "ruta": "web/4x5/te-con-tarteleta-400.webp",
+                "kb": 21.2
+              },
+              "jpg": {
+                "ruta": "web/4x5/te-con-tarteleta-400.jpg",
+                "kb": 35.3
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/te-con-tarteleta-600.avif",
+                "kb": 23.8
+              },
+              "webp": {
+                "ruta": "web/4x5/te-con-tarteleta-600.webp",
+                "kb": 35.2
+              },
+              "jpg": {
+                "ruta": "web/4x5/te-con-tarteleta-600.jpg",
+                "kb": 64.7
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/te-con-tarteleta-800.avif",
+                "kb": 34.0
+              },
+              "webp": {
+                "ruta": "web/4x5/te-con-tarteleta-800.webp",
+                "kb": 49.2
+              },
+              "jpg": {
+                "ruta": "web/4x5/te-con-tarteleta-800.jpg",
+                "kb": 99.0
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/te-con-tarteleta-400.avif",
+                "kb": 13.2
+              },
+              "webp": {
+                "ruta": "web/1x1/te-con-tarteleta-400.webp",
+                "kb": 20.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/te-con-tarteleta-400.jpg",
+                "kb": 32.1
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/te-con-tarteleta-600.avif",
+                "kb": 22.6
+              },
+              "webp": {
+                "ruta": "web/1x1/te-con-tarteleta-600.webp",
+                "kb": 35.6
+              },
+              "jpg": {
+                "ruta": "web/1x1/te-con-tarteleta-600.jpg",
+                "kb": 59.6
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/te-con-tarteleta-800.avif",
+                "kb": 33.6
+              },
+              "webp": {
+                "ruta": "web/1x1/te-con-tarteleta-800.webp",
+                "kb": 51.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/te-con-tarteleta-800.jpg",
+                "kb": 93.2
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/te-con-tarteleta-1000.avif",
+                "kb": 43.9
+              },
+              "webp": {
+                "ruta": "web/1x1/te-con-tarteleta-1000.webp",
+                "kb": 67.3
+              },
+              "jpg": {
+                "ruta": "web/1x1/te-con-tarteleta-1000.jpg",
+                "kb": 128.6
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/te-con-tarteleta-800.avif",
+                "kb": 28.0
+              },
+              "webp": {
+                "ruta": "web/16x9/te-con-tarteleta-800.webp",
+                "kb": 45.1
+              },
+              "jpg": {
+                "ruta": "web/16x9/te-con-tarteleta-800.jpg",
+                "kb": 70.2
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/te-con-tarteleta-1200.avif",
+                "kb": 48.5
+              },
+              "webp": {
+                "ruta": "web/16x9/te-con-tarteleta-1200.webp",
+                "kb": 78.4
+              },
+              "jpg": {
+                "ruta": "web/16x9/te-con-tarteleta-1200.jpg",
+                "kb": 128.7
+              }
+            },
+            {
+              "ancho": 1600,
+              "alto": 900,
+              "avif": {
+                "ruta": "web/16x9/te-con-tarteleta-1600.avif",
+                "kb": 68.0
+              },
+              "webp": {
+                "ruta": "web/16x9/te-con-tarteleta-1600.webp",
+                "kb": 108.6
+              },
+              "jpg": {
+                "ruta": "web/16x9/te-con-tarteleta-1600.jpg",
+                "kb": 197.3
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/te-con-tarteleta.jpg",
+              "kb": 194.5
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/te-con-tarteleta.webp",
+              "kb": 93.4
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/te-con-tarteleta.jpg",
+              "kb": 183.8
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/te-con-tarteleta.webp",
+              "kb": 97.1
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/te-con-tarteleta.jpg",
+              "kb": 218.0
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/te-con-tarteleta.webp",
+              "kb": 94.4
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "mesa-dulce-budin-tartas",
+      "titulo": "Mesa dulce: budin, tartas y alfajores",
+      "alt": "Rodajas de budin de arandanos con glase junto a alfajores de maicena, bocaditos de coco y tartas de crema y de coco",
+      "origen": {
+        "archivo": "mesa-dulce-budin-tartas.jpg",
+        "px": [
+          1206,
+          791
+        ],
+        "kb": 99
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          252.6,
+          252.9,
+          253.7
+        ],
+        "ganancias_wb": [
+          1.007,
+          1.001,
+          0.991
+        ],
+        "blanco_medido": 253.1,
+        "factor_exposicion": 0.957
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.15,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/mesa-dulce-budin-tartas.jpg",
+          "px": [
+            1206,
+            791
+          ],
+          "kb": 278
+        },
+        "comparativa": "comparativas/mesa-dulce-budin-tartas.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-400.avif",
+                "kb": 19.1
+              },
+              "webp": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-400.webp",
+                "kb": 30.6
+              },
+              "jpg": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-400.jpg",
+                "kb": 45.4
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-600.avif",
+                "kb": 33.0
+              },
+              "webp": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-600.webp",
+                "kb": 51.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-600.jpg",
+                "kb": 83.5
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-800.avif",
+                "kb": 47.7
+              },
+              "webp": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-800.webp",
+                "kb": 72.7
+              },
+              "jpg": {
+                "ruta": "web/4x5/mesa-dulce-budin-tartas-800.jpg",
+                "kb": 127.5
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-400.avif",
+                "kb": 17.0
+              },
+              "webp": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-400.webp",
+                "kb": 27.6
+              },
+              "jpg": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-400.jpg",
+                "kb": 39.2
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-600.avif",
+                "kb": 29.2
+              },
+              "webp": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-600.webp",
+                "kb": 47.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-600.jpg",
+                "kb": 72.1
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-800.avif",
+                "kb": 43.8
+              },
+              "webp": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-800.webp",
+                "kb": 67.6
+              },
+              "jpg": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-800.jpg",
+                "kb": 112.6
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-1000.avif",
+                "kb": 57.0
+              },
+              "webp": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-1000.webp",
+                "kb": 87.8
+              },
+              "jpg": {
+                "ruta": "web/1x1/mesa-dulce-budin-tartas-1000.jpg",
+                "kb": 154.4
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-800.avif",
+                "kb": 34.6
+              },
+              "webp": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-800.webp",
+                "kb": 56.7
+              },
+              "jpg": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-800.jpg",
+                "kb": 82.1
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-1200.avif",
+                "kb": 59.2
+              },
+              "webp": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-1200.webp",
+                "kb": 93.7
+              },
+              "jpg": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-1200.jpg",
+                "kb": 151.5
+              }
+            },
+            {
+              "ancho": 1600,
+              "alto": 900,
+              "avif": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-1600.avif",
+                "kb": 84.2
+              },
+              "webp": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-1600.webp",
+                "kb": 131.7
+              },
+              "jpg": {
+                "ruta": "web/16x9/mesa-dulce-budin-tartas-1600.jpg",
+                "kb": 228.3
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/mesa-dulce-budin-tartas.jpg",
+              "kb": 247.6
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/mesa-dulce-budin-tartas.webp",
+              "kb": 131.9
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/mesa-dulce-budin-tartas.jpg",
+              "kb": 219.9
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/mesa-dulce-budin-tartas.webp",
+              "kb": 125.6
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/mesa-dulce-budin-tartas.jpg",
+              "kb": 289.9
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/mesa-dulce-budin-tartas.webp",
+              "kb": 145.6
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "masa-de-tarta-ingredientes",
+      "titulo": "La masa y los ingredientes",
+      "alt": "Masa de tarta cruda estirada en el molde sobre una mesada de granito, con limon, manteca, huevos y azucar alrededor",
+      "origen": {
+        "archivo": "masa-de-tarta-ingredientes.jpg",
+        "px": [
+          1206,
+          798
+        ],
+        "kb": 83
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          239.8,
+          217.8,
+          191.6
+        ],
+        "ganancias_wb": [
+          0.93,
+          0.999,
+          1.08
+        ],
+        "blanco_medido": 219.0,
+        "factor_exposicion": 1.197
+      },
+      "params": {
+        "wb_strength": 0.55,
+        "warmth": 0.02,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.24,
+        "saturation": 1.02,
+        "clarity": 0.2,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/masa-de-tarta-ingredientes.jpg",
+          "px": [
+            1206,
+            798
+          ],
+          "kb": 260
+        },
+        "comparativa": "comparativas/masa-de-tarta-ingredientes.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-400.avif",
+                "kb": 13.5
+              },
+              "webp": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-400.webp",
+                "kb": 22.4
+              },
+              "jpg": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-400.jpg",
+                "kb": 38.0
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-600.avif",
+                "kb": 23.6
+              },
+              "webp": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-600.webp",
+                "kb": 37.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-600.jpg",
+                "kb": 70.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-800.avif",
+                "kb": 34.2
+              },
+              "webp": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-800.webp",
+                "kb": 52.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/masa-de-tarta-ingredientes-800.jpg",
+                "kb": 107.8
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-400.avif",
+                "kb": 12.9
+              },
+              "webp": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-400.webp",
+                "kb": 21.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-400.jpg",
+                "kb": 33.2
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-600.avif",
+                "kb": 22.0
+              },
+              "webp": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-600.webp",
+                "kb": 34.6
+              },
+              "jpg": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-600.jpg",
+                "kb": 61.4
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-800.avif",
+                "kb": 32.2
+              },
+              "webp": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-800.webp",
+                "kb": 50.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-800.jpg",
+                "kb": 96.1
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-1000.avif",
+                "kb": 42.0
+              },
+              "webp": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-1000.webp",
+                "kb": 65.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/masa-de-tarta-ingredientes-1000.jpg",
+                "kb": 132.8
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-800.avif",
+                "kb": 24.5
+              },
+              "webp": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-800.webp",
+                "kb": 40.8
+              },
+              "jpg": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-800.jpg",
+                "kb": 66.3
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-1200.avif",
+                "kb": 42.5
+              },
+              "webp": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-1200.webp",
+                "kb": 67.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-1200.jpg",
+                "kb": 123.2
+              }
+            },
+            {
+              "ancho": 1600,
+              "alto": 900,
+              "avif": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-1600.avif",
+                "kb": 60.2
+              },
+              "webp": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-1600.webp",
+                "kb": 93.6
+              },
+              "jpg": {
+                "ruta": "web/16x9/masa-de-tarta-ingredientes-1600.jpg",
+                "kb": 186.1
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/masa-de-tarta-ingredientes.jpg",
+              "kb": 216.2
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/masa-de-tarta-ingredientes.webp",
+              "kb": 104.1
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/masa-de-tarta-ingredientes.jpg",
+              "kb": 192.7
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/masa-de-tarta-ingredientes.webp",
+              "kb": 99.7
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/masa-de-tarta-ingredientes.jpg",
+              "kb": 241.4
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/masa-de-tarta-ingredientes.webp",
+              "kb": 103.1
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
     }
   ],
-  "peso_total_avif_kb": 7610.2
+  "peso_total_avif_kb": 9178.2
 }

@@ -21,7 +21,10 @@
       "src": "fotos/originales/torta-chocolate-frutillas.jpg",
       "titulo": "Torta de chocolate con frutillas",
       "alt": "Torta cubierta de rulos de chocolate con frutillas frescas y cereza en el centro, topper rojo Feliz Cumple",
-      "params": {"contrast": 0.09, "shadow_lift": 0.20}
+      "params": {
+        "contrast": 0.09,
+        "shadow_lift": 0.2
+      }
     },
     {
       "slug": "torta-chocolate-lazo-dorado",
@@ -42,7 +45,11 @@
       "src": "fotos/originales/torta-frutillas-lazo-rojo.jpg",
       "titulo": "Torta de frutillas con lazo rojo",
       "alt": "Torta con frutillas frescas glaseadas en la superficie, borde de bombones de chocolate y lazo rojo",
-      "params": {"contrast": 0.08, "shadow_lift": 0.20, "saturation": 0.98}
+      "params": {
+        "contrast": 0.08,
+        "shadow_lift": 0.2,
+        "saturation": 0.98
+      }
     },
     {
       "slug": "torta-brownie-frutos-rojos",
@@ -71,6 +78,59 @@
       "titulo": "Torta cuatro chocolates",
       "alt": "Torta dividida en cuatro sectores con chips de chocolate blanco, chocolate amargo, confites de colores y rulos, con lazo plateado",
       "params": {}
+    },
+    {
+      "slug": "pastelera-bandeja-variedad",
+      "src": "fotos/originales/pastelera-bandeja-variedad.jpg",
+      "titulo": "La pastelera con la bandeja de dulces",
+      "alt": "Pastelera de Cucina di Marce con chaqueta blanca sosteniendo una bandeja con tarteletas, alfajores de maicena, bocaditos de coco y budin de arandanos",
+      "params": {
+        "vibrance": 0.15,
+        "clarity": 0.13,
+        "sharpen": 0.48,
+        "contrast": 0.1
+      }
+    },
+    {
+      "slug": "pastelera-cheesecake-frutos-rojos",
+      "src": "fotos/originales/pastelera-cheesecake-frutos-rojos.jpg",
+      "titulo": "La pastelera con el cheesecake de frutos rojos",
+      "alt": "Pastelera de Cucina di Marce sosteniendo una fuente rectangular con cheesecake cubierto de frutos rojos y hojas de menta",
+      "params": {
+        "vibrance": 0.15,
+        "clarity": 0.13,
+        "sharpen": 0.48,
+        "contrast": 0.1
+      }
+    },
+    {
+      "slug": "te-con-tarteleta",
+      "src": "fotos/originales/te-con-tarteleta.jpg",
+      "titulo": "Tarteleta y te",
+      "alt": "Tarteleta de crema con hilos de chocolate y frutilla junto a una taza de porcelana azul mientras se sirve el te",
+      "params": {
+        "warmth": 0.07,
+        "vibrance": 0.22
+      }
+    },
+    {
+      "slug": "mesa-dulce-budin-tartas",
+      "src": "fotos/originales/mesa-dulce-budin-tartas.jpg",
+      "titulo": "Mesa dulce: budin, tartas y alfajores",
+      "alt": "Rodajas de budin de arandanos con glase junto a alfajores de maicena, bocaditos de coco y tartas de crema y de coco",
+      "params": {
+        "exposure": 0.15
+      }
+    },
+    {
+      "slug": "masa-de-tarta-ingredientes",
+      "src": "fotos/originales/masa-de-tarta-ingredientes.jpg",
+      "titulo": "La masa y los ingredientes",
+      "alt": "Masa de tarta cruda estirada en el molde sobre una mesada de granito, con limon, manteca, huevos y azucar alrededor",
+      "params": {
+        "wb_strength": 0.55,
+        "warmth": 0.02
+      }
     }
   ]
 }
