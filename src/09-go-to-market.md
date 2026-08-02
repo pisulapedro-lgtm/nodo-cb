@@ -18,36 +18,21 @@ Lanzamiento septiembre → rodaje octubre-noviembre → pico diciembre-febrero (
 5. **Medios de countries**: Revista Nordelta (bimestral, oficial) y guías barriales — pauta en octubre-noviembre (mediakit por pedir; presupuestado € 200 †) o, mejor, nota de caso de obra a costo cero.
 6. Requisito operativo no negociable: instaladores con AP vigente + no repetición cargados en los sistemas de acceso de cada barrio **antes** de agendar — un certificado vencido frena la obra en la barrera.
 
-## 9.3 Publicidad paga (presupuesto del bloque D de la sección 5)
+## 9.3 Publicidad paga — dónde está el detalle
 
-**El activo heredado: la cuenta de Google Ads de Málaga.** Clima Baires España lleva **más de € 16.000 invertidos** en el rubro exacto — eso es un histórico de datos que ningún competidor local del corredor tiene. Cómo se aprovecha sin empezar de cero:
+La inversión publicitaria del bloque D de la sección 5 y su continuación con cargo a la operación se planifican por completo en la **Parte V**: el embudo con números y el reparto por canal en la sección 17, las campañas de Google Ads listas para cargar en la 18, y Meta, los canales propios y el tablero de control en la 19.
 
-1. **Misma cuenta administrador (MCC)**: crear la cuenta argentina debajo de la MCC existente — gobernanza y facturación separadas (la argentina factura local en ARS), aprendizaje compartido.
-2. **Portar la estructura**, no las campañas: grupos de anuncios por intención (instalación / recambio / service / urgencia) tal como ya demostró funcionar en Málaga, con keywords traducidas al léxico argentino («aire acondicionado» ≡ «split», «frigorías» en lugar de «kW/frigorías ES», «zona norte», nombres de municipios y barrios).
-3. **Exportar los informes de términos de búsqueda de 2-3 años**: la lista de **negativas** ya depurada (curiosos, repuestos, alquiler, empleo…) y las consultas que convierten — es el atajo que más presupuesto ahorra en los primeros 90 días.
-4. **Copies ganadores**: los anuncios con mejor CTR/CVR de Málaga se adaptan (transparencia de precio, presupuesto en el día, posventa) — el mensaje ya está validado en el mismo negocio.
-5. **Benchmarks propios**: CPA y tasas de conversión reales de Málaga como vara inicial para juzgar el rendimiento argentino desde la semana 1 (ajustando por estacionalidad invertida y CPC local).
-6. Lo que **no** viaja: audiencias, historial de calidad y conversiones (son por cuenta/país). El píxel y las conversiones argentinas se configuran desde el día 1 para construir el histórico local.
-
-
-| Canal | Sep | Oct | Nov | Nota técnica |
-|---|---|---|---|---|
-| Google Search geolocalizado | $ 150.000 | $ 250.000 | $ 350.000 | Concordancia de frase: «instalación aire acondicionado», «aire acondicionado + municipio»; solo red de búsqueda. CPC del rubro $ 150-900 †; CPL objetivo ≤ $ 9.000-12.000 [F26] |
-| Meta (IG/FB) | $ 100.000 | $ 150.000 | $ 250.000 | Lead Ads con formulario nativo (barrio, equipo, ambientes) + Reels de obra real; público 35-65 en los 5 municipios [F45] |
-| Countries (pauta) | — | $ 150.000 | $ 150.000 | Revista Nordelta + guías; alternativa costo cero: contenido |
-
-**Regla impositiva clave**: configurar Google y Meta con **facturación local en ARS** (+24%, IVA recuperable) y jamás tarjeta al exterior (+54%) [F21]. KPIs: leads 20-30 (sep) → 80-110 (nov); conversión lead→instalación 25-30% †; CAC blended ≤ $ 35.000-45.000 (~7-12% del ticket premium, referencia de precios de mercado [F37]). Si un canal duplica el CPL objetivo dos meses seguidos, se corta.
+Lo que conviene retener acá, porque condiciona todo el go-to-market: **la pauta cubre el {{_mk.cubierto_pct}} % de las obras del plan y en el pico de diciembre menos de la mitad.** Las {{_mk.obras_propias}} obras restantes del año dependen del posicionamiento local, del perfil de empresa y de las reseñas — que tardan tres meses en madurar y por eso arrancan en septiembre.
 
 ## 9.4 MercadoLibre
 
 Rol acotado: 3-5 publicaciones de equipos gama media/alta con «instalación premium incluida» como test (comisión 13-16% + IVA [F40]). Sirve de vidriera y para capturar demanda de equipos que luego compra instalación; no es el canal principal — el margen vive en la obra, no en el marketplace.
 
-## 9.5 Plan de reseñas 90 días (solo mecánicas permitidas por Google)
+## 9.5 Reseñas — el activo que decide el pico
 
-- Link corto + QR de reseña impreso en remito y tarjeta; pedido por WhatsApp 24-48 h después de cada instalación, tras confirmar conformidad.
-- Prohibido (riesgo de suspensión del perfil): pagar o incentivar reseñas, y el «review gating» (pedir solo a los contentos).
-- Metas: 5 reseñas (sep) → 10 (oct) → 15-20 (nov) → 25+ en el pico. Responder el 100%; las negativas en < 24 h y sin discutir.
-- Cada obra genera además: 1 reel, 2 historias y 1 foto geolocalizada para el perfil de Google.
+Meta: **15-20 reseñas antes del 30 de noviembre**, a una o dos por semana. Es lo que empuja el perfil al top 3 del bloque de mapas justo antes de la temporada, y de ahí sale buena parte de las obras que la pauta no paga. El procedimiento completo —enlace corto, QR en el remito, el pedido por WhatsApp a las 24-48 h, y qué está prohibido hacer— está en la sección 15.2; el papel que cumple dentro del embudo, en la 19.2.
+
+Cada obra genera además un reel, dos historias y una foto geolocalizada para el perfil de Google.
 
 ## 9.6 Competencia de referencia (auditada 01-08-2026)
 

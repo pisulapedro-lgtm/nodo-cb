@@ -11,6 +11,7 @@ import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as FIN from './financiero.mjs';
+import * as MK from './marketing.mjs';
 
 const require_ = createRequire(import.meta.url);
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -46,6 +47,7 @@ const RESERVADOS = [
   'tabla_semana_0', 'tabla_semana_1', 'tabla_semana_2', 'tabla_semana_3', 'tabla_semana_4',
   'tabla_unit_economics', 'tabla_pyl', 'tabla_caja', 'tabla_breakeven',
   'tabla_escenarios', 'tabla_sena', 'indice', 'miniaturas_web',
+  'tabla_reparto_pauta', 'tabla_embudo', 'tabla_canales', 'tabla_sensibilidad_cpc', 'tabla_campanas_google',
 ];
 
 // Cifras del modelo que se citan en la prosa de la sección 6. Se calculan acá,
@@ -75,6 +77,38 @@ const RESERVADOS = [
     be_empleado: un(be.conEmpleado),
     // Piso de caja operativo: tres meses de estructura + el equipo de tres obras tipo.
     piso_caja: datos.financiero.fijos_mensuales_ars.reduce((s, f) => s + f.ars, 0) * 3 + ue.blended.costoEquipo * 3,
+  };
+}
+
+// Cifras del plan de marketing que se citan en la prosa de las secciones 17 a 19.
+// Mismo criterio que las del modelo financiero: las calcula el motor, no la mano.
+{
+  const emb = MK.embudo(datos);
+  const canales = MK.porCanal(datos);
+  const sens = MK.sensibilidad(datos);
+  const [g, m, co] = canales;
+  const t = emb.totales;
+  const un = (n) => n.toFixed(0);
+
+  datos._mk = {
+    inversion_total: t.inversionTotal,
+    inversion_total_eur: t.inversionTotal / TC,
+    inversion_medible: t.inversion,
+    inversion_countries: co.inversion,
+    leads: un(t.leads),
+    obras_pagas: un(t.obrasPagas),
+    obras_propias: un(t.obrasPropias),
+    cubierto_pct: un(t.cubiertoPct * 100),
+    cpl: t.cpl,
+    cac: t.cac,
+    // Techo de tolerancia del CPL: el del escenario en que el clic se encarece un 30 %.
+    cpl_techo: sens[1].cpl,
+    pct_google: un((g.inversion / t.inversion) * 100),
+    pct_obras_google: un((g.obras / t.obrasPagas) * 100),
+    cac_google: g.cac,
+    cac_meta: m.cac,
+    google_anual: g.inversion,
+    meta_anual: m.inversion,
   };
 }
 
@@ -427,6 +461,109 @@ function renderMiniaturas() {
   return html;
 }
 
+// ---------- generadores de marketing ----------
+const nEs = (n, d = 1) => n.toFixed(d).replace('.', ',');
+
+function renderRepartoPauta() {
+  const mk = datos.marketing, n = mk.canales[0].ars.length;
+  const et = (i) => FIN.etiquetaMes(datos.financiero, i);
+  let html = '<table class="larga compacta"><thead><tr><th>Canal</th>';
+  for (let i = 0; i < n; i++) html += `<th class="num">${et(i)}</th>`;
+  html += '<th class="num">Año 1</th></tr></thead><tbody>';
+  for (const c of mk.canales) {
+    const tot = c.ars.reduce((s, x) => s + x, 0);
+    html += `<tr><td><strong>${c.nombre}</strong>${c.fuente ? ` <small>[${c.fuente}]</small>` : ''}</td>`;
+    for (const v of c.ars) html += `<td class="num">${v ? ars(v) : '—'}</td>`;
+    html += `<td class="num">${ars(tot)}</td></tr>`;
+  }
+  const totMes = Array.from({ length: n }, (_, i) => mk.canales.reduce((s, c) => s + c.ars[i], 0));
+  const tot = totMes.reduce((s, x) => s + x, 0);
+  html += '<tr class="total"><td>TOTAL</td>';
+  for (const v of totMes) html += `<td class="num">${ars(v)}</td>`;
+  html += `<td class="num">${ars(tot)}</td></tr></tbody></table>`;
+  html += `<p class="leyenda">Suma exactamente la serie de marketing del modelo financiero (${eur(tot / TC)} en el año 1): `
+    + `no hay pauta fuera del presupuesto de la sección 6. El build aborta si dejan de cuadrar.</p>`;
+  return html;
+}
+
+function renderEmbudo() {
+  const { meses, totales } = MK.embudo(datos);
+  let html = '<table class="larga"><thead><tr><th>Mes</th><th class="num">CPC †</th><th class="num">Clics</th>'
+    + '<th class="num">Leads</th><th class="num">Obras de pauta</th><th class="num">Plan</th>'
+    + '<th class="num">De canales propios</th><th class="num">Cubierto por pauta</th></tr></thead><tbody>';
+  for (const m of meses.slice(0, 12)) {
+    const falta = m.propias > 0.5;
+    html += `<tr${falta ? '' : ' class="subtotal"'}><td><strong>${m.etiqueta}</strong></td>`
+      + `<td class="num">${ars(m.cpc)}</td><td class="num">${fmtARS.format(Math.round(m.clics))}</td>`
+      + `<td class="num">${nEs(m.leads, 0)}</td><td class="num">${nEs(m.pagas)}</td>`
+      + `<td class="num">${m.plan}</td><td class="num">${m.propias > 0 ? nEs(m.propias) : '—'}</td>`
+      + `<td class="num">${nEs(m.cubiertoPct * 100, 0)} %</td></tr>`;
+  }
+  html += `<tr class="total"><td>AÑO 1</td><td class="num">—</td><td class="num">—</td>`
+    + `<td class="num">${nEs(totales.leads, 0)}</td><td class="num">${nEs(totales.obrasPagas, 0)}</td>`
+    + `<td class="num">${totales.obrasPlan}</td><td class="num">${nEs(totales.obrasPropias, 0)}</td>`
+    + `<td class="num">${nEs(totales.cubiertoPct * 100, 0)} %</td></tr></tbody></table>`;
+  html += `<p class="leyenda">† CPC estimado con estacionalidad: en diciembre y enero puja todo el rubro a la vez [F46]. `
+    + `Las filas sombreadas son los meses en que la pauta cubre el plan por sí sola. `
+    + `CPL medio ${ars(totales.cpl)} y CAC medio ${ars(totales.cac)} — por debajo de los ${ars(datos.financiero.costos_obra.cac_ars)} `
+    + `que asume el modelo financiero, que queda así como el techo tolerable.</p>`;
+  return html;
+}
+
+function renderCanales() {
+  const canales = MK.porCanal(datos);
+  let html = '<table><thead><tr><th>Canal</th><th class="num">Inversión año 1</th><th class="num">Leads</th>'
+    + '<th class="num">CPL</th><th class="num">Lead → obra</th><th class="num">Obras</th><th class="num">CAC</th></tr></thead><tbody>';
+  for (const c of canales) {
+    html += `<tr><td><strong>${c.nombre}</strong></td><td class="num">${ars(c.inversion)}</td>`;
+    if (c.leads === null) {
+      html += '<td class="num" colspan="5">No genera leads medibles: compra acceso y credibilidad</td></tr>';
+    } else {
+      html += `<td class="num">${nEs(c.leads, 0)}</td><td class="num">${ars(c.cpl)}</td>`
+        + `<td class="num">${nEs(c.convLeadObra * 100, 0)} %</td><td class="num">${nEs(c.obras, 0)}</td>`
+        + `<td class="num">${ars(c.cac)}</td></tr>`;
+    }
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderSensibilidadCPC() {
+  const filas = MK.sensibilidad(datos);
+  const lectura = ['Escenario base: el clic sale a lo previsto.',
+    'El clic se encarece un 30 %: entra más competencia o sube la puja de temporada.',
+    'El clic se encarece un 60 %: guerra de pujas en diciembre. Es el escenario que hay que poder aguantar.'];
+  let html = '<table><thead><tr><th>Escenario</th><th class="num">CPL</th><th class="num">CAC</th>'
+    + '<th class="num">Obras de pauta</th><th class="num">Cubierto</th><th class="num">A cubrir con canales propios</th></tr></thead><tbody>';
+  filas.forEach((f, i) => {
+    html += `<tr><td><strong>${lectura[i]}</strong></td><td class="num">${ars(f.cpl)}</td>`
+      + `<td class="num">${ars(f.cac)}</td><td class="num">${nEs(f.obrasPagas, 0)}</td>`
+      + `<td class="num">${nEs(f.cubiertoPct * 100, 0)} %</td><td class="num">${nEs(f.obrasPropias, 0)} obras</td></tr>`;
+  });
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderCampanasGoogle() {
+  const mk = datos.marketing;
+  // Mes de referencia: el pico, que es cuando el reparto importa de verdad.
+  const iPico = mk.canales.find((c) => c.clave === 'google').ars.indexOf(
+    Math.max(...mk.canales.find((c) => c.clave === 'google').ars));
+  const presupuesto = mk.canales.find((c) => c.clave === 'google').ars[iPico];
+  let html = '<table class="larga"><thead><tr><th>Campaña</th><th class="num">% del Search</th>'
+    + `<th class="num">Diario en ${FIN.etiquetaMes(datos.financiero, iPico)}</th><th>Estrategia de puja</th><th>Para qué está</th></tr></thead><tbody>`;
+  let suma = 0;
+  for (const c of mk.campanas_google) {
+    suma += c.pct;
+    html += `<tr><td><code>${c.campana}</code></td><td class="num">${nEs(c.pct * 100, 0)} %</td>`
+      + `<td class="num">${ars((presupuesto * c.pct) / 30)}</td><td>${c.puja}</td><td>${c.nota}</td></tr>`;
+  }
+  html += `<tr class="total"><td>TOTAL SEARCH</td><td class="num">${nEs(suma * 100, 0)} %</td>`
+    + `<td class="num">${ars(presupuesto / 30)}</td><td colspan="2">Presupuesto mensual de ${ars(presupuesto)}</td></tr>`;
+  html += '</tbody></table>';
+  return html;
+}
+
 // ---------- ensamblado ----------
 const archivos = readdirSync(SRC).filter((f) => f.endsWith('.md')).sort();
 if (archivos.length === 0) throw new Error('No hay .md en src/');
@@ -449,6 +586,11 @@ const bloques = {
   tabla_breakeven: renderBreakEven(),
   tabla_escenarios: renderEscenarios(),
   tabla_sena: renderSena(),
+  tabla_reparto_pauta: renderRepartoPauta(),
+  tabla_embudo: renderEmbudo(),
+  tabla_canales: renderCanales(),
+  tabla_sensibilidad_cpc: renderSensibilidadCPC(),
+  tabla_campanas_google: renderCampanasGoogle(),
   indice: renderIndice(leerEsquema(archivos)),
   miniaturas_web: renderMiniaturas(),
 };
@@ -507,6 +649,16 @@ if (datos.presupuesto.partidas.length) {
   }
 }
 if (!TC || TC <= 0) errores.push('Tipo de cambio EUR/ARS inválido en datos.json');
+
+// El plan de marketing no puede gastar lo que el modelo financiero no previó.
+if (datos.marketing) {
+  const c = MK.cuadre(datos);
+  for (const d of c.desvios) {
+    errores.push(`Pauta de ${d.mes}: los canales suman ${ars(d.canales)} pero el modelo prevé ${ars(d.modelo)}`);
+  }
+  const pct = datos.marketing.campanas_google.reduce((s, x) => s + x.pct, 0);
+  if (Math.abs(pct - 1) > 0.005) errores.push(`Las campañas de Google reparten el ${(pct * 100).toFixed(1)}% del presupuesto, no el 100%`);
+}
 
 if (avisos.length) console.warn('AVISOS:\n - ' + avisos.join('\n - '));
 if (errores.length) {

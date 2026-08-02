@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1",
+    "version": "1.2",
     "fecha_documento": "2026-08-01",
     "fecha_inicio": "2026-08-03",
     "dias_plan": 30,
@@ -744,8 +744,135 @@
     },
     {
       "antes": "17",
+      "numero": "V",
+      "titulo": "Marketing y publicidad"
+    },
+    {
+      "antes": "20",
       "numero": "",
       "titulo": "Anexos"
     }
-  ]
+  ],
+  "marketing": {
+    "convencion": "Costos publicitarios en ARS de agosto-2026, del mismo modo que el modelo financiero de la sección 6. El reparto por canal suma exactamente la serie `financiero.marketing_ars`: no hay pauta fuera del modelo.",
+    "canales": [
+      {
+        "clave": "google",
+        "nombre": "Google Search",
+        "ars": [
+          150000,
+          220000,
+          330000,
+          420000,
+          430000,
+          380000,
+          220000,
+          160000,
+          130000,
+          130000,
+          130000,
+          160000
+        ],
+        "fuente": "F46",
+        "rol": "Captura la demanda que ya está buscando. Es el canal de mayor intención y el que sostiene la temporada."
+      },
+      {
+        "clave": "meta",
+        "nombre": "Meta (Instagram y Facebook)",
+        "ars": [
+          100000,
+          130000,
+          170000,
+          180000,
+          200000,
+          170000,
+          100000,
+          90000,
+          70000,
+          70000,
+          70000,
+          90000
+        ],
+        "fuente": "F47",
+        "rol": "Crea demanda donde todavía no la hay y construye marca con obra real. Leads más fríos, más baratos."
+      },
+      {
+        "clave": "countries",
+        "nombre": "Medios de countries",
+        "ars": [
+          0,
+          50000,
+          100000,
+          100000,
+          70000,
+          50000,
+          30000,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fuente": null,
+        "rol": "Revista Nordelta y guías barriales. No genera leads medibles: compra acceso y credibilidad en el canal de mayor ticket."
+      }
+    ],
+    "cpc_ars": [
+      450,
+      500,
+      600,
+      700,
+      700,
+      600,
+      500,
+      450,
+      400,
+      380,
+      380,
+      420
+    ],
+    "embudo": {
+      "conv_clic_lead": 0.07,
+      "conv_lead_obra_google": 0.25,
+      "cpl_meta_ars": 7000,
+      "conv_lead_obra_meta": 0.12
+    },
+    "sensibilidad_cpc": [
+      1.0,
+      1.3,
+      1.6
+    ],
+    "campanas_google": [
+      {
+        "campana": "AR | Search | Instalación | Corredor Norte",
+        "pct": 0.45,
+        "puja": "Maximizar clics con CPC máx. $ 900 → CPA objetivo al llegar a 15 conversiones",
+        "nota": "El grueso del negocio. Un grupo de anuncios por municipio, con la landing de esa zona."
+      },
+      {
+        "campana": "AR | Search | Recambio y urgencia",
+        "pct": 0.2,
+        "puja": "Maximizar conversiones · sin tope de CPC en horario comercial",
+        "nota": "Intención altísima y menos competencia que «instalación». Convierte más rápido y con menos regateo."
+      },
+      {
+        "campana": "AR | Search | Service y mantenimiento",
+        "pct": 0.2,
+        "puja": "Maximizar clics con CPC máx. $ 450",
+        "nota": "Ticket chico pero margen del 55 %. Es el canal que sostiene los meses de invierno y construye la base de clientes recurrentes."
+      },
+      {
+        "campana": "AR | Search | Marca",
+        "pct": 0.05,
+        "puja": "CPC manual, $ 120 máx.",
+        "nota": "Defensiva: evita que un competidor se lleve a quien ya busca «Clima Baires». Barata y obligatoria."
+      },
+      {
+        "campana": "AR | PMax | Obras",
+        "pct": 0.1,
+        "puja": "Maximizar conversiones · activar recién en el mes 3",
+        "nota": "Necesita 30 conversiones de historial para no quemar presupuesto. Antes de eso no se enciende."
+      }
+    ]
+  }
 }

@@ -1,47 +1,331 @@
 [
-  { "id": "F1", "titulo": "Cotización euro Banco Nación (billete)", "url": "https://www.infodolar.com/cotizacion-euro-entidad-banco-nacion.aspx", "fecha_consulta": "01-08-2026", "tipo": "mercado" },
-  { "id": "F2", "titulo": "Bandas de flotación del dólar desde 2026 — Chequeado", "url": "https://chequeado.com/el-explicador/bandas-de-flotacion-del-dolar-que-cambia-desde-2026-y-como-funcionaron-hasta-ahora/", "fecha_consulta": "01-08-2026", "tipo": "prensa" },
-  { "id": "F3", "titulo": "BCRA mantiene restricciones cambiarias a empresas — Infobae 19-05-2026", "url": "https://www.infobae.com/economia/2026/05/19/el-bcra-confirmo-que-mantendra-el-cepo-cambiario-a-las-empresas-cuales-son-las-restricciones-que-siguen-vigentes/", "fecha_consulta": "01-08-2026", "tipo": "prensa" },
-  { "id": "F4", "titulo": "Com. BCRA «A» 8226: giro de dividendos sin conformidad previa (utilidades ≥2025)", "url": "https://tristanyasociados.com/2025/04/comunicacion-a-8226/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F5", "titulo": "CDI España–Argentina (BOE-A-2014-373)", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-373", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F6", "titulo": "ARCA — retención sobre dividendos (art. 97 LIG)", "url": "https://servicioscf.afip.gob.ar/publico/abc/ABCpaso2.aspx?id_nivel1=563&id_nivel2=567&id_nivel3=2494&id_nivel4=2581&p=Dividendos", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F7", "titulo": "ARCA — escala Impuesto a las Ganancias personas jurídicas 2026", "url": "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-juridicas/determinacion/documentos/Ganancias-Escala-PJ-2026.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F8", "titulo": "Costos y plazos de constitución SAS CABA 2026 — Portal Societario", "url": "https://portalsocietario.com.ar/constitucionsas-caba.shtml", "fecha_consulta": "01-08-2026", "tipo": "comercial" },
-  { "id": "F9", "titulo": "RG ARCA 5803/2025: CUIT reemplaza al CDI para personas humanas no residentes", "url": "https://contadoresenred.com/alta-modificacion-y-baja-registral-ante-arca-reemplazo-del-cdi-para-personas-humanas/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F10", "titulo": "Aranceles INPI 2026 en UMAPI (Res. 75/2026)", "url": "https://www.hyaip.com/es/espacio/incremento-tasas-propiedad-industrial-argentina/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F11", "titulo": "SAS en IGJ: RG 11/2024 y digitalización RG 5/2026", "url": "https://abogados.com.ar/index.php/novedades-igj-resolucion-052026-digitalizacion-y-modernizacion-de-igj/39270", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F12", "titulo": "Salario Mínimo Vital y Móvil vigente", "url": "https://calcularsueldo.com.ar/sueldos/smvm", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F13", "titulo": "Escalas UOM Rama 17 (refrigeración) 2026", "url": "https://calcularsueldo.com.ar/paritarias/13497/escalas-uom-para-metalurgicos-hasta-abril-de-2026.html", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F14", "titulo": "Autónomos: categorías y aportes 2026 (ARCA)", "url": "https://www.afip.gob.ar/autonomos/categorias-y-aportes/2026.asp", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F15", "titulo": "Ley Impositiva PBA 2026 (Ley 15.558) — ARBA", "url": "https://www.arba.gov.ar/archivos/Publicaciones/leyimpositiva2026.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F16", "titulo": "Ley Tarifaria CABA 2026 (Ley 6927, anexo)", "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PL-LEY-LCABA-LCBA-6927-25-ANX.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F17", "titulo": "CABA se incorpora al Registro Único Tributario (alta CM) desde 01-08-2026", "url": "https://contadoresenred.com/registro-unico-tributario-padron-federal-agip/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F18", "titulo": "Ordenanza Impositiva 2026 Vicente López (38.743)", "url": "https://www.vicentelopez.gov.ar/static-iipp/p/IIPP//normativas/2026/ordenanza38743impo.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F19", "titulo": "Ordenanza Impositiva 2026 San Isidro (9415/25 — ARSI)", "url": "https://arsi.gob.ar/pdf/ordenanzas/Ordenanza_Impositiva_2026-Nro_9415-2025.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F20", "titulo": "Xubio — precios planes empresa", "url": "https://xubio.com/ar/precios-empresas", "fecha_consulta": "01-08-2026", "tipo": "comercial" },
-  { "id": "F21", "titulo": "Impuestos sobre servicios digitales del exterior (Google Ads/SaaS)", "url": "https://ayuda.anunzi.net/paid-media/impuestos/impuestos-en-google-ads-argentina", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F22", "titulo": "NIC.ar — aranceles dominios .com.ar", "url": "https://nic.ar/es/dominios/aranceles", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F23", "titulo": "Monotributo: categorías vigentes desde 01-08-2026", "url": "https://calcular.ar/monotributo/categorias", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F24", "titulo": "Seguros AP/RC para prestadores independientes 2026", "url": "https://servidos.ar/blog/seguro-accidentes-personales-trabajadores-independientes-argentina", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F25", "titulo": "AVN Nordelta — requisitos para ser proveedor", "url": "https://micuenta.avnordelta.com/ProvidersForm/Requirements", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F26", "titulo": "Costos Google Ads Argentina 2026", "url": "https://estudioantidoto.com.ar/precio-de-google-ads-en-2026/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F27", "titulo": "Mercado Pago: cargos por venta vigentes (06-03-2026)", "url": "https://calcularsueldo.com.ar/impuestos/13982/mercado-pago-cambia-sus-cargos-por-venta-asi-quedan-los-nuevos-costos.html", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F28", "titulo": "Payway — Cuotas MiPyME (tasas vigentes)", "url": "https://ayuda.payway.com.ar/cobros/cuotas-mi-pyme", "fecha_consulta": "01-08-2026", "tipo": "comercial" },
-  { "id": "F29", "titulo": "RG 5554/2024: derogación de retenciones IVA/Ganancias en cobros electrónicos", "url": "https://www.argentina.gob.ar/noticias/se-derogaron-los-regimenes-de-retencion-de-iva-y-ganancias-los-cobros-electronicos", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F30", "titulo": "RG 5762/2025: fin de la Factura M, nueva Factura A", "url": "https://contadoresenred.com/fin-de-las-facturas-m-nuevas-reglas-para-emitir-factura-a-rg-5762-2025/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F31", "titulo": "Ordenanza Impositiva 2026 Tigre (4336/25, BO 1051)", "url": "http://servicios.tigre.gov.ar/digesto/documentos/digestos-pdf/Boletin_Oficial_1051.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F32", "titulo": "Ordenanza Impositiva 2026 Pilar (112/2025)", "url": "https://pilar.gov.ar/wp-content/uploads/2025/12/ORDENANZA-IMPOSITIVA-2026.pdf", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F33", "titulo": "Topes MiPyME 2026 (Res. 1/2026)", "url": "https://siap.blogdelcontador.com.ar/novedades/nuevos-topes-mipyme-2026-ventas-empleados-y-activos/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F34", "titulo": "Beneficios fiscales del Certificado MiPyME 2026", "url": "https://blog.aconpy.com/2026/04/07/beneficios-fiscales-por-tener-el-certificado-mipyme-en-2026/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F35", "titulo": "Facturación electrónica: nuevo esquema CAE/CAEA desde 01-08-2026 (RG 5782/5785)", "url": "https://agendapyme.com.ar/2026/07/23/facturacion-electronica-en-2026-el-nuevo-esquema-de-contingencia-de-arca-obliga-a-las-empresas-a-revisar-sus-sistemas/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F36", "titulo": "Tarifas de instalación de A/A — Cámara Argentina de Refrigeración (vía La Nación)", "url": "https://www.lanacion.com.ar/propiedades/casas-y-departamentos/cuanto-sale-instalar-un-aire-acondicionado-nid07012026/", "fecha_consulta": "01-08-2026", "tipo": "prensa" },
-  { "id": "F37", "titulo": "Precios de equipos split (retail y canal)", "url": "https://refrigeracionpolar.com.ar/aire-acondicionado/", "fecha_consulta": "01-08-2026", "tipo": "mercado" },
-  { "id": "F38", "titulo": "Clima Design — mayorista de A/A zona norte", "url": "https://www.climadesign.com.ar/novedad-detalle/info/mayorista-de-aire-acondicionado", "fecha_consulta": "01-08-2026", "tipo": "comercial" },
-  { "id": "F39", "titulo": "Reforma del art. 23 LCT (Leyes 27.742 y 27.802): contratación de monotributistas", "url": "https://ninolegal.com/novedad/reforma-laboral-ley-27802-art23-lct-monotributistas-relacion-dependencia", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F40", "titulo": "MercadoLibre — cargos por vender", "url": "https://www.mercadolibre.com.ar/ayuda/Cargos-por-vender-productos_870", "fecha_consulta": "01-08-2026", "tipo": "comercial" },
-  { "id": "F41", "titulo": "SAS en PBA: inscripción digital DPPJ", "url": "https://www.gba.gob.ar/dppj/sociedades_por_acciones_simplificadas_sas", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F42", "titulo": "Relevamiento de Activos y Pasivos Externos BCRA (cambios 2026)", "url": "https://www.cronista.com/columnistas/cambios-en-el-regimen-informativo-relevamiento-de-activos-y-pasivos-externos-del-bcra-a-partir-del-2026/", "fecha_consulta": "01-08-2026", "tipo": "prensa" },
-  { "id": "F43", "titulo": "ARCA — Bienes Personales: alícuotas (responsable sustituto)", "url": "https://www.afip.gob.ar/gananciasYBienes/bienes-personales/conceptos-basicos/alicuotas.asp", "fecha_consulta": "01-08-2026", "tipo": "oficial" },
-  { "id": "F44", "titulo": "Escala salarial Empleados de Comercio 2026", "url": "https://mundoempresarial.ar/escala-salarial-empleados-comercio-2026/", "fecha_consulta": "01-08-2026", "tipo": "profesional" },
-  { "id": "F45", "titulo": "Benchmarks Meta Ads Argentina (CPM/CPL)", "url": "https://www.sodi.com.ar/blog/cuanto-cuesta-publicidad-facebook-instagram-argentina", "fecha_consulta": "01-08-2026", "tipo": "profesional" }
+  {
+    "id": "F1",
+    "titulo": "Cotización euro Banco Nación (billete)",
+    "url": "https://www.infodolar.com/cotizacion-euro-entidad-banco-nacion.aspx",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "mercado"
+  },
+  {
+    "id": "F2",
+    "titulo": "Bandas de flotación del dólar desde 2026 — Chequeado",
+    "url": "https://chequeado.com/el-explicador/bandas-de-flotacion-del-dolar-que-cambia-desde-2026-y-como-funcionaron-hasta-ahora/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "prensa"
+  },
+  {
+    "id": "F3",
+    "titulo": "BCRA mantiene restricciones cambiarias a empresas — Infobae 19-05-2026",
+    "url": "https://www.infobae.com/economia/2026/05/19/el-bcra-confirmo-que-mantendra-el-cepo-cambiario-a-las-empresas-cuales-son-las-restricciones-que-siguen-vigentes/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "prensa"
+  },
+  {
+    "id": "F4",
+    "titulo": "Com. BCRA «A» 8226: giro de dividendos sin conformidad previa (utilidades ≥2025)",
+    "url": "https://tristanyasociados.com/2025/04/comunicacion-a-8226/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F5",
+    "titulo": "CDI España–Argentina (BOE-A-2014-373)",
+    "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-373",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F6",
+    "titulo": "ARCA — retención sobre dividendos (art. 97 LIG)",
+    "url": "https://servicioscf.afip.gob.ar/publico/abc/ABCpaso2.aspx?id_nivel1=563&id_nivel2=567&id_nivel3=2494&id_nivel4=2581&p=Dividendos",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F7",
+    "titulo": "ARCA — escala Impuesto a las Ganancias personas jurídicas 2026",
+    "url": "https://www.afip.gob.ar/gananciasYBienes/ganancias/personas-juridicas/determinacion/documentos/Ganancias-Escala-PJ-2026.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F8",
+    "titulo": "Costos y plazos de constitución SAS CABA 2026 — Portal Societario",
+    "url": "https://portalsocietario.com.ar/constitucionsas-caba.shtml",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "comercial"
+  },
+  {
+    "id": "F9",
+    "titulo": "RG ARCA 5803/2025: CUIT reemplaza al CDI para personas humanas no residentes",
+    "url": "https://contadoresenred.com/alta-modificacion-y-baja-registral-ante-arca-reemplazo-del-cdi-para-personas-humanas/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F10",
+    "titulo": "Aranceles INPI 2026 en UMAPI (Res. 75/2026)",
+    "url": "https://www.hyaip.com/es/espacio/incremento-tasas-propiedad-industrial-argentina/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F11",
+    "titulo": "SAS en IGJ: RG 11/2024 y digitalización RG 5/2026",
+    "url": "https://abogados.com.ar/index.php/novedades-igj-resolucion-052026-digitalizacion-y-modernizacion-de-igj/39270",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F12",
+    "titulo": "Salario Mínimo Vital y Móvil vigente",
+    "url": "https://calcularsueldo.com.ar/sueldos/smvm",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F13",
+    "titulo": "Escalas UOM Rama 17 (refrigeración) 2026",
+    "url": "https://calcularsueldo.com.ar/paritarias/13497/escalas-uom-para-metalurgicos-hasta-abril-de-2026.html",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F14",
+    "titulo": "Autónomos: categorías y aportes 2026 (ARCA)",
+    "url": "https://www.afip.gob.ar/autonomos/categorias-y-aportes/2026.asp",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F15",
+    "titulo": "Ley Impositiva PBA 2026 (Ley 15.558) — ARBA",
+    "url": "https://www.arba.gov.ar/archivos/Publicaciones/leyimpositiva2026.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F16",
+    "titulo": "Ley Tarifaria CABA 2026 (Ley 6927, anexo)",
+    "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PL-LEY-LCABA-LCBA-6927-25-ANX.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F17",
+    "titulo": "CABA se incorpora al Registro Único Tributario (alta CM) desde 01-08-2026",
+    "url": "https://contadoresenred.com/registro-unico-tributario-padron-federal-agip/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F18",
+    "titulo": "Ordenanza Impositiva 2026 Vicente López (38.743)",
+    "url": "https://www.vicentelopez.gov.ar/static-iipp/p/IIPP//normativas/2026/ordenanza38743impo.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F19",
+    "titulo": "Ordenanza Impositiva 2026 San Isidro (9415/25 — ARSI)",
+    "url": "https://arsi.gob.ar/pdf/ordenanzas/Ordenanza_Impositiva_2026-Nro_9415-2025.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F20",
+    "titulo": "Xubio — precios planes empresa",
+    "url": "https://xubio.com/ar/precios-empresas",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "comercial"
+  },
+  {
+    "id": "F21",
+    "titulo": "Impuestos sobre servicios digitales del exterior (Google Ads/SaaS)",
+    "url": "https://ayuda.anunzi.net/paid-media/impuestos/impuestos-en-google-ads-argentina",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F22",
+    "titulo": "NIC.ar — aranceles dominios .com.ar",
+    "url": "https://nic.ar/es/dominios/aranceles",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F23",
+    "titulo": "Monotributo: categorías vigentes desde 01-08-2026",
+    "url": "https://calcular.ar/monotributo/categorias",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F24",
+    "titulo": "Seguros AP/RC para prestadores independientes 2026",
+    "url": "https://servidos.ar/blog/seguro-accidentes-personales-trabajadores-independientes-argentina",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F25",
+    "titulo": "AVN Nordelta — requisitos para ser proveedor",
+    "url": "https://micuenta.avnordelta.com/ProvidersForm/Requirements",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F26",
+    "titulo": "Costos Google Ads Argentina 2026",
+    "url": "https://estudioantidoto.com.ar/precio-de-google-ads-en-2026/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F27",
+    "titulo": "Mercado Pago: cargos por venta vigentes (06-03-2026)",
+    "url": "https://calcularsueldo.com.ar/impuestos/13982/mercado-pago-cambia-sus-cargos-por-venta-asi-quedan-los-nuevos-costos.html",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F28",
+    "titulo": "Payway — Cuotas MiPyME (tasas vigentes)",
+    "url": "https://ayuda.payway.com.ar/cobros/cuotas-mi-pyme",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "comercial"
+  },
+  {
+    "id": "F29",
+    "titulo": "RG 5554/2024: derogación de retenciones IVA/Ganancias en cobros electrónicos",
+    "url": "https://www.argentina.gob.ar/noticias/se-derogaron-los-regimenes-de-retencion-de-iva-y-ganancias-los-cobros-electronicos",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F30",
+    "titulo": "RG 5762/2025: fin de la Factura M, nueva Factura A",
+    "url": "https://contadoresenred.com/fin-de-las-facturas-m-nuevas-reglas-para-emitir-factura-a-rg-5762-2025/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F31",
+    "titulo": "Ordenanza Impositiva 2026 Tigre (4336/25, BO 1051)",
+    "url": "http://servicios.tigre.gov.ar/digesto/documentos/digestos-pdf/Boletin_Oficial_1051.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F32",
+    "titulo": "Ordenanza Impositiva 2026 Pilar (112/2025)",
+    "url": "https://pilar.gov.ar/wp-content/uploads/2025/12/ORDENANZA-IMPOSITIVA-2026.pdf",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F33",
+    "titulo": "Topes MiPyME 2026 (Res. 1/2026)",
+    "url": "https://siap.blogdelcontador.com.ar/novedades/nuevos-topes-mipyme-2026-ventas-empleados-y-activos/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F34",
+    "titulo": "Beneficios fiscales del Certificado MiPyME 2026",
+    "url": "https://blog.aconpy.com/2026/04/07/beneficios-fiscales-por-tener-el-certificado-mipyme-en-2026/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F35",
+    "titulo": "Facturación electrónica: nuevo esquema CAE/CAEA desde 01-08-2026 (RG 5782/5785)",
+    "url": "https://agendapyme.com.ar/2026/07/23/facturacion-electronica-en-2026-el-nuevo-esquema-de-contingencia-de-arca-obliga-a-las-empresas-a-revisar-sus-sistemas/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F36",
+    "titulo": "Tarifas de instalación de A/A — Cámara Argentina de Refrigeración (vía La Nación)",
+    "url": "https://www.lanacion.com.ar/propiedades/casas-y-departamentos/cuanto-sale-instalar-un-aire-acondicionado-nid07012026/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "prensa"
+  },
+  {
+    "id": "F37",
+    "titulo": "Precios de equipos split (retail y canal)",
+    "url": "https://refrigeracionpolar.com.ar/aire-acondicionado/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "mercado"
+  },
+  {
+    "id": "F38",
+    "titulo": "Clima Design — mayorista de A/A zona norte",
+    "url": "https://www.climadesign.com.ar/novedad-detalle/info/mayorista-de-aire-acondicionado",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "comercial"
+  },
+  {
+    "id": "F39",
+    "titulo": "Reforma del art. 23 LCT (Leyes 27.742 y 27.802): contratación de monotributistas",
+    "url": "https://ninolegal.com/novedad/reforma-laboral-ley-27802-art23-lct-monotributistas-relacion-dependencia",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F40",
+    "titulo": "MercadoLibre — cargos por vender",
+    "url": "https://www.mercadolibre.com.ar/ayuda/Cargos-por-vender-productos_870",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "comercial"
+  },
+  {
+    "id": "F41",
+    "titulo": "SAS en PBA: inscripción digital DPPJ",
+    "url": "https://www.gba.gob.ar/dppj/sociedades_por_acciones_simplificadas_sas",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F42",
+    "titulo": "Relevamiento de Activos y Pasivos Externos BCRA (cambios 2026)",
+    "url": "https://www.cronista.com/columnistas/cambios-en-el-regimen-informativo-relevamiento-de-activos-y-pasivos-externos-del-bcra-a-partir-del-2026/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "prensa"
+  },
+  {
+    "id": "F43",
+    "titulo": "ARCA — Bienes Personales: alícuotas (responsable sustituto)",
+    "url": "https://www.afip.gob.ar/gananciasYBienes/bienes-personales/conceptos-basicos/alicuotas.asp",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "oficial"
+  },
+  {
+    "id": "F44",
+    "titulo": "Escala salarial Empleados de Comercio 2026",
+    "url": "https://mundoempresarial.ar/escala-salarial-empleados-comercio-2026/",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F45",
+    "titulo": "Benchmarks Meta Ads Argentina (CPM/CPL)",
+    "url": "https://www.sodi.com.ar/blog/cuanto-cuesta-publicidad-facebook-instagram-argentina",
+    "fecha_consulta": "01-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F46",
+    "titulo": "Costo por clic de Google Ads en Argentina 2026 (servicios locales: $ 150-400 por clic)",
+    "url": "https://codexia.com.ar/servicios/cuanto-cuesta-google-ads-argentina-2026/",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "profesional"
+  },
+  {
+    "id": "F47",
+    "titulo": "Benchmarks de costo por lead en Meta Ads — LatAm 2026",
+    "url": "https://fuelads.tech/benchmarks-latam-2026",
+    "fecha_consulta": "02-08-2026",
+    "tipo": "profesional"
+  }
 ]
