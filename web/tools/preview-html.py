@@ -33,6 +33,7 @@ from PIL import Image
 
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 SALIDA = os.path.normpath(os.path.join(RAIZ, '..', 'dist', 'preview-climabaires.html'))
+SALIDA_MOVIL = os.path.normpath(os.path.join(RAIZ, '..', 'dist', 'preview-movil-climabaires.html'))
 
 # Las fotos se recomprimen para la vista previa: a 640 px se ven bien en el marco
 # de teléfono y el archivo entero baja de 4 MB a menos de 1.
@@ -135,7 +136,7 @@ def paginas():
         html = re.sub(r'<link rel="stylesheet"[^>]*>', '<!--CSS-->', html)
         html = re.sub(r'<script src="[^"]*main\.js"></script>', '<!--JS-->', html)
         # lo que apunta afuera o a archivos que no viajan
-        html = re.sub(r'<link rel="(?:icon|manifest|alternate|preload)"[^>]*>', '', html)
+        html = re.sub(r'<link rel="(?:icon|manifest|alternate|preload|apple-touch-icon)"[^>]*>', '', html)
 
         # rutas de imagen → clave del mapa (se resuelven al armar el iframe)
         def ruta_img(m):
@@ -160,7 +161,8 @@ def paginas():
             if limpio.endswith('/'):
                 limpio += 'index.html'
             clave = os.path.normpath(os.path.join(os.path.dirname(rel), limpio)).replace(os.sep, '/')
-            return 'href="PAGE:%s"' % clave
+            ancla = destino.split('#', 1)[1] if '#' in destino else ''
+            return 'href="PAGE:%s%s"' % (clave, '#' + ancla if ancla else '')
         html = re.sub(r'href="([^"]+)"', enlace, html)
 
         out[rel] = html
@@ -233,7 +235,11 @@ DOC = """<title>climabaires.com — vista previa navegable</title>
 <script id="datos" type="application/json">%(datos)s</script>
 <script id="css-sitio" type="text/plain">%(css_sitio)s</script>
 <script id="js-sitio" type="text/plain">%(js_sitio)s</script>
-<script>
+"""
+
+# El router es el mismo en las dos salidas: la única diferencia entre ellas es
+# lo que rodea al iframe.
+ROUTER = """<script>
 (function () {
   var D = JSON.parse(document.getElementById('datos').textContent);
   var CSS = document.getElementById('css-sitio').textContent;
@@ -249,17 +255,26 @@ DOC = """<title>climabaires.com — vista previa navegable</title>
       .replace(/IMG:([^"'\\s,]+)/g, function (_, clave) { return D.img[clave] || ''; });
   }
 
-  function ir(rel) {
-    if (!D.paginas[rel]) rel = 'index.html';
-    actual = rel;
+  function ir(destino) {
+    var partes = String(destino).split('#');
+    var rel = partes[0], ancla = partes[1] || '';
+    if (!D.paginas[rel]) { rel = 'index.html'; ancla = ''; }
+    actual = destino;
     document.querySelectorAll('.chip').forEach(function (c) {
       c.classList.toggle('activo', c.dataset.p === rel);
     });
+    if (ancla) {
+      vista.addEventListener('load', function bajar() {
+        vista.removeEventListener('load', bajar);
+        var t = vista.contentDocument && vista.contentDocument.getElementById(ancla);
+        if (t) t.scrollIntoView();
+      });
+    }
     vista.srcdoc = resolver(D.paginas[rel]) +
       '<scr' + 'ipt>document.addEventListener("click",function(e){' +
       'var a=e.target.closest(\\'a[href^="PAGE:"]\\');if(!a)return;e.preventDefault();' +
       'parent.postMessage({cbIr:a.getAttribute("href").slice(5)},"*");});<\\/scr' + 'ipt>';
-    if (location.hash.slice(2) !== rel) location.hash = '#/' + rel;
+    if (location.hash.slice(2) !== destino) location.hash = '#/' + destino;
   }
 
   addEventListener('message', function (e) { if (e.data && e.data.cbIr) ir(e.data.cbIr); });
@@ -279,8 +294,9 @@ DOC = """<title>climabaires.com — vista previa navegable</title>
   ir(location.hash.slice(2) || 'index.html');
 })();
 </script>
-
 """
+
+DOC = DOC + ROUTER
 
 CSS_SHELL = """
 :root{
@@ -346,17 +362,65 @@ body{
 @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
 """
 
-html = DOC % {
-    'css_shell': CSS_SHELL,
-    'menu': menu,
-    'logo': MAPA_IMG.get('assets/img/logo-blanco.webp', ''),
+# ----------------------------------------------------------------- salidas
+
+DOC_MOVIL = """<title>climabaires.com</title>
+<meta name="theme-color" content="#00285A">
+<style>
+%(css_movil)s
+</style>
+
+<div class="pantalla">
+  <iframe id="vista" title="climabaires.com"></iframe>
+</div>
+
+<script id="datos" type="application/json">%(datos)s</script>
+<script id="css-sitio" type="text/plain">%(css_sitio)s</script>
+<script id="js-sitio" type="text/plain">%(js_sitio)s</script>
+""" + ROUTER
+
+# En el celular el sitio va a sangre, sin nada alrededor: es la simulación.
+# En una pantalla ancha se centra una columna del ancho de un teléfono, porque
+# si no el navegador rendiría la versión de escritorio y dejaría de simular
+# justamente lo que se quiere ver.
+CSS_MOVIL = """
+:root{ --fondo:#dfe7f0; }
+@media (prefers-color-scheme: dark){ :root{ --fondo:#0a1622; } }
+:root[data-theme="dark"]{ --fondo:#0a1622; }
+:root[data-theme="light"]{ --fondo:#dfe7f0; }
+html,body{margin:0;height:100%;background:var(--fondo);overflow:hidden}
+.pantalla{
+  width:100vw; height:100vh; height:100dvh;
+  display:flex; align-items:center; justify-content:center;
+}
+#vista{width:100%; height:100%; border:0; display:block; background:#fff}
+
+/* de 760 px para arriba ya no es un celular: se acota a un teléfono centrado */
+@media (min-width:760px){
+  .pantalla{padding:22px}
+  #vista{
+    width:412px; height:min(880px, calc(100dvh - 44px));
+    border-radius:34px; border:10px solid #0d1f33;
+    box-shadow:0 24px 60px rgba(0,30,70,.34);
+  }
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+"""
+
+comun = {
     'datos': DATOS.replace('</', '<\\/'),
     'css_sitio': CSS.replace('</', '<\\/'),
     'js_sitio': JS.replace('</', '<\\/'),
 }
 
 os.makedirs(os.path.dirname(SALIDA), exist_ok=True)
+
 with open(SALIDA, 'w', encoding='utf-8') as f:
-    f.write(html)
-print('OK %s · %d páginas · %.1f MB' % (
-    os.path.normpath(SALIDA), len(PAGINAS), os.path.getsize(SALIDA) / 1e6))
+    f.write(DOC % dict(comun, css_shell=CSS_SHELL, menu=menu,
+                       logo=MAPA_IMG.get('assets/img/logo-blanco.webp', '')))
+with open(SALIDA_MOVIL, 'w', encoding='utf-8') as f:
+    f.write(DOC_MOVIL % dict(comun, css_movil=CSS_MOVIL))
+
+for ruta in (SALIDA, SALIDA_MOVIL):
+    print('OK %s · %d páginas · %.1f MB' % (
+        os.path.normpath(ruta), len(PAGINAS), os.path.getsize(ruta) / 1e6))
