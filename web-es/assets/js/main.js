@@ -12,7 +12,7 @@
 const CB = {
   whatsapp: '34600000000',              // formato internacional sin '+' (34 6XX XXX XXX)
   whatsappVisible: '+34 600 00 00 00',
-  email: 'info@climabaires.es',
+  email: 'admin@climabaires.es',
   horario: 'De lunes a sábado, de 8:00 a 19:00',
   instagram: '',                        // vacío → el pie no muestra el enlace
   linkedin: '',

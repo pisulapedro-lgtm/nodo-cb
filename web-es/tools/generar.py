@@ -40,11 +40,20 @@ AGENDA_FALLBACK = 'Hola Clima Baires, quiero concertar una visita técnica.'
 # Mientras diga PENDIENTE, publicar.py no arma el paquete: son datos que sólo
 # puede completar el titular del negocio.
 EMPRESA = {
-    'razon_social': 'PENDIENTE — denominación social',
-    'cif': 'PENDIENTE — CIF/NIF',
-    'domicilio': 'PENDIENTE — domicilio social',
-    'registro': 'PENDIENTE — datos registrales (Registro Mercantil de Málaga, tomo, folio, hoja)',
-    'responsable_datos': 'PENDIENTE — responsable del tratamiento (nombre y email de contacto)',
+    'razon_social': 'Veneu Capitales, S.L.',
+    'cif': 'B21768809',
+    'domicilio': 'Calle Guillermo Carrera Rubio, 10 · 29004 Málaga',
+    'registro': 'Inscrita en el Registro Mercantil de Málaga, hoja MA-189380, inscripción 1.ª',
+    # El responsable del tratamiento es la propia sociedad; esto es el canal por el
+    # que se ejercen los derechos, que es lo que tiene que estar a la vista.
+    'responsable_datos': 'la propia sociedad, a través de admin@climabaires.es',
+    # El domicilio social se publica en el aviso legal porque lo exige la LSSI-CE,
+    # pero NO se declara como dirección del negocio en los datos estructurados: esto
+    # es una empresa de servicio a domicilio, sin tienda abierta al público, y su
+    # ficha de Google va sin dirección visible. Un `address` en el marcado que no
+    # coincida con la ficha es una contradicción que Google sabe leer. Ponlo en True
+    # el día que haya local con atención al público.
+    'direccion_publica': False,
 }
 
 # Lo que aquí sí se puede decir y en el sitio argentino no: la antigüedad. Es un
@@ -442,7 +451,7 @@ def jsonld_local(nombre, url, zona=None, con_rating=False):
         ficha['legalName'] = EMPRESA['razon_social']
     if 'PENDIENTE' not in EMPRESA['cif']:
         ficha['taxID'] = EMPRESA['cif']
-    if 'PENDIENTE' not in EMPRESA['domicilio']:
+    if EMPRESA['direccion_publica'] and 'PENDIENTE' not in EMPRESA['domicilio']:
         ficha['address'] = {'@type': 'PostalAddress', 'streetAddress': EMPRESA['domicilio'],
                             'addressCountry': 'ES'}
     if HAY_RESENAS and con_rating:
@@ -1765,7 +1774,7 @@ def pagina_privacidad():
 <section class="seccion" style="padding-top:34px">
   <div class="contenedor" style="max-width:760px">
     <h2>Responsable del tratamiento</h2>
-    <p>{e['razon_social']}, CIF {e['cif']}, con domicilio en {e['domicilio']}. Contacto en materia de protección de datos: <a data-email href="#"></a>. Responsable: {e['responsable_datos']}.</p>
+    <p>El responsable del tratamiento es <strong>{e['razon_social']}</strong>, CIF {e['cif']}, con domicilio social en {e['domicilio']}. Para cualquier cuestión sobre tus datos, o para ejercer los derechos que se detallan más abajo, escribe a <a data-email href="#"></a>.</p>
     <p style="margin-top:12px">Esta política se ajusta al Reglamento (UE) 2016/679, General de Protección de Datos (RGPD), y a la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</p>
 
     <h2 style="margin-top:34px">Qué datos tratamos, para qué y con qué base legal</h2>

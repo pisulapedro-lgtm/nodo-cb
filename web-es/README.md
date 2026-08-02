@@ -47,8 +47,9 @@ lista sin completar. No es un capricho: cada línea rompe algo concreto.
    (ej. `34612345678`) y `whatsappVisible` como se muestra
    (ej. `+34 612 34 56 78`). Hoy contiene un valor de ejemplo (`34600000000`):
    con él, todos los botones del sitio llevan a un número inexistente.
-2. **Email** — `info@climabaires.es` ya apunta al dominio; hay que crear el buzón
-   antes de publicar.
+2. **Email** — `admin@climabaires.es`. **Ya cargado.** Hay que tener el buzón
+   creado antes de publicar: es la dirección por la que se ejercen los derechos
+   RGPD, así que tiene que recibir de verdad.
 3. **Redes** — `instagram` y `linkedin`. Están **vacíos a propósito**: mientras lo
    estén, el pie no muestra el enlace. Enlazar a un perfil que no existe es peor
    que no enlazar.
@@ -62,14 +63,29 @@ lista sin completar. No es un capricho: cada línea rompe algo concreto.
 
 ### En `tools/generar.py`
 
-8. **`EMPRESA`** — denominación social, CIF/NIF, domicilio social y datos
-   registrales (Registro Mercantil, tomo, folio, hoja), más el responsable del
-   tratamiento de datos. Son los que exige el artículo 10 de la LSSI-CE y sin
-   ellos el aviso legal no existe. Hoy salen como `PENDIENTE` en el pie de todas
-   las páginas.
+8. **`EMPRESA`** — **ya cargado**: Veneu Capitales, S.L., CIF B21768809,
+   domicilio social en calle Guillermo Carrera Rubio 10, 29004 Málaga, inscrita en
+   el Registro Mercantil de Málaga, hoja MA-189380, inscripción 1.ª. Son los datos
+   que exige el artículo 10 de la LSSI-CE. Conviene que alguien los coteje con la
+   escritura antes de publicar: se reconstruyeron desde el registro a partir del
+   CIF, no desde el papel.
+
+   `direccion_publica` está en `False` a propósito. El domicilio social sale en el
+   aviso legal, porque la ley lo exige, pero **no** se declara como dirección del
+   negocio en los datos estructurados: esto es una empresa de servicio a domicilio
+   y su ficha de Google va sin dirección visible. Un `address` en el marcado que la
+   ficha no confirma es una contradicción que Google sabe leer. Se pone en `True`
+   el día que haya local con atención al público.
 9. **`ANIOS_EXPERIENCIA`** — los años que lleva la empresa instalando en la
    Costa del Sol. Es el dato que este sitio sí puede mostrar y el argentino no, y
    sale en la franja de confianza de la portada. Tiene que ser real: no se estima.
+
+   > **Ojo con este.** La sociedad se constituyó el 25/03/2025, así que la cifra no
+   > puede salir de la antigüedad del CIF. Si la trayectoria es del equipo o de una
+   > actividad anterior, el número es defendible pero conviene que el texto lo diga
+   > así. Si no hay años que enseñar, lo honesto es quitar la tarjeta de la franja y
+   > cambiar el «Llevamos años instalando…» de `sobre-nosotros.html`, que hoy se
+   > publica aunque `ANIOS_EXPERIENCIA` siga en PENDIENTE.
 10. **`METROS_INCLUIDOS`** — metros de tubería que entran en el precio cerrado.
     Es el único número del bloque «qué entra en el precio» de `servicios.html` y
     el primero que un cliente va a reclamar si no coincide.
