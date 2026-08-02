@@ -20,8 +20,7 @@ son dos negocios distintos en dos países distintos:
 | Desistimiento | 10 días + botón de arrepentimiento | **14 días naturales**, sin botón de arrepentimiento |
 | Cookies | Sin banner | **Banner de consentimiento previo**, obligatorio |
 | Aviso legal | No existe | **Página propia**, obligatoria (LSSI-CE art. 10) |
-| Habilitación | — | **Empresa instaladora RITE**, visible |
-| Zonas | 6 del corredor norte del AMBA | 6 de Málaga y la Costa del Sol |
+| Zonas | 6 del corredor norte del AMBA | 6 con landing + **toda la Costa del Sol** |
 | Hemisferio | Sur: suma potencia el **norte** | Norte: suma potencia el **sur** |
 
 Y una regla que va justo al revés que allí: **este sitio no menciona Argentina ni
@@ -68,25 +67,30 @@ lista sin completar. No es un capricho: cada línea rompe algo concreto.
    tratamiento de datos. Son los que exige el artículo 10 de la LSSI-CE y sin
    ellos el aviso legal no existe. Hoy salen como `PENDIENTE` en el pie de todas
    las páginas.
-9. **`RITE`** — número de registro como empresa instaladora habilitada
-   (RD 1027/2007). En España es obligatorio para instalar climatización y es el
-   mejor sello de confianza que hay en este oficio: va en el pie, en las páginas
-   de zona, en «sobre nosotros», en el aviso legal y en los datos estructurados.
-10. **`TRAYECTORIA`** — años de experiencia e instalaciones realizadas. Son las
-    dos cifras que este sitio sí puede mostrar y el argentino no. Tienen que ser
-    reales: no se estiman.
-11. **`METROS_INCLUIDOS`** — metros de tubería que entran en el precio cerrado.
+9. **`ANIOS_EXPERIENCIA`** — los años que lleva la empresa instalando en la
+   Costa del Sol. Es el dato que este sitio sí puede mostrar y el argentino no, y
+   sale en la franja de confianza de la portada. Tiene que ser real: no se estima.
+10. **`METROS_INCLUIDOS`** — metros de tubería que entran en el precio cerrado.
     Es el único número del bloque «qué entra en el precio» de `servicios.html` y
     el primero que un cliente va a reclamar si no coincide.
-12. **`GARANTIA_INSTALACION`** — plazo de garantía de la mano de obra. Aparece en
+11. **`GARANTIA_INSTALACION`** — plazo de garantía de la mano de obra. Aparece en
     servicios y en los términos, junto a la garantía legal de conformidad.
+
+> **Qué se quitó y por qué.** La franja de confianza llegó a llevar el número de
+> instalaciones realizadas y el número de registro como empresa instaladora
+> habilitada (RITE). Los dos se retiraron a petición del titular: como sellos no
+> aportaban lo que costaban —dos datos más que pedir antes de publicar— y el
+> segundo, sin el número al lado, no prueba nada. En su lugar la franja habla de
+> antigüedad, cobertura y obra propia, que se sostienen solas. Si algún día se
+> quieren de vuelta, es una entrada más en `franja_confianza()` y una línea en
+> `publicar.py`.
 
 ### En contenido
 
-13. **`contenido/resenas.json`** — puntuación media y número de reseñas reales de
+12. **`contenido/resenas.json`** — puntuación media y número de reseñas reales de
     la ficha de Google, más dos o tres textos transcritos con nombre y fecha
     reales. Ver «Reseñas de Google».
-14. **`tools/fotos.py` → `MAPEO`** — el municipio de cada foto. Ver «Fotos de
+13. **`tools/fotos.py` → `MAPEO`** — el municipio de cada foto. Ver «Fotos de
     obras».
 
 ### Promesas operativas a confirmar
@@ -107,11 +111,34 @@ texto en `tools/generar.py` antes de publicar.
 | ídem | Ante un extra durante la obra: se para, se enseña y se sigue **sólo con aprobación por WhatsApp** |
 | `servicios.html` | Marcas listadas: Daikin, Mitsubishi Electric, LG, Samsung, Midea — confirmar que son las que efectivamente se sirven |
 | `CB.horario` | De lunes a sábado, de 8:00 a 19:00. De ahí sale la promesa de «respondemos en minutos» del asistente |
+| `COBERTURA` y `OTRAS_ZONAS` | El sitio afirma dar servicio en **toda la Costa del Sol, de Manilva a Nerja**, y nombra diez municipios más allá de los seis con landing. Confirmar que se va a todos |
 
 > **Marcas**: se han quitado BGH y Surrey, que son argentinas y aquí no pintan
 > nada. En una de las fotos de obra se ve un equipo **Johnson**; si es una marca
 > con la que se trabaja habitualmente, conviene añadirla a `MARCAS` en
 > `generar.py` con su logo en `assets/img/marcas/`.
+
+## Cobertura: seis landings, una comarca entera
+
+Las seis páginas de zona existen por SEO local y por Google Ads: son donde más
+obra hay y donde tiene sentido gastar presupuesto de campaña. **No son el límite
+del servicio.** El sitio dice en todas partes que se trabaja en toda la Costa del
+Sol, de Manilva a Nerja, más el interior cercano, y nombra los municipios sin
+landing propia.
+
+Dos constantes en `tools/generar.py` lo gobiernan todo:
+
+- `COBERTURA` — la frase que se repite en el pie, en el hero, en «sobre
+  nosotros», en contacto y en el aviso legal.
+- `OTRAS_ZONAS` — los municipios sin página propia. Salen en prosa en la sección
+  de zonas de la portada, en el pie de cada página de zona, en el pie del sitio y
+  en el `areaServed` de los datos estructurados, que además declara «Costa del
+  Sol» y «Provincia de Málaga» como áreas.
+
+Si mañana alguno de esos municipios merece su propia landing, se añade a `ZONAS`
+con su intro, sus barrios, su párrafo `especial` y sus cuatro preguntas en
+`faq-zonas.json`, y se quita de `OTRAS_ZONAS`. El resto —chips, pie, sitemap,
+selector del formulario, opciones del asistente— se actualiza solo.
 
 ## Cookies y consentimiento (esto no existe en el sitio argentino)
 

@@ -47,19 +47,28 @@ EMPRESA = {
     'responsable_datos': 'PENDIENTE — responsable del tratamiento (nombre y email de contacto)',
 }
 
-# Número de registro como empresa instaladora habilitada según el RITE (RD
-# 1027/2007). En España es obligatorio para instalar climatización y es el mejor
-# sello de confianza que existe en este oficio: va visible en el pie, en
-# servicios y en los datos estructurados.
-RITE = 'PENDIENTE — nº de empresa instaladora RITE'
+# Lo que aquí sí se puede decir y en el sitio argentino no: la antigüedad. Es un
+# dato real del negocio, así que lo pone el titular; inventarlo sería justo el
+# error que el proyecto evita.
+#
+# Lo que se quitó a propósito: el número de instalaciones y el número de registro
+# como empresa instaladora habilitada. Se probaron como sellos en la franja de
+# confianza y no convencieron —además obligaban a pedir dos datos más antes de
+# publicar—, así que el sitio se apoya en lo que ya tiene: antigüedad, obra propia
+# con foto, reseñas reales y cobertura. Si algún día se quieren de vuelta, es una
+# entrada más en franja_confianza().
+ANIOS_EXPERIENCIA = 'PENDIENTE — años de experiencia'
 
-# Lo que aquí sí se puede decir y en el sitio argentino no: antigüedad e
-# instalaciones hechas. Son cifras reales del negocio, así que las pone el
-# titular; inventarlas sería exactamente el error que el proyecto evita.
-TRAYECTORIA = {
-    'anios': 'PENDIENTE — años de experiencia',
-    'instalaciones': 'PENDIENTE — instalaciones realizadas',
-}
+# Cobertura. El negocio da servicio en toda la Costa del Sol, no sólo en los seis
+# municipios que tienen página propia: esos seis son donde más se trabaja y son
+# las landings de Ads, pero el sitio no puede dar a entender que fuera de ellos no
+# se va. De aquí salen la franja de confianza, la sección de zonas, el pie y las
+# áreas de servicio de los datos estructurados.
+COBERTURA = 'toda la Costa del Sol, de Manilva a Nerja'
+OTRAS_ZONAS = [
+    'Estepona', 'Benahavís', 'Ojén', 'Alhaurín de la Torre', 'Cártama', 'Coín',
+    'Rincón de la Victoria', 'Vélez-Málaga', 'Torrox', 'Nerja',
+]
 
 # Metros de tubería que entran en el precio cerrado (bloque «qué entra y qué se
 # cobra aparte» de servicios.html). Es el único número del bloque y la promesa
@@ -302,8 +311,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
     <div class="pie-grilla">
       <div>
         <img class="logo-pie" src="{p}assets/img/logo-blanco.webp" alt="Clima Baires" width="151" height="46" loading="lazy">
-        <p>Venta, instalación y posventa de aire acondicionado en Málaga y la Costa del Sol. Tu confort, nuestra prioridad.</p>
-        <p style="margin-top:12px;font-size:.86rem">Empresa instaladora habilitada RITE: {RITE}</p>
+        <p>Venta, instalación y posventa de aire acondicionado en {COBERTURA}. Tu confort, nuestra prioridad.</p>
       </div>
       <div>
         <h2>Servicios</h2>
@@ -337,7 +345,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
       <span><a href="{p}aviso-legal.html">Aviso legal</a> · <a href="{p}privacidad.html">Privacidad</a> · <a href="{p}cookies.html">Cookies</a> · <a href="{p}terminos.html">Términos y condiciones</a> · <button class="pie-cookies" type="button" data-cookies-abrir>Preferencias de cookies</button></span>
     </div>
     <div class="legal" style="border:0;padding-top:8px">
-      <span>Málaga y Costa del Sol: Málaga capital · Marbella · Torremolinos · Benalmádena · Fuengirola · Mijas</span>
+      <span>Damos servicio en {COBERTURA}. Donde más trabajamos: Málaga capital · Marbella · Torremolinos · Benalmádena · Fuengirola · Mijas · {' · '.join(OTRAS_ZONAS)}</span>
     </div>
   </div>
 </footer>
@@ -401,7 +409,11 @@ def jsonld_local(nombre, url, zona=None, con_rating=False):
     Google exige que la puntuación marcada esté visible en esa misma página: un
     aggregateRating en las trece sería marcado sin respaldo, que es motivo de
     penalización, no de estrellas."""
-    areas = [z[1] for z in ZONAS] if zona is None else [zona]
+    # areaServed: cuando la página no es de una zona concreta se declaran los seis
+    # municipios con landing, los demás en los que se trabaja y la comarca entera.
+    # Declarar sólo seis contradiría lo que dice el propio texto de la página.
+    areas = ([z[1] for z in ZONAS] + OTRAS_ZONAS + ['Costa del Sol', 'Provincia de Málaga']
+             if zona is None else [zona])
     ficha = {
         '@context': 'https://schema.org',
         '@type': 'HVACBusiness',
@@ -426,12 +438,6 @@ def jsonld_local(nombre, url, zona=None, con_rating=False):
     if 'PENDIENTE' not in EMPRESA['domicilio']:
         ficha['address'] = {'@type': 'PostalAddress', 'streetAddress': EMPRESA['domicilio'],
                             'addressCountry': 'ES'}
-    if 'PENDIENTE' not in RITE:
-        ficha['additionalProperty'] = {
-            '@type': 'PropertyValue',
-            'name': 'Empresa instaladora habilitada RITE',
-            'value': RITE,
-        }
     if HAY_RESENAS and con_rating:
         ficha['aggregateRating'] = {
             '@type': 'AggregateRating',
@@ -471,7 +477,8 @@ def jsonld_faq(pares):
 
 def jsonld_servicio(nombre, descripcion, zona=None):
     """Service: describe qué se presta y dónde, atado al mismo negocio."""
-    areas = [z[1] for z in ZONAS] if zona is None else [zona]
+    areas = ([z[1] for z in ZONAS] + OTRAS_ZONAS + ['Costa del Sol']
+             if zona is None else [zona])
     return {
         '@context': 'https://schema.org',
         '@type': 'Service',
@@ -515,7 +522,7 @@ def pagina_index():
     <div class="hero-txt">
       <p class="hero-kicker"><span class="hero-copo">❄</span><b>Aire acondicionado · Costa del Sol</b><i></i></p>
       <h1 class="hero-tit">Tu casa a <em>24°</em>,<br>todo el verano.</h1>
-      <p class="hero-sub">Equipo, instalación por empresa habilitada y posventa. <b>Presupuesto cerrado en el día.</b></p>
+      <p class="hero-sub">Equipo, instalación y posventa en {COBERTURA}. <b>Presupuesto cerrado en el día.</b></p>
       <div class="hero-acciones">
         <a class="hero-cta" data-wsp="Hola Clima Baires, quiero presupuesto de equipo más instalación." data-origen="hero" href="#">
           {WSP_SVG_CTA}
@@ -535,13 +542,13 @@ def pagina_index():
 </section>
 
 {franja_marcas()}
-{franja_credenciales()}
+{franja_confianza()}
 <section class="seccion" id="servicios">
   <div class="contenedor">
     <div class="centrado"><span class="kicker">Qué hacemos</span><h2>Vender, instalar, responder.</h2></div>
     <div class="grilla tres" style="margin-top:30px">
       {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'La potencia justa para tu estancia. Un solo precio: equipo, materiales e instalación.', [])}
-      {tarjeta_servicio('instalacion', 'instalacion', 'Instalación habilitada', 'Vacío de la tubería, prueba de estanqueidad y obra limpia. Siempre.', [])}
+      {tarjeta_servicio('instalacion', 'instalacion', 'Instalación sin atajos', 'Vacío de la tubería, prueba de estanqueidad y obra limpia. Siempre.', [])}
       {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa de verdad', 'Seguimos estando después de cobrar: mantenimiento anual y garantía por escrito.', [])}
     </div>
   </div>
@@ -552,8 +559,10 @@ def pagina_index():
 
 <section class="seccion alterna" id="zonas">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Dónde trabajamos</span><h2>De Málaga a Mijas</h2></div>
+    <div class="centrado"><span class="kicker">Dónde trabajamos</span><h2>Toda la Costa del Sol</h2>
+    <p class="intro">De Manilva a Nerja, más el interior cercano. Estas seis zonas tienen su propia página porque son donde más obra tenemos:</p></div>
     <div class="zona-chips centrado" style="justify-content:center; margin-top:24px">{chips}</div>
+    <p class="centrado nota" style="margin-top:24px">Y damos servicio igualmente en {otras_zonas_texto()}. Si tu municipio no aparece, escríbenos: casi siempre llegamos.</p>
   </div>
 </section>
 
@@ -572,9 +581,9 @@ def pagina_index():
 </section>
 '''
     og = f'{DOMINIO}/assets/img/obras/og-home.jpg' if HAY_FOTOS else None
-    return layout(0, 'Aire acondicionado en Málaga y Costa del Sol | Clima Baires',
-        'Venta, instalación por empresa habilitada RITE y posventa de aire acondicionado en Málaga, Marbella y la Costa del Sol. Presupuesto por WhatsApp el mismo día.',
-        c, f'{DOMINIO}/', jsonld_local('Venta, instalación y posventa de aire acondicionado en Málaga y la Costa del Sol.', DOMINIO + '/', con_rating=True), 'inicio',
+    return layout(0, 'Aire acondicionado en Málaga y toda la Costa del Sol | Clima Baires',
+        'Venta, instalación y posventa de aire acondicionado en toda la Costa del Sol, de Manilva a Nerja. Presupuesto por WhatsApp el mismo día.',
+        c, f'{DOMINIO}/', jsonld_local('Venta, instalación y posventa de aire acondicionado en toda la Costa del Sol, de Manilva a Nerja.', DOMINIO + '/', con_rating=True), 'inicio',
         og_image=og, pagina_id='index')
 
 
@@ -628,6 +637,11 @@ def cinta_cta(titulo, mensaje, boton='Escríbenos por WhatsApp'):
 </div>'''
 
 
+def otras_zonas_texto():
+    """«A, B, C y D» — los municipios sin página propia, en prosa."""
+    return ', '.join(OTRAS_ZONAS[:-1]) + ' y ' + OTRAS_ZONAS[-1]
+
+
 def franja_marcas(p=''):
     logos = ''.join(
         f'<img src="{p}assets/img/marcas/{slug}.png" alt="{nombre}" width="{ancho}" height="30" loading="lazy">'
@@ -644,16 +658,19 @@ def franja_marcas(p=''):
 </div>'''
 
 
-def franja_credenciales():
-    """Los tres datos que aquí sí se pueden dar y en el sitio argentino no:
-    antigüedad, volumen de trabajo y habilitación RITE. Es la prueba de que
-    detrás hay un negocio con historia, y en España el número de instaladora
-    habilitada es el sello que más pesa. Mientras sean PENDIENTE se ven tal cual:
-    publicar.py no deja compilar así, y esa es justamente la idea."""
+def franja_confianza():
+    """Las tres cosas que este negocio puede afirmar sin pedirle un número a
+    nadie: los años que lleva instalando aquí, hasta dónde llega y que la obra
+    que enseña es propia.
+
+    Aquí estuvieron el número de instalaciones y el de empresa instaladora
+    habilitada. Se quitaron: como sellos no aportaban lo que costaban —dos datos
+    más que pedir antes de publicar— y el segundo, sin el número al lado, no
+    prueba nada. Lo que queda son afirmaciones que se sostienen solas."""
     items = [
-        ('Años instalando en la Costa del Sol', TRAYECTORIA['anios']),
-        ('Instalaciones realizadas', TRAYECTORIA['instalaciones']),
-        ('Empresa instaladora habilitada RITE', RITE),
+        ('Años instalando en la Costa del Sol', ANIOS_EXPERIENCIA),
+        ('De Manilva a Nerja, y el interior cercano', 'Toda la Costa del Sol'),
+        ('Las fotos de obra son nuestras, hechas aquí', 'Obra propia'),
     ]
     # El dato va en un <p> con peso, no en un <h3>: esta franja se inserta justo
     # debajo del <h1> de la portada y un encabezado de nivel 3 ahí abre un salto
@@ -665,7 +682,7 @@ def franja_credenciales():
 <section class="seccion" style="padding:46px 0 10px">
   <div class="contenedor">
     <div class="grilla tres">{tarjetas}</div>
-    <p class="centrado nota" style="margin-top:18px">El registro de empresa instaladora habilitada es obligatorio en España para montar climatización (RD 1027/2007, RITE). Puedes pedirnos el número y comprobarlo.</p>
+    <p class="centrado nota" style="margin-top:18px">Trabajamos a domicilio en {COBERTURA}. Las seis zonas con página propia son donde más obra tenemos, pero no son un límite: si tu municipio no está, pregúntanos.</p>
   </div>
 </section>'''
 
@@ -796,7 +813,7 @@ def pagina_servicios():
   </div>
   <div class="contenedor grilla tres">
     {tarjeta_servicio('venta', 'venta', 'Venta de equipos', 'La potencia y la marca adecuadas para cada estancia. Precio cerrado en una sola cifra.', ['Split inverter, multisplit, suelo-techo, cassette y conductos', 'Aerotermia cuando la vivienda también necesita calefacción y agua caliente', 'Marcas: Daikin, Mitsubishi Electric, LG, Samsung, Midea'])}
-    {tarjeta_servicio('instalacion', 'instalacion', 'Instalación por empresa habilitada', 'La instalación define la vida útil del equipo. Lista de comprobación de calidad en cada obra.', ['Vacío de la tubería y prueba de estanqueidad, siempre', 'Trabajo en altura con medios y equipos de protección homologados', 'Coordinación con la comunidad de propietarios y con la urbanización'])}
+    {tarjeta_servicio('instalacion', 'instalacion', 'Instalación sin atajos', 'La instalación define la vida útil del equipo. Lista de comprobación de calidad en cada obra.', ['Vacío de la tubería y prueba de estanqueidad, siempre', 'Gas manipulado por personal con carné de gases fluorados', 'Trabajo en altura con medios y equipos de protección homologados', 'Coordinación con la comunidad de propietarios y con la urbanización'])}
     {tarjeta_servicio('mantenimiento', 'mantenimiento', 'Posventa y mantenimiento', 'Un equipo limpio enfría más y gasta menos. Te avisamos nosotros cuando toca.', ['Limpieza a fondo, control de gas y de consumo', 'Reparación multimarca con recambios originales', 'Prioridad de agenda para clientes con plan de mantenimiento'])}
   </div>
 </section>
@@ -830,12 +847,12 @@ def pagina_servicios():
 </section>
 '''
     return layout(0, 'Servicios de climatización | Clima Baires',
-        'Venta de split, multisplit, conductos y aerotermia, instalación por empresa habilitada RITE y mantenimiento anual en Málaga y la Costa del Sol.',
+        'Venta de split, multisplit, conductos y aerotermia, instalación cuidada y mantenimiento anual en toda la Costa del Sol, de Manilva a Nerja.',
         c, f'{DOMINIO}/servicios.html', [
             jsonld_local('Servicios de venta, instalación y mantenimiento de aire acondicionado.', DOMINIO + '/servicios.html'),
             jsonld_migas([('Inicio', '/'), ('Servicios', '/servicios.html')]),
             jsonld_servicio('Venta e instalación de aire acondicionado',
-                            'Venta de equipos split, multisplit, suelo-techo y conductos con instalación por empresa habilitada.'),
+                            'Venta de equipos split, multisplit, suelo-techo y conductos con instalación y puesta en marcha medida.'),
             jsonld_servicio('Mantenimiento y reparación de aire acondicionado',
                             'Limpieza a fondo, control de gas y reparación multimarca con recambios originales.'),
         ], 'servicios',
@@ -976,7 +993,7 @@ def pagina_obras():
          'Hola Clima Baires, quiero concertar una visita técnica.'),
         ('¿Tienes un equipo para cambiar?', 'Te presupuestamos la sustitución con retirada del antiguo incluida.',
          'Hola Clima Baires, quiero presupuesto para sustituir un equipo.'),
-        ('Presupuesto el mismo día', 'Sin coste y sin compromiso, en toda la Costa del Sol.',
+        ('Presupuesto el mismo día', 'Sin coste y sin compromiso, de Manilva a Nerja.',
          'Hola Clima Baires, quiero presupuesto sin coste.'),
     ]
     trozos, gancho = [], 0
@@ -1026,7 +1043,7 @@ def pagina_obras():
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Obras recientes</nav>
     <h1>Obras recientes</h1>
-    <p class="bajada">Nuestro equipo en obra por Málaga y la Costa del Sol: instalación, mantenimiento y trabajo en altura, con el detalle que después se nota.</p>
+    <p class="bajada">Nuestro equipo en obra por toda la Costa del Sol: instalación, mantenimiento y trabajo en altura, con el detalle que después se nota.</p>
   </div>
 </section>
 
@@ -1082,7 +1099,7 @@ def pagina_obras():
         },
     ]
     return layout(0, 'Obras recientes | Clima Baires',
-        'Galería de obras de Clima Baires en Málaga y la Costa del Sol: instalación de split, cassette y unidades exteriores, sustituciones y mantenimiento. Fotos reales de nuestro equipo.',
+        'Galería de obras de Clima Baires en toda la Costa del Sol: instalación de split, cassette y unidades exteriores, sustituciones y mantenimiento. Fotos reales de nuestro equipo.',
         c, f'{DOMINIO}/obras.html', ld, 'obras',
         og_image=f'{DOMINIO}/assets/img/obras/og-obras.jpg' if HAY_FOTOS else None,
         pagina_id='obras', wsp_barra='Hola Clima Baires, he visto vuestras obras recientes y quiero presupuesto.')
@@ -1129,7 +1146,7 @@ def pagina_zona(slug, nombre, comarca, intro, barrios, especial):
       <h2>Instalación, venta y mantenimiento en {nombre}</h2>
       <p>Split, multisplit, suelo-techo y conductos en {lista_barrios}. Presupuesto por WhatsApp en el día y precio cerrado: lo que ves es lo que pagas.</p>
       <ul class="lista-check">
-        <li>Empresa instaladora habilitada RITE, con seguro de responsabilidad civil al día</li>
+        <li>Equipo propio, con seguro de responsabilidad civil al día</li>
         <li>Vacío de la tubería y prueba de estanqueidad, siempre</li>
         <li>Garantía por escrito y mantenimiento anual</li>
       </ul>
@@ -1163,6 +1180,7 @@ def pagina_zona(slug, nombre, comarca, intro, barrios, especial):
   <div class="contenedor centrado">
     <h2>También trabajamos en</h2>
     <p style="margin-top:10px">{otras}</p>
+    <p class="nota" style="margin-top:14px">Y en el resto de la costa: {otras_zonas_texto()}. Damos servicio en {COBERTURA}.</p>
   </div>
 </section>
 '''
@@ -1172,7 +1190,7 @@ def pagina_zona(slug, nombre, comarca, intro, barrios, especial):
         jsonld_migas([('Inicio', '/'), ('Zonas', '/#zonas'), (nombre, f'/zonas/{slug}.html')]),
         jsonld_faq(faq),
         jsonld_servicio(f'Instalación de aire acondicionado en {nombre}',
-                        f'Venta, instalación por empresa habilitada y posventa de aire acondicionado en {nombre}.', nombre),
+                        f'Venta, instalación y posventa de aire acondicionado en {nombre}.', nombre),
     ]
     return layout(1, f'Aire acondicionado en {nombre} | Clima Baires',
         f'Instalación de aire acondicionado en {nombre}: split, multisplit y conductos. Presupuesto el mismo día y posventa de verdad.',
@@ -1185,7 +1203,7 @@ def pagina_nosotros():
 <section class="cabecera-pagina">
   <div class="contenedor">
     <nav class="migas"><a href="index.html">Inicio</a> › Sobre nosotros</nav>
-    <h1>Climatización en Málaga y la Costa del Sol</h1>
+    <h1>Climatización en toda la Costa del Sol</h1>
     <p class="bajada">Un equipo dedicado al aire acondicionado, con un estándar de trabajo que se sostiene obra tras obra.</p>
     {acciones_cabecera('Hola Clima Baires, quiero concertar una visita técnica.', 'Hablar con nosotros', secundario='<a class="boton fantasma" href="obras.html">Ver obras</a>')}
   </div>
@@ -1195,7 +1213,7 @@ def pagina_nosotros():
   <div class="contenedor grilla dos">
     <div>
       <h2>Nuestra historia</h2>
-      <p>Llevamos años instalando aire acondicionado en Málaga y en la Costa del Sol, y en ese tiempo aprendimos que el negocio no es vender un aparato: es que el cliente vuelva a llamarte al año siguiente. Todo lo que hacemos sale de ahí.</p>
+      <p>Llevamos años instalando aire acondicionado en {COBERTURA}, y en ese tiempo aprendimos que el negocio no es vender un aparato: es que el cliente vuelva a llamarte al año siguiente. Todo lo que hacemos sale de ahí.</p>
       <ul class="lista-check">
         <li><strong>Transparencia</strong>: precio cerrado, sin letra pequeña.</li>
         <li><strong>Rapidez</strong>: respuesta en minutos, presupuesto en el día.</li>
@@ -1213,8 +1231,8 @@ def pagina_nosotros():
       <div class="tarjeta" style="margin-top:20px">
         <h3>Datos que importan</h3>
         <ul class="lista-check">
-          <li>Empresa instaladora habilitada RITE: {RITE}</li>
           <li>Seguro de responsabilidad civil en vigor</li>
+          <li>Gas refrigerante manipulado por personal con carné de gases fluorados</li>
           <li>Lista de comprobación de calidad con fotos en cada obra</li>
           <li>Gestión de residuos y recuperación del gas refrigerante con máquina</li>
         </ul>
@@ -1238,9 +1256,9 @@ def pagina_nosotros():
 </section>
 '''
     return layout(0, 'Sobre nosotros | Clima Baires',
-        'Clima Baires: venta, instalación y posventa de aire acondicionado en Málaga y la Costa del Sol. Transparencia, rapidez y posventa de verdad.',
+        'Clima Baires: venta, instalación y posventa de aire acondicionado en toda la Costa del Sol, de Manilva a Nerja. Transparencia, rapidez y posventa de verdad.',
         c, f'{DOMINIO}/sobre-nosotros.html', [
-            jsonld_local('Empresa de climatización en Málaga y la Costa del Sol.', DOMINIO + '/sobre-nosotros.html', con_rating=True),
+            jsonld_local('Empresa de climatización en toda la Costa del Sol.', DOMINIO + '/sobre-nosotros.html', con_rating=True),
             jsonld_migas([('Inicio', '/'), ('Sobre nosotros', '/sobre-nosotros.html')]),
         ], 'nosotros', pagina_id='sobre-nosotros')
 
@@ -1443,7 +1461,7 @@ def pagina_contacto():
       Email: <a data-email href="#"></a><br>
       Horario: <span data-horario></span></p>
       <a class="boton celeste" data-wsp="Hola Clima Baires, quiero hacer una consulta." data-origen="seccion" href="#" style="margin-top:8px">Abrir WhatsApp</a>
-      <p style="margin-top:18px"><strong>Zona de trabajo:</strong> Málaga capital, Marbella, Torremolinos, Benalmádena, Fuengirola y Mijas. Atendemos a domicilio: no tenemos tienda abierta al público, y eso también lo pagas menos.</p>
+      <p style="margin-top:18px"><strong>Zona de trabajo:</strong> {COBERTURA}. Donde más obra tenemos es en Málaga capital, Marbella, Torremolinos, Benalmádena, Fuengirola y Mijas, pero vamos igualmente a {otras_zonas_texto()}. Atendemos a domicilio: no tenemos tienda abierta al público, y eso también lo pagas menos.</p>
     </div>
     <div class="tarjeta">
       <h3>O déjanos tus datos</h3>
@@ -1452,7 +1470,7 @@ def pagina_contacto():
         <input name="nombre" placeholder="Tu nombre" required>
         <select name="zona" required>
           <option value="" disabled selected>¿En qué zona estás?</option>
-          {opciones_zona}<option>Otra</option>
+          {opciones_zona}<option>Otro municipio de la Costa del Sol</option>
         </select>
         <textarea name="mensaje" placeholder="Cuéntanos qué necesitas: instalación nueva, sustitución, mantenimiento…" required></textarea>
         <button class="boton" type="submit">Enviar por WhatsApp</button>
@@ -1478,9 +1496,9 @@ def pagina_contacto():
 </section>
 {seccion_resenas(alterna=True)}'''
     return layout(0, 'Contacto y presupuestos | Clima Baires',
-        'Pide tu presupuesto de instalación de aire acondicionado en Málaga y la Costa del Sol. Te respondemos por WhatsApp en horario comercial.',
+        'Pide tu presupuesto de instalación de aire acondicionado en toda la Costa del Sol, de Manilva a Nerja. Te respondemos por WhatsApp en horario comercial.',
         c, f'{DOMINIO}/contacto.html', [
-            jsonld_local('Contacto y presupuestos de climatización en Málaga y la Costa del Sol.', DOMINIO + '/contacto.html', con_rating=True),
+            jsonld_local('Contacto y presupuestos de climatización en toda la Costa del Sol.', DOMINIO + '/contacto.html', con_rating=True),
             jsonld_migas([('Inicio', '/'), ('Contacto', '/contacto.html')]),
         ], 'contacto', pagina_id='contacto',
         wsp_barra='Hola Clima Baires, quiero hacer una consulta.')
@@ -1661,7 +1679,7 @@ def rss(posts):
 <rss version="2.0"><channel>
   <title>Blog de Clima Baires</title>
   <link>{DOMINIO}/blog/</link>
-  <description>Guías de aire acondicionado para Málaga y la Costa del Sol.</description>
+  <description>Guías de aire acondicionado para toda la Costa del Sol.</description>
   <language>es-ES</language>
   <lastBuildDate>{ahora}</lastBuildDate>{items}
 </channel></rss>
@@ -1695,7 +1713,7 @@ def pagina_aviso_legal():
       <li><strong>Email de contacto:</strong> <a data-email href="#"></a></li>
       <li><strong>WhatsApp:</strong> <span data-wsp-num></span></li>
       <li><strong>Actividad:</strong> venta, instalación y mantenimiento de instalaciones de climatización</li>
-      <li><strong>Empresa instaladora habilitada (RITE, RD 1027/2007):</strong> {RITE}</li>
+      <li><strong>Ámbito de actuación:</strong> {COBERTURA}</li>
     </ul>
 
     <h2 style="margin-top:34px">Objeto</h2>
@@ -1755,7 +1773,7 @@ def pagina_privacidad():
         </tr>
         <tr>
           <td>Datos de cliente y de la instalación, y datos de facturación</td>
-          <td>Ejecutar el contrato, prestar la garantía y cumplir obligaciones fiscales y del RITE</td>
+          <td>Ejecutar el contrato, prestar la garantía y cumplir las obligaciones fiscales y las propias de una instalación térmica</td>
           <td>Ejecución del contrato (art. 6.1.b) y obligación legal (art. 6.1.c)</td>
           <td>Durante la relación y los plazos legales de conservación (mercantil y fiscal)</td>
         </tr>
@@ -1855,7 +1873,7 @@ def pagina_terminos():
 <section class="seccion" style="padding-top:34px">
   <div class="contenedor" style="max-width:760px">
     <h2>Quién presta el servicio</h2>
-    <p>{e['razon_social']}, CIF {e['cif']}, con domicilio social en {e['domicilio']}. Datos registrales: {e['registro']}. Empresa instaladora habilitada conforme al RITE (RD 1027/2007): {RITE}. Los datos completos están en el <a href="aviso-legal.html">aviso legal</a>.</p>
+    <p>{e['razon_social']}, CIF {e['cif']}, con domicilio social en {e['domicilio']}. Datos registrales: {e['registro']}. Los datos completos están en el <a href="aviso-legal.html">aviso legal</a>.</p>
     <p style="margin-top:12px">Estas condiciones se rigen por el Real Decreto Legislativo 1/2007, texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios (TRLGDCU), y demás normativa española y europea aplicable.</p>
 
     <h2 style="margin-top:34px">Presupuestos</h2>

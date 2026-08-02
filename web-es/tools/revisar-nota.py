@@ -92,7 +92,7 @@ PROMESAS = [
      'el sitio español no menciona Argentina ni Buenos Aires: son dos marcas separadas'),
     (r'garantía\s+de\s+\d+\s*(?:año|mes)', 'plazo de garantía sin confirmar'),
     (r'\bcertificad\w+\s+(?:por|en)\s+\w',
-     'certificación sin confirmar: la habilitación RITE sí se puede nombrar, una certificación de marca no'),
+     'certificación o sello sin confirmar: el sitio no exhibe ninguno'),
     (r'€\s?\d|\b\d+\s*€|\b\d+\s*euros?\b|\bpesos\b|\bAR\$|\$\s?\d',
      'importe: se desactualiza en un mes y queda como mentira'),
     # las ayudas cambian en cada convocatoria: ni importes, ni porcentajes, ni plazos

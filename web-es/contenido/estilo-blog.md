@@ -6,9 +6,12 @@ cómo escribe el blog, edita **este archivo** (no la rutina).
 
 ## Quién escribe
 
-Clima Baires: venta, instalación y mantenimiento de aire acondicionado en Málaga
-y la Costa del Sol (Málaga capital, Marbella, Torremolinos, Benalmádena,
-Fuengirola y Mijas). Escribe un técnico que explica, no un comercial que promete.
+Clima Baires: venta, instalación y mantenimiento de aire acondicionado en toda la
+Costa del Sol, de Manilva a Nerja. Las seis zonas con página propia —Málaga
+capital, Marbella, Torremolinos, Benalmádena, Fuengirola y Mijas— son donde más
+obra hay, pero **no son el límite del servicio**: si una entrada da a entender que
+fuera de ellas no se va, está mal. Escribe un técnico que explica, no un comercial
+que promete.
 
 **Este sitio no menciona Argentina ni Buenos Aires.** Ni el país, ni la ciudad,
 ni «la filial», ni comparaciones del tipo «allí se hace así». Son dos marcas
@@ -45,10 +48,11 @@ queda igual de útil y deja de ser falso.
 4. **No inventar marcas, modelos ni ubicaciones.** Si un dato no lo sabes con
    certeza, no lo escribas.
 5. **No prometer lo que el sitio no puede cumplir**: plazos de garantía sin
-   confirmar, certificaciones de marca, tiempos de respuesta fuera del horario
-   real (de lunes a sábado, de 8:00 a 19:00). Lo que sí se puede nombrar, porque
-   es verdad y es obligatorio en España, es que somos **empresa instaladora
-   habilitada según el RITE**.
+   confirmar, certificaciones, números de registro o sellos de ningún tipo,
+   tiempos de respuesta fuera del horario real (de lunes a sábado, de 8:00 a
+   19:00). Lo que sí se puede decir, porque es cómo se trabaja: que el gas
+   refrigerante lo manipula personal con carné de gases fluorados y que hay
+   seguro de responsabilidad civil en vigor.
 6. **No copiar de ningún sitio.** Texto original.
 
 ## Voz

@@ -47,12 +47,9 @@ PENDIENTES_GEN = [
     ('EMPRESA', r'EMPRESA = \{.*?\n\}',
      'faltan denominación social, CIF, domicilio o datos registrales: aparecen como '
      'PENDIENTE en el pie y en el aviso legal, que es obligatorio por la LSSI-CE art. 10'),
-    ('RITE', r"^RITE = '[^']*'",
-     'falta el número de empresa instaladora habilitada RITE: en España es obligatorio '
-     'para instalar climatización y es el mejor sello de confianza que hay'),
-    ('TRAYECTORIA', r'TRAYECTORIA = \{.*?\n\}',
-     'faltan los años de experiencia y el número de instalaciones: son los datos que '
-     'este sitio sí puede mostrar y hoy salen como PENDIENTE en la portada'),
+    ('ANIOS_EXPERIENCIA', r"^ANIOS_EXPERIENCIA = '[^']*'",
+     'faltan los años que lleva la empresa instalando en la Costa del Sol: es el dato '
+     'que este sitio sí puede mostrar y hoy sale como PENDIENTE en la portada'),
     ('METROS_INCLUIDOS', r"^METROS_INCLUIDOS = '[^']*'",
      'falta cuántos metros de tubería entran en el precio cerrado: servicios.html lo '
      'muestra como «Hasta PENDIENTE metros»'),
