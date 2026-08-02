@@ -21,15 +21,24 @@ Argentina**. Escribe un técnico que explica, no un vendedor que promete.
    sabés con certeza, explicá el método para que el lector lo calcule con sus
    propios números. Nada de importes en pesos: se desactualizan en un mes y
    quedan como mentira.
-3. **No prometer lo que el sitio no puede cumplir**: garantías con plazo,
+3. **No inventar magnitudes para sonar concreto.** «Pilar tiene cientos de
+   countries», «el 70% de las casas», «decenas de proveedores por día», «una
+   instalación que en agosto sale en tres días»: ninguno de esos números lo
+   medimos. Describí el mecanismo sin cifra y el texto queda igual de útil y
+   deja de ser falso. Lo mismo con «el más vendido» y «la mayoría de».
+4. **No prometer lo que el sitio no puede cumplir**: garantías con plazo,
    certificaciones, tiempos de respuesta fuera del horario real
    (lunes a sábado, 8 a 19).
-4. **No copiar de ningún lado.** Texto original.
+5. **No copiar de ningún lado.** Texto original.
 
 ## Voz
 
 - Español rioplatense: *vos*, *tenés*, *fijate*, *acá*. Nada de *tú*, *vosotros*,
-  *coger*, *nave*, *furgoneta*, *ordenador*, *piso* (por departamento).
+  *coger*, *nave*, *furgoneta*, *ordenador*, *piso* (por departamento), *salón*
+  (por living), *nevera*, *grifo*, *aseo*, *acera*, *escayola*.
+- Dos que se cuelan por técnicas y son de España: *taco* de pared (acá es
+  **tarugo**; el antivibratorio sí se llama taco) y *caladero* (acá el agujero
+  se llama **calado**). Y no se tira *el dinero*, se tira **la plata**.
 - Frases cortas. Una idea por párrafo. Se lee en el celular, parado.
 - Segunda persona, directo al lector: «si tu equipo hace este ruido…».
 - Sin signos de admiración, sin emojis, sin «¡descubrí ahora!». Si el texto

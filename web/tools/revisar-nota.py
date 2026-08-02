@@ -35,7 +35,12 @@ ESPANOLISMOS = [
     (r'\bmóvil\b(?!\s*(?:390|\d))', 'móvil → celular'),
     (r'\bfontaner\w+', 'fontanero → plomero'),
     (r'\balbañiler\w*a\b', 'albañilería está bien, pero revisá el contexto peninsular'),
-    (r'\bzumo\b|\bordenar el piso\b', 'léxico peninsular'),
+    (r'\bzumo\b|\bnevera\b|\bescayola\b|\baseo\b|\bacera\b|\baparcar\b', 'léxico peninsular'),
+    # «tacos antivibratorios» sí es de acá; el taco de pared no
+    (r'\btacos?\b(?!\s+antivibratori)', 'taco (de pared) → tarugo; el antivibratorio sí se llama taco'),
+    (r'\bcaladero\w*', 'caladero es el banco de pesca español: acá es el calado'),
+    (r'tirar el dinero', 'tirar el dinero → tirar la plata'),
+    (r'\bsalón\b', 'salón → living'),
     (r'\bpisos?\b(?=\s+(?:de\s+\d|con\s+\d|pequeñ|grand))', 'piso → departamento'),
     (r'\btú\b|\bcontigo\b|\btu casa tienes\b|\btienes\b|\bpuedes\b|\bdebes\b|\bquieres\b|\bnecesitas\b(?<!\bvos)',
      'tuteo peninsular → voseo (tenés, podés, debés, querés, necesitás)'),
@@ -55,6 +60,18 @@ PROMESAS = [
      'importe en pesos: se desactualiza y queda como mentira'),
     (r'respondemos\s+(?:siempre|24|las 24)', 'disponibilidad fuera del horario real'),
     (r'\bel mejor\b|\blíder\w*\s+(?:del|en)\b|\bnúmero uno\b', 'superlativo no demostrable'),
+    # magnitudes de mercado puestas para sonar concreto: nadie las midió
+    (r'\b(?:cientos|decenas|miles)\s+de\b', 'magnitud inventada: si no la medimos, describila sin número'),
+    (r'\b\d+\s*%\s+de\s+(?:los|las)\b', 'porcentaje sin fuente'),
+]
+
+# No bloquean, pero casi siempre son una afirmación que nadie verificó.
+SOSPECHAS = [
+    (r'\bla mayoría de\b', '«la mayoría de» sin fuente: ¿lo sabemos o lo suponemos?'),
+    (r'\bmás vendid\w+|\bmás elegid\w+|\bmás pedid\w+', 'ranking de mercado sin fuente'),
+    (r'\btodo el mundo\b|\bnadie\b\s+\w+\s+\bnunca\b', 'generalización absoluta'),
+    (r'\bes sabido\b|\bno es (?:un )?secreto\b|\bcomo todos saben\b', 'muletilla de relleno'),
+    (r'\bdura\w*\s+\d+\s*años\b', 'vida útil con número: verificá que sea del fabricante y no nuestra'),
 ]
 
 RUTAS_VALIDAS = None
@@ -97,11 +114,19 @@ def revisar(archivo):
         avisos.append('el título arranca con la marca: se come caracteres útiles')
 
     # --- prohibiciones ---
+    # El Markdown viene con las líneas cortadas, así que una frase prohibida
+    # puede quedar partida al medio («…es la\nmayoría de…») y evadir el patrón
+    # sin que nadie se entere. Se aplasta todo el espacio en blanco antes de
+    # buscar: si no, media lista de reglas de acá abajo es decorativa.
     plano = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', cuerpo)
-    for patron, motivo in ESPANOLISMOS + PROMESAS:
-        for m in re.finditer(patron, plano, re.IGNORECASE):
-            ctx = plano[max(0, m.start() - 40):m.end() + 40].replace('\n', ' ')
-            errores.append(f'{motivo} → «…{ctx.strip()}…»')
+    plano = re.sub(r'\s+', ' ', plano)
+    def marcar(reglas, destino):
+        for patron, motivo in reglas:
+            for m in re.finditer(patron, plano, re.IGNORECASE):
+                ctx = plano[max(0, m.start() - 40):m.end() + 40].replace('\n', ' ')
+                destino.append(f'{motivo} → «…{ctx.strip()}…»')
+    marcar(ESPANOLISMOS + PROMESAS, errores)
+    marcar(SOSPECHAS, avisos)
 
     # --- enlaces ---
     enlaces = re.findall(r'\[([^\]]+)\]\(([^)\s]+)\)', cuerpo)
