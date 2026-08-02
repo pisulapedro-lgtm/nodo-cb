@@ -131,6 +131,29 @@
         "wb_strength": 0.55,
         "warmth": 0.02
       }
+    },
+    {
+      "slug": "manos-cascando-huevo",
+      "src": "fotos/originales/manos-cascando-huevo.jpg",
+      "titulo": "Cascando los huevos",
+      "alt": "Manos con guantes negros cascando un huevo sobre un bol de ceramica blanca, con un bol amarillo de huevos al lado",
+      "params": {
+        "contrast": 0.14,
+        "clarity": 0.24,
+        "vibrance": 0.2
+      }
+    },
+    {
+      "slug": "pastelera-en-la-cocina",
+      "src": "fotos/originales/pastelera-en-la-cocina.jpg",
+      "titulo": "La pastelera en la cocina",
+      "alt": "Pastelera de Cucina di Marce separando huevos en su cocina, junto a la batidora de pie y la mesada de granito",
+      "params": {
+        "vibrance": 0.15,
+        "clarity": 0.14,
+        "sharpen": 0.5,
+        "contrast": 0.11
+      }
     }
   ]
 }

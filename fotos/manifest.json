@@ -4115,7 +4115,529 @@
           }
         }
       }
+    },
+    {
+      "slug": "manos-cascando-huevo",
+      "titulo": "Cascando los huevos",
+      "alt": "Manos con guantes negros cascando un huevo sobre un bol de ceramica blanca, con un bol amarillo de huevos al lado",
+      "origen": {
+        "archivo": "manos-cascando-huevo.jpg",
+        "px": [
+          1183,
+          806
+        ],
+        "kb": 75
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          243.2,
+          244.3,
+          243.0
+        ],
+        "ganancias_wb": [
+          1.006,
+          0.994,
+          0.999
+        ],
+        "blanco_medido": 238.5,
+        "factor_exposicion": 0.988
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.14,
+        "vibrance": 0.2,
+        "saturation": 1.02,
+        "clarity": 0.24,
+        "sharpen": 0.6,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/manos-cascando-huevo.jpg",
+          "px": [
+            1183,
+            806
+          ],
+          "kb": 218
+        },
+        "comparativa": "comparativas/manos-cascando-huevo.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/manos-cascando-huevo-400.avif",
+                "kb": 13.7
+              },
+              "webp": {
+                "ruta": "web/4x5/manos-cascando-huevo-400.webp",
+                "kb": 21.3
+              },
+              "jpg": {
+                "ruta": "web/4x5/manos-cascando-huevo-400.jpg",
+                "kb": 36.9
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/manos-cascando-huevo-600.avif",
+                "kb": 23.0
+              },
+              "webp": {
+                "ruta": "web/4x5/manos-cascando-huevo-600.webp",
+                "kb": 34.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/manos-cascando-huevo-600.jpg",
+                "kb": 66.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/manos-cascando-huevo-800.avif",
+                "kb": 33.6
+              },
+              "webp": {
+                "ruta": "web/4x5/manos-cascando-huevo-800.webp",
+                "kb": 48.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/manos-cascando-huevo-800.jpg",
+                "kb": 99.8
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/manos-cascando-huevo-400.avif",
+                "kb": 12.7
+              },
+              "webp": {
+                "ruta": "web/1x1/manos-cascando-huevo-400.webp",
+                "kb": 19.2
+              },
+              "jpg": {
+                "ruta": "web/1x1/manos-cascando-huevo-400.jpg",
+                "kb": 31.7
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/manos-cascando-huevo-600.avif",
+                "kb": 20.6
+              },
+              "webp": {
+                "ruta": "web/1x1/manos-cascando-huevo-600.webp",
+                "kb": 31.5
+              },
+              "jpg": {
+                "ruta": "web/1x1/manos-cascando-huevo-600.jpg",
+                "kb": 57.1
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/manos-cascando-huevo-800.avif",
+                "kb": 29.7
+              },
+              "webp": {
+                "ruta": "web/1x1/manos-cascando-huevo-800.webp",
+                "kb": 44.1
+              },
+              "jpg": {
+                "ruta": "web/1x1/manos-cascando-huevo-800.jpg",
+                "kb": 86.5
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/manos-cascando-huevo-1000.avif",
+                "kb": 39.7
+              },
+              "webp": {
+                "ruta": "web/1x1/manos-cascando-huevo-1000.webp",
+                "kb": 57.7
+              },
+              "jpg": {
+                "ruta": "web/1x1/manos-cascando-huevo-1000.jpg",
+                "kb": 120.1
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/manos-cascando-huevo-800.avif",
+                "kb": 20.5
+              },
+              "webp": {
+                "ruta": "web/16x9/manos-cascando-huevo-800.webp",
+                "kb": 30.9
+              },
+              "jpg": {
+                "ruta": "web/16x9/manos-cascando-huevo-800.jpg",
+                "kb": 56.8
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/manos-cascando-huevo-1200.avif",
+                "kb": 35.5
+              },
+              "webp": {
+                "ruta": "web/16x9/manos-cascando-huevo-1200.webp",
+                "kb": 52.5
+              },
+              "jpg": {
+                "ruta": "web/16x9/manos-cascando-huevo-1200.jpg",
+                "kb": 103.8
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/manos-cascando-huevo.jpg",
+              "kb": 197.1
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/manos-cascando-huevo.webp",
+              "kb": 92.1
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/manos-cascando-huevo.jpg",
+              "kb": 173.3
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/manos-cascando-huevo.webp",
+              "kb": 85.3
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/manos-cascando-huevo.jpg",
+              "kb": 222.8
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/manos-cascando-huevo.webp",
+              "kb": 94.3
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "pastelera-en-la-cocina",
+      "titulo": "La pastelera en la cocina",
+      "alt": "Pastelera de Cucina di Marce separando huevos en su cocina, junto a la batidora de pie y la mesada de granito",
+      "origen": {
+        "archivo": "pastelera-en-la-cocina.jpg",
+        "px": [
+          1197,
+          799
+        ],
+        "kb": 87
+      },
+      "diagnostico": {
+        "referencia_blanco": [
+          235.0,
+          235.6,
+          233.8
+        ],
+        "ganancias_wb": [
+          1.002,
+          0.994,
+          1.004
+        ],
+        "blanco_medido": 233.9,
+        "factor_exposicion": 1.031
+      },
+      "params": {
+        "wb_strength": 0.85,
+        "warmth": 0.04,
+        "white_target": 0.93,
+        "exposure": 0.0,
+        "max_lift": 2.1,
+        "black_point": 0.2,
+        "black_lift": 0.01,
+        "shadow_lift": 0.16,
+        "highlight_recovery": 0.35,
+        "contrast": 0.11,
+        "vibrance": 0.15,
+        "saturation": 1.02,
+        "clarity": 0.14,
+        "sharpen": 0.5,
+        "sharpen_radius": 1.05,
+        "rotate": 0.0,
+        "crop_bias_y": 0.0
+      },
+      "archivos": {
+        "master": {
+          "ruta": "master/pastelera-en-la-cocina.jpg",
+          "px": [
+            1197,
+            799
+          ],
+          "kb": 232
+        },
+        "comparativa": "comparativas/pastelera-en-la-cocina.jpg",
+        "web": {
+          "4x5": [
+            {
+              "ancho": 400,
+              "alto": 500,
+              "avif": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-400.avif",
+                "kb": 15.0
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-400.webp",
+                "kb": 22.5
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-400.jpg",
+                "kb": 37.6
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 750,
+              "avif": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-600.avif",
+                "kb": 25.6
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-600.webp",
+                "kb": 37.1
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-600.jpg",
+                "kb": 67.3
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-800.avif",
+                "kb": 36.9
+              },
+              "webp": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-800.webp",
+                "kb": 53.0
+              },
+              "jpg": {
+                "ruta": "web/4x5/pastelera-en-la-cocina-800.jpg",
+                "kb": 102.1
+              }
+            }
+          ],
+          "1x1": [
+            {
+              "ancho": 400,
+              "alto": 400,
+              "avif": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-400.avif",
+                "kb": 14.2
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-400.webp",
+                "kb": 21.4
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-400.jpg",
+                "kb": 33.9
+              }
+            },
+            {
+              "ancho": 600,
+              "alto": 600,
+              "avif": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-600.avif",
+                "kb": 24.0
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-600.webp",
+                "kb": 35.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-600.jpg",
+                "kb": 61.5
+              }
+            },
+            {
+              "ancho": 800,
+              "alto": 800,
+              "avif": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-800.avif",
+                "kb": 35.6
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-800.webp",
+                "kb": 51.9
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-800.jpg",
+                "kb": 94.5
+              }
+            },
+            {
+              "ancho": 1000,
+              "alto": 1000,
+              "avif": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-1000.avif",
+                "kb": 46.4
+              },
+              "webp": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-1000.webp",
+                "kb": 67.0
+              },
+              "jpg": {
+                "ruta": "web/1x1/pastelera-en-la-cocina-1000.jpg",
+                "kb": 129.9
+              }
+            }
+          ],
+          "16x9": [
+            {
+              "ancho": 800,
+              "alto": 450,
+              "avif": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-800.avif",
+                "kb": 27.6
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-800.webp",
+                "kb": 42.5
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-800.jpg",
+                "kb": 71.4
+              }
+            },
+            {
+              "ancho": 1200,
+              "alto": 675,
+              "avif": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-1200.avif",
+                "kb": 48.3
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-1200.webp",
+                "kb": 73.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-1200.jpg",
+                "kb": 129.6
+              }
+            },
+            {
+              "ancho": 1600,
+              "alto": 900,
+              "avif": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-1600.avif",
+                "kb": 66.8
+              },
+              "webp": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-1600.webp",
+                "kb": 98.3
+              },
+              "jpg": {
+                "ruta": "web/16x9/pastelera-en-la-cocina-1600.jpg",
+                "kb": 193.0
+              }
+            }
+          ]
+        },
+        "social": {
+          "instagram-feed-4x5": {
+            "jpg": {
+              "ruta": "social/instagram-feed-4x5/pastelera-en-la-cocina.jpg",
+              "kb": 198.6
+            },
+            "webp": {
+              "ruta": "social/instagram-feed-4x5/pastelera-en-la-cocina.webp",
+              "kb": 95.9
+            },
+            "px": [
+              1080,
+              1350
+            ]
+          },
+          "instagram-grilla-1x1": {
+            "jpg": {
+              "ruta": "social/instagram-grilla-1x1/pastelera-en-la-cocina.jpg",
+              "kb": 184.8
+            },
+            "webp": {
+              "ruta": "social/instagram-grilla-1x1/pastelera-en-la-cocina.webp",
+              "kb": 97.0
+            },
+            "px": [
+              1080,
+              1080
+            ]
+          },
+          "historias-9x16": {
+            "jpg": {
+              "ruta": "social/historias-9x16/pastelera-en-la-cocina.jpg",
+              "kb": 222.8
+            },
+            "webp": {
+              "ruta": "social/historias-9x16/pastelera-en-la-cocina.webp",
+              "kb": 97.8
+            },
+            "px": [
+              1080,
+              1920
+            ]
+          }
+        }
+      }
     }
   ],
-  "peso_total_avif_kb": 9178.2
+  "peso_total_avif_kb": 9747.6
 }
