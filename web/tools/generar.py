@@ -189,7 +189,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
 <link rel="icon" type="image/png" sizes="48x48" href="{p}assets/img/favicon-48.png">
 <link rel="apple-touch-icon" href="{p}assets/img/icon-192.png">
 <link rel="stylesheet" href="{p}assets/css/styles.css">
-<link rel="alternate" type="application/rss+xml" title="Notas de Clima Baires" href="{p}blog/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="Blog de Clima Baires" href="{p}blog/rss.xml">
 <script>window.dataLayer = window.dataLayer || [];</script>
 {ld}
 </head>
@@ -203,7 +203,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
       <a href="{p}index.html"{act('inicio')}>Inicio</a>
       <a href="{p}servicios.html"{act('servicios')}>Servicios</a>
       <a href="{p}obras.html"{act('obras')}>Obras</a>
-      <a href="{p}blog/"{act('blog')}>Notas</a>
+      <a href="{p}blog/"{act('blog')}>Blog</a>
       <a href="{p}index.html#zonas"{act('zonas')}>Zonas</a>
       <a href="{p}calculadora-frigorias.html"{act('calc')}>Calculadora</a>
       <a href="{p}sobre-nosotros.html"{act('nosotros')}>Nosotros</a>
@@ -230,7 +230,7 @@ def layout(depth, titulo, descripcion, contenido, canonical, jsonld=None, activo
           <li><a href="{p}servicios.html#instalacion">Instalación</a></li>
           <li><a href="{p}servicios.html#mantenimiento">Mantenimiento y posventa</a></li>
           <li><a href="{p}obras.html">Obras recientes</a></li>
-          <li><a href="{p}blog/">Notas</a></li>
+          <li><a href="{p}blog/">Blog</a></li>
           <li><a href="{p}calculadora-frigorias.html">Calculadora de frigorías</a></li>
         </ul>
       </div>
@@ -443,7 +443,7 @@ def pagina_index():
 <section class="seccion" style="padding:36px 0 40px">{cinta_cta('Contanos qué querés climatizar y te pasamos precio hoy.', 'Hola Clima Baires, quiero un presupuesto de equipo + instalación.')}
 </section>
 {seccion_ultimas_obras()}
-{seccion_ultimas_notas()}
+{seccion_ultimas_blog()}
 <section class="seccion">
   <div class="contenedor">
     <div class="banda-cta">
@@ -523,7 +523,7 @@ def franja_marcas(p=''):
 </div>'''
 
 
-def seccion_ultimas_notas():
+def seccion_ultimas_blog():
     """Las notas más nuevas, en la portada.
 
     Un blog al que sólo se llega por el menú no lo lee nadie: la home es la
@@ -534,13 +534,13 @@ def seccion_ultimas_notas():
         return ''
     tarjetas = ''.join(tarjeta_post(p, 'blog/', 3) for p in POSTS[:3])
     return f"""
-<section class="seccion" id="notas">
+<section class="seccion" id="blog">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Para saber más</span><h2>Últimas notas</h2>
+    <div class="centrado"><span class="kicker">Para saber más</span><h2>Últimas del blog</h2>
     <p class="intro">Lo que explicamos en cada visita, escrito: cómo elegir la potencia, qué mirar en una instalación y cómo cuidar el equipo.</p></div>
     <div class="post-grilla">{tarjetas}</div>
     <div class="centrado" style="margin-top:30px">
-      <a class="boton fantasma" href="blog/">Ver todas las notas</a>
+      <a class="boton fantasma" href="blog/">Ver todo el blog</a>
     </div>
   </div>
 </section>"""
@@ -1294,17 +1294,17 @@ def pagina_blog(posts):
         if i and i % 3 == 0:
             tarjetas += '<div class="cinta-en-grilla">%s</div>' % cinta_cta_suelta(
                 '¿Preferís preguntarlo directo? Escribinos y te respondemos.',
-                'Hola Clima Baires, leí una nota en su web y quiero hacer una consulta.',
+                'Hola Clima Baires, leí algo en su blog y quiero hacer una consulta.',
                 'Preguntar', 'listado')
         tarjetas += tarjeta_post(p, '')
-    vacio = '' if posts else '<p class="intro centrado">Estamos escribiendo las primeras notas. Volvé en unos días.</p>'
+    vacio = '' if posts else '<p class="intro centrado">Estamos escribiendo las primeras entradas. Volvé en unos días.</p>'
     c = f'''
 <section class="cabecera-pagina">
   <div class="contenedor">
-    <nav class="migas"><a href="../index.html">Inicio</a> › Notas</nav>
-    <h1>Notas sobre climatización</h1>
+    <nav class="migas"><a href="../index.html">Inicio</a> › Blog</nav>
+    <h1>Blog de climatización</h1>
     <p class="bajada">Lo que aprendimos instalando: cómo elegir, qué mirar en una obra y cómo cuidar tu equipo.</p>
-    {acciones_cabecera('Hola Clima Baires, leí una nota en su web y quiero hacer una consulta.', 'Consultar por WhatsApp', '../')}
+    {acciones_cabecera('Hola Clima Baires, leí algo en su blog y quiero hacer una consulta.', 'Consultar por WhatsApp', '../')}
   </div>
 </section>
 
@@ -1316,29 +1316,29 @@ def pagina_blog(posts):
       {filtros}
     </div>
     <div class="post-grilla" id="post-grilla">{tarjetas}</div>
-    <p id="post-vacio" hidden>No hay notas de ese tema todavía.</p>
+    <p id="post-vacio" hidden>No hay entradas de ese tema todavía.</p>
     {vacio}
   </div>
 </section>
 
-<section class="seccion" style="padding:0 0 70px">{cinta_cta('¿Te quedó una duda de la nota? Preguntanos sin compromiso.', 'Hola Clima Baires, leí una nota en su web y tengo una consulta.', 'Preguntar')}
+<section class="seccion" style="padding:0 0 70px">{cinta_cta('¿Te quedó una duda de lo que leíste? Preguntanos sin compromiso.', 'Hola Clima Baires, leí algo en su blog y tengo una consulta.', 'Preguntar')}
 </section>
 '''
     ld = [
-        jsonld_migas([('Inicio', '/'), ('Notas', '/blog/')]),
+        jsonld_migas([('Inicio', '/'), ('Blog', '/blog/')]),
         {
             '@context': 'https://schema.org', '@type': 'Blog',
-            'name': 'Notas de Clima Baires', 'url': f'{DOMINIO}/blog/',
+            'name': 'Blog de Clima Baires', 'url': f'{DOMINIO}/blog/',
             'publisher': {'@id': DOMINIO + '/#negocio'},
             'blogPost': [{'@type': 'BlogPosting', 'headline': p['titulo'],
                           'url': f'{DOMINIO}/blog/{p["slug"]}.html', 'datePublished': p['fecha_iso']}
                          for p in posts],
         },
     ]
-    return layout(1, 'Notas sobre climatización | Clima Baires',
-        'Guías prácticas de aire acondicionado: cuántas frigorías necesitás, qué mirar en una instalación y cómo mantener tu equipo.',
+    return layout(1, 'Blog de climatización | Clima Baires',
+        'El blog de Clima Baires: cuántas frigorías necesitás, qué mirar en una instalación y cómo mantener tu equipo.',
         c, f'{DOMINIO}/blog/', ld, 'blog', pagina_id='blog',
-        wsp_barra='Hola Clima Baires, leí una nota en su web y quiero hacer una consulta.')
+        wsp_barra='Hola Clima Baires, leí algo en su blog y quiero hacer una consulta.')
 
 
 def pagina_post(post, otros):
@@ -1348,15 +1348,15 @@ def pagina_post(post, otros):
         mas = f'''
 <section class="seccion alterna">
   <div class="contenedor">
-    <div class="centrado"><span class="kicker">Seguir leyendo</span><h2>Otras notas</h2></div>
+    <div class="centrado"><span class="kicker">Seguir leyendo</span><h2>Más del blog</h2></div>
     <div class="post-grilla" style="margin-top:26px">{''.join(tarjeta_post(o, '', 3) for o in relacionadas)}</div>
   </div>
 </section>'''
-    msj = f'Hola Clima Baires, leí la nota «{post["titulo"]}» y quiero un presupuesto.'
+    msj = f'Hola Clima Baires, leí «{post["titulo"]}» en su blog y quiero un presupuesto.'
     c = f'''
 <article class="cabecera-pagina">
   <div class="contenedor">
-    <nav class="migas"><a href="../index.html">Inicio</a> › <a href="index.html">Notas</a> › {post['categoria_label']}</nav>
+    <nav class="migas"><a href="../index.html">Inicio</a> › <a href="index.html">Blog</a> › {post['categoria_label']}</nav>
     <span class="post-cat">{post['categoria_label']}</span>
     <h1>{post['titulo']}</h1>
     <p class="bajada">{post['resumen']}</p>
@@ -1377,7 +1377,7 @@ def pagina_post(post, otros):
 <section class="seccion" style="padding:34px 0 60px">{cinta_cta('¿Querés que lo veamos en tu casa? La visita y el presupuesto son sin cargo.', msj, 'Pedir presupuesto')}
 </section>'''
     ld = [
-        jsonld_migas([('Inicio', '/'), ('Notas', '/blog/'), (post['titulo'], f'/blog/{post["slug"]}.html')]),
+        jsonld_migas([('Inicio', '/'), ('Blog', '/blog/'), (post['titulo'], f'/blog/{post["slug"]}.html')]),
         {
             '@context': 'https://schema.org', '@type': 'BlogPosting',
             'headline': post['titulo'], 'description': post['resumen'],
@@ -1392,7 +1392,7 @@ def pagina_post(post, otros):
     ]
     return layout(1, f'{post["titulo"]} | Clima Baires', post['resumen'],
         c, f'{DOMINIO}/blog/{post["slug"]}.html', ld, 'blog', pagina_id=f'blog/{post["slug"]}',
-        wsp_barra=f'Hola Clima Baires, leí la nota «{post["titulo"]}» y quiero un presupuesto.')
+        wsp_barra=f'Hola Clima Baires, leí «{post["titulo"]}» en su blog y quiero un presupuesto.')
 
 
 def rss(posts):
@@ -1408,7 +1408,7 @@ def rss(posts):
     </item>''' for p in posts)
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
-  <title>Notas de Clima Baires</title>
+  <title>Blog de Clima Baires</title>
   <link>{DOMINIO}/blog/</link>
   <description>Guías de aire acondicionado para el corredor norte de Buenos Aires.</description>
   <language>es-AR</language>

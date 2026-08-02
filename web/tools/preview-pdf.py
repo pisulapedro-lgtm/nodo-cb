@@ -45,7 +45,7 @@ NOMBRES = {
     'zonas_san-isidro': 'Zona · San Isidro', 'zonas_tigre': 'Zona · Tigre',
     'zonas_nordelta': 'Zona · Nordelta', 'zonas_pilar': 'Zona · Pilar',
     'chatbot': 'Asistente de WhatsApp', 'privacidad': 'Política de privacidad', 'terminos': 'Términos y condiciones',
-    'blog_index': 'Notas · índice del blog',
+    'blog_index': 'Blog · índice',
 }
 
 
@@ -55,7 +55,7 @@ def nota_de_muestra():
     for f in sorted(os.listdir(SHOTS)):
         if f.startswith('blog_') and f.endswith('-movil.png') and not f.startswith('blog_index'):
             clave = f[:-len('-movil.png')]
-            NOMBRES[clave] = 'Notas · una nota completa'
+            NOMBRES[clave] = 'Blog · una entrada completa'
             return [clave]
     return []
 

@@ -47,7 +47,7 @@ NOMBRES = {
     'calculadora-frigorias.html': 'Calculadora',
     'sobre-nosotros.html': 'Nosotros',
     'contacto.html': 'Contacto',
-    'blog/index.html': 'Notas',
+    'blog/index.html': 'Blog',
     'privacidad.html': 'Privacidad',
     'terminos.html': 'Términos',
     '404.html': 'Página 404',
@@ -56,7 +56,7 @@ GRUPOS = [
     ('El sitio', ['index.html', 'servicios.html', 'obras.html', 'calculadora-frigorias.html',
                   'sobre-nosotros.html', 'contacto.html']),
     ('Zonas', []),      # se llenan solas más abajo
-    ('Notas', []),
+    ('Blog', []),
     ('Legales', ['privacidad.html', 'terminos.html', '404.html']),
 ]
 

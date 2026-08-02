@@ -295,9 +295,9 @@ web/
 ├── contacto.html               # WhatsApp + formulario + agenda de visitas
 ├── 404.html
 ├── zonas/{nunez,vicente-lopez,san-isidro,tigre,nordelta,pilar}.html  # SEO local / landings de Ads
-├── blog/                       # generado: index, una página por nota y rss.xml
+├── blog/                       # generado: index, una página por entrada y rss.xml
 ├── contenido/
-│   ├── blog/NN-slug.md         # las notas, en Markdown (esto es lo que se edita)
+│   ├── blog/NN-slug.md         # las entradas, en Markdown (esto es lo que se edita)
 │   ├── calendario.json         # temario: de qué escribe la próxima publicación
 │   ├── estilo-blog.md          # guía de estilo que recibe quien escribe
 │   └── faq-zonas.json          # preguntas frecuentes de cada zona (acordeón + FAQPage)
