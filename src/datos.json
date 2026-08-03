@@ -1,0 +1,1012 @@
+{
+  "meta": {
+    "version": "1.4",
+    "fecha_documento": "2026-08-01",
+    "fecha_inicio": "2026-08-03",
+    "dias_plan": 30,
+    "empresa": "Clima Baires",
+    "titulo": "Plan de Negocio — Clima Baires Argentina",
+    "slug": "Plan-de-Negocio-Clima-Baires-Argentina",
+    "subtitulo": "Desembarco en el corredor norte de Buenos Aires"
+  },
+  "cambio": {
+    "eur_ars": 1760,
+    "fecha": "31-07-2026",
+    "tipo": "euro billete vendedor, Banco de la Nación Argentina",
+    "fuente": "F1",
+    "caracter": "verificado"
+  },
+  "capital": {
+    "total_eur": 15000,
+    "total_ars": 26400000,
+    "aporte_por_socio_eur": 5000
+  },
+  "presupuesto": {
+    "total_eur": 15000,
+    "partidas": [
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Constitución SAS en IGJ (CABA)",
+        "eur": 400,
+        "fuente": "F8",
+        "caracter": "estimacion",
+        "nota": "Servicio integral con escribano y estatuto modelo ($696.875, presupuesto privado vigente hasta 31-08-2026); incluye tasas IGJ."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Poderes + apostillas en España (×2)",
+        "eur": 250,
+        "caracter": "estimacion",
+        "nota": "Notaría €60–150 c/u + apostilla; borrador visado antes por el escribano argentino."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "CUIT de no residentes (Pedro y Sebastián)",
+        "eur": 200,
+        "fuente": "F9",
+        "caracter": "estimacion",
+        "nota": "Sin arancel de ARCA; el costo es la gestoría/apoderado local (RG 5803/2025)."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Marca «Clima Baires» en INPI (clases 11, 35 y 37)",
+        "eur": 250,
+        "fuente": "F10",
+        "caracter": "estimacion",
+        "nota": "Aranceles ≈ $117.000 (100 UMAPI/clase) + honorarios de agente de marcas."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Pacto de socios (abogado societario)",
+        "eur": 400,
+        "caracter": "estimacion",
+        "nota": "Incluye cláusulas de permanencia de Ignacio, vetos y salida. Imprescindible con equity asimétrico."
+      },
+      {
+        "bloque": "A — Constitución y legal (pago único)",
+        "concepto": "Contador: alta fiscal y puesta en marcha",
+        "eur": 150,
+        "caracter": "estimacion",
+        "nota": "Honorario inicial por inscripciones ARCA + Convenio Multilateral + MiPyME."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Dominios climabaires.com + .com.ar (año 1)",
+        "eur": 25,
+        "fuente": "F22",
+        "caracter": "verificado",
+        "nota": ".com ≈ US$12; .com.ar $8.500 (NIC.ar, requiere CUIT)."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Identidad aplicada: tarjetas, QR de reseñas, cartelería",
+        "eur": 120,
+        "caracter": "estimacion",
+        "nota": "Imprenta local; el diseño ya está resuelto con el manual de marca."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Teléfono comercial (equipo + chip + plan 4 meses)",
+        "eur": 180,
+        "caracter": "estimacion",
+        "nota": "Línea exclusiva para WhatsApp Business; nunca el número personal."
+      },
+      {
+        "bloque": "B — Puesta en marcha operativa (pago único)",
+        "concepto": "Instrumental de control de calidad (QA de instalaciones)",
+        "eur": 120,
+        "caracter": "estimacion",
+        "nota": "Manómetro, termómetro IR y anemómetro para que Ignacio audite las instalaciones subcontratadas."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Contador (honorarios mensuales ×4)",
+        "eur": 400,
+        "caracter": "estimacion",
+        "nota": "≈ $176.000/mes para pyme chica de Convenio Multilateral."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Stack digital (Xubio + Workspace + varios ×4)",
+        "eur": 380,
+        "fuente": "F20",
+        "caracter": "estimacion",
+        "nota": "≈ $164.000/mes en versión mínima (detalle en sección 8)."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Seguros: RC empresa + AP de 2 instaladores (×4)",
+        "eur": 620,
+        "fuente": "F24",
+        "caracter": "estimacion",
+        "nota": "≈ $270.000/mes; requisito de acceso a countries. Cotizar en 3 brokers."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Autónomos de Ignacio como gerente (×4)",
+        "eur": 320,
+        "fuente": "F14",
+        "caracter": "verificado",
+        "nota": "Tabla I cat. III: $141.247/mes (valor 05-2026, ajusta mensualmente por IPC)."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "Movilidad y combustible (×4)",
+        "eur": 480,
+        "caracter": "estimacion",
+        "nota": "Vehículo propio de Ignacio; sin compra de utilitario en fase 1."
+      },
+      {
+        "bloque": "C — Fijos septiembre–diciembre (4 meses)",
+        "concepto": "IIBB mínimos, comisiones bancarias y varios (×4)",
+        "eur": 140,
+        "fuente": "F16",
+        "caracter": "estimacion",
+        "nota": "Anticipo mínimo ARBA $10.967/mes + goteos administrativos."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Google Ads geolocalizado (facturación local +24%)",
+        "eur": 900,
+        "fuente": "F26",
+        "caracter": "estimacion",
+        "nota": "Escala $150k→$350k→$450k/mes sep→dic; CPL objetivo ≤ $9.000-12.000."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Meta Ads: Lead Ads + Reels de instalación",
+        "eur": 450,
+        "fuente": "F26",
+        "caracter": "estimacion",
+        "nota": "$100k→$250k/mes; público 35-65 geolocalizado en los 5 municipios."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Canal countries: pauta Revista Nordelta + guías",
+        "eur": 200,
+        "caracter": "estimacion",
+        "nota": "Tarifas no publicadas: pedir mediakit; alternativa costo cero: nota de caso de instalación."
+      },
+      {
+        "bloque": "D — Go-to-market septiembre–diciembre",
+        "concepto": "Instalaciones fundacionales (descuento lanzamiento)",
+        "eur": 150,
+        "caracter": "estimacion",
+        "nota": "2-3 instalaciones en septiembre a precio de lanzamiento: generan cartera AVN, reseñas y contenido."
+      },
+      {
+        "bloque": "E — Capital de trabajo y contingencias",
+        "concepto": "Capital de trabajo (equipos contra pedido + goteo de retenciones)",
+        "eur": 4200,
+        "caracter": "estimacion",
+        "nota": "Financia 3-4 instalaciones simultáneas entre seña y cobro final + saldos IIBB a favor de los primeros meses."
+      },
+      {
+        "bloque": "E — Capital de trabajo y contingencias",
+        "concepto": "Primera contratación: técnico en relación de dependencia (diciembre)",
+        "eur": 1250,
+        "fuente": "F13",
+        "caracter": "estimacion",
+        "nota": "1 mes de costo empleador total ≈ $2.183.000 (coef. 1,46 × bruto $1,5M). Se activa solo si el pico lo justifica."
+      }
+    ]
+  },
+  "cronograma": [
+    {
+      "tarea": "Aprobar plan y term sheet del pacto",
+      "workstream": "legal",
+      "semana0": true,
+      "fechas": "28/07–02/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Los 3 socios",
+      "dependencias": "—",
+      "detalle": "Videollamada de socios: aprobar este plan, el reparto 40/30/30 con aportes iguales y la vía rápida de constitución."
+    },
+    {
+      "tarea": "Poder + apostilla de Pedro y Sebastián",
+      "workstream": "legal",
+      "semana0": true,
+      "fechas": "28/07–08/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Pedro y Sebastián",
+      "dependencias": "Borrador visado por escribano AR",
+      "costo_eur": 250,
+      "detalle": "Notaría en España + apostilla de La Haya. En español: no requiere traducción pública."
+    },
+    {
+      "tarea": "Documentación personal lista",
+      "workstream": "legal",
+      "semana0": true,
+      "fechas": "28/07–02/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Pedro y Sebastián",
+      "dependencias": "—",
+      "detalle": "Pasaportes vigentes escaneados, constancia de no residencia, datos personales para el estatuto y CUIT."
+    },
+    {
+      "tarea": "Revisión monotributo de Ignacio",
+      "workstream": "fiscal",
+      "semana0": true,
+      "fechas": "28/07–02/08",
+      "dia_inicio": 0,
+      "dia_fin": 0,
+      "responsable": "Ignacio",
+      "dependencias": "—",
+      "detalle": "Chequear categoría y actividades declaradas antes de la recategorización que vence el 05-08."
+    },
+    {
+      "tarea": "Elegir contador",
+      "workstream": "fiscal",
+      "dia_inicio": 1,
+      "dia_fin": 3,
+      "responsable": "Ignacio",
+      "dependencias": "—",
+      "costo_eur": 150,
+      "detalle": "Shortlist de 3 estudios pyme de zona norte con experiencia en SAS + Convenio Multilateral; alta inmediata."
+    },
+    {
+      "tarea": "Búsqueda de marca en INPI",
+      "workstream": "legal",
+      "dia_inicio": 1,
+      "dia_fin": 2,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "—",
+      "detalle": "Búsqueda fonética manual en portaltramites.inpi.gob.ar (clases 11/35/37, variantes) — existe un «Clima Baires zona sur» informal en GBA."
+    },
+    {
+      "tarea": "Recategorización monotributo (vence 05/08)",
+      "workstream": "fiscal",
+      "dia_inicio": 2,
+      "dia_fin": 3,
+      "responsable": "Ignacio + Contador",
+      "dependencias": "Contador elegido",
+      "detalle": "Recategorizar y ajustar actividades para el puente. Regla crítica: no vender equipos >$716.841 por unidad a nombre propio."
+    },
+    {
+      "tarea": "Escribano + estatuto SAS + reserva de nombre",
+      "workstream": "legal",
+      "dia_inicio": 2,
+      "dia_fin": 4,
+      "responsable": "Ignacio",
+      "dependencias": "Term sheet aprobado",
+      "detalle": "SAS unipersonal de Ignacio (vía rápida); objeto: comercialización, instalación y mantenimiento de climatización."
+    },
+    {
+      "tarea": "Presentar marca INPI (3 clases)",
+      "workstream": "legal",
+      "dia_inicio": 4,
+      "dia_fin": 5,
+      "responsable": "Ignacio + agente",
+      "dependencias": "Búsqueda INPI",
+      "costo_eur": 250,
+      "detalle": "A nombre de Ignacio con compromiso de cesión a la SAS. Sistema atributivo: gana el primero que registra."
+    },
+    {
+      "tarea": "Dominios + Workspace + línea WhatsApp",
+      "workstream": "stack",
+      "dia_inicio": 3,
+      "dia_fin": 5,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "—",
+      "costo_eur": 205,
+      "detalle": "climabaires.com y .com.ar; Google Workspace con ignacio@; chip nuevo exclusivo para WhatsApp Business."
+    },
+    {
+      "tarea": "Contacto inicial con mayoristas",
+      "workstream": "ops",
+      "dia_inicio": 4,
+      "dia_fin": 7,
+      "responsable": "Ignacio",
+      "dependencias": "—",
+      "detalle": "Clima Design (Martínez), Ansal y Refrigeración Polar: solicitar alta de cuenta gremio y listas de precios."
+    },
+    {
+      "tarea": "Cotizar seguros (3 brokers)",
+      "workstream": "ops",
+      "dia_inicio": 5,
+      "dia_fin": 7,
+      "responsable": "Sebastián (remoto)",
+      "dependencias": "—",
+      "detalle": "RC comprensiva $50-100M con no repetición + AP colectiva de instaladores. Pedir pliegos de requisitos de AVN/countries."
+    },
+    {
+      "tarea": "Presentar constitución SAS en IGJ",
+      "workstream": "legal",
+      "dia_inicio": 8,
+      "dia_fin": 10,
+      "responsable": "Escribano",
+      "dependencias": "Estatuto + reserva",
+      "costo_eur": 400,
+      "detalle": "Trámite 100% digital (RG IGJ 5/2026) con estatuto modelo: inscripción esperada en 3-8 días hábiles."
+    },
+    {
+      "tarea": "Publicar web + GBP + redes",
+      "workstream": "comercial",
+      "dia_inicio": 8,
+      "dia_fin": 10,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "Dominio + WhatsApp",
+      "detalle": "climabaires.com ya desarrollada; Google Business Profile verificado con el domicilio de Maure (Belgrano) pero oculto al público, con las 6 zonas de servicio; IG/LinkedIn con el kit digital."
+    },
+    {
+      "tarea": "Puente monotributo: vender y facturar",
+      "workstream": "comercial",
+      "dia_inicio": 9,
+      "dia_fin": 21,
+      "responsable": "Ignacio",
+      "dependencias": "Recategorización",
+      "detalle": "Presupuestos y primeras operaciones facturando Ignacio solo la instalación (el cliente compra el equipo al proveedor)."
+    },
+    {
+      "tarea": "Contratos con 2 instaladores subcontratados",
+      "workstream": "personas",
+      "dia_inicio": 10,
+      "dia_fin": 12,
+      "responsable": "Ignacio",
+      "dependencias": "Modelo de contrato del abogado",
+      "detalle": "Locación de instalación por instalación + verificación de monotributo activo, AP con no repetición y certificación de instalador."
+    },
+    {
+      "tarea": "Visita y negociación con mayoristas",
+      "workstream": "ops",
+      "dia_inicio": 11,
+      "dia_fin": 14,
+      "responsable": "Ignacio",
+      "dependencias": "Contacto inicial",
+      "detalle": "Cerrar descuento gremio (15-30%), stock para retiro en 24-48h y condiciones de pago; prioridad Clima Design por cercanía."
+    },
+    {
+      "tarea": "SAS inscripta → CUIT de la sociedad",
+      "workstream": "legal",
+      "dia_inicio": 15,
+      "dia_fin": 17,
+      "responsable": "Escribano + Contador",
+      "dependencias": "IGJ",
+      "detalle": "Hito: CUIT casi automático en 24-48h tras la inscripción. Si IGJ demora, el puente monotributo sostiene la operación."
+    },
+    {
+      "tarea": "Altas ARCA: IVA + Ganancias + Convenio Multilateral",
+      "workstream": "fiscal",
+      "dia_inicio": 17,
+      "dia_fin": 19,
+      "responsable": "Contador",
+      "dependencias": "CUIT SAS",
+      "detalle": "Responsable inscripto + alta CM (CABA+PBA) vía Registro Único Tributario — único canal desde el 01-08-2026."
+    },
+    {
+      "tarea": "Certificado MiPyME",
+      "workstream": "fiscal",
+      "dia_inicio": 18,
+      "dia_fin": 20,
+      "responsable": "Contador",
+      "dependencias": "CUIT SAS",
+      "detalle": "F.1272 en trámite manual (sociedad sin ejercicio cerrado). Habilita IVA a 90 días, 100% imp. cheque y Cuotas MiPyME."
+    },
+    {
+      "tarea": "Cuenta bancaria (Brubank/Provincia) + carpeta banco grande",
+      "workstream": "banca",
+      "dia_inicio": 18,
+      "dia_fin": 21,
+      "responsable": "Ignacio",
+      "dependencias": "CUIT + estatuto inscripto",
+      "detalle": "Cuenta digital ágil primero; en paralelo carpeta en Santander (bonificado 12 meses) para crédito futuro."
+    },
+    {
+      "tarea": "Alta Mercado Pago empresa",
+      "workstream": "banca",
+      "dia_inicio": 19,
+      "dia_fin": 20,
+      "responsable": "Ignacio",
+      "dependencias": "CUIT SAS",
+      "detalle": "QR transferencia 0,8% + link de pago; liberación a 35 días para crédito (1,56%) salvo urgencia de caja."
+    },
+    {
+      "tarea": "Emitir pólizas RC + AP colectiva",
+      "workstream": "ops",
+      "dia_inicio": 19,
+      "dia_fin": 21,
+      "responsable": "Sebastián (remoto)",
+      "dependencias": "Cotizaciones",
+      "detalle": "Sin estas pólizas no se entra a ningún barrio cerrado. Póliza AP colectiva administrada por la empresa."
+    },
+    {
+      "tarea": "Alta Xubio + facturación electrónica",
+      "workstream": "stack",
+      "dia_inicio": 20,
+      "dia_fin": 21,
+      "responsable": "Contador + Pedro",
+      "dependencias": "CUIT + punto de venta",
+      "detalle": "ERP con CAE en tiempo real (RG 5782/5785); catálogo de servicios y plantilla de presupuesto cargados."
+    },
+    {
+      "tarea": "Instalaciones fundacionales (2-3 instalaciones)",
+      "workstream": "comercial",
+      "dia_inicio": 15,
+      "dia_fin": 21,
+      "responsable": "Ignacio + subcontratados",
+      "dependencias": "Contratos instaladores",
+      "costo_eur": 150,
+      "detalle": "Precio de lanzamiento a conocidos de la zona: generan la cartera de 2 clientes que exige AVN, las primeras reseñas y contenido."
+    },
+    {
+      "tarea": "Alta de proveedor en AVN Nordelta",
+      "workstream": "comercial",
+      "dia_inicio": 22,
+      "dia_fin": 24,
+      "responsable": "Ignacio",
+      "dependencias": "Cartera 2 clientes + seguros",
+      "detalle": "Formulario online AVN con AFIP, IIBB/CM, seguros con no repetición y cartera mínima. Llave del segmento premium."
+    },
+    {
+      "tarea": "Campañas Ads en modo testeo",
+      "workstream": "comercial",
+      "dia_inicio": 23,
+      "dia_fin": 26,
+      "responsable": "Pedro (remoto)",
+      "dependencias": "Web + GBP publicados",
+      "detalle": "Cuenta AR bajo la MCC de Málaga: portar estructura, negativas y copies ganadores del histórico (>€16.000 invertidos). Search $150k/mes + Meta $100k/mes; facturación LOCAL en ARS (+24%), nunca tarjeta al exterior (+54%)."
+    },
+    {
+      "tarea": "Cuenta bancaria operativa + circuito de cobros",
+      "workstream": "banca",
+      "dia_inicio": 24,
+      "dia_fin": 27,
+      "responsable": "Ignacio",
+      "dependencias": "Solicitud semana 3",
+      "detalle": "Barrido semanal MP→banco; política de cobro: transferencia con descuento, 3 cuotas vía Cuotas MiPyME (7,78% + IVA, vig. 30-01-2026)."
+    },
+    {
+      "tarea": "Primera factura de la SAS",
+      "workstream": "fiscal",
+      "dia_inicio": 25,
+      "dia_fin": 27,
+      "responsable": "Ignacio + Contador",
+      "dependencias": "Altas ARCA + Xubio",
+      "detalle": "Emisión A/B con CAE desde Xubio. Prever arranque con «A sujeta a retención» (RG 5762) hasta acreditar solvencia."
+    },
+    {
+      "tarea": "Tablero de KPIs + rutina de socios",
+      "workstream": "personas",
+      "dia_inicio": 26,
+      "dia_fin": 28,
+      "responsable": "Sebastián (remoto)",
+      "dependencias": "—",
+      "detalle": "Sheet compartido: leads, presupuestos, cierres, caja, instalaciones. Videollamada semanal fija España-Argentina."
+    },
+    {
+      "tarea": "Cierre mes 1: checklist de operación plena",
+      "workstream": "personas",
+      "dia_inicio": 29,
+      "dia_fin": 30,
+      "responsable": "Los 3 socios",
+      "dependencias": "Todo lo anterior",
+      "detalle": "Repaso del checklist de la sección 12, presupuesto vs. real y decisión de escalar pauta en octubre."
+    }
+  ],
+  "stack": [
+    {
+      "item": "Xubio — plan Empresa Básico",
+      "rol": "ERP + facturación CAE (el «Holded argentino»)",
+      "ars_mes": 114800,
+      "fuente": "F20",
+      "nota": "Con débito bancario; hoy en promoción a ~$57.400. IVA recuperable como crédito fiscal."
+    },
+    {
+      "item": "Google Workspace Business Starter ×3",
+      "rol": "Email @climabaires.com, Calendar, Drive, Forms",
+      "ars_mes": 48500,
+      "fuente": "F21",
+      "nota": "US$7/usuario + ~53% de impuestos sobre SaaS del exterior."
+    },
+    {
+      "item": "Agenda + checklist de instalación (Calendar + Forms)",
+      "rol": "Field service lean del arranque",
+      "ars_mes": 0,
+      "nota": "Incluido en Workspace; upgrade natural: Kizeo Forms (€15/usuario) con 2+ técnicos en calle."
+    },
+    {
+      "item": "WhatsApp Business (app)",
+      "rol": "Canal de venta y posventa",
+      "ars_mes": 0,
+      "nota": "Gratis; API (~US$30-49/mes) recién con >30-50 conversaciones/día."
+    },
+    {
+      "item": "Web climabaires.com (estática) + hosting",
+      "rol": "Captación + SEO local (ya desarrollada)",
+      "ars_mes": 0,
+      "nota": "Cloudflare Pages/Netlify gratis con SSL."
+    },
+    {
+      "item": "Dominios .com + .com.ar (prorrateo mensual)",
+      "rol": "Marca digital",
+      "ars_mes": 710,
+      "fuente": "F22",
+      "nota": ".com.ar $8.500/año vía NIC.ar (requiere CUIT)."
+    }
+  ],
+  "financiero": {
+    "convencion": "ARS constantes de agosto-2026. En Argentina los precios de venta y de compra se indexan juntos, de modo que el margen porcentual se sostiene; trabajar en nominales solo añadiría ruido inflacionario. Conversión a EUR al TC de portada.",
+    "mes_inicio": "2026-09",
+    "meses": 24,
+    "mix": [
+      {
+        "tipo": "Split premium 3.000-4.500 frig",
+        "peso": 0.45,
+        "ticket_ars": 1800000,
+        "costo_equipo_pct": 0.58,
+        "fuente": "F37",
+        "materiales_ars": 110000,
+        "montaje_ars": 150000
+      },
+      {
+        "tipo": "Split 5.500-6.500 frig / multisplit 2x1",
+        "peso": 0.35,
+        "ticket_ars": 2800000,
+        "costo_equipo_pct": 0.57,
+        "fuente": "F37",
+        "materiales_ars": 145000,
+        "montaje_ars": 190000
+      },
+      {
+        "tipo": "Piso-techo, cassette o conductos",
+        "peso": 0.15,
+        "ticket_ars": 5000000,
+        "costo_equipo_pct": 0.6,
+        "fuente": "F37",
+        "materiales_ars": 300000,
+        "montaje_ars": 450000
+      },
+      {
+        "tipo": "Mantenimiento y service",
+        "peso": 0.05,
+        "ticket_ars": 250000,
+        "costo_equipo_pct": 0.1,
+        "fuente": "F36",
+        "materiales_ars": 15000,
+        "montaje_ars": 60000
+      }
+    ],
+    "costos_instalacion": {
+      "montaje_subcontratado_ars": 150000,
+      "materiales_ars": 110000,
+      "comision_cobro_pct": 0.03,
+      "iibb_pct": 0.024,
+      "cac_ars": 40000,
+      "nota_montaje": "Cada categoría lleva su propio costo de montaje y materiales; los valores de `montaje_subcontratado_ars` y `materiales_ars` quedan como referencia del split de pared."
+    },
+    "fijos_mensuales_ars": [
+      {
+        "concepto": "Contador",
+        "ars": 176000
+      },
+      {
+        "concepto": "Stack digital (ERP + Workspace)",
+        "ars": 167000,
+        "fuente": "F20"
+      },
+      {
+        "concepto": "Seguros RC + AP instaladores",
+        "ars": 273000,
+        "fuente": "F24"
+      },
+      {
+        "concepto": "Autónomos del gerente",
+        "ars": 141000,
+        "fuente": "F14"
+      },
+      {
+        "concepto": "Movilidad y combustible",
+        "ars": 211000
+      },
+      {
+        "concepto": "IIBB mínimos, bancarios y varios",
+        "ars": 62000,
+        "fuente": "F15"
+      }
+    ],
+    "marketing_ars": [
+      250000,
+      400000,
+      600000,
+      700000,
+      700000,
+      600000,
+      350000,
+      250000,
+      200000,
+      200000,
+      200000,
+      250000,
+      400000,
+      550000,
+      750000,
+      850000,
+      850000,
+      700000,
+      450000,
+      300000,
+      250000,
+      250000,
+      250000,
+      300000
+    ],
+    "instalaciones_mes": [
+      5,
+      10,
+      18,
+      30,
+      32,
+      25,
+      14,
+      8,
+      5,
+      4,
+      4,
+      6,
+      10,
+      18,
+      28,
+      42,
+      45,
+      35,
+      20,
+      12,
+      8,
+      6,
+      6,
+      10
+    ],
+    "empleado": {
+      "costo_empleador_ars": 2183000,
+      "mes_alta_indice": 15,
+      "nota": "Técnico en relación de dependencia desde diciembre-2027 (índice 15 = mes 16). Coeficiente 1,46 × bruto $1,5M.",
+      "fuente": "F13"
+    },
+    "cobros": {
+      "sena_pct": 0.5,
+      "dias_saldo": 15,
+      "pago_mayorista_dias": 0,
+      "nota": "Seña del 50% al firmar; saldo al terminar la instalación (~15 días). El mayorista cobra contado hasta tener historial: ese descalce es el consumo de capital de trabajo.",
+      "sena_sensibilidad": [
+        0.5,
+        0.4,
+        0.3
+      ]
+    },
+    "impuestos": {
+      "ganancias_pct": 0.25,
+      "ganancias_tramo1_ars": 133514186,
+      "imp_cheque_pct": 0.012,
+      "imp_cheque_computable": 1.0,
+      "fuente": "F7",
+      "ganancias_tramo2_ars": 1335141860,
+      "ganancias_escala_pct": [
+        0.25,
+        0.3,
+        0.35
+      ],
+      "imp_cheque_computable_pct": 1.0,
+      "nota": "Escala del art. 73 LIG (tramos actualizados por IPC); como MiPyME inscripta, el impuesto al cheque se computa 100 % como pago a cuenta de Ganancias (Ley 27.264)."
+    },
+    "escenarios": [
+      {
+        "nombre": "Conservador",
+        "instalaciones_mult": 0.65,
+        "ticket_mult": 0.9
+      },
+      {
+        "nombre": "Base",
+        "instalaciones_mult": 1.0,
+        "ticket_mult": 1.0
+      },
+      {
+        "nombre": "Optimista",
+        "instalaciones_mult": 1.3,
+        "ticket_mult": 1.05
+      }
+    ],
+    "sensibilidad_tc": [
+      1500,
+      1760,
+      2100
+    ],
+    "puesta_en_marcha": {
+      "bloques": [
+        "A",
+        "B"
+      ],
+      "nota": "Desembolsos de una sola vez del presupuesto (constitución, legal, marca, identidad y equipamiento); se pagan en el mes 1."
+    }
+  },
+  "partes": [
+    {
+      "antes": "01",
+      "numero": "I",
+      "titulo": "El plan de 30 días"
+    },
+    {
+      "antes": "06",
+      "numero": "II",
+      "titulo": "El modelo financiero"
+    },
+    {
+      "antes": "07",
+      "numero": "III",
+      "titulo": "Operación, mercado y personas"
+    },
+    {
+      "antes": "13",
+      "numero": "IV",
+      "titulo": "Los activos digitales"
+    },
+    {
+      "antes": "17",
+      "numero": "V",
+      "titulo": "Marketing y publicidad"
+    },
+    {
+      "antes": "20",
+      "numero": "VI",
+      "titulo": "La operación comercial"
+    },
+    {
+      "antes": "25",
+      "numero": "VII",
+      "titulo": "El horizonte"
+    },
+    {
+      "antes": "26",
+      "numero": "",
+      "titulo": "Anexos"
+    }
+  ],
+  "marketing": {
+    "convencion": "Costos publicitarios en ARS de agosto-2026, del mismo modo que el modelo financiero de la sección 6. El reparto por canal suma exactamente la serie `financiero.marketing_ars`: no hay pauta fuera del modelo.",
+    "canales": [
+      {
+        "clave": "google",
+        "nombre": "Google Search",
+        "ars": [
+          150000,
+          220000,
+          330000,
+          420000,
+          430000,
+          380000,
+          220000,
+          160000,
+          130000,
+          130000,
+          130000,
+          160000
+        ],
+        "fuente": "F46",
+        "rol": "Captura la demanda que ya está buscando. Es el canal de mayor intención y el que sostiene la temporada."
+      },
+      {
+        "clave": "meta",
+        "nombre": "Meta (Instagram y Facebook)",
+        "ars": [
+          100000,
+          130000,
+          170000,
+          180000,
+          200000,
+          170000,
+          100000,
+          90000,
+          70000,
+          70000,
+          70000,
+          90000
+        ],
+        "fuente": "F47",
+        "rol": "Crea demanda donde todavía no la hay y construye marca con instalación real. Leads más fríos, más baratos."
+      },
+      {
+        "clave": "countries",
+        "nombre": "Medios de countries",
+        "ars": [
+          0,
+          50000,
+          100000,
+          100000,
+          70000,
+          50000,
+          30000,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fuente": null,
+        "rol": "Revista Nordelta y guías barriales. No genera leads medibles: compra acceso y credibilidad en el canal de mayor ticket."
+      }
+    ],
+    "cpc_ars": [
+      450,
+      500,
+      600,
+      700,
+      700,
+      600,
+      500,
+      450,
+      400,
+      380,
+      380,
+      420
+    ],
+    "embudo": {
+      "conv_clic_lead": 0.07,
+      "conv_lead_instalacion_google": 0.25,
+      "cpl_meta_ars": 7000,
+      "conv_lead_instalacion_meta": 0.12
+    },
+    "sensibilidad_cpc": [
+      1.0,
+      1.3,
+      1.6
+    ],
+    "campanas_google": [
+      {
+        "campana": "AR | Search | Instalación | Corredor Norte",
+        "pct": 0.45,
+        "puja": "Maximizar clics con CPC máx. $ 900 → CPA objetivo al llegar a 15 conversiones",
+        "nota": "El grueso del negocio. Un grupo de anuncios por municipio, con la landing de esa zona."
+      },
+      {
+        "campana": "AR | Search | Recambio y urgencia",
+        "pct": 0.2,
+        "puja": "Maximizar conversiones · sin tope de CPC en horario comercial",
+        "nota": "Intención altísima y menos competencia que «instalación». Convierte más rápido y con menos regateo."
+      },
+      {
+        "campana": "AR | Search | Service y mantenimiento",
+        "pct": 0.2,
+        "puja": "Maximizar clics con CPC máx. $ 450",
+        "nota": "Ticket chico pero margen del 55 %. Es el canal que sostiene los meses de invierno y construye la base de clientes recurrentes."
+      },
+      {
+        "campana": "AR | Search | Marca",
+        "pct": 0.05,
+        "puja": "CPC manual, $ 120 máx.",
+        "nota": "Defensiva: evita que un competidor se lleve a quien ya busca «Clima Baires». Barata y obligatoria."
+      },
+      {
+        "campana": "AR | PMax | Instalaciones",
+        "pct": 0.1,
+        "puja": "Maximizar conversiones · activar recién en el mes 3",
+        "nota": "Necesita 30 conversiones de historial para no quemar presupuesto. Antes de eso no se enciende."
+      }
+    ]
+  },
+  "mercado": {
+    "nota": "Dimensionamiento propio a partir de población censal [F49], penetración de la ENGHo [F48] y vida útil del equipo [F50]. Las cifras marcadas † son supuestos propios, no datos.",
+    "localidades": [
+      {
+        "nombre": "Núñez (CABA)",
+        "poblacion": 36000,
+        "fuente": "F49",
+        "caracter": "estimacion"
+      },
+      {
+        "nombre": "Vicente López",
+        "poblacion": 282281,
+        "fuente": "F49",
+        "caracter": "verificado"
+      },
+      {
+        "nombre": "San Isidro",
+        "poblacion": 298800,
+        "fuente": "F49",
+        "caracter": "verificado"
+      },
+      {
+        "nombre": "Tigre (incluye Nordelta)",
+        "poblacion": 447000,
+        "fuente": "F49",
+        "caracter": "verificado"
+      },
+      {
+        "nombre": "Pilar",
+        "poblacion": 400000,
+        "fuente": "F49",
+        "caracter": "verificado"
+      }
+    ],
+    "personas_por_hogar": 2.9,
+    "penetracion_split": 0.7,
+    "equipos_por_hogar_equipado": 1.8,
+    "vida_util_anios": 12,
+    "crecimiento_penetracion_anual": 0.015,
+    "equipos_por_trabajo": 1.4,
+    "ticket_medio_mercado_ars": 1600000,
+    "sam_pct": 0.25
+  },
+  "precios": {
+    "nota": "El precio de lista de cada categoría ES el ticket del modelo financiero: si uno cambia y el otro no, el build aborta. Incluye el costo de cobro con tarjeta en un pago.",
+    "descuento_transferencia": 0.08,
+    "descuento_segunda_unidad": 0.1,
+    "descuento_mantenimiento_contratado": 0.15,
+    "iva_pct": 0.21,
+    "cuotas": [
+      {
+        "cuotas": 3,
+        "tasa": 0.0778,
+        "fuente": "F28"
+      },
+      {
+        "cuotas": 6,
+        "tasa": 0.1456,
+        "fuente": "F28"
+      }
+    ],
+    "incluye": [
+      "Equipo nuevo con garantía oficial de fábrica",
+      "Hasta 3 metros de cañería de cobre con aislación",
+      "Soportes, ménsula y bandeja de condensado",
+      "Vacío de cañería con bomba y prueba de estanqueidad",
+      "Puesta en marcha, prueba de frío y calor, y limpieza del lugar",
+      "Checklist de calidad firmado y garantía escrita de instalación"
+    ],
+    "no_incluye": [
+      "Obra civil: roturas de mampostería, revoques y pintura",
+      "Instalación eléctrica nueva desde el tablero o cambio de térmica",
+      "Trabajo en altura que requiera andamio, silleta o hidroelevador",
+      "Desinstalación y retiro del equipo anterior"
+    ],
+    "adicionales": [
+      {
+        "concepto": "Metro adicional de cañería (a partir del 4.º)",
+        "ars": 45000,
+        "unidad": "por metro"
+      },
+      {
+        "concepto": "Desinstalación y retiro del equipo anterior",
+        "ars": 80000,
+        "unidad": "por equipo"
+      },
+      {
+        "concepto": "Bomba de condensado (cuando no hay pendiente)",
+        "ars": 120000,
+        "unidad": "por equipo"
+      },
+      {
+        "concepto": "Perforación de muro de más de 30 cm o piedra",
+        "ars": 90000,
+        "unidad": "por pasada"
+      },
+      {
+        "concepto": "Trabajo en altura con silleta o andamio",
+        "ars": 180000,
+        "unidad": "por jornada"
+      },
+      {
+        "concepto": "Hidroelevador para condensadora sin acceso",
+        "ars": 350000,
+        "unidad": "por jornada"
+      },
+      {
+        "concepto": "Circuito eléctrico nuevo desde el tablero",
+        "ars": 160000,
+        "unidad": "por equipo"
+      }
+    ]
+  },
+  "horizonte": {
+    "nota": "El año 3 se proyecta desde el año 2 del modelo con la segunda cuadrilla y crecimiento de mercado; la valoración es un rango de múltiplos sobre resultado operativo [F51], no una tasación.",
+    "crecimiento_anio3": 1.45,
+    "segunda_cuadrilla_mes": 30,
+    "multiplos_ebitda": [
+      3.0,
+      4.5,
+      6.0
+    ],
+    "descuento_empresa_joven": 0.3
+  }
+}

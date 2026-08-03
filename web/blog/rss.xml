@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>Notas de Clima Baires</title>
+  <link>https://climabaires.com/blog/</link>
+  <description>Guías de aire acondicionado para el corredor norte de Buenos Aires.</description>
+  <language>es-AR</language>
+  <lastBuildDate>Sun, 02 Aug 2026 00:04:23 +0000</lastBuildDate>
+    <item>
+      <title>Instalar aire acondicionado en un barrio cerrado</title>
+      <link>https://climabaires.com/blog/aire-en-barrio-cerrado.html</link>
+      <guid isPermaLink="true">https://climabaires.com/blog/aire-en-barrio-cerrado.html</guid>
+      <description>Alta del contratista, seguros, horarios de obra y dónde puede ir la condensadora. Cómo se planifica de verdad una instalación en un country.</description>
+      <category>Zona norte</category>
+      <pubDate>Sun, 02 Aug 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mantenimiento de split: qué hacés vos y qué el técnico</title>
+      <link>https://climabaires.com/blog/mantenimiento-que-si-importa.html</link>
+      <guid isPermaLink="true">https://climabaires.com/blog/mantenimiento-que-si-importa.html</guid>
+      <description>Cada cuánto lavar los filtros, cómo secarlos, qué necesita técnico y las señales de que algo anda mal. El mantenimiento que sí cambia algo.</description>
+      <category>Mantenimiento</category>
+      <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cómo darte cuenta de si te hicieron una buena instalación</title>
+      <link>https://climabaires.com/blog/que-mirar-en-una-instalacion.html</link>
+      <guid isPermaLink="true">https://climabaires.com/blog/que-mirar-en-una-instalacion.html</guid>
+      <description>Vacío, estanqueidad, ménsulas y desagüe explicados en criollo, más las preguntas que le podés hacer a cualquier instalador antes de contratarlo.</description>
+      <category>Guías</category>
+      <pubDate>Mon, 27 Jul 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Instalar el aire antes del verano: por qué conviene</title>
+      <link>https://climabaires.com/blog/instalar-antes-del-verano.html</link>
+      <guid isPermaLink="true">https://climabaires.com/blog/instalar-antes-del-verano.html</guid>
+      <description>En diciembre se agota el stock, la agenda se estira y elegís lo que quedó. Qué podés adelantar en invierno y qué ganás comprando a contramano.</description>
+      <category>Guías</category>
+      <pubDate>Fri, 24 Jul 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>¿Cuántas frigorías necesito? Guía práctica para tu casa</title>
+      <link>https://climabaires.com/blog/cuantas-frigorias-necesito.html</link>
+      <guid isPermaLink="true">https://climabaires.com/blog/cuantas-frigorias-necesito.html</guid>
+      <description>La regla de 100 frigorías por m² es el arranque, no el final. Cómo ajustarla por techo, sol, ventanales y uso, con ejemplos de casas de zona norte.</description>
+      <category>Guías</category>
+      <pubDate>Tue, 21 Jul 2026 09:00:00 +0000</pubDate>
+    </item>
+</channel></rss>

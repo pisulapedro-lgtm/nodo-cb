@@ -1,0 +1,28 @@
+{
+  "name": "clima-baires-argentina",
+  "version": "1.4.0",
+  "description": "Plan de Negocio Clima Baires Argentina: fuente regenerable del PDF, modelo financiero, web climabaires.com y kit digital",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "modelo": "python3 build/modelo-excel.py",
+    "semana": "node build/semana.mjs",
+    "tablero": "python3 build/tablero-excel.py",
+    "miniaturas": "python3 build/preparar-miniaturas.py",
+    "todo": "npm run miniaturas && npm run build && npm run modelo && npm run semana && npm run tablero",
+    "web:generar": "python3 web/tools/generar.py",
+    "web:shots": "node web/tools/shots.mjs",
+    "web:publicar": "python3 web/tools/publicar.py",
+    "blog:tema": "python3 web/tools/siguiente-nota.py",
+    "blog:estado": "python3 web/tools/siguiente-nota.py --estado",
+    "blog:revisar": "python3 web/tools/revisar-nota.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:41729/git/pisulapedro-lgtm/nodo-cb"
+  },
+  "dependencies": {
+    "marked": "18.0.7"
+  },
+  "private": true,
+  "type": "module"
+}

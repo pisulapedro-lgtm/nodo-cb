@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>Semana 1 — Ignacio · 3 al 10 de agosto de 2026</title>
+<style>
+  /* ===== Fuentes de marca (Poppins ≈ Goldplay) ===== */
+  @font-face { font-family: 'Poppins'; font-weight: 400; font-style: normal; src: url('../build/assets/fonts/poppins-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 500; font-style: normal; src: url('../build/assets/fonts/poppins-500.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 600; font-style: normal; src: url('../build/assets/fonts/poppins-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Poppins'; font-weight: 800; font-style: normal; src: url('../build/assets/fonts/poppins-800.woff2') format('woff2'); }
+
+  :root {
+    --azul: #0058B3;      /* color primario de marca */
+    --celeste: #00A8FC;   /* acento de marca */
+    --navy: #00285A;      /* wordmark BAIRES (extraído del vector del manual) */
+    --gris-texto: #2b3440;
+    --gris-suave: #eef3f8;
+    --gris-linea: #c9d4e0;
+    --ambar: #b45309;     /* estimaciones / alertas */
+  }
+
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', 'Liberation Sans', 'DejaVu Sans', sans-serif;
+    font-size: 9.6pt; line-height: 1.5; color: var(--gris-texto);
+  }
+
+  /* ===== Estructura de capítulos ===== */
+  section.capitulo { page-break-before: always; }
+  section.capitulo:first-of-type { page-break-before: avoid; }
+
+  h1 {
+    font-size: 17pt; font-weight: 800; color: var(--azul);
+    border-bottom: 2.5pt solid var(--celeste);
+    padding-bottom: 4pt; margin: 0 0 10pt 0;
+    page-break-after: avoid;
+  }
+  h2 { font-size: 12.5pt; font-weight: 600; color: var(--navy); margin: 14pt 0 5pt; page-break-after: avoid; }
+  h3 { font-size: 10.5pt; font-weight: 600; color: var(--azul); margin: 10pt 0 4pt; page-break-after: avoid; }
+  p { margin: 4pt 0 7pt; }
+  ul, ol { margin: 3pt 0 8pt; padding-left: 16pt; }
+  li { margin-bottom: 2.5pt; }
+  strong { color: var(--navy); }
+  a { color: var(--azul); text-decoration: none; word-break: break-all; }
+  hr { border: none; border-top: 1pt solid var(--gris-linea); margin: 10pt 0; }
+  blockquote {
+    margin: 8pt 0; padding: 6pt 10pt; background: var(--gris-suave);
+    border-left: 3pt solid var(--celeste); page-break-inside: avoid;
+  }
+  blockquote p { margin: 2pt 0; }
+  code {
+    font-family: 'DejaVu Sans Mono', monospace; font-size: 8.6pt;
+    background: var(--gris-suave); padding: 0.5pt 3pt; border-radius: 2pt;
+  }
+
+  /* ===== Tablas: nunca cortadas ===== */
+  table {
+    border-collapse: collapse; width: 100%; margin: 7pt 0 10pt;
+    font-size: 8.6pt; page-break-inside: avoid;
+  }
+  thead { display: table-header-group; }
+  tr { page-break-inside: avoid; }
+  th {
+    background: var(--azul); color: #fff; font-weight: 600;
+    padding: 4pt 6pt; text-align: left; border: 0.75pt solid var(--azul);
+  }
+  td { padding: 3.5pt 6pt; border: 0.75pt solid var(--gris-linea); vertical-align: top; }
+  tbody tr:nth-child(even) td { background: var(--gris-suave); }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  table.larga { page-break-inside: auto; }   /* tablas de página completa: fluyen con thead repetido */
+  tr.total td {
+    background: var(--navy) !important; color: #fff; font-weight: 600;
+  }
+  tr.subtotal td { background: #d8e6f5 !important; font-weight: 600; }
+
+  /* Marcas editoriales */
+  .validar { color: var(--ambar); font-weight: 600; }
+  .estimacion { color: var(--ambar); }
+  .leyenda { font-size: 7.8pt; color: #5a6675; margin-top: -6pt; }
+
+  .caja-clave {
+    background: var(--gris-suave); border: 1pt solid var(--gris-linea);
+    border-left: 4pt solid var(--azul); border-radius: 3pt;
+    padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid;
+  }
+
+  /* ===== Portada ===== */
+  section.portada { page-break-before: avoid; }
+  .portada-lienzo {
+    height: 236mm; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    background: linear-gradient(160deg, var(--azul) 0%, #01417f 55%, var(--navy) 100%);
+    border-radius: 6pt; color: #fff; padding: 20mm;
+  }
+  .portada-lienzo img.logo { width: 300px; margin-bottom: 18mm; }
+  .portada-titulo { font-size: 27pt; font-weight: 800; line-height: 1.2; margin: 0 0 6mm; }
+  .portada-sub { font-size: 13pt; font-weight: 500; color: #bfe4ff; margin: 0 0 16mm; }
+  .portada-meta {
+    font-size: 9.5pt; line-height: 1.9; color: #dcecfb;
+    border-top: 1pt solid rgba(255,255,255,.35); padding-top: 6mm; min-width: 70%;
+  }
+  .portada-meta strong { color: #fff; }
+
+  /* ===== Gantt ===== */
+  table.gantt { font-size: 6.6pt; table-layout: fixed; }
+  table.gantt th, table.gantt td { padding: 1.6pt 1pt; text-align: center; border: 0.5pt solid #dfe7f0; }
+  table.gantt th.tarea, table.gantt td.tarea {
+    text-align: left; width: 34mm; padding-left: 4pt;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  table.gantt thead th { background: var(--navy); border-color: var(--navy); font-size: 6.4pt; }
+  table.gantt td.on-legal   { background: #0058B3; }
+  table.gantt td.on-fiscal  { background: #3E8BD8; }
+  table.gantt td.on-banca   { background: #00A8FC; }
+  table.gantt td.on-ops     { background: #00285A; }
+  table.gantt td.on-stack   { background: #7fc8f0; }
+  table.gantt td.on-comercial { background: #63c7a4; }
+  table.gantt td.on-personas  { background: #f0b45a; }
+  table.gantt tr.grupo td {
+    background: var(--gris-suave) !important; text-align: left; font-weight: 600;
+    color: var(--navy); padding-left: 3pt; font-size: 7pt;
+  }
+  /* Curva de caja: barra proporcional al saldo, sin JS ni librerías. */
+  table.caja td .barra {
+    height: 7pt; background: linear-gradient(90deg, var(--azul), var(--celeste));
+    border-radius: 1.5pt; min-width: 1pt;
+  }
+  table.caja td:last-child { width: 22%; vertical-align: middle; }
+  /* P&L de 12 meses en A4 vertical: sin achicar no entra. */
+  table.compacta { font-size: 6.4pt; }
+  table.compacta th, table.compacta td { padding: 2pt 2.5pt; }
+  p.grupo {
+    font-weight: 600; color: var(--navy); margin: 10pt 0 3pt;
+    border-left: 3pt solid var(--celeste); padding-left: 5pt;
+  }
+  /* ===== Antetítulo de parte ===== */
+  p.antetitulo {
+    font-size: 8.4pt; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--celeste); margin: 0 0 3pt; page-break-after: avoid;
+  }
+
+  /* ===== Índice ===== */
+  table.indice { font-size: 9.4pt; page-break-inside: auto; margin-top: 2pt; }
+  table.indice td { border: none; padding: 2.2pt 0; vertical-align: baseline; }
+  table.indice tbody tr:nth-child(even) td { background: transparent; }
+  table.indice tr.parte td {
+    font-weight: 700; color: var(--azul); font-size: 10pt;
+    padding: 11pt 0 3pt; border-bottom: 1pt solid var(--celeste);
+  }
+  table.indice tr.sec td { font-weight: 600; color: var(--navy); }
+  table.indice tr.sub td { padding-left: 13pt; color: #4a5563; font-size: 8.8pt; }
+  table.indice tr.sub td .n { color: #8a97a6; }
+  table.indice td .n { display: inline-block; min-width: 15pt; color: var(--azul); }
+  table.indice td.pag { text-align: right; white-space: nowrap; width: 12mm; }
+  /* Ancho fijo: el hueco de la primera pasada mide lo mismo que el número de la
+     segunda, así la paginación no se mueve entre una y otra. */
+  .pag-hueco { display: inline-block; min-width: 9mm; text-align: right; }
+
+  /* Marca de localización dentro de los encabezados: invisible en papel, legible
+     por pdftotext para saber en qué página cayó cada sección. */
+  /* Ancho cero para no desplazar el título, pero con cuerpo suficiente: por debajo
+     de ~4 pt pdftotext desordena los glifos y la marca deja de ser localizable. */
+  .ancla {
+    display: inline-block; width: 0; overflow: visible; white-space: nowrap;
+    font-size: 4pt; color: #fff; vertical-align: super;
+  }
+
+  /* ===== Miniaturas de la web ===== */
+  .miniaturas {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt 7pt; margin: 8pt 0 6pt;
+  }
+  .miniaturas figure { margin: 0; page-break-inside: avoid; }
+  .miniaturas img {
+    width: 100%; height: auto; display: block;
+    border: 0.75pt solid var(--gris-linea); border-radius: 2pt;
+  }
+  .miniaturas figcaption { font-size: 7.2pt; line-height: 1.35; color: #5a6675; margin-top: 2.5pt; }
+  .miniaturas figcaption strong { color: var(--navy); }
+
+  /* ===== Portada: franja de partes ===== */
+  .portada-partes {
+    font-size: 9pt; color: #bfe4ff; margin: 10pt 0 0; letter-spacing: 0.02em;
+  }
+  /* ===== Casillas para tildar con lapicera ===== */
+  li:has(> input[type="checkbox"]) { list-style: none; margin-left: -12pt; }
+  input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 10pt; height: 10pt; border: 1pt solid var(--azul); border-radius: 1.5pt;
+    margin: 0 5pt 0 0; vertical-align: -1pt; background: #fff;
+  }
+  ul:has(> li > input[type="checkbox"]) { padding-left: 14pt; }
+  .capitulo li:has(> input[type="checkbox"]) { margin-bottom: 4.5pt; }
+
+  .gantt-leyenda { font-size: 7.6pt; margin: 2pt 0 8pt; }
+  .gantt-leyenda span.chip {
+    display: inline-block; width: 8pt; height: 5pt; border-radius: 1pt;
+    margin: 0 2pt 0 8pt; vertical-align: middle;
+  }
+
+  /* Página del cronograma en horizontal para que el Gantt respire */
+  section.apaisada { size: A4 landscape; }
+</style>
+</head>
+<body>
+<section class="capitulo hoja">
+<h1>Semana 1 — del lunes 3 al lunes 10 de agosto</h1>
+<p><strong>Del lunes 3 al lunes 10 de agosto de 2026.</strong> Es la semana 1 del cronograma, escrita como lo que hay que hacer y no como lo que hay que saber. Cada casilla se tilda cuando está terminada, no cuando está empezada.</p>
+<blockquote>
+<p><strong>Lo que se juega esta semana.</strong> Tres cosas, y las tres tienen fecha: que el <strong>monotributo quede recategorizado el miércoles 5</strong> —único plazo que no se puede mover—, que haya <strong>contador trabajando</strong> antes del jueves, y que la <strong>marca esté presentada en INPI</strong> antes del viernes. Lo demás importa, pero se puede correr una semana; esto no.</p>
+</blockquote>
+<h3>Antes de arrancar — domingo o lunes temprano, 30 minutos</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Leer las secciones 2 (decisiones clave), 3 (lo que llega de España) y 4 (cronograma) del plan</li>
+<li><input disabled="" type="checkbox"> Tener a mano y en una carpeta: DNI, CUIT, <strong>clave fiscal nivel 3</strong>, últimos pagos de monotributo y CBU</li>
+<li><input disabled="" type="checkbox"> Crear la carpeta compartida en Drive con cuatro subcarpetas: Legal · Fiscal · Proveedores · Comercial</li>
+<li><input disabled="" type="checkbox"> Anotar los tres estudios contables a llamar y los dos escribanos</li>
+<li><input disabled="" type="checkbox"> <strong>Bloquear dos horas del miércoles a la mañana</strong> en la agenda: son para el monotributo y no se tocan</li>
+</ul>
+<h3>Lunes 3 — el contador</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Llamar a los tres estudios contables de zona norte</li>
+<li><input disabled="" type="checkbox"> A cada uno preguntarle lo mismo: si tiene clientes SAS, si maneja <strong>Convenio Multilateral</strong> (vamos a facturar en CABA y PBA), cuánto cobra por mes, si hace el alta fiscal completa y <strong>en cuánto tiempo</strong></li>
+<li><input disabled="" type="checkbox"> Pedirles referencia de un escribano que constituya SAS por la vía digital</li>
+<li><input disabled="" type="checkbox"> Avisar a Pedro que arranque la búsqueda fonética de la marca en INPI (clases 11, 35 y 37)</li>
+<li><input disabled="" type="checkbox"> Anotar en el tablero: contadores contactados, honorarios de cada uno</li>
+</ul>
+<blockquote>
+<p>Regla del día: <strong>no elijas el más barato, elegí al que te conteste rápido.</strong> Vas a hablar con esta persona todas las semanas de diciembre.</p>
+</blockquote>
+<h3>Martes 4 — el escribano y el estatuto</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Elegir contador y confirmarle por escrito</li>
+<li><input disabled="" type="checkbox"> Primera reunión (puede ser por videollamada): recategorización del miércoles, altas fiscales y calendario de vencimientos</li>
+<li><input disabled="" type="checkbox"> Llamar a los dos escribanos: pedir presupuesto de <strong>SAS unipersonal por vía rápida con estatuto modelo</strong>, y plazo de inscripción</li>
+<li><input disabled="" type="checkbox"> Reservar el nombre <strong>CLIMA BAIRES ARGENTINA S.A.S.</strong> y dos alternativas por si está tomado</li>
+<li><input disabled="" type="checkbox"> Confirmar el objeto social: comercialización, instalación y mantenimiento de equipos de climatización</li>
+<li><input disabled="" type="checkbox"> Preguntar al escribano qué necesita de Pedro y Sebastián para la ampliación de capital de octubre, y pasárselo a ellos hoy mismo</li>
+</ul>
+<h3>Miércoles 5 — <strong>vence la recategorización de monotributo</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Recategorizar el monotributo antes de las 24:00.</strong> Es el único plazo de la semana que no se puede correr</li>
+<li><input disabled="" type="checkbox"> Verificar con el contador que la actividad declarada incluya <strong>instalación</strong>, no solo venta</li>
+<li><input disabled="" type="checkbox"> Anotar el tope de facturación de la categoría y <strong>el tope por unidad</strong>: mientras se facture con el monotributo no se puede vender un equipo por encima de ese importe a nombre propio</li>
+<li><input disabled="" type="checkbox"> Confirmar con el escribano el estatuto y la fecha de presentación</li>
+<li><input disabled="" type="checkbox"> Guardar el comprobante de recategorización en Drive → Fiscal</li>
+</ul>
+<blockquote>
+<p>Si el sistema de ARCA se cae —pasa, y justo los días de vencimiento—, seguí intentando y <strong>guardá capturas con hora</strong>. No lo dejes para la noche.</p>
+</blockquote>
+<h3>Jueves 6 — la marca</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Presentar la marca en <strong>INPI, clases 11, 35 y 37</strong>, a nombre de Ignacio con compromiso de cesión a la SAS</li>
+<li><input disabled="" type="checkbox"> Guardar el número de trámite en Drive → Legal</li>
+<li><input disabled="" type="checkbox"> Llamar al primer mayorista (Clima Design, Martínez): presentarse, pedir <strong>alta de cuenta gremio</strong> y lista de precios</li>
+<li><input disabled="" type="checkbox"> Preguntarle lo que de verdad importa: plazo de entrega en diciembre, si tiene stock comprometido para la temporada y <strong>qué hace falta para tener cuenta corriente</strong></li>
+<li><input disabled="" type="checkbox"> Anotar la lista de precios en Drive → Proveedores</li>
+</ul>
+<blockquote>
+<p>Argentina otorga la marca al primero que la registra, y hay un «Clima Baires» informal operando en el GBA sur. Esta casilla es de las que se lamentan si se dejan para septiembre.</p>
+</blockquote>
+<h3>Viernes 7 — proveedores y el primer instalador</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Llamar a los otros dos mayoristas (Ansal, Refrigeración Polar): mismo cuestionario que ayer</li>
+<li><input disabled="" type="checkbox"> Comparar las tres listas: precio del split de 3.000 y de 4.500, plazo de entrega y condiciones de pago</li>
+<li><input disabled="" type="checkbox"> <strong>Preguntarle a cada mayorista quién instala bien en la zona.</strong> Ellos ven a todos los instaladores y saben cuáles vuelven a comprar materiales por trabajos mal hechos: es la mejor fuente de nombres que existe y no cuesta nada</li>
+<li><input disabled="" type="checkbox"> Conseguir tres teléfonos de instaladores y llamar al menos a uno</li>
+<li><input disabled="" type="checkbox"> Pedirle a Sebastián las tres cotizaciones de seguros (RC con <strong>cláusula de no repetición</strong> y AP de instaladores)</li>
+</ul>
+<h3>Sábado 8 — media jornada</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Visitar en persona uno o dos mayoristas: ver el stock real, no el catálogo</li>
+<li><input disabled="" type="checkbox"> Sacar fotos del showroom y de las marcas que trabajan</li>
+<li><input disabled="" type="checkbox"> Si algún instalador te atendió, coordinarte para verlo la semana que viene</li>
+</ul>
+<h3>Domingo 9 — parar</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Descansar. En serio: la temporada empieza en cuatro meses y no se llega quemado a diciembre</li>
+<li><input disabled="" type="checkbox"> 30 minutos, no más: repasar qué quedó pendiente y anotarlo para el lunes</li>
+</ul>
+<h3>Lunes 10 — cierre de la semana y arranque de la siguiente</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Confirmar que el escribano <strong>presenta la SAS en IGJ</strong> esta semana</li>
+<li><input disabled="" type="checkbox"> Repasar las tres cosas de la portada: ¿monotributo recategorizado? ¿contador trabajando? ¿marca presentada?</li>
+<li><input disabled="" type="checkbox"> Cargar los números de la semana en el tablero</li>
+<li><input disabled="" type="checkbox"> <strong>Videollamada de 30 minutos con Pedro y Sebastián</strong>: qué se hizo, qué se trabó y qué necesitás de ellos</li>
+<li><input disabled="" type="checkbox"> Confirmar con Pedro que tenga el número de WhatsApp comercial: <strong>sin ese número la web no se puede publicar</strong>, y la web bloquea el perfil de Google</li>
+</ul>
+<h3>Lo que no puede quedar sin hacer</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Monotributo recategorizado</strong> — miércoles 5, sin excepción</li>
+<li><input disabled="" type="checkbox"> <strong>Contador elegido y trabajando</strong> — jueves 6</li>
+<li><input disabled="" type="checkbox"> <strong>Marca presentada en INPI</strong> — viernes 7</li>
+</ul>
+<h3>Los cinco números de la semana, para el tablero</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Contadores contactados / elegido</td>
+<td>☐ ☐ ☐ → ______</td>
+</tr>
+<tr>
+<td>Escribanos contactados / presupuesto más bajo</td>
+<td>☐ ☐ → $ ______</td>
+</tr>
+<tr>
+<td>Mayoristas contactados / con lista de precios</td>
+<td>☐ ☐ ☐ → ______</td>
+</tr>
+<tr>
+<td>Teléfonos de instaladores conseguidos</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Gasto de la semana</td>
+<td>$ ______</td>
+</tr>
+</tbody></table>
+
+</section>
+</body>
+</html>

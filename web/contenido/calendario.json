@@ -1,0 +1,71 @@
+{
+  "_comentario": [
+    "Calendario editorial del blog. Lo consume web/tools/siguiente-nota.py, que es lo primero",
+    "que ejecuta la rutina automática cada tres días para saber sobre qué escribir.",
+    "",
+    "Cada tema tiene: slug (nombre del archivo), titulo orientativo, categoria",
+    "(guia|mantenimiento|zonas|equipos), angulo (de qué va a hablar) y estado.",
+    "estado: 'pendiente' → todavía no se escribió · 'publicado' → ya existe el .md",
+    "",
+    "Para sumar temas: agregalos al final de la lista con estado 'pendiente'.",
+    "Cuando la lista se queda sin pendientes, la rutina avisa en vez de inventar un tema."
+  ],
+  "temas": [
+    {
+      "slug": "multisplit-o-varios-equipos",
+      "titulo": "¿Multisplit o varios equipos individuales?",
+      "categoria": "equipos",
+      "angulo": "Comparar las dos formas de climatizar una casa entera: una condensadora para varios ambientes contra un equipo por ambiente. Costos de instalación, consumo, qué pasa si falla la unidad exterior, estética de fachada, y en qué caso conviene cada una. Casos típicos de casas de dos plantas de San Isidro y Nordelta.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "donde-poner-la-condensadora",
+      "titulo": "Dónde poner la unidad exterior (y dónde no)",
+      "categoria": "guia",
+      "angulo": "La decisión que más problemas trae después: distancia máxima a la unidad interior, ventilación necesaria alrededor, sol directo, ruido para el vecino, reglamentos de fachada en barrios cerrados, altura para el mantenimiento, y por qué no va arriba de la ventana del dormitorio.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "cuanto-consume-un-aire",
+      "titulo": "Cuánto consume un aire acondicionado por mes",
+      "categoria": "equipos",
+      "angulo": "Explicar cómo se lee el consumo de un equipo, qué significa inverter y por qué gasta menos que uno on/off, cómo influye la temperatura elegida (cada grado de menos cuesta), y hábitos que bajan la factura sin resignar confort. Sin dar importes en pesos: explicar el método para que cada uno calcule con su tarifa.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "preinstalacion-en-obra",
+      "titulo": "Preinstalación: qué dejar hecho antes del yeso",
+      "categoria": "guia",
+      "angulo": "Para el que está construyendo o reformando, sobre todo en countries de Pilar y Nordelta. Qué se deja embutido antes de cerrar las paredes (cañería, desagüe, punto eléctrico), cuánto ahorra hacerlo en ese momento, cómo se coordina con el arquitecto y qué pasa si te olvidás.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "senales-de-que-necesita-service",
+      "titulo": "Seis señales de que tu equipo necesita service",
+      "categoria": "mantenimiento",
+      "angulo": "Post corto y práctico: enfría menos que el año pasado, tarda más en llegar a temperatura, gotea adentro, huele feo al arrancar, hace un ruido nuevo, la unidad exterior se congela. Qué significa cada una, cuál se puede resolver en casa y cuál necesita técnico.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "recambio-de-equipo-viejo",
+      "titulo": "Cuándo conviene cambiar el equipo en vez de repararlo",
+      "categoria": "equipos",
+      "angulo": "Muy pedido en Vicente López y Núñez, donde hay muchos equipos de más de diez años. Criterios: edad del equipo, tipo de gas (los viejos usan refrigerantes discontinuados), costo de la reparación contra el de uno nuevo, diferencia de consumo entre un on/off viejo y un inverter actual, y qué se hace con el equipo que se retira.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "aire-y-humedad-cerca-del-rio",
+      "titulo": "Aire acondicionado cerca del río: humedad y salinidad",
+      "categoria": "zonas",
+      "angulo": "Específico para Tigre, los barrios náuticos y la costa de San Isidro. Por qué la humedad y el aire salino atacan la unidad exterior y las ménsulas, qué protección conviene, cada cuánto hacer mantenimiento en esa zona, y qué mirar al elegir el equipo.",
+      "estado": "pendiente"
+    },
+    {
+      "slug": "ruido-del-aire-acondicionado",
+      "titulo": "Por qué hace ruido tu aire (y qué se puede hacer)",
+      "categoria": "mantenimiento",
+      "angulo": "Diferenciar los ruidos normales de los que avisan un problema: vibración de la unidad exterior por ménsula floja, ruido de agua, chasquidos de dilatación, turbina sucia, compresor. Qué se resuelve con mantenimiento y qué con una instalación mejor hecha. Incluir el tema de la convivencia con el vecino en departamentos de Núñez."
+      ,"estado": "pendiente"
+    }
+  ]
+}
