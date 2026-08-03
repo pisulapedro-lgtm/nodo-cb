@@ -200,6 +200,25 @@ El script copia sólo lo que el navegador necesita y agrega `_headers` (caché
 larga para fuentes e imágenes, corta para HTML) y `_redirects` (www → dominio
 raíz), que Cloudflare Pages y Netlify leen solos.
 
+## Hostinger y cualquier hosting compartido
+
+`publicar.py` deja tres archivos de configuración de servidor en `dist/sitio/` y
+**cada hosting lee uno distinto**:
+
+| archivo | lo lee |
+|---|---|
+| `.htaccess` | Apache / LiteSpeed → **Hostinger**, cPanel, casi todo el compartido |
+| `_headers` y `_redirects` | Cloudflare Pages, Netlify |
+
+Se generan siempre los tres; los que no correspondan quedan ahí sin molestar. Lo
+que sí importa: en Hostinger hay que verificar que **`.htaccess` llegó a
+`public_html/`** — empieza con punto, así que el administrador de archivos no lo
+muestra hasta activar «ver archivos ocultos», y `zip -r` no siempre lo incluye.
+Sin él el sitio se ve, pero sin https forzado, sin quitar el `www`, sin caché y
+con el 404 del proveedor en lugar del propio.
+
+El paso a paso completo está en `dist/PROMPT-subir-a-hostinger.md`.
+
 ## Publicación recomendada (gratis, con SSL)
 
 **Opción A — Cloudflare Pages** (recomendada: CDN + SSL + dominio en el mismo panel):
